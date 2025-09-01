@@ -14,7 +14,8 @@ Dumper-7 (SDK) based solution for quick & easy debugging of Unreal Engine powere
 # Environment & Dependencies
 ### C++: ISO 20.
 ### C: Legacy MSVC.
-### Windows SDK: 10.0.26100.0
+### Windows SDK: "10.0.26100.0".
+### Configuration: Release.
 ### [Dumper-7](https://github.com/Encryqed/Dumper-7)
 ### [ImGui](https://github.com/ocornut/imgui)
 ### [CranchyLib.CPP](https://github.com/Cranch-fur/CranchyLib.CPP)
