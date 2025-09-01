@@ -6,12 +6,12 @@
 * https://github.com/Encryqed/Dumper-7
 */
 
-// Package: BP_DBDGameInstance
+// Package: BP_DBDGameInstance_0
 
 #include "Basic.hpp"
 
-#include "BP_DBDGameInstance_classes.hpp"
-#include "BP_DBDGameInstance_parameters.hpp"
+#include "BP_DBDGameInstance_0_classes.hpp"
+#include "BP_DBDGameInstance_0_parameters.hpp"
 
 
 namespace SDK
@@ -22,7 +22,7 @@ namespace SDK
 // Parameters:
 // int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::ExecuteUbergraph_BP_DBDGameInstance(int32 EntryPoint)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::ExecuteUbergraph_BP_DBDGameInstance(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
@@ -40,7 +40,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::ExecuteUbergraph_BP_DBDGameInsta
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.Event F::PanoramaScreenshotCreated
 // (BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_F__PanoramaScreenshotCreated()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_F__PanoramaScreenshotCreated()
 {
 	static class UFunction* Func = nullptr;
 
@@ -59,7 +59,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_F__PanoramaScreenshotCreat
 // float                                   Rotation_Step                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // int32                                   Quality_Level                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__PanoramaScreenshot(const struct FTransform& Panorama_Camera_Transform, float FOV, float Rotation_Step, int32 Quality_Level)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__PanoramaScreenshot(const struct FTransform& Panorama_Camera_Transform, float FOV, float Rotation_Step, int32 Quality_Level)
 {
 	static class UFunction* Func = nullptr;
 
@@ -82,7 +82,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__PanoramaScreenshot(cons
 // Parameters:
 // TSoftClassPtr<class UClass>             Object_Soft_Class                                      (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SilentSoftLoadAsset(TSoftClassPtr<class UClass> Object_Soft_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__SilentSoftLoadAsset(TSoftClassPtr<class UClass> Object_Soft_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -100,7 +100,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SilentSoftLoadAsset(TSo
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.Event C::ClearConsole
 // (BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__ClearConsole()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__ClearConsole()
 {
 	static class UFunction* Func = nullptr;
 
@@ -114,7 +114,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__ClearConsole()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.Event C::Help Implemintation
 // (BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__Help_Implemintation()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__Help_Implemintation()
 {
 	static class UFunction* Func = nullptr;
 
@@ -130,7 +130,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__Help_Implemintation()
 // Parameters:
 // TSoftClassPtr<class UClass>             Soft_Widget_Class                                      (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftConstructWidget(TSoftClassPtr<class UClass> Soft_Widget_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__SoftConstructWidget(TSoftClassPtr<class UClass> Soft_Widget_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -150,7 +150,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftConstructWidget(TSo
 // Parameters:
 // TSoftClassPtr<class UClass>             Object_Soft_Class                                      (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftLoadAsset(TSoftClassPtr<class UClass> Object_Soft_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__SoftLoadAsset(TSoftClassPtr<class UClass> Object_Soft_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -170,7 +170,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftLoadAsset(TSoftClas
 // Parameters:
 // TSoftClassPtr<class UClass>             Actor_Soft_Class                                       (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftSummonPosses(TSoftClassPtr<class UClass> Actor_Soft_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__SoftSummonPosses(TSoftClassPtr<class UClass> Actor_Soft_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -188,7 +188,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftSummonPosses(TSoftC
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.DestroyGameplayModdingBlueprints
 // (Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::DestroyGameplayModdingBlueprints()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::DestroyGameplayModdingBlueprints()
 {
 	static class UFunction* Func = nullptr;
 
@@ -202,7 +202,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::DestroyGameplayModdingBlueprints
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.DestroyStartScreenModdingBlueprints
 // (Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::DestroyStartScreenModdingBlueprints()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::DestroyStartScreenModdingBlueprints()
 {
 	static class UFunction* Func = nullptr;
 
@@ -216,7 +216,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::DestroyStartScreenModdingBluepri
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.DestroyLobbyModdingBlueprints
 // (Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::DestroyLobbyModdingBlueprints()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::DestroyLobbyModdingBlueprints()
 {
 	static class UFunction* Func = nullptr;
 
@@ -230,7 +230,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::DestroyLobbyModdingBlueprints()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.Event T::Cheat Flying Controls
 // (BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_T__Cheat_Flying_Controls()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_T__Cheat_Flying_Controls()
 {
 	static class UFunction* Func = nullptr;
 
@@ -246,7 +246,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_T__Cheat_Flying_Controls()
 // Parameters:
 // TSoftClassPtr<class UClass>             Actor_Soft_Class                                       (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftSummon(TSoftClassPtr<class UClass> Actor_Soft_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_C__SoftSummon(TSoftClassPtr<class UClass> Actor_Soft_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -264,7 +264,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_C__SoftSummon(TSoftClassPt
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.Event ObtainGameAssets
 // (BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_ObtainGameAssets()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_ObtainGameAssets()
 {
 	static class UFunction* Func = nullptr;
 
@@ -278,7 +278,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_ObtainGameAssets()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.Event LoadModdingBlueprints
 // (BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_LoadModdingBlueprints()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_LoadModdingBlueprints()
 {
 	static class UFunction* Func = nullptr;
 
@@ -294,7 +294,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_LoadModdingBlueprints()
 // Parameters:
 // E_DBDGameState                          DBDGameState                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnGameStateObtained(E_DBDGameState DBDGameState)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnGameStateObtained(E_DBDGameState DBDGameState)
 {
 	static class UFunction* Func = nullptr;
 
@@ -312,7 +312,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnGameStateObtained(E_DBDGameSta
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.Event Force On Level Changed
 // (BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_Force_On_Level_Changed()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Event_Force_On_Level_Changed()
 {
 	static class UFunction* Func = nullptr;
 
@@ -326,7 +326,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Event_Force_On_Level_Changed()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.OnLevelChanged
 // (Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLevelChanged()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLevelChanged()
 {
 	static class UFunction* Func = nullptr;
 
@@ -340,7 +340,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLevelChanged()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.ReceiveInit
 // (Event, Public, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::ReceiveInit()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::ReceiveInit()
 {
 	static class UFunction* Func = nullptr;
 
@@ -356,7 +356,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::ReceiveInit()
 // Parameters:
 // TSubclassOf<class UObject>              Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_B8840FD4449AD6A97F069D9F15DE2734(TSubclassOf<class UObject> Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLoaded_B8840FD4449AD6A97F069D9F15DE2734(TSubclassOf<class UObject> Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -376,7 +376,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_B8840FD4449AD6A97F069D9
 // Parameters:
 // TSubclassOf<class UObject>              Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_7F68F5B64B2631B744F30BBC66822B66(TSubclassOf<class UObject> Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLoaded_7F68F5B64B2631B744F30BBC66822B66(TSubclassOf<class UObject> Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -396,7 +396,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_7F68F5B64B2631B744F30BB
 // Parameters:
 // TSubclassOf<class UObject>              Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_757DC81E4290CEE866D6B58F895F56F8(TSubclassOf<class UObject> Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLoaded_757DC81E4290CEE866D6B58F895F56F8(TSubclassOf<class UObject> Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -416,7 +416,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_757DC81E4290CEE866D6B58
 // Parameters:
 // TSubclassOf<class UObject>              Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_85BF75A54ED7999AEC3B329CB21BBD90(TSubclassOf<class UObject> Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLoaded_85BF75A54ED7999AEC3B329CB21BBD90(TSubclassOf<class UObject> Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -436,7 +436,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_85BF75A54ED7999AEC3B329
 // Parameters:
 // TSubclassOf<class UObject>              Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_FCBCE05946A17F6C0ABFB0968E584837(TSubclassOf<class UObject> Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLoaded_FCBCE05946A17F6C0ABFB0968E584837(TSubclassOf<class UObject> Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -456,7 +456,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_FCBCE05946A17F6C0ABFB09
 // Parameters:
 // TSubclassOf<class UObject>              Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_F6BE95784C77419348B622A227AD6132(TSubclassOf<class UObject> Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLoaded_F6BE95784C77419348B622A227AD6132(TSubclassOf<class UObject> Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -476,7 +476,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_F6BE95784C77419348B622A
 // Parameters:
 // TSubclassOf<class UObject>              Loaded                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_1D0724A74B76FD1E1EEF599DD7F680DC(TSubclassOf<class UObject> Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::OnLoaded_1D0724A74B76FD1E1EEF599DD7F680DC(TSubclassOf<class UObject> Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -494,7 +494,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::OnLoaded_1D0724A74B76FD1E1EEF599
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.CommandTest
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::CommandTest()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::CommandTest()
 {
 	static class UFunction* Func = nullptr;
 
@@ -512,7 +512,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::CommandTest()
 // bool                                    Print_to_Screen                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Print_to_Log                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::DebugMessage(const class FText& Message, bool Print_to_Screen, bool Print_to_Log)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::DebugMessage(const class FText& Message, bool Print_to_Screen, bool Print_to_Log)
 {
 	static class UFunction* Func = nullptr;
 
@@ -534,7 +534,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::DebugMessage(const class FText& 
 // Parameters:
 // bool*                                   Was_Actors_Loaded                                      (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::GetWasActorsLoaded(bool* Was_Actors_Loaded)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::GetWasActorsLoaded(bool* Was_Actors_Loaded)
 {
 	static class UFunction* Func = nullptr;
 
@@ -555,7 +555,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::GetWasActorsLoaded(bool* Was_Act
 // Parameters:
 // class APlayerController**               Running_Player_Controller                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_RunningPC(class APlayerController** Running_Player_Controller)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_RunningPC(class APlayerController** Running_Player_Controller)
 {
 	static class UFunction* Func = nullptr;
 
@@ -577,7 +577,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_RunningPC(class APlayerContr
 // class UClass*                           Widget_Class                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor)
 
-bool BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_IsWidgetExists(class UClass* Widget_Class)
+bool BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_IsWidgetExists(class UClass* Widget_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -600,7 +600,7 @@ bool BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_IsWidgetExists(class UClass*
 // class UUserWidget*                      User_Widget_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool*                                   Is_Protected_Widget                                    (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_IsProtectedWidget(class UUserWidget* User_Widget_Reference, bool* Is_Protected_Widget)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_IsProtectedWidget(class UUserWidget* User_Widget_Reference, bool* Is_Protected_Widget)
 {
 	static class UFunction* Func = nullptr;
 
@@ -624,7 +624,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_IsProtectedWidget(class UUse
 // class ACharacter*                       Character_Reference                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool*                                   Is_Flying                                              (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_CharacterIsFlying(class ACharacter* Character_Reference, bool* Is_Flying)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_CharacterIsFlying(class ACharacter* Character_Reference, bool* Is_Flying)
 {
 	static class UFunction* Func = nullptr;
 
@@ -648,7 +648,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_CharacterIsFlying(class ACha
 // TSoftClassPtr<class UClass>             Input_Path                                             (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 // TSoftClassPtr<class UClass>*            Soft_Object_Reference                                  (Parm, OutParm, UObjectWrapper, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_ProperFullPath(TSoftClassPtr<class UClass> Input_Path, TSoftClassPtr<class UClass>* Soft_Object_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_ProperFullPath(TSoftClassPtr<class UClass> Input_Path, TSoftClassPtr<class UClass>* Soft_Object_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -672,7 +672,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_ProperFullPath(TSoftClassPtr
 // const class FText&                      Input                                                  (BlueprintVisible, BlueprintReadOnly, Parm)
 // class FText*                            Formatted_Output                                       (Parm, OutParm)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_FormattedTextRenderActorText(const class FText& Input, class FText* Formatted_Output)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_FormattedTextRenderActorText(const class FText& Input, class FText* Formatted_Output)
 {
 	static class UFunction* Func = nullptr;
 
@@ -696,7 +696,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_FormattedTextRenderActorText
 // TSoftClassPtr<class UClass>             Input_Path                                             (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 // class UObject**                         Output                                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_SoftClassToSoftObject(TSoftClassPtr<class UClass> Input_Path, class UObject** Output)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_SoftClassToSoftObject(TSoftClassPtr<class UClass> Input_Path, class UObject** Output)
 {
 	static class UFunction* Func = nullptr;
 
@@ -720,7 +720,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_SoftClassToSoftObject(TSoftC
 // TArray<class AActor*>&                  Found_Actors_Array                                     (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // TArray<class AActor*>*                  Clean_Found_Actors_Array                               (Parm, OutParm)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_CleanFoundActors(TArray<class AActor*>& Found_Actors_Array, TArray<class AActor*>* Clean_Found_Actors_Array)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_CleanFoundActors(TArray<class AActor*>& Found_Actors_Array, TArray<class AActor*>* Clean_Found_Actors_Array)
 {
 	static class UFunction* Func = nullptr;
 
@@ -746,7 +746,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_CleanFoundActors(TArray<clas
 // int32                                   Found_Actors_Amount                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float*                                  Optimal_Delay                                          (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_OptimalWaypointUpdateDelay(int32 Found_Actors_Amount, float* Optimal_Delay)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_OptimalWaypointUpdateDelay(int32 Found_Actors_Amount, float* Optimal_Delay)
 {
 	static class UFunction* Func = nullptr;
 
@@ -770,7 +770,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_OptimalWaypointUpdateDelay(i
 // E_AttachRule                            E_AttachRule                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // EAttachmentRule*                        E_AttachementRule                                      (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_AttachRuleToAttachementRule(E_AttachRule E_AttachRule, EAttachmentRule* E_AttachementRule)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_AttachRuleToAttachementRule(E_AttachRule E_AttachRule, EAttachmentRule* E_AttachementRule)
 {
 	static class UFunction* Func = nullptr;
 
@@ -793,7 +793,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_AttachRuleToAttachementRule(
 // Parameters:
 // class ABP_LevelStreamingManager_C**     Level_Streaming_Manager_Reference_0                    (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_LevelStreamingManager(class ABP_LevelStreamingManager_C** Level_Streaming_Manager_Reference_0)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_LevelStreamingManager(class ABP_LevelStreamingManager_C** Level_Streaming_Manager_Reference_0)
 {
 	static class UFunction* Func = nullptr;
 
@@ -816,7 +816,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_LevelStreamingManager(class 
 // class AActor*                           Actor_Reference                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // class APlayerController*                Player_Controller_Reference                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Set_EnableInput(bool Enable_Input, class AActor* Actor_Reference, class APlayerController* Player_Controller_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Set_EnableInput(bool Enable_Input, class AActor* Actor_Reference, class APlayerController* Player_Controller_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -838,7 +838,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::Set_EnableInput(bool Enable_Inpu
 // Parameters:
 // float                                   New_Size                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ChangeSize(float New_Size)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ChangeSize(float New_Size)
 {
 	static class UFunction* Func = nullptr;
 
@@ -858,7 +858,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ChangeSize(float New_Siz
 // Parameters:
 // float                                   New_FOV                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FOV(float New_FOV)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_FOV(float New_FOV)
 {
 	static class UFunction* Func = nullptr;
 
@@ -876,7 +876,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FOV(float New_FOV)
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_Ghost
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Ghost()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_Ghost()
 {
 	static class UFunction* Func = nullptr;
 
@@ -890,7 +890,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Ghost()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_Fly
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Fly()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_Fly()
 {
 	static class UFunction* Func = nullptr;
 
@@ -904,7 +904,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Fly()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_Walk
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Walk()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_Walk()
 {
 	static class UFunction* Func = nullptr;
 
@@ -918,7 +918,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Walk()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_God
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_God()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_God()
 {
 	static class UFunction* Func = nullptr;
 
@@ -934,7 +934,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_God()
 // Parameters:
 // float                                   New_Time_Dilation                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Slomo(float New_Time_Dilation)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_Slomo(float New_Time_Dilation)
 {
 	static class UFunction* Func = nullptr;
 
@@ -954,7 +954,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Slomo(float New_Time_Dil
 // Parameters:
 // const class FString&                    New_Name                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetName(const class FString& New_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetName(const class FString& New_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -972,7 +972,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetName(const class FStr
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_PlayersOnly
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PlayersOnly()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_PlayersOnly()
 {
 	static class UFunction* Func = nullptr;
 
@@ -988,7 +988,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PlayersOnly()
 // Parameters:
 // bool                                    Paused                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetGamePaused(bool Paused)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetGamePaused(bool Paused)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1008,7 +1008,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetGamePaused(bool Pause
 // Parameters:
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Summon(class UClass* Actor_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_Summon(class UClass* Actor_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1028,7 +1028,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Summon(class UClass* Act
 // Parameters:
 // TSoftClassPtr<class UClass>             Actor_Soft_Class                                       (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftSummon(TSoftClassPtr<class UClass> Actor_Soft_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftSummon(TSoftClassPtr<class UClass> Actor_Soft_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1048,7 +1048,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftSummon(TSoftClassPtr
 // Parameters:
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyAll(class UClass* Actor_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_DestroyAll(class UClass* Actor_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1069,7 +1069,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyAll(class UClass*
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    String_To_Search                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyAllContains(class UClass* Actor_Class, const class FString& String_To_Search)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_DestroyAllContains(class UClass* Actor_Class, const class FString& String_To_Search)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1090,7 +1090,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyAllContains(class
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyActor(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_DestroyActor(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1110,7 +1110,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyActor(const class
 // Parameters:
 // class FName                             Level_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_StreamLevelIn(class FName Level_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_StreamLevelIn(class FName Level_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1130,7 +1130,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_StreamLevelIn(class FNam
 // Parameters:
 // class FName                             Level_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_StreamLevelPrepare(class FName Level_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_StreamLevelPrepare(class FName Level_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1150,7 +1150,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_StreamLevelPrepare(class
 // Parameters:
 // class FName                             Level_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_StreamLevelOut(class FName Level_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_StreamLevelOut(class FName Level_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1176,7 +1176,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_StreamLevelOut(class FNa
 // float                                   Level_Rotation_Pitch                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Level_Rotation_Yaw                                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_LoadLevelInstance(const class FString& Level_Name, float Level_Location_X, float Level_Location_Y, float Level_Location_Z, float Level_Rotation_Roll, float Level_Rotation_Pitch, float Level_Rotation_Yaw)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_LoadLevelInstance(const class FString& Level_Name, float Level_Location_X, float Level_Location_Y, float Level_Location_Z, float Level_Rotation_Roll, float Level_Rotation_Pitch, float Level_Rotation_Yaw)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1200,7 +1200,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_LoadLevelInstance(const 
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ToggleFreeCamera
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleFreeCamera()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleFreeCamera()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1217,7 +1217,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleFreeCamera()
 // const class FString&                    Setting_Name                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // float                                   New_Value                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetFreeCameraSettings(const class FString& Setting_Name, float New_Value)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetFreeCameraSettings(const class FString& Setting_Name, float New_Value)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1239,7 +1239,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetFreeCameraSettings(co
 // const class FString&                    Setting_Name                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // float                                   New_Value                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetFreeCameraSettings(const class FString& Setting_Name, float New_Value)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetFreeCameraSettings(const class FString& Setting_Name, float New_Value)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1261,7 +1261,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetFreeCameraSettings(co
 // E_SkyLightType                          Sky_Light_Type                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Intensity                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleSkylight(E_SkyLightType Sky_Light_Type, float Intensity)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleSkylight(E_SkyLightType Sky_Light_Type, float Intensity)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1283,7 +1283,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleSkylight(E_SkyLigh
 // E_FlashLightType                        Flash_Light_Type                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Intensity                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleFlashlight(E_FlashLightType Flash_Light_Type, float Intensity)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleFlashlight(E_FlashLightType Flash_Light_Type, float Intensity)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1304,7 +1304,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleFlashlight(E_Flash
 // Parameters:
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleActors(class UClass* Actor_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleActors(class UClass* Actor_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1322,7 +1322,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleActors(class UClas
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ToggleWidgets
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleWidgets()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleWidgets()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1336,7 +1336,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleWidgets()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ToggleDebugStats
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleDebugStats()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleDebugStats()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1352,7 +1352,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleDebugStats()
 // Parameters:
 // bool                                    Sort_Levels_by_Streamed_In                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleLevelsList(bool Sort_Levels_by_Streamed_In)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleLevelsList(bool Sort_Levels_by_Streamed_In)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1370,7 +1370,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleLevelsList(bool So
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ToggleSelfVisibility
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleSelfVisibility()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleSelfVisibility()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1384,7 +1384,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleSelfVisibility()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ToggleBlockingVolumesVis
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleBlockingVolumesVis()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleBlockingVolumesVis()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1398,7 +1398,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleBlockingVolumesVis
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ToggleTriggerVolumesVis
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleTriggerVolumesVis()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleTriggerVolumesVis()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1416,7 +1416,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleTriggerVolumesVis(
 // bool                                    Only_Colliding_Components                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Include_From_Child_Components                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleActorsBoundsVis(class UClass* Actor_Class, bool Only_Colliding_Components, bool Include_From_Child_Components)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleActorsBoundsVis(class UClass* Actor_Class, bool Only_Colliding_Components, bool Include_From_Child_Components)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1436,7 +1436,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleActorsBoundsVis(cl
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ToggleCheatFlyingControls
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleCheatFlyingControls()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ToggleCheatFlyingControls()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1452,7 +1452,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ToggleCheatFlyingControl
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AddConsoleBinding(const struct FKey& Key)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_AddConsoleBinding(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1472,7 +1472,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AddConsoleBinding(const 
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_RemoveConsoleBinding(const struct FKey& Key)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_RemoveConsoleBinding(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1494,7 +1494,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_RemoveConsoleBinding(con
 // const class FString&                    Console_Command_Press                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // const class FString&                    Console_Command_Release                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Bind(const struct FKey& Key, const class FString& Console_Command_Press, const class FString& Console_Command_Release)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_Bind(const struct FKey& Key, const class FString& Console_Command_Press, const class FString& Console_Command_Release)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1518,7 +1518,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Bind(const struct FKey& 
 // const class FString&                    Console_Command_Press                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // const class FString&                    Console_Command_Release                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_BindToggle(const struct FKey& Key, const class FString& Console_Command_Press, const class FString& Console_Command_Release)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_BindToggle(const struct FKey& Key, const class FString& Console_Command_Press, const class FString& Console_Command_Release)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1540,7 +1540,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_BindToggle(const struct 
 // Parameters:
 // const struct FKey&                      Key                                                    (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_UnBind(const struct FKey& Key)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_UnBind(const struct FKey& Key)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1560,7 +1560,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_UnBind(const struct FKey
 // Parameters:
 // float                                   New_Aspect_Ratio                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AspectRatio(float New_Aspect_Ratio)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_AspectRatio(float New_Aspect_Ratio)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1581,7 +1581,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AspectRatio(float New_As
 // E_CharacterAction                       Character_Action                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Strength                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_CharacterAction(E_CharacterAction Character_Action, float Strength)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_CharacterAction(E_CharacterAction Character_Action, float Strength)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1603,7 +1603,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_CharacterAction(E_Charac
 // const class FString&                    Setting_Name                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // float                                   New_Value                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetJumpSettings(const class FString& Setting_Name, float New_Value)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetJumpSettings(const class FString& Setting_Name, float New_Value)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1622,7 +1622,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetJumpSettings(const cl
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_GetJumpSettings
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetJumpSettings()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetJumpSettings()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1636,7 +1636,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetJumpSettings()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ReturnToSpawn
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ReturnToSpawn()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ReturnToSpawn()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1652,7 +1652,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ReturnToSpawn()
 // Parameters:
 // float                                   New_Max_Walk_Speed                                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetMaxWalkSpeed(float New_Max_Walk_Speed)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetMaxWalkSpeed(float New_Max_Walk_Speed)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1670,7 +1670,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetMaxWalkSpeed(float Ne
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ResetMaxWalkSpeed
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ResetMaxWalkSpeed()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ResetMaxWalkSpeed()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1686,7 +1686,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ResetMaxWalkSpeed()
 // Parameters:
 // float                                   New_Max_Acceleration_Value                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetMaxAcceleration(float New_Max_Acceleration_Value)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetMaxAcceleration(float New_Max_Acceleration_Value)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1704,7 +1704,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetMaxAcceleration(float
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ResetMaxAcceleration
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ResetMaxAcceleration()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ResetMaxAcceleration()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1720,7 +1720,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ResetMaxAcceleration()
 // Parameters:
 // float                                   New_Gravity_Scale                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetGravityScale(float New_Gravity_Scale)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetGravityScale(float New_Gravity_Scale)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1738,7 +1738,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetGravityScale(float Ne
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ResetGravityScale
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ResetGravityScale()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ResetGravityScale()
 {
 	static class UFunction* Func = nullptr;
 
@@ -1754,7 +1754,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ResetGravityScale()
 // Parameters:
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SummonPossess(class UClass* Actor_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SummonPossess(class UClass* Actor_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1774,7 +1774,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SummonPossess(class UCla
 // Parameters:
 // TSoftClassPtr<class UClass>             Actor_Soft_Class                                       (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftSummonPossess(TSoftClassPtr<class UClass> Actor_Soft_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftSummonPossess(TSoftClassPtr<class UClass> Actor_Soft_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1794,7 +1794,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftSummonPossess(TSoftC
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorClass(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetActorClass(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1814,7 +1814,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorClass(const clas
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ViewActor(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ViewActor(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1834,7 +1834,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ViewActor(const class FS
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ControlActor(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ControlActor(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1854,7 +1854,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ControlActor(const class
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PossessActor(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_PossessActor(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1874,7 +1874,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PossessActor(const class
 // Parameters:
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ComeToMe(class UClass* Actor_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ComeToMe(class UClass* Actor_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1894,7 +1894,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ComeToMe(class UClass* A
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ComeToMeActor(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ComeToMeActor(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1914,7 +1914,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ComeToMeActor(const clas
 // Parameters:
 // TSoftClassPtr<class UClass>             Asset_Soft_Class                                       (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftLoadAsset(TSoftClassPtr<class UClass> Asset_Soft_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftLoadAsset(TSoftClassPtr<class UClass> Asset_Soft_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1934,7 +1934,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftLoadAsset(TSoftClass
 // Parameters:
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructStaticMesh(TSoftClassPtr<class UClass> Soft_Object_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructStaticMesh(TSoftClassPtr<class UClass> Soft_Object_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1954,7 +1954,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructStaticMesh(
 // Parameters:
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructSkeletalMesh(TSoftClassPtr<class UClass> Soft_Object_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructSkeletalMesh(TSoftClassPtr<class UClass> Soft_Object_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1974,7 +1974,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructSkeletalMes
 // Parameters:
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructLevelSequence(TSoftClassPtr<class UClass> Soft_Object_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructLevelSequence(TSoftClassPtr<class UClass> Soft_Object_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1997,7 +1997,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructLevelSequen
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 // bool                                    Animation_Looping                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructAnimSequence(const class FString& Actor_Name, int32 Skeletal_Mesh_Component_Index, TSoftClassPtr<class UClass> Soft_Object_Reference, bool Animation_Looping)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructAnimSequence(const class FString& Actor_Name, int32 Skeletal_Mesh_Component_Index, TSoftClassPtr<class UClass> Soft_Object_Reference, bool Animation_Looping)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2020,7 +2020,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructAnimSequenc
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetLevelSequenceActorMeta(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetLevelSequenceActorMeta(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2041,7 +2041,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetLevelSequenceActorMet
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 // float                                   Volume                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructSound2D(TSoftClassPtr<class UClass> Soft_Object_Reference, float Volume)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructSound2D(TSoftClassPtr<class UClass> Soft_Object_Reference, float Volume)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2066,7 +2066,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructSound2D(TSo
 // float                                   Z                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Volume                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructSoundAtLocation(TSoftClassPtr<class UClass> Soft_Object_Reference, float X, float Y, float Z, float Volume)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructSoundAtLocation(TSoftClassPtr<class UClass> Soft_Object_Reference, float X, float Y, float Z, float Volume)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2090,7 +2090,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructSoundAtLoca
 // Parameters:
 // class UClass*                           Object_Class                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ConstructObject(class UClass* Object_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ConstructObject(class UClass* Object_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2110,7 +2110,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ConstructObject(class UC
 // Parameters:
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructObject(TSoftClassPtr<class UClass> Soft_Object_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructObject(TSoftClassPtr<class UClass> Soft_Object_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2132,7 +2132,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructObject(TSof
 // float                                   Y                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Z                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_TeleportTo(float X, float Y, float Z)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_TeleportTo(float X, float Y, float Z)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2154,7 +2154,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_TeleportTo(float X, floa
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_TeleportToActor(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_TeleportToActor(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2175,7 +2175,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_TeleportToActor(const cl
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    Tag                                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActors(class UClass* Actor_Class, const class FString& Tag)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_FindActors(class UClass* Actor_Class, const class FString& Tag)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2197,7 +2197,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActors(class UClass*
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    String_To_Search                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActorsContains(class UClass* Actor_Class, const class FString& String_To_Search)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_FindActorsContains(class UClass* Actor_Class, const class FString& String_To_Search)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2219,7 +2219,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActorsContains(class
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Maximum_Distance                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActorsInDistance(class UClass* Actor_Class, float Maximum_Distance)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_FindActorsInDistance(class UClass* Actor_Class, float Maximum_Distance)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2242,7 +2242,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActorsInDistance(cla
 // float                                   Maximum_Distance                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    String_To_Search                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActorsInDistanceContains(class UClass* Actor_Class, float Maximum_Distance, const class FString& String_To_Search)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_FindActorsInDistanceContains(class UClass* Actor_Class, float Maximum_Distance, const class FString& String_To_Search)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2265,7 +2265,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindActorsInDistanceCont
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    Tag                                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindHiddenActors(class UClass* Actor_Class, const class FString& Tag)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_FindHiddenActors(class UClass* Actor_Class, const class FString& Tag)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2287,7 +2287,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_FindHiddenActors(class U
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    Tag                                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActors(class UClass* Actor_Class, const class FString& Tag)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ListActors(class UClass* Actor_Class, const class FString& Tag)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2309,7 +2309,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActors(class UClass*
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    String_To_Search                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActorsContains(class UClass* Actor_Class, const class FString& String_To_Search)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ListActorsContains(class UClass* Actor_Class, const class FString& String_To_Search)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2331,7 +2331,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActorsContains(class
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Maximum_Distance                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActorsInDistance(class UClass* Actor_Class, float Maximum_Distance)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ListActorsInDistance(class UClass* Actor_Class, float Maximum_Distance)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2354,7 +2354,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActorsInDistance(cla
 // float                                   Maximum_Distance                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    String_To_Search                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActorsInDistanceContains(class UClass* Actor_Class, float Maximum_Distance, const class FString& String_To_Search)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ListActorsInDistanceContains(class UClass* Actor_Class, float Maximum_Distance, const class FString& String_To_Search)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2377,7 +2377,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListActorsInDistanceCont
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // const class FString&                    Tag                                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListHiddenActors(class UClass* Actor_Class, const class FString& Tag)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ListHiddenActors(class UClass* Actor_Class, const class FString& Tag)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2398,7 +2398,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListHiddenActors(class U
 // Parameters:
 // class UClass*                           Widget_Class                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListWidgets(class UClass* Widget_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ListWidgets(class UClass* Widget_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2421,7 +2421,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ListWidgets(class UClass
 // float                                   Radius                                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    Cast_Shadows                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_CustomLight(E_CustomLightType Custom_Light_Type, float Intensity, float Radius, bool Cast_Shadows)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_CustomLight(E_CustomLightType Custom_Light_Type, float Intensity, float Radius, bool Cast_Shadows)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2444,7 +2444,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_CustomLight(E_CustomLigh
 // Parameters:
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_WorldGridActors(class UClass* Actor_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_WorldGridActors(class UClass* Actor_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2464,7 +2464,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_WorldGridActors(class UC
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_WorldGridActor(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_WorldGridActor(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2484,7 +2484,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_WorldGridActor(const cla
 // Parameters:
 // class UClass*                           Widget_Class                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ConstructWidget(class UClass* Widget_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ConstructWidget(class UClass* Widget_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2504,7 +2504,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ConstructWidget(class UC
 // Parameters:
 // TSoftClassPtr<class UClass>             Soft_Widget_Class                                      (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructWidget(TSoftClassPtr<class UClass> Soft_Widget_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SoftConstructWidget(TSoftClassPtr<class UClass> Soft_Widget_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2525,7 +2525,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SoftConstructWidget(TSof
 // const class FString&                    Widget_Name                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // ESlateVisibility                        New_Visibility                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWidgetVis(const class FString& Widget_Name, ESlateVisibility New_Visibility)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetWidgetVis(const class FString& Widget_Name, ESlateVisibility New_Visibility)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2547,7 +2547,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWidgetVis(const class
 // class UClass*                           Widget_Class                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // ESlateVisibility                        New_Visibility                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWidgetsVis(class UClass* Widget_Class, ESlateVisibility New_Visibility)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetWidgetsVis(class UClass* Widget_Class, ESlateVisibility New_Visibility)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2568,7 +2568,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWidgetsVis(class UCla
 // Parameters:
 // class UClass*                           Widget_Class                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyWidgets(class UClass* Widget_Class)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_DestroyWidgets(class UClass* Widget_Class)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2588,7 +2588,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyWidgets(class UCl
 // Parameters:
 // const class FString&                    Widget_Name                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyWidget(const class FString& Widget_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_DestroyWidget(const class FString& Widget_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2606,7 +2606,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyWidget(const clas
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_Help
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Help()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_Help()
 {
 	static class UFunction* Func = nullptr;
 
@@ -2620,7 +2620,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_Help()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_GetEngineMeta
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetEngineMeta()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetEngineMeta()
 {
 	static class UFunction* Func = nullptr;
 
@@ -2637,7 +2637,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetEngineMeta()
 // const class FString&                    Message                                                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // class FName                             Type                                                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ServerExec(const class FString& Message, class FName Type)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ServerExec(const class FString& Message, class FName Type)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2663,7 +2663,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ServerExec(const class F
 // bool                                    Sweep                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Teleport                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorLocation(const class FString& Actor_Name, float X, float Y, float Z, bool Sweep, bool Teleport)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetActorLocation(const class FString& Actor_Name, float X, float Y, float Z, bool Sweep, bool Teleport)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2688,7 +2688,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorLocation(const c
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorLocation(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetActorLocation(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2712,7 +2712,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorLocation(const c
 // float                                   Yaw                                                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    Teleport_Physics                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorRotation(const class FString& Actor_Name, float Roll, float Pitch, float Yaw, bool Teleport_Physics)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetActorRotation(const class FString& Actor_Name, float Roll, float Pitch, float Yaw, bool Teleport_Physics)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2736,7 +2736,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorRotation(const c
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorRotation(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetActorRotation(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2759,7 +2759,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorRotation(const c
 // float                                   Y                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Z                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorScale(const class FString& Actor_Name, float X, float Y, float Z)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetActorScale(const class FString& Actor_Name, float X, float Y, float Z)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2782,7 +2782,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorScale(const clas
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorScale(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetActorScale(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2807,7 +2807,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorScale(const clas
 // E_AttachRule                            Scale_Rule                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    Weld_Simulated_Bodies                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AttachActorToActor(const class FString& Actor_To_Attach_Name, const class FString& Parent_Actor_Name, E_AttachRule Location_Rule, E_AttachRule Rotation_Rule, E_AttachRule Scale_Rule, bool Weld_Simulated_Bodies)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_AttachActorToActor(const class FString& Actor_To_Attach_Name, const class FString& Parent_Actor_Name, E_AttachRule Location_Rule, E_AttachRule Rotation_Rule, E_AttachRule Scale_Rule, bool Weld_Simulated_Bodies)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2838,7 +2838,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AttachActorToActor(const
 // E_AttachRule                            Scale_Rule                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    Weld_Simulated_Bodies                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AttachActorToActorSocket(const class FString& Actor_To_Attach_Name, const class FString& Parent_Actor_Name, class FName Parent_Actor_Socket_Name, E_AttachRule Location_Rule, E_AttachRule Rotation_Rule, E_AttachRule Scale_Rule, bool Weld_Simulated_Bodies)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_AttachActorToActorSocket(const class FString& Actor_To_Attach_Name, const class FString& Parent_Actor_Name, class FName Parent_Actor_Socket_Name, E_AttachRule Location_Rule, E_AttachRule Rotation_Rule, E_AttachRule Scale_Rule, bool Weld_Simulated_Bodies)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2872,7 +2872,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_AttachActorToActorSocket
 // bool                                    Sweep                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 // bool                                    Teleport                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorLocationAndRotation(const class FString& Actor_Name, float X, float Y, float Z, float Roll, float Pitch, float Yaw, bool Sweep, bool Teleport)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetActorLocationAndRotation(const class FString& Actor_Name, float X, float Y, float Z, float Roll, float Pitch, float Yaw, bool Sweep, bool Teleport)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2900,7 +2900,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetActorLocationAndRotat
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorLocationAndRotation(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetActorLocationAndRotation(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2921,7 +2921,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetActorLocationAndRotat
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // const class FText&                      New_Text                                               (BlueprintVisible, BlueprintReadOnly, Parm)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorText(const class FString& Actor_Name, const class FText& New_Text)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetTextRenderActorText(const class FString& Actor_Name, const class FText& New_Text)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2943,7 +2943,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorText(c
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // E_HorizontalTextAlignment               New_Horizontal_Alignment                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorHorizontalAlignment(const class FString& Actor_Name, E_HorizontalTextAlignment New_Horizontal_Alignment)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetTextRenderActorHorizontalAlignment(const class FString& Actor_Name, E_HorizontalTextAlignment New_Horizontal_Alignment)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2965,7 +2965,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorHorizo
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // E_VerticalTextAlignment                 New_Vertical_Alignment                                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorVerticalAlignment(const class FString& Actor_Name, E_VerticalTextAlignment New_Vertical_Alignment)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetTextRenderActorVerticalAlignment(const class FString& Actor_Name, E_VerticalTextAlignment New_Vertical_Alignment)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2987,7 +2987,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorVertic
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // float                                   New_Size                                               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorSize(const class FString& Actor_Name, float New_Size)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetTextRenderActorSize(const class FString& Actor_Name, float New_Size)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3012,7 +3012,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorSize(c
 // uint8                                   B                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // uint8                                   A                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorColor(const class FString& Actor_Name, uint8 R, uint8 G, uint8 B, uint8 A)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetTextRenderActorColor(const class FString& Actor_Name, uint8 R, uint8 G, uint8 B, uint8 A)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3036,7 +3036,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetTextRenderActorColor(
 // Parameters:
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetTextRenderActorMeta(const class FString& Actor_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetTextRenderActorMeta(const class FString& Actor_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3057,7 +3057,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetTextRenderActorMeta(c
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // const class FString&                    Function_Name                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ExecuteActorFunction(const class FString& Actor_Name, const class FString& Function_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ExecuteActorFunction(const class FString& Actor_Name, const class FString& Function_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3079,7 +3079,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ExecuteActorFunction(con
 // const class FString&                    Widget_Name                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // const class FString&                    Function_Name                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ExecuteWidgetFunction(const class FString& Widget_Name, const class FString& Function_Name)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ExecuteWidgetFunction(const class FString& Widget_Name, const class FString& Function_Name)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3101,7 +3101,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ExecuteWidgetFunction(co
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    New_Visibility                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsVisibility(class UClass* Actor_Class, bool New_Visibility)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorsVisibility(class UClass* Actor_Class, bool New_Visibility)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3123,7 +3123,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsVisibility(cl
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // bool                                    New_Visibility                                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorVisibility(const class FString& Actor_Name, bool New_Visibility)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorVisibility(const class FString& Actor_Name, bool New_Visibility)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3145,7 +3145,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorVisibility(con
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    New_Collision                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsCollision(class UClass* Actor_Class, bool New_Collision)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorsCollision(class UClass* Actor_Class, bool New_Collision)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3167,7 +3167,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsCollision(cla
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // bool                                    New_Collision                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorCollision(const class FString& Actor_Name, bool New_Collision)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorCollision(const class FString& Actor_Name, bool New_Collision)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3189,7 +3189,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorCollision(cons
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // EComponentMobility                      New_Mobility                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsMobility(class UClass* Actor_Class, EComponentMobility New_Mobility)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorsMobility(class UClass* Actor_Class, EComponentMobility New_Mobility)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3211,7 +3211,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsMobility(clas
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // EComponentMobility                      New_Mobility                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorMobility(const class FString& Actor_Name, EComponentMobility New_Mobility)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorMobility(const class FString& Actor_Name, EComponentMobility New_Mobility)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3233,7 +3233,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorMobility(const
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    New_Cast_Shadows                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsCastShadows(class UClass* Actor_Class, bool New_Cast_Shadows)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorsCastShadows(class UClass* Actor_Class, bool New_Cast_Shadows)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3255,7 +3255,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsCastShadows(c
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // bool                                    New_Cast_Shadows                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorCastShadows(const class FString& Actor_Name, bool New_Cast_Shadows)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorCastShadows(const class FString& Actor_Name, bool New_Cast_Shadows)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3277,7 +3277,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorCastShadows(co
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   New_Time_Dilation                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsTimeDilation(class UClass* Actor_Class, float New_Time_Dilation)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorsTimeDilation(class UClass* Actor_Class, float New_Time_Dilation)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3299,7 +3299,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsTimeDilation(
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // float                                   New_Time_Dilation                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorTimeDilation(const class FString& Actor_Name, float New_Time_Dilation)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorTimeDilation(const class FString& Actor_Name, float New_Time_Dilation)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3321,7 +3321,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorTimeDilation(c
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsDynamicMaterial(class UClass* Actor_Class, TSoftClassPtr<class UClass> Soft_Object_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorsDynamicMaterial(class UClass* Actor_Class, TSoftClassPtr<class UClass> Soft_Object_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3343,7 +3343,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsDynamicMateri
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // TSoftClassPtr<class UClass>             Soft_Object_Reference                                  (BlueprintVisible, BlueprintReadOnly, Parm, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorDynamicMaterial(const class FString& Actor_Name, TSoftClassPtr<class UClass> Soft_Object_Reference)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorDynamicMaterial(const class FString& Actor_Name, TSoftClassPtr<class UClass> Soft_Object_Reference)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3365,7 +3365,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorDynamicMateria
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    New_Can_Character_Step_On                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsCanCharacterStepOn(class UClass* Actor_Class, bool New_Can_Character_Step_On)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorsCanCharacterStepOn(class UClass* Actor_Class, bool New_Can_Character_Step_On)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3387,7 +3387,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorsCanCharacterS
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // bool                                    New_Can_Character_Step_On                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorCanCharacterStepOn(const class FString& Actor_Name, bool New_Can_Character_Step_On)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceActorCanCharacterStepOn(const class FString& Actor_Name, bool New_Can_Character_Step_On)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3409,7 +3409,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceActorCanCharacterSt
 // class UClass*                           Actor_Class                                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool                                    New_Enable_AI                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetEnableActorsAI(class UClass* Actor_Class, bool New_Enable_AI)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetEnableActorsAI(class UClass* Actor_Class, bool New_Enable_AI)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3431,7 +3431,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetEnableActorsAI(class 
 // const class FString&                    Actor_Name                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, HasGetValueTypeHash)
 // bool                                    New_Enable_AI                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetEnableActorAI(const class FString& Actor_Name, bool New_Enable_AI)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetEnableActorAI(const class FString& Actor_Name, bool New_Enable_AI)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3453,7 +3453,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetEnableActorAI(const c
 // E_WorldSettings                         E_WorldSettings                                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   New_Value                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWorldSettings(E_WorldSettings E_WorldSettings, float New_Value)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetWorldSettings(E_WorldSettings E_WorldSettings, float New_Value)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3472,7 +3472,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWorldSettings(E_World
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_GetWorldSettings
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetWorldSettings()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetWorldSettings()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3486,7 +3486,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetWorldSettings()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_GetWorldOriginLocation
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetWorldOriginLocation()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetWorldOriginLocation()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3504,7 +3504,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetWorldOriginLocation()
 // int32                                   Y                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // int32                                   Z                                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWorldOriginLocation(int32 X, int32 Y, int32 Z)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_SetWorldOriginLocation(int32 X, int32 Y, int32 Z)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3524,7 +3524,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_SetWorldOriginLocation(i
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ForceThirdPerson
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceThirdPerson()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceThirdPerson()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3540,7 +3540,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceThirdPerson()
 // Parameters:
 // int32                                   QualityLevel                                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PromoScreenshot(int32 QualityLevel)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_PromoScreenshot(int32 QualityLevel)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3562,7 +3562,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PromoScreenshot(int32 Qu
 // float                                   Rotation_Step                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // int32                                   Quality_Level                                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PanoramaScreenshot(float FOV, float Rotation_Step, int32 Quality_Level)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_PanoramaScreenshot(float FOV, float Rotation_Step, int32 Quality_Level)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3582,7 +3582,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_PanoramaScreenshot(float
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ForceEpicQuality
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceEpicQuality()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceEpicQuality()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3596,7 +3596,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceEpicQuality()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ForceLowQuality
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceLowQuality()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceLowQuality()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3610,7 +3610,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceLowQuality()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_ForcePotatoQuality
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForcePotatoQuality()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForcePotatoQuality()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3627,7 +3627,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForcePotatoQuality()
 // float                                   Screen_Percentage                                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // float                                   Sharpening_Level                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceUpscaling(float Screen_Percentage, float Sharpening_Level)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ForceUpscaling(float Screen_Percentage, float Sharpening_Level)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3648,7 +3648,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ForceUpscaling(float Scr
 // Parameters:
 // E_ActorClassType                        Actor_Class_Type                                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetAllRunningClasses(E_ActorClassType Actor_Class_Type)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_GetAllRunningClasses(E_ActorClassType Actor_Class_Type)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3666,7 +3666,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_GetAllRunningClasses(E_A
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.UETools_DestroyAllLighting
 // (Exec, Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyAllLighting()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_DestroyAllLighting()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3683,7 +3683,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_DestroyAllLighting()
 // E_ExportLevelsListMethod                Export_Levels_List_Method                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // TArray<class ULevelStreaming*>*         Streaming_Levels                                       (Parm, OutParm)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ExportLevelsList(E_ExportLevelsListMethod Export_Levels_List_Method, TArray<class ULevelStreaming*>* Streaming_Levels)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::UETools_ExportLevelsList(E_ExportLevelsListMethod Export_Levels_List_Method, TArray<class ULevelStreaming*>* Streaming_Levels)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3704,7 +3704,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::UETools_ExportLevelsList(E_Expor
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.cls
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::cls()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::cls()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3718,7 +3718,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::cls()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.clear
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::clear()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::clear()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3732,7 +3732,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::clear()
 // Function BP_DBDGameInstance.BP_DBDGameInstance_C.help
 // (Exec, Public, BlueprintCallable, BlueprintEvent)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::help()
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::help()
 {
 	static class UFunction* Func = nullptr;
 
@@ -3748,7 +3748,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::help()
 // Parameters:
 // float                                   New_Value                                              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::fps_max(float New_Value)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::fps_max(float New_Value)
 {
 	static class UFunction* Func = nullptr;
 
@@ -3769,7 +3769,7 @@ void BP_DBDGameInstance::UBP_DBDGameInstance_C::fps_max(float New_Value)
 // float                                   Value                                                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 // bool*                                   Bool                                                   (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor)
 
-void BP_DBDGameInstance::UBP_DBDGameInstance_C::Get_FloatToBool(float Value, bool* Bool)
+void BP_DBDGameInstance_0::UBP_DBDGameInstance_C::Get_FloatToBool(float Value, bool* Bool)
 {
 	static class UFunction* Func = nullptr;
 

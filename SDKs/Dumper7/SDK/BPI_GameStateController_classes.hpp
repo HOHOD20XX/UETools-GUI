@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "E_DBDGameState_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "E_DBDGameState_structs.hpp"
 
 
 namespace SDK
