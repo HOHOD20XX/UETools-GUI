@@ -3,6 +3,7 @@ Dumper-7 (SDK) based solution for quick & easy debugging of Unreal Engine powere
 > \*Dumper-7 must generate a valid SDK in order for game to be considered "supported".
 > 
 > \*UETools-GUI was developed with Unreal Engine 4.27 in mind, so the project can be relatively easily upgraded or downgraded. Certain parts of the code may need to be modified to account for the specifics of your Engine (such as the float → double change in UE5).
+> P.S: While working with UE5, consider uncommenting "#define UE5" within "GUI.h" file.
 
 # Getting Started
 1) Download & unpack / Git Clone the repository;
