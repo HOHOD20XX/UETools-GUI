@@ -11,7 +11,10 @@ Dumper-7 (SDK) based solution for quick & easy debugging of Unreal Engine powere
 4) Compile UETools-GUI Dynamic Link Library and inject it in to the game.
 > When in game, use "INS" (Insert) key in order to show or hide the menu.
 
-# Dependencies
+# Environment & Dependencies
+### C++: ISO 20.
+### C: Legacy MSVC.
+### Windows SDK: 10.0.26100.0
 ### [Dumper-7](https://github.com/Encryqed/Dumper-7)
 ### [ImGui](https://github.com/ocornut/imgui)
 ### [CranchyLib.CPP](https://github.com/Cranch-fur/CranchyLib.CPP)
