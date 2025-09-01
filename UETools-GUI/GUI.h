@@ -16,6 +16,8 @@
 #include <Windows.h>
 #include <algorithm>
 
+// #define UE5
+
 
 
 
@@ -68,7 +70,7 @@ public:
 
 private:
 	static inline bool isInWaitMode = false;
-	static inline double waitModeEndTime = 0.0f;
+	static inline double waitModeEndTime = 0.0;
 public:
 	static bool GetIsInWaitMode()
 	{
@@ -189,6 +191,29 @@ public:
 	class SharedData
 	{
 	public:
+		struct S_Engine
+		{
+			SDK::UEngine* engineReference;
+			std::string engineClass;
+			std::string engineObject;
+
+			bool fixedFrameRateEnabled;
+			double fixedFrameRate;
+
+			bool smoothFrameRateEnabled;
+			double smoothFrameRateLowerBound;
+			double smoothFrameRateUpperBound;
+
+			bool subtitlesEnabled;
+			bool subtitlesForcedOff;
+
+			bool pauseOnLossOfFocus;
+		};
+
+
+
+
+	public:
 		struct S_WorldSettings
 		{
 			SDK::AWorldSettings* worldSettingsReference;
@@ -199,7 +224,7 @@ public:
 			bool worldHighPriorityLoading;
 			bool worldLocalHighPriorityLoading;
 
-			float worldToMeters;
+			double worldToMeters;
 		};
 
 		struct S_Level
@@ -235,9 +260,7 @@ public:
 
 			double lastUpdateTime;
 
-			bool isEnginePresent;
-			std::string engineClass;
-			std::string engineObject;
+			S_Engine engine;
 
 			bool isGameInstancePresent;
 			std::string gameInstanceClass;
@@ -299,7 +322,7 @@ public:
 				bool areStreamingLevelsPresent;
 				std::vector<S_StreamingLevel> streamingLevels;
 
-				float gameTimeInSeconds;
+				double gameTimeInSeconds;
 
 				bool isServer;
 				bool isDedicatedServer;
@@ -342,12 +365,12 @@ public:
 		struct S_FeaturesInformation
 		{
 			bool isDirectionalMovementEnabled;
-			float directionalMovementStep = 10.0f;
-			double directionalMovementDelay = 0.03f;
+			double directionalMovementStep = 45.0;
+			double directionalMovementDelay = 0.1;
 
 			float launchVelocity[3] = { 0.0f, 0.0f, 1325.0f };
 
-			float dashStrength = 3375.0f;
+			double dashStrength = 3375.0;
 		};
 		static inline S_FeaturesInformation featuresInfo = {};
 

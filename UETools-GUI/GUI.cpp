@@ -190,8 +190,8 @@ bool ImGui::IsKeyBindingDown(S_KeyBinding* binding)
 	if (binding->isDetermined == false)
 		return false;
 
-	if (binding->isInUse == false)
-		return false;
+	if (binding->isInUse) // <-- !
+		return true;
 
 	if (binding->key == ImGuiKey_None)
 		return false;
@@ -264,11 +264,11 @@ void GUI::Draw()
 			std::string labelString = std::to_string(waitModeTimeLeft);
 			const char* labelText = labelString.c_str();
 
-			float labelFontSize = 48.0f;
+			double labelFontSize = 48.0;
 			ImGui::PushFont(ImGui::GetFont());
 
 			ImVec2 labelSize = ImGui::CalcTextSize(labelText);
-			ImVec2 labelPosition = ImVec2((screenSize.x - labelSize.x) * 0.5f, (screenSize.y - labelSize.y) * 0.5f);
+			ImVec2 labelPosition = ImVec2((screenSize.x - labelSize.x) * 0.5, (screenSize.y - labelSize.y) * 0.5);
 
 			drawList->AddText(ImGui::GetFont(), labelFontSize, labelPosition, IM_COL32(255, 255, 255, 255), labelText);
 
@@ -279,12 +279,12 @@ void GUI::Draw()
 
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.3) | ");
+			ImGui::Text("UETools GUI (v0.4) | ");
 			if (ImGui::BeginMenu("Debug"))
 			{
 				if (SharedData::debugInfo.isActive)
 				{
-					ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+					ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 					if (SharedData::SharedData::debugInfo.autoUpdate)
 					{
 						ImGui::Text("Updates on every frame");
@@ -336,18 +336,108 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Engine: %s", SharedData::debugInfo.isEnginePresent ? "Is Present." : "Doesn't Exist!");
-					if (SharedData::debugInfo.isEnginePresent)
+					ImGui::Text("Engine: %s", SharedData::debugInfo.engine.engineReference ? "Is Present" : "Doesn't Exist!");
+					if (SharedData::debugInfo.engine.engineReference)
 					{
-						ImGui::Text("Engine Class: %s", SharedData::debugInfo.engineClass.c_str());
-						ImGui::Text("Engine Object: %s", SharedData::debugInfo.engineObject.c_str());
+						ImGui::Text("Engine Class: %s", SharedData::debugInfo.engine.engineClass.c_str());
+						ImGui::Text("Engine Object: %s", SharedData::debugInfo.engine.engineObject.c_str());
+
+						ImGui::NewLine();
+
+						ImGui::Text("Fixed FrameRate Enabled: %s", SharedData::debugInfo.engine.fixedFrameRateEnabled ? "True" : "False");
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						if (ImGui::Button(SharedData::debugInfo.engine.fixedFrameRateEnabled ? "Disable##FixedFrameRate" : "Enable##FixedFrameRate"))
+						{
+							if (SharedData::debugInfo.engine.engineReference)
+							{
+								SharedData::debugInfo.engine.engineReference->bUseFixedFrameRate = !SharedData::debugInfo.engine.fixedFrameRateEnabled;
+								SharedCalls::UpdateDebugInformation();
+								PlayActionSound(true);
+							}
+							else
+								PlayActionSound(false);
+						}
+						ImGui::Text("Fixed FrameRate: %f", SharedData::debugInfo.engine.fixedFrameRate);
+
+						ImGui::NewLine();
+
+						ImGui::Text("Smooth FrameRate Enabled: %s", SharedData::debugInfo.engine.smoothFrameRateEnabled ? "True" : "False");
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						if (ImGui::Button(SharedData::debugInfo.engine.smoothFrameRateEnabled ? "Disable##SmoothFrameRat" : "Enable##SmoothFrameRat"))
+						{
+							if (SharedData::debugInfo.engine.engineReference)
+							{
+								SharedData::debugInfo.engine.engineReference->bSmoothFrameRate = !SharedData::debugInfo.engine.smoothFrameRateEnabled;
+								SharedCalls::UpdateDebugInformation();
+								PlayActionSound(true);
+							}
+							else
+								PlayActionSound(false);
+						}
+						ImGui::Text("Smooth FrameRate Lower Bound: %f", SharedData::debugInfo.engine.smoothFrameRateLowerBound);
+						ImGui::Text("Smooth FrameRate Upper Bound: %f", SharedData::debugInfo.engine.smoothFrameRateUpperBound);
+
+						ImGui::NewLine();
+
+						ImGui::Text("Subtitles Enabled: %s", SharedData::debugInfo.engine.subtitlesEnabled ? "True" : "False");
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						if (ImGui::Button(SharedData::debugInfo.engine.subtitlesEnabled ? "Disable##SubtitlesEnabled" : "Enable##SubtitlesEnabled"))
+						{
+							if (SharedData::debugInfo.engine.engineReference)
+							{
+								SharedData::debugInfo.engine.engineReference->bSubtitlesEnabled = !SharedData::debugInfo.engine.subtitlesEnabled;
+								SharedCalls::UpdateDebugInformation();
+								PlayActionSound(true);
+							}
+							else
+								PlayActionSound(false);
+						}
+						ImGui::Text("Subtitles Forced Off: %s", SharedData::debugInfo.engine.subtitlesForcedOff ? "True" : "False");
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						if (ImGui::Button(SharedData::debugInfo.engine.subtitlesForcedOff ? "Disable##SubtitlesForcedOff" : "Enable##SubtitlesForcedOff"))
+						{
+							if (SharedData::debugInfo.engine.engineReference)
+							{
+								SharedData::debugInfo.engine.engineReference->bSubtitlesForcedOff = !SharedData::debugInfo.engine.subtitlesForcedOff;
+								SharedCalls::UpdateDebugInformation();
+								PlayActionSound(true);
+							}
+							else
+								PlayActionSound(false);
+						}
+
+						ImGui::NewLine();
+
+						ImGui::Text("Pause On Lost Focus: %s", SharedData::debugInfo.engine.pauseOnLossOfFocus ? "True" : "False");
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						if (ImGui::Button(SharedData::debugInfo.engine.pauseOnLossOfFocus ? "Disable##PauseOnLostFocus" : "Enable##SmoothFrameRat##PauseOnLostFocus"))
+						{
+							if (SharedData::debugInfo.engine.engineReference)
+							{
+								SharedData::debugInfo.engine.engineReference->bPauseOnLossOfFocus = !SharedData::debugInfo.engine.pauseOnLossOfFocus;
+								SharedCalls::UpdateDebugInformation();
+								PlayActionSound(true);
+							}
+							else
+								PlayActionSound(false);
+						}
 					}
 
 					ImGui::NewLine();
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Game Instance: %s", SharedData::debugInfo.isGameInstancePresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Game Instance: %s", SharedData::debugInfo.isGameInstancePresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isGameInstancePresent)
 					{
 						ImGui::Text("Game Instance Class: %s", SharedData::debugInfo.gameInstanceClass.c_str());
@@ -358,7 +448,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Game Mode: %s", SharedData::debugInfo.isGameModePresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Game Mode: %s", SharedData::debugInfo.isGameModePresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isGameModePresent)
 					{
 						ImGui::Text("Game Mode Class: %s", SharedData::debugInfo.gameModeClass.c_str());
@@ -369,7 +459,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Game State: %s", SharedData::debugInfo.isGameStatePresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Game State: %s", SharedData::debugInfo.isGameStatePresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isGameStatePresent)
 					{
 						ImGui::Text("Game State Class: %s", SharedData::debugInfo.gameStateClass.c_str());
@@ -380,7 +470,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Console: %s", SharedData::debugInfo.isConsolePresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Console: %s", SharedData::debugInfo.isConsolePresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isConsolePresent)
 					{
 						ImGui::Text("Console Class: %s", SharedData::debugInfo.consoleClass.c_str());
@@ -403,7 +493,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Cheat Manager: %s", SharedData::debugInfo.isCheatManagerPresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Cheat Manager: %s", SharedData::debugInfo.isCheatManagerPresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isCheatManagerPresent)
 					{
 						ImGui::Text("Cheat Manager Class: %s", SharedData::debugInfo.cheatManagerClass.c_str());
@@ -425,7 +515,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 					
-					ImGui::Text("Controller: %s", SharedData::debugInfo.isControllerPresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Controller: %s", SharedData::debugInfo.isControllerPresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isControllerPresent)
 					{
 						ImGui::Text("Controller Class: %s", SharedData::debugInfo.controllerClass.c_str());
@@ -436,7 +526,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 					
-					ImGui::Text("Pawn: %s", SharedData::debugInfo.isPawnPresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Pawn: %s", SharedData::debugInfo.isPawnPresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isPawnPresent)
 					{
 						ImGui::Text("Pawn Class: %s", SharedData::debugInfo.pawnClass.c_str());
@@ -447,18 +537,18 @@ void GUI::Draw()
 
 						ImGui::NewLine();
 
-						ImGui::Text("Is Controlled: %s", SharedData::debugInfo.isPawnControlled ? "True." : "False.");
-						ImGui::Text("Is Pawn Controlled: %s", SharedData::debugInfo.isPawnPawnControlled ? "True." : "False.");
-						ImGui::Text("Is Player Controlled: %s", SharedData::debugInfo.isPawnPlayerControlled ? "True." : "False.");
-						ImGui::Text("Is Locally Controlled: %s", SharedData::debugInfo.isPawnLocallyControlled ? "True." : "False.");
-						ImGui::Text("Is Bot Controlled: %s", SharedData::debugInfo.isPawnBotControlled ? "True." : "False.");
+						ImGui::Text("Is Controlled: %s", SharedData::debugInfo.isPawnControlled ? "True" : "False");
+						ImGui::Text("Is Pawn Controlled: %s", SharedData::debugInfo.isPawnPawnControlled ? "True" : "False");
+						ImGui::Text("Is Player Controlled: %s", SharedData::debugInfo.isPawnPlayerControlled ? "True" : "False");
+						ImGui::Text("Is Locally Controlled: %s", SharedData::debugInfo.isPawnLocallyControlled ? "True" : "False");
+						ImGui::Text("Is Bot Controlled: %s", SharedData::debugInfo.isPawnBotControlled ? "True" : "False");
 					}
 
 					ImGui::NewLine();
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Camera Manager: %s", SharedData::debugInfo.isCameraManagerPresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Camera Manager: %s", SharedData::debugInfo.isCameraManagerPresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isCameraManagerPresent)
 					{
 						ImGui::Text("Camera Manager Class: %s", SharedData::debugInfo.cameraManagerClass.c_str());
@@ -472,7 +562,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Viewport Client: %s", SharedData::debugInfo.isViewportClientPresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Viewport Client: %s", SharedData::debugInfo.isViewportClientPresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isViewportClientPresent)
 					{
 						ImGui::Text("Viewport Client Class: %s", SharedData::debugInfo.viewportClientClass.c_str());
@@ -483,7 +573,7 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("World: %s", SharedData::debugInfo.isWorldPresent ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("World: %s", SharedData::debugInfo.isWorldPresent ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.isWorldPresent)
 					{
 						ImGui::Text("World Class: %s", SharedData::debugInfo.worldClass.c_str());
@@ -494,18 +584,18 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Persistent Level: %s", SharedData::debugInfo.persistentLevel.levelReference ? "Is Present." : "Doesn't Exist!");
+					ImGui::Text("Persistent Level: %s", SharedData::debugInfo.persistentLevel.levelReference ? "Is Present" : "Doesn't Exist!");
 					if (SharedData::debugInfo.persistentLevel.levelReference)
 					{
 						ImGui::Text("Persistent Level Class: %s", SharedData::debugInfo.persistentLevel.levelClass.c_str());
 						ImGui::Text("Persistent Level Object: %s", SharedData::debugInfo.persistentLevel.levelObject.c_str());
 						ImGui::Text("Persistent Level Name: %s", SharedData::debugInfo.persistentLevel.levelName.c_str());
-						ImGui::Text("Is Visible: %s", SharedData::debugInfo.persistentLevel.isLevelVisible ? "True." : "False.");
+						ImGui::Text("Is Visible: %s", SharedData::debugInfo.persistentLevel.isLevelVisible ? "True" : "False");
 
 						ImGui::NewLine();
 
 						bool worldSettingsPresent = SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsReference;
-						ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present." : "Doesn't Exist!");
+						ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present" : "Doesn't Exist!");
 						if (worldSettingsPresent)
 						{
 							ImGui::Text("World Settings Class: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsClass.c_str());
@@ -513,17 +603,17 @@ void GUI::Draw()
 
 							ImGui::NewLine();
 
-							ImGui::Text("High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldHighPriorityLoading ? "True." : "False.");
-							ImGui::Text("Local High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldLocalHighPriorityLoading ? "True." : "False.");
+							ImGui::Text("High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldHighPriorityLoading ? "True" : "False");
+							ImGui::Text("Local High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
 
 							ImGui::NewLine();
 
-							ImGui::Text("Unreal Units = 1m: %f.1", SharedData::debugInfo.persistentLevel.worldSettings.worldToMeters);
+							ImGui::Text("Unreal Units = 1m: %f", SharedData::debugInfo.persistentLevel.worldSettings.worldToMeters);
 						}
 
 						ImGui::NewLine();
 
-						ImGui::Text("Streaming Levels: %s", SharedData::debugInfo.areStreamingLevelsPresent ? "Are Present." : "Are Non Existent!");
+						ImGui::Text("Streaming Levels: %s", SharedData::debugInfo.areStreamingLevelsPresent ? "Are Present" : "Are Non Existent!");
 						if (SharedData::debugInfo.areStreamingLevelsPresent)
 						{
 							if (ImGui::CollapsingHeader("Streaming Levels"))
@@ -531,10 +621,10 @@ void GUI::Draw()
 								for (SharedData::S_StreamingLevel streamingLevel : SharedData::debugInfo.streamingLevels)
 								{
 									ImU32 levelColor = IM_COL32(
-										static_cast<int>(streamingLevel.streamingLevelColor.R * 255.0f),
-										static_cast<int>(streamingLevel.streamingLevelColor.G * 255.0f),
-										static_cast<int>(streamingLevel.streamingLevelColor.B * 255.0f),
-										static_cast<int>(streamingLevel.streamingLevelColor.A * 255.0f)
+										static_cast<int>(streamingLevel.streamingLevelColor.R * 255.0),
+										static_cast<int>(streamingLevel.streamingLevelColor.G * 255.0),
+										static_cast<int>(streamingLevel.streamingLevelColor.B * 255.0),
+										static_cast<int>(streamingLevel.streamingLevelColor.A * 255.0)
 									);
 
 									ImGui::PushStyleColor(ImGuiCol_Text, levelColor);
@@ -545,7 +635,7 @@ void GUI::Draw()
 									{
 										bool isLevelLoaded = streamingLevel.level.levelReference;
 
-										ImGui::Text("Is Loaded: %s", isLevelLoaded ? "True." : "False.");
+										ImGui::Text("Is Loaded: %s", isLevelLoaded ? "True" : "False");
 										ImGui::SameLine();
 										ImGui::Spacing();
 										ImGui::SameLine();
@@ -556,7 +646,7 @@ void GUI::Draw()
 												streamingLevel.streamingLevelReference->SetShouldBeLoaded(!isLevelLoaded);
 
 												if (SharedData::SharedData::debugInfo.autoUpdate == false)
-													StartWaitMode(5.0);
+													StartWaitMode(3.25);
 
 												PlayActionSound(true);
 											}
@@ -564,7 +654,7 @@ void GUI::Draw()
 												PlayActionSound(false);
 										}
 
-										ImGui::Text("Is Visible: %s", streamingLevel.level.isLevelVisible ? "True." : "False.");
+										ImGui::Text("Is Visible: %s", streamingLevel.level.isLevelVisible ? "True" : "False");
 										ImGui::SameLine();
 										ImGui::Spacing();
 										ImGui::SameLine();
@@ -576,7 +666,7 @@ void GUI::Draw()
 												streamingLevel.streamingLevelReference->SetShouldBeVisible(!streamingLevel.level.isLevelVisible);
 
 												if (SharedData::SharedData::debugInfo.autoUpdate == false)
-													StartWaitMode(5.0);
+													StartWaitMode(3.25);
 
 												PlayActionSound(true);
 											}
@@ -588,7 +678,7 @@ void GUI::Draw()
 										ImGui::NewLine();
 
 										bool worldSettingsPresent = streamingLevel.level.worldSettings.worldSettingsReference;
-										ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present." : "Doesn't Exist!");
+										ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present" : "Doesn't Exist!");
 										if (worldSettingsPresent)
 										{
 											ImGui::Text("World Settings Class: %s", streamingLevel.level.worldSettings.worldSettingsClass.c_str());
@@ -596,12 +686,12 @@ void GUI::Draw()
 
 											ImGui::NewLine();
 
-											ImGui::Text("High Priority Loading: %s", streamingLevel.level.worldSettings.worldHighPriorityLoading ? "True." : "False.");
-											ImGui::Text("Local High Priority Loading: %s", streamingLevel.level.worldSettings.worldLocalHighPriorityLoading ? "True." : "False.");
+											ImGui::Text("High Priority Loading: %s", streamingLevel.level.worldSettings.worldHighPriorityLoading ? "True" : "False");
+											ImGui::Text("Local High Priority Loading: %s", streamingLevel.level.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
 
 											ImGui::NewLine();
 
-											ImGui::Text("Unreal Units = 1m: %f.1", streamingLevel.level.worldSettings.worldToMeters);
+											ImGui::Text("Unreal Units = 1m: %f", streamingLevel.level.worldSettings.worldToMeters);
 										}
 
 										ImGui::TreePop();
@@ -615,13 +705,13 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					if (SharedData::debugInfo.gameTimeInSeconds > 0.0f)
+					if (SharedData::debugInfo.gameTimeInSeconds > 0.0)
 						ImGui::Text("Game Time (In Seconds): %f", SharedData::debugInfo.gameTimeInSeconds);
 
-					ImGui::Text("Is Server: %s", SharedData::debugInfo.isServer ? "True." : "False.");
-					ImGui::Text("Is Dedicated Server: %s", SharedData::debugInfo.isDedicatedServer ? "True." : "False.");
-					ImGui::Text("Is Split Screen: %s", SharedData::debugInfo.isSplitScreen ? "True." : "False.");
-					ImGui::Text("Is Standalone: %s", SharedData::debugInfo.isStandalone ? "True." : "False.");
+					ImGui::Text("Is Server: %s", SharedData::debugInfo.isServer ? "True" : "False");
+					ImGui::Text("Is Dedicated Server: %s", SharedData::debugInfo.isDedicatedServer ? "True" : "False");
+					ImGui::Text("Is Split Screen: %s", SharedData::debugInfo.isSplitScreen ? "True" : "False");
+					ImGui::Text("Is Standalone: %s", SharedData::debugInfo.isStandalone ? "True" : "False");
 
 					ImGui::NewLine();
 					ImGui::Separator();
@@ -688,7 +778,7 @@ void GUI::Draw()
 							worldSettings->bGlobalGravitySet = globalGravitySet ? 1 : 0;
 
 							ImGui::BeginDisabled(globalGravitySet == false);
-							ImGui::InputFloat("Global Gravity", &worldSettings->GlobalGravityZ, 0.1f, 1.0f);
+							ImGui::InputFloat("Global Gravity", &worldSettings->GlobalGravityZ, 0.1, 1.0);
 							ImGui::EndDisabled();
 
 							bool worldGravitySet = worldSettings->bWorldGravitySet == 1;
@@ -696,22 +786,22 @@ void GUI::Draw()
 							worldSettings->bWorldGravitySet = worldGravitySet ? 1 : 0;
 
 							ImGui::BeginDisabled(worldGravitySet == false);
-							ImGui::InputFloat("World Gravity", &worldSettings->WorldGravityZ, 0.1f, 1.0f);
+							ImGui::InputFloat("World Gravity", &worldSettings->WorldGravityZ, 0.1, 1.0);
 							ImGui::EndDisabled();
 
 							ImGui::NewLine();
 							ImGui::Separator();
 							ImGui::NewLine();
 
-							ImGui::InputFloat("Minimum Time Dilation", &worldSettings->MinGlobalTimeDilation, 0.1f, 1.0f);
-							ImGui::InputFloat("Maximum Time Dilation", &worldSettings->MaxGlobalTimeDilation, 0.1f, 1.0f);
-							float timeDilation = worldSettings->TimeDilation;
-							ImGui::InputFloat("Time Dilation", &timeDilation, 0.1f, 1.0f);
-							worldSettings->TimeDilation = std::clamp(timeDilation, worldSettings->MinGlobalTimeDilation, worldSettings->MaxGlobalTimeDilation);
+							ImGui::InputFloat("Minimum Time Dilation", &worldSettings->MinGlobalTimeDilation, 0.1, 1.0);
+							ImGui::InputFloat("Maximum Time Dilation", &worldSettings->MaxGlobalTimeDilation, 0.1, 1.0);
+							double timeDilation = worldSettings->TimeDilation;
+							ImGui::InputDouble("Time Dilation", &timeDilation, 0.1, 1.0);
+							worldSettings->TimeDilation = std::clamp(timeDilation, (double)worldSettings->MinGlobalTimeDilation, (double)worldSettings->MaxGlobalTimeDilation);
 
 							ImGui::NewLine();
 
-							ImGui::InputFloat("Demo Time Dilation", &worldSettings->DemoPlayTimeDilation, 0.1f, 1.0f);
+							ImGui::InputFloat("Demo Time Dilation", &worldSettings->DemoPlayTimeDilation, 0.1, 1.0);
 
 							ImGui::NewLine();
 							ImGui::Separator();
@@ -729,7 +819,7 @@ void GUI::Draw()
 							ImGui::Separator();
 							ImGui::NewLine();
 
-							ImGui::InputFloat("KillZ", &worldSettings->KillZ, 0.1f, 1.0f);
+							ImGui::InputFloat("KillZ", &worldSettings->KillZ, 0.1, 1.0);
 						}
 						else
 							ImGui::Text("World Settings Doesn't Exist!");
@@ -827,8 +917,8 @@ void GUI::Draw()
 
 							ImGui::BeginDisabled(movementComponent->bCheatFlying == false);
 							ImGui::Checkbox("Directional Movement", &SharedData::featuresInfo.isDirectionalMovementEnabled);
-							ImGui::InputFloat("Directional Movement Step", &SharedData::featuresInfo.directionalMovementStep, 0.1f, 1.0f);
-							ImGui::InputDouble("Directional Movement Delay", &SharedData::featuresInfo.directionalMovementDelay, 0.01f, 0.1f);
+							ImGui::InputDouble("Directional Movement Step", &SharedData::featuresInfo.directionalMovementStep, 0.1, 1.0);
+							ImGui::InputDouble("Directional Movement Delay", &SharedData::featuresInfo.directionalMovementDelay, 0.01, 0.1);
 							ImGui::EndDisabled();
 
 							ImGui::NewLine();
@@ -844,7 +934,7 @@ void GUI::Draw()
 							ImGui::SameLine();
 							ImGui::KeyBindingInput("Key:##Jump", &SharedData::keybindingsInfo.jump);
 							ImGui::InputInt("Jump Limit", &character->JumpMaxCount, 1, 1);
-							ImGui::InputFloat("Jump Height", &movementComponent->JumpZVelocity, 0.1f, 1.0f);
+							ImGui::InputFloat("Jump Height", &movementComponent->JumpZVelocity, 0.1, 1.0);
 
 							ImGui::NewLine();
 							ImGui::Separator();
@@ -870,7 +960,7 @@ void GUI::Draw()
 							ImGui::Spacing();
 							ImGui::SameLine();
 							ImGui::KeyBindingInput("Key:##Dash", &SharedData::keybindingsInfo.dash);
-							ImGui::InputFloat("Dash Strength", &SharedData::featuresInfo.dashStrength, 0.1f, 1.0f);
+							ImGui::InputDouble("Dash Strength", &SharedData::featuresInfo.dashStrength, 0.1, 1.0);
 						}
 						else
 							ImGui::Text("Movement Component Doesn't Exist!");
@@ -904,30 +994,30 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 
 	switch (soundToPlay)
 	{
-	case E_Sound::BUTTON_PRESS:
-		soundFrequency = 245;
-		soundDuration = 50;
-		break;
+		case E_Sound::BUTTON_PRESS:
+			soundFrequency = 245;
+			soundDuration = 50;
+			break;
 
-	case E_Sound::BUTTON_CANCEL:
-		soundFrequency = 100;
-		soundDuration = 150;
-		break;
+		case E_Sound::BUTTON_CANCEL:
+			soundFrequency = 100;
+			soundDuration = 150;
+			break;
 
-	case E_Sound::ACTION_SUCCESS:
-		soundFrequency = 350;
-		soundDuration = 300;
-		break;
+		case E_Sound::ACTION_SUCCESS:
+			soundFrequency = 350;
+			soundDuration = 300;
+			break;
 
-	case E_Sound::ACTION_ERROR:
-		soundFrequency = 175;
-		soundDuration = 300;
-		break;
+		case E_Sound::ACTION_ERROR:
+			soundFrequency = 175;
+			soundDuration = 300;
+			break;
 
-	default:
-		soundFrequency = 500;
-		soundDuration = 1000;
-		break;
+		default:
+			soundFrequency = 500;
+			soundDuration = 1000;
+			break;
 	}
 
 	Beep(soundFrequency, soundDuration);
@@ -948,16 +1038,16 @@ void GUI::SharedWorkers::FeaturesWorker()
 				&& SharedData::objectsInfo.movementComponent->bCheatFlying)
 			{
 				SDK::FVector characterVelocity = SharedData::objectsInfo.movementComponent->Velocity;
-				if (characterVelocity.X != 0.0f || characterVelocity.Y != 0.0f)
+				if (characterVelocity.X != 0.0 || characterVelocity.Y != 0.0)
 				{
 					SDK::APlayerCameraManager* cameraManager = SharedData::objectsInfo.controller->PlayerCameraManager;
 					if (cameraManager)
 					{
 						SDK::FVector characterVelocityNormalized = Math::Normalize(characterVelocity);
 						SDK::FVector cameraForwardVector = cameraManager->GetActorForwardVector();
-						float dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
+						double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
 
-						if (dotProduct > 0.5f)
+						if (dotProduct > 0.5)
 						{
 							SDK::FVector currentLocation = SharedData::objectsInfo.character->K2_GetActorLocation();
 							SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * SharedData::featuresInfo.directionalMovementStep);
@@ -981,10 +1071,22 @@ void GUI::SharedWorkers::FeaturesWorker()
 void GUI::SharedCalls::UpdateDebugInformation()
 {
 	SDK::UEngine* engine = Engine::GetEngine();
-	if (SharedData::debugInfo.isEnginePresent = engine)
+	if (SharedData::debugInfo.engine.engineReference = engine)
 	{
-		SharedData::debugInfo.engineClass = engine->Class->GetFullName();
-		SharedData::debugInfo.engineObject = engine->GetFullName();
+		SharedData::debugInfo.engine.engineClass = engine->Class->GetFullName();
+		SharedData::debugInfo.engine.engineObject = engine->GetFullName();
+
+		SharedData::debugInfo.engine.fixedFrameRate = engine->bUseFixedFrameRate;
+		SharedData::debugInfo.engine.fixedFrameRateEnabled = engine->FixedFrameRate;
+
+		SharedData::debugInfo.engine.smoothFrameRateEnabled = engine->bSmoothFrameRate;
+		SharedData::debugInfo.engine.smoothFrameRateLowerBound = engine->SmoothedFrameRateRange.LowerBound.Value;
+		SharedData::debugInfo.engine.smoothFrameRateUpperBound = engine->SmoothedFrameRateRange.UpperBound.Value;
+
+		SharedData::debugInfo.engine.subtitlesEnabled = engine->bSubtitlesEnabled;
+		SharedData::debugInfo.engine.subtitlesForcedOff = engine->bSubtitlesForcedOff;
+
+		SharedData::debugInfo.engine.pauseOnLossOfFocus = engine->bPauseOnLossOfFocus;
 	}
 
 
@@ -1123,7 +1225,11 @@ void GUI::SharedCalls::UpdateDebugInformation()
 				if (level == nullptr)
 					continue;
 
+#ifdef UE5
+				std::string streamingLevelPath = level->WorldAsset.ObjectID.AssetPath.AssetName.GetRawString();
+#else
 				std::string streamingLevelPath = level->WorldAsset.ObjectID.AssetPathName.GetRawString();
+#endif
 				if (streamingLevelPath.empty())
 					continue;
 
@@ -1315,7 +1421,7 @@ void GUI::SharedFunctions::Dash()
 {
 	SDK::FVector forwardVector = SharedData::objectsInfo.character->GetActorForwardVector();
 
-	forwardVector.Z = 0.0f;
+	forwardVector.Z = 0.0;
 	forwardVector.Normalize();
 
 	PlayActionSound(Character::Launch(forwardVector * SharedData::featuresInfo.dashStrength));
