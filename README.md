@@ -20,6 +20,9 @@ Dumper-7 (SDK) based solution for quick & easy debugging of Unreal Engine powere
 ### [CranchyLib.CPP](https://github.com/Cranch-fur/CranchyLib.CPP)
 
 # Screenshots
-<img width="2114" height="1407" alt="Screenshot_00" src="https://github.com/user-attachments/assets/17fbaded-6cd7-4cfa-af0d-9c6e2bf3c168" />
-<img width="2114" height="1407" alt="Screenshot_01" src="https://github.com/user-attachments/assets/5a5a3527-f152-4981-ad93-017117e4ad16" />
-<img width="1122" height="662" alt="Screenshot_02" src="https://github.com/user-attachments/assets/93ac086e-636d-404e-9b2b-8e8e751f7f05" />
+### Unreal Engine 4.27
+<img width="2114" height="1407" alt="Screenshot_DBD_UE4.27" src="https://github.com/user-attachments/assets/17fbaded-6cd7-4cfa-af0d-9c6e2bf3c168" />
+
+### Unreal Engine 5.4.4
+> In order for project to compile, a single line of code had to be changed.
+<img width="2559" height="1439" alt="Screenshot_PrjBorealis_UE5.4.4" src="https://github.com/user-attachments/assets/b8d02301-3659-46c6-a26e-aa560d8bbea3" />
