@@ -1,26 +1,28 @@
 # UETools-GUI
 Dumper-7 (SDK) based solution for quick & easy debugging of Unreal Engine powered games. So easy to start with that within 5 minutes you will get it running on any* game given.
-> \*Dumper-7 must generate a valid SDK in order for game to be considered "supported".
+> \*Dumper-7 must generate a valid SDK in order for a game to be considered "supported".
 > 
-> \*UETools-GUI was developed with Unreal Engine 4.27 in mind, so the project can be relatively easily upgraded or downgraded. Certain parts of the code may need to be modified to account for the specifics of your Engine (such as the float → double change in UE5).
+> \*UETools-GUI was developed with Unreal Engine 4.27 in mind, so the project can be relatively easily upgraded or downgraded. Certain parts of the code may need to be modified to account for the specifics of your Engine (such as not yet implemented or deprecated variables and functions).
 > 
-> **P.S:** When working with Unreal Engine 5 based games, consider uncommenting "#define UE5" within "GUI.h" file.
+> **P.S:** When working with Unreal Engine 5 based games, consider uncommenting "#define UE5" within the "GUI.h" file.
 
 # Getting Started
-1) Download & unpack / Git Clone the repository;
-2) Generate Dumper-7 SDK for the game you want to implement UETools-GUI in;
-3) Replace SDK within "..\SDKs\Dumper7" with your newly generated, game specific one;
-4) Compile UETools-GUI Dynamic Link Library and inject it in to the game.
-> When in game, press "INS" (Insert) key in order to show or hide the menu.
+1. Download and unpack OR Git Clone the repository;
+2. Generate Dumper-7 SDK for the game you want to implement UETools-GUI in;
+3. Replace the SDK within `..\SDKs\Dumper7` with your newly generated, game-specific one;
+4. Compile `UETools-GUI.dll` and inject it into the running game (using Cheat Engine, Process Hacker, etc.).
+> When in game, press the "INS" (Insert) key in order to show or hide the menu.
 
-# Environment & Dependencies
-### C++: ISO 20.
-### C: Legacy MSVC.
-### Windows SDK: "10.0.26100.0".
-### Configuration: Release.
-### [Dumper-7](https://github.com/Encryqed/Dumper-7)
-### [ImGui](https://github.com/ocornut/imgui)
-### [CranchyLib.CPP](https://github.com/Cranch-fur/CranchyLib.CPP)
+# Baseline & Environment
+```
+Unreal Engine: 4.27.2
+C++: ISO 20 | C: Legacy MSVC
+Windows SDK: "10.0.26100.0"
+Build Configuration: Release
+```
+
+# Dependencies
+### [Dumper-7](https://github.com/Encryqed/Dumper-7) & [ImGui](https://github.com/ocornut/imgui) & [CranchyLib.CPP](https://github.com/Cranch-fur/CranchyLib.CPP)
 
 # Screenshots
 ### Unreal Engine 4.27
