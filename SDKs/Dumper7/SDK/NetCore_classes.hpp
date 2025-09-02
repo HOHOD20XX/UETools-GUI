@@ -18,25 +18,27 @@ namespace SDK
 {
 
 // Class NetCore.NetAnalyticsAggregatorConfig
-// 0x0010 (0x0040 - 0x0030)
+// 0x0010 (0x0038 - 0x0028)
 class UNetAnalyticsAggregatorConfig final : public UObject
 {
 public:
-	TArray<struct FNetAnalyticsDataConfig>        NetAnalyticsData;                                  // 0x0030(0x0010)(ZeroConstructor, Config, NativeAccessSpecifierPublic)
+	TArray<struct FNetAnalyticsDataConfig>        NetAnalyticsData;                                  // 0x0028(0x0010)(ZeroConstructor, Config, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"NetAnalyticsAggregatorConfig">();
+		STATIC_CLASS_IMPL("NetAnalyticsAggregatorConfig")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"NetAnalyticsAggregatorConfig")
 	}
 	static class UNetAnalyticsAggregatorConfig* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UNetAnalyticsAggregatorConfig>();
 	}
 };
-static_assert(alignof(UNetAnalyticsAggregatorConfig) == 0x000008, "Wrong alignment on UNetAnalyticsAggregatorConfig");
-static_assert(sizeof(UNetAnalyticsAggregatorConfig) == 0x000040, "Wrong size on UNetAnalyticsAggregatorConfig");
-static_assert(offsetof(UNetAnalyticsAggregatorConfig, NetAnalyticsData) == 0x000030, "Member 'UNetAnalyticsAggregatorConfig::NetAnalyticsData' has a wrong offset!");
+DUMPER7_ASSERTS_UNetAnalyticsAggregatorConfig;
 
 }
 

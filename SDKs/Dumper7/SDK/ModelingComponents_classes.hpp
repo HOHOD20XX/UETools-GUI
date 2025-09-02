@@ -21,270 +21,284 @@ namespace SDK
 {
 
 // Class ModelingComponents.BaseDynamicMeshComponent
-// 0x0050 (0x0520 - 0x04D0)
-#pragma pack(push, 0x1)
-class alignas(0x10) UBaseDynamicMeshComponent : public UMeshComponent
+// 0x0040 (0x04C0 - 0x0480)
+class UBaseDynamicMeshComponent : public UMeshComponent
 {
 public:
-	uint8                                         Pad_4D0[0x48];                                     // 0x04D0(0x0048)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_478[0x48];                                     // 0x0478(0x0048)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BaseDynamicMeshComponent">();
+		STATIC_CLASS_IMPL("BaseDynamicMeshComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseDynamicMeshComponent")
 	}
 	static class UBaseDynamicMeshComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBaseDynamicMeshComponent>();
 	}
 };
-#pragma pack(pop)
-static_assert(alignof(UBaseDynamicMeshComponent) == 0x000010, "Wrong alignment on UBaseDynamicMeshComponent");
-static_assert(sizeof(UBaseDynamicMeshComponent) == 0x000520, "Wrong size on UBaseDynamicMeshComponent");
+DUMPER7_ASSERTS_UBaseDynamicMeshComponent;
 
 // Class ModelingComponents.BaseCreateFromSelectedToolBuilder
-// 0x0008 (0x0038 - 0x0030)
+// 0x0008 (0x0030 - 0x0028)
 class UBaseCreateFromSelectedToolBuilder : public UInteractiveToolBuilder
 {
 public:
-	uint8                                         Pad_30[0x8];                                       // 0x0030(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BaseCreateFromSelectedToolBuilder">();
+		STATIC_CLASS_IMPL("BaseCreateFromSelectedToolBuilder")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseCreateFromSelectedToolBuilder")
 	}
 	static class UBaseCreateFromSelectedToolBuilder* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBaseCreateFromSelectedToolBuilder>();
 	}
 };
-static_assert(alignof(UBaseCreateFromSelectedToolBuilder) == 0x000008, "Wrong alignment on UBaseCreateFromSelectedToolBuilder");
-static_assert(sizeof(UBaseCreateFromSelectedToolBuilder) == 0x000038, "Wrong size on UBaseCreateFromSelectedToolBuilder");
+DUMPER7_ASSERTS_UBaseCreateFromSelectedToolBuilder;
 
 // Class ModelingComponents.OnAcceptHandleSourcesProperties
-// 0x0008 (0x0070 - 0x0068)
+// 0x0008 (0x0068 - 0x0060)
 class UOnAcceptHandleSourcesProperties : public UInteractiveToolPropertySet
 {
 public:
-	EHandleSourcesMethod                          OnToolAccept;                                      // 0x0068(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	EHandleSourcesMethod                          OnToolAccept;                                      // 0x0060(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"OnAcceptHandleSourcesProperties">();
+		STATIC_CLASS_IMPL("OnAcceptHandleSourcesProperties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OnAcceptHandleSourcesProperties")
 	}
 	static class UOnAcceptHandleSourcesProperties* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOnAcceptHandleSourcesProperties>();
 	}
 };
-static_assert(alignof(UOnAcceptHandleSourcesProperties) == 0x000008, "Wrong alignment on UOnAcceptHandleSourcesProperties");
-static_assert(sizeof(UOnAcceptHandleSourcesProperties) == 0x000070, "Wrong size on UOnAcceptHandleSourcesProperties");
-static_assert(offsetof(UOnAcceptHandleSourcesProperties, OnToolAccept) == 0x000068, "Member 'UOnAcceptHandleSourcesProperties::OnToolAccept' has a wrong offset!");
+DUMPER7_ASSERTS_UOnAcceptHandleSourcesProperties;
 
 // Class ModelingComponents.BaseMeshProcessingTool
-// 0x0370 (0x0400 - 0x0090)
+// 0x0378 (0x0400 - 0x0088)
 class alignas(0x10) UBaseMeshProcessingTool : public USingleSelectionTool
 {
 public:
-	uint8                                         Pad_90[0x28];                                      // 0x0090(0x0028)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMeshOpPreviewWithBackgroundCompute*    Preview;                                           // 0x00B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C0[0x340];                                     // 0x00C0(0x0340)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_88[0x28];                                      // 0x0088(0x0028)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMeshOpPreviewWithBackgroundCompute*    Preview;                                           // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_B8[0x348];                                     // 0x00B8(0x0348)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BaseMeshProcessingTool">();
+		STATIC_CLASS_IMPL("BaseMeshProcessingTool")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseMeshProcessingTool")
 	}
 	static class UBaseMeshProcessingTool* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBaseMeshProcessingTool>();
 	}
 };
-static_assert(alignof(UBaseMeshProcessingTool) == 0x000010, "Wrong alignment on UBaseMeshProcessingTool");
-static_assert(sizeof(UBaseMeshProcessingTool) == 0x000400, "Wrong size on UBaseMeshProcessingTool");
-static_assert(offsetof(UBaseMeshProcessingTool, Preview) == 0x0000B8, "Member 'UBaseMeshProcessingTool::Preview' has a wrong offset!");
+DUMPER7_ASSERTS_UBaseMeshProcessingTool;
 
 // Class ModelingComponents.BaseCreateFromSelectedHandleSourceProperties
-// 0x0028 (0x0098 - 0x0070)
+// 0x0028 (0x0090 - 0x0068)
 class UBaseCreateFromSelectedHandleSourceProperties final : public UOnAcceptHandleSourcesProperties
 {
 public:
-	EBaseCreateFromSelectedTargetType             WriteOutputTo;                                     // 0x0070(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 OutputName;                                        // 0x0078(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 OutputAsset;                                       // 0x0088(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EBaseCreateFromSelectedTargetType             WriteOutputTo;                                     // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_6C[0x4];                                       // 0x006C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 OutputName;                                        // 0x0070(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 OutputAsset;                                       // 0x0080(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BaseCreateFromSelectedHandleSourceProperties">();
+		STATIC_CLASS_IMPL("BaseCreateFromSelectedHandleSourceProperties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseCreateFromSelectedHandleSourceProperties")
 	}
 	static class UBaseCreateFromSelectedHandleSourceProperties* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBaseCreateFromSelectedHandleSourceProperties>();
 	}
 };
-static_assert(alignof(UBaseCreateFromSelectedHandleSourceProperties) == 0x000008, "Wrong alignment on UBaseCreateFromSelectedHandleSourceProperties");
-static_assert(sizeof(UBaseCreateFromSelectedHandleSourceProperties) == 0x000098, "Wrong size on UBaseCreateFromSelectedHandleSourceProperties");
-static_assert(offsetof(UBaseCreateFromSelectedHandleSourceProperties, WriteOutputTo) == 0x000070, "Member 'UBaseCreateFromSelectedHandleSourceProperties::WriteOutputTo' has a wrong offset!");
-static_assert(offsetof(UBaseCreateFromSelectedHandleSourceProperties, OutputName) == 0x000078, "Member 'UBaseCreateFromSelectedHandleSourceProperties::OutputName' has a wrong offset!");
-static_assert(offsetof(UBaseCreateFromSelectedHandleSourceProperties, OutputAsset) == 0x000088, "Member 'UBaseCreateFromSelectedHandleSourceProperties::OutputAsset' has a wrong offset!");
+DUMPER7_ASSERTS_UBaseCreateFromSelectedHandleSourceProperties;
 
 // Class ModelingComponents.TransformInputsToolProperties
-// 0x0008 (0x0070 - 0x0068)
+// 0x0008 (0x0068 - 0x0060)
 class UTransformInputsToolProperties final : public UInteractiveToolPropertySet
 {
 public:
-	bool                                          bShowTransformUI;                                  // 0x0068(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSnapToWorldGrid;                                  // 0x0069(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_6A[0x6];                                       // 0x006A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bShowTransformUI;                                  // 0x0060(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSnapToWorldGrid;                                  // 0x0061(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_62[0x6];                                       // 0x0062(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"TransformInputsToolProperties">();
+		STATIC_CLASS_IMPL("TransformInputsToolProperties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TransformInputsToolProperties")
 	}
 	static class UTransformInputsToolProperties* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UTransformInputsToolProperties>();
 	}
 };
-static_assert(alignof(UTransformInputsToolProperties) == 0x000008, "Wrong alignment on UTransformInputsToolProperties");
-static_assert(sizeof(UTransformInputsToolProperties) == 0x000070, "Wrong size on UTransformInputsToolProperties");
-static_assert(offsetof(UTransformInputsToolProperties, bShowTransformUI) == 0x000068, "Member 'UTransformInputsToolProperties::bShowTransformUI' has a wrong offset!");
-static_assert(offsetof(UTransformInputsToolProperties, bSnapToWorldGrid) == 0x000069, "Member 'UTransformInputsToolProperties::bSnapToWorldGrid' has a wrong offset!");
+DUMPER7_ASSERTS_UTransformInputsToolProperties;
 
 // Class ModelingComponents.BaseCreateFromSelectedTool
-// 0x0060 (0x00F8 - 0x0098)
+// 0x0060 (0x00F0 - 0x0090)
 class UBaseCreateFromSelectedTool : public UMultiSelectionTool
 {
 public:
-	uint8                                         Pad_98[0x8];                                       // 0x0098(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTransformInputsToolProperties*         TransformProperties;                               // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UBaseCreateFromSelectedHandleSourceProperties* HandleSourcesProperties;                    // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UMeshOpPreviewWithBackgroundCompute*    Preview;                                           // 0x00B0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	TArray<class UTransformProxy*>                TransformProxies;                                  // 0x00B8(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	TArray<class UTransformGizmo*>                TransformGizmos;                                   // 0x00C8(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	TArray<struct FVector>                        TransformInitialScales;                            // 0x00D8(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_E8[0x10];                                      // 0x00E8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_90[0x8];                                       // 0x0090(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTransformInputsToolProperties*         TransformProperties;                               // 0x0098(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UBaseCreateFromSelectedHandleSourceProperties* HandleSourcesProperties;                    // 0x00A0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UMeshOpPreviewWithBackgroundCompute*    Preview;                                           // 0x00A8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	TArray<class UTransformProxy*>                TransformProxies;                                  // 0x00B0(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	TArray<class UTransformGizmo*>                TransformGizmos;                                   // 0x00C0(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	TArray<struct FVector>                        TransformInitialScales;                            // 0x00D0(0x0010)(ZeroConstructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_E0[0x10];                                      // 0x00E0(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BaseCreateFromSelectedTool">();
+		STATIC_CLASS_IMPL("BaseCreateFromSelectedTool")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseCreateFromSelectedTool")
 	}
 	static class UBaseCreateFromSelectedTool* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBaseCreateFromSelectedTool>();
 	}
 };
-static_assert(alignof(UBaseCreateFromSelectedTool) == 0x000008, "Wrong alignment on UBaseCreateFromSelectedTool");
-static_assert(sizeof(UBaseCreateFromSelectedTool) == 0x0000F8, "Wrong size on UBaseCreateFromSelectedTool");
-static_assert(offsetof(UBaseCreateFromSelectedTool, TransformProperties) == 0x0000A0, "Member 'UBaseCreateFromSelectedTool::TransformProperties' has a wrong offset!");
-static_assert(offsetof(UBaseCreateFromSelectedTool, HandleSourcesProperties) == 0x0000A8, "Member 'UBaseCreateFromSelectedTool::HandleSourcesProperties' has a wrong offset!");
-static_assert(offsetof(UBaseCreateFromSelectedTool, Preview) == 0x0000B0, "Member 'UBaseCreateFromSelectedTool::Preview' has a wrong offset!");
-static_assert(offsetof(UBaseCreateFromSelectedTool, TransformProxies) == 0x0000B8, "Member 'UBaseCreateFromSelectedTool::TransformProxies' has a wrong offset!");
-static_assert(offsetof(UBaseCreateFromSelectedTool, TransformGizmos) == 0x0000C8, "Member 'UBaseCreateFromSelectedTool::TransformGizmos' has a wrong offset!");
-static_assert(offsetof(UBaseCreateFromSelectedTool, TransformInitialScales) == 0x0000D8, "Member 'UBaseCreateFromSelectedTool::TransformInitialScales' has a wrong offset!");
+DUMPER7_ASSERTS_UBaseCreateFromSelectedTool;
 
 // Class ModelingComponents.BaseMeshProcessingToolBuilder
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UBaseMeshProcessingToolBuilder : public UInteractiveToolBuilder
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BaseMeshProcessingToolBuilder">();
+		STATIC_CLASS_IMPL("BaseMeshProcessingToolBuilder")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseMeshProcessingToolBuilder")
 	}
 	static class UBaseMeshProcessingToolBuilder* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBaseMeshProcessingToolBuilder>();
 	}
 };
-static_assert(alignof(UBaseMeshProcessingToolBuilder) == 0x000008, "Wrong alignment on UBaseMeshProcessingToolBuilder");
-static_assert(sizeof(UBaseMeshProcessingToolBuilder) == 0x000030, "Wrong size on UBaseMeshProcessingToolBuilder");
+DUMPER7_ASSERTS_UBaseMeshProcessingToolBuilder;
 
 // Class ModelingComponents.BaseVoxelTool
-// 0x0018 (0x0110 - 0x00F8)
+// 0x0018 (0x0108 - 0x00F0)
 class UBaseVoxelTool : public UBaseCreateFromSelectedTool
 {
 public:
-	class UVoxelProperties*                       VoxProperties;                                     // 0x00F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_100[0x10];                                     // 0x0100(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UVoxelProperties*                       VoxProperties;                                     // 0x00F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_F8[0x10];                                      // 0x00F8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BaseVoxelTool">();
+		STATIC_CLASS_IMPL("BaseVoxelTool")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BaseVoxelTool")
 	}
 	static class UBaseVoxelTool* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBaseVoxelTool>();
 	}
 };
-static_assert(alignof(UBaseVoxelTool) == 0x000008, "Wrong alignment on UBaseVoxelTool");
-static_assert(sizeof(UBaseVoxelTool) == 0x000110, "Wrong size on UBaseVoxelTool");
-static_assert(offsetof(UBaseVoxelTool, VoxProperties) == 0x0000F8, "Member 'UBaseVoxelTool::VoxProperties' has a wrong offset!");
+DUMPER7_ASSERTS_UBaseVoxelTool;
 
 // Class ModelingComponents.CollectSurfacePathMechanic
-// 0x0528 (0x0560 - 0x0038)
+// 0x0520 (0x0550 - 0x0030)
 class UCollectSurfacePathMechanic final : public UInteractionMechanic
 {
 public:
-	uint8                                         Pad_38[0x528];                                     // 0x0038(0x0528)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_30[0x520];                                     // 0x0030(0x0520)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"CollectSurfacePathMechanic">();
+		STATIC_CLASS_IMPL("CollectSurfacePathMechanic")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CollectSurfacePathMechanic")
 	}
 	static class UCollectSurfacePathMechanic* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UCollectSurfacePathMechanic>();
 	}
 };
-static_assert(alignof(UCollectSurfacePathMechanic) == 0x000008, "Wrong alignment on UCollectSurfacePathMechanic");
-static_assert(sizeof(UCollectSurfacePathMechanic) == 0x000560, "Wrong size on UCollectSurfacePathMechanic");
+DUMPER7_ASSERTS_UCollectSurfacePathMechanic;
 
 // Class ModelingComponents.ConstructionPlaneMechanic
-// 0x00C8 (0x0100 - 0x0038)
+// 0x00C0 (0x00F0 - 0x0030)
 class alignas(0x10) UConstructionPlaneMechanic final : public UInteractionMechanic
 {
 public:
-	uint8                                         Pad_38[0xA0];                                      // 0x0038(0x00A0)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTransformGizmo*                        PlaneTransformGizmo;                               // 0x00D8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTransformProxy*                        PlaneTransformProxy;                               // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_E8[0x10];                                      // 0x00E8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	class USingleClickInputBehavior*              ClickToSetPlaneBehavior;                           // 0x00F8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_30[0x98];                                      // 0x0030(0x0098)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTransformGizmo*                        PlaneTransformGizmo;                               // 0x00C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTransformProxy*                        PlaneTransformProxy;                               // 0x00D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_D8[0x10];                                      // 0x00D8(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	class USingleClickInputBehavior*              ClickToSetPlaneBehavior;                           // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ConstructionPlaneMechanic">();
+		STATIC_CLASS_IMPL("ConstructionPlaneMechanic")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ConstructionPlaneMechanic")
 	}
 	static class UConstructionPlaneMechanic* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UConstructionPlaneMechanic>();
 	}
 };
-static_assert(alignof(UConstructionPlaneMechanic) == 0x000010, "Wrong alignment on UConstructionPlaneMechanic");
-static_assert(sizeof(UConstructionPlaneMechanic) == 0x000100, "Wrong size on UConstructionPlaneMechanic");
-static_assert(offsetof(UConstructionPlaneMechanic, PlaneTransformGizmo) == 0x0000D8, "Member 'UConstructionPlaneMechanic::PlaneTransformGizmo' has a wrong offset!");
-static_assert(offsetof(UConstructionPlaneMechanic, PlaneTransformProxy) == 0x0000E0, "Member 'UConstructionPlaneMechanic::PlaneTransformProxy' has a wrong offset!");
-static_assert(offsetof(UConstructionPlaneMechanic, ClickToSetPlaneBehavior) == 0x0000F8, "Member 'UConstructionPlaneMechanic::ClickToSetPlaneBehavior' has a wrong offset!");
+DUMPER7_ASSERTS_UConstructionPlaneMechanic;
 
 // Class ModelingComponents.CurveControlPointsMechanic
-// 0x0618 (0x0650 - 0x0038)
+// 0x0620 (0x0650 - 0x0030)
 class alignas(0x10) UCurveControlPointsMechanic final : public UInteractionMechanic
 {
 public:
-	uint8                                         Pad_38[0x10];                                      // 0x0038(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	class USingleClickInputBehavior*              ClickBehavior;                                     // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UMouseHoverBehavior*                    HoverBehavior;                                     // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_58[0x490];                                     // 0x0058(0x0490)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_30[0x10];                                      // 0x0030(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	class USingleClickInputBehavior*              ClickBehavior;                                     // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMouseHoverBehavior*                    HoverBehavior;                                     // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_50[0x498];                                     // 0x0050(0x0498)(Fixing Size After Last Property [ Dumper-7 ])
 	class APreviewGeometryActor*                  PreviewGeometryActor;                              // 0x04E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	class UPointSetComponent*                     DrawnControlPoints;                                // 0x04F0(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	class ULineSetComponent*                      DrawnControlSegments;                              // 0x04F8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -298,70 +312,67 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"CurveControlPointsMechanic">();
+		STATIC_CLASS_IMPL("CurveControlPointsMechanic")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"CurveControlPointsMechanic")
 	}
 	static class UCurveControlPointsMechanic* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UCurveControlPointsMechanic>();
 	}
 };
-static_assert(alignof(UCurveControlPointsMechanic) == 0x000010, "Wrong alignment on UCurveControlPointsMechanic");
-static_assert(sizeof(UCurveControlPointsMechanic) == 0x000650, "Wrong size on UCurveControlPointsMechanic");
-static_assert(offsetof(UCurveControlPointsMechanic, ClickBehavior) == 0x000048, "Member 'UCurveControlPointsMechanic::ClickBehavior' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, HoverBehavior) == 0x000050, "Member 'UCurveControlPointsMechanic::HoverBehavior' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, PreviewGeometryActor) == 0x0004E8, "Member 'UCurveControlPointsMechanic::PreviewGeometryActor' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, DrawnControlPoints) == 0x0004F0, "Member 'UCurveControlPointsMechanic::DrawnControlPoints' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, DrawnControlSegments) == 0x0004F8, "Member 'UCurveControlPointsMechanic::DrawnControlSegments' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, PreviewPoint) == 0x000500, "Member 'UCurveControlPointsMechanic::PreviewPoint' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, PreviewSegment) == 0x000508, "Member 'UCurveControlPointsMechanic::PreviewSegment' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, PointTransformProxy) == 0x000588, "Member 'UCurveControlPointsMechanic::PointTransformProxy' has a wrong offset!");
-static_assert(offsetof(UCurveControlPointsMechanic, PointTransformGizmo) == 0x000590, "Member 'UCurveControlPointsMechanic::PointTransformGizmo' has a wrong offset!");
+DUMPER7_ASSERTS_UCurveControlPointsMechanic;
 
 // Class ModelingComponents.DynamicMeshReplacementChangeTarget
-// 0x0030 (0x0060 - 0x0030)
+// 0x0030 (0x0058 - 0x0028)
 class UDynamicMeshReplacementChangeTarget final : public UObject
 {
 public:
-	uint8                                         Pad_30[0x30];                                      // 0x0030(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x30];                                      // 0x0028(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DynamicMeshReplacementChangeTarget">();
+		STATIC_CLASS_IMPL("DynamicMeshReplacementChangeTarget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DynamicMeshReplacementChangeTarget")
 	}
 	static class UDynamicMeshReplacementChangeTarget* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDynamicMeshReplacementChangeTarget>();
 	}
 };
-static_assert(alignof(UDynamicMeshReplacementChangeTarget) == 0x000008, "Wrong alignment on UDynamicMeshReplacementChangeTarget");
-static_assert(sizeof(UDynamicMeshReplacementChangeTarget) == 0x000060, "Wrong size on UDynamicMeshReplacementChangeTarget");
+DUMPER7_ASSERTS_UDynamicMeshReplacementChangeTarget;
 
 // Class ModelingComponents.LineSetComponent
-// 0x0060 (0x0530 - 0x04D0)
+// 0x0060 (0x04E0 - 0x0480)
 class ULineSetComponent final : public UMeshComponent
 {
 public:
-	class UMaterialInterface*                     LineMaterial;                                      // 0x04D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FBoxSphereBounds                       Bounds;                                            // 0x04D8(0x001C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
-	bool                                          bBoundsDirty;                                      // 0x04F4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_4F5[0x3B];                                     // 0x04F5(0x003B)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UMaterialInterface*                     LineMaterial;                                      // 0x0478(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FBoxSphereBounds                       Bounds;                                            // 0x0480(0x001C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
+	bool                                          bBoundsDirty;                                      // 0x049C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_49D[0x43];                                     // 0x049D(0x0043)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"LineSetComponent">();
+		STATIC_CLASS_IMPL("LineSetComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LineSetComponent")
 	}
 	static class ULineSetComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<ULineSetComponent>();
 	}
 };
-static_assert(alignof(ULineSetComponent) == 0x000010, "Wrong alignment on ULineSetComponent");
-static_assert(sizeof(ULineSetComponent) == 0x000530, "Wrong size on ULineSetComponent");
-static_assert(offsetof(ULineSetComponent, LineMaterial) == 0x0004D0, "Member 'ULineSetComponent::LineMaterial' has a wrong offset!");
-static_assert(offsetof(ULineSetComponent, Bounds) == 0x0004D8, "Member 'ULineSetComponent::Bounds' has a wrong offset!");
-static_assert(offsetof(ULineSetComponent, bBoundsDirty) == 0x0004F4, "Member 'ULineSetComponent::bBoundsDirty' has a wrong offset!");
+DUMPER7_ASSERTS_ULineSetComponent;
 
 // Class ModelingComponents.MeshCommandChangeTarget
 // 0x0000 (0x0000 - 0x0000)
@@ -370,7 +381,11 @@ class IMeshCommandChangeTarget final
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MeshCommandChangeTarget">();
+		STATIC_CLASS_IMPL("MeshCommandChangeTarget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MeshCommandChangeTarget")
 	}
 	static class IMeshCommandChangeTarget* GetDefaultObj()
 	{
@@ -386,37 +401,35 @@ public:
 		return reinterpret_cast<const UObject*>(this);
 	}
 };
-static_assert(alignof(IMeshCommandChangeTarget) == 0x000001, "Wrong alignment on IMeshCommandChangeTarget");
-static_assert(sizeof(IMeshCommandChangeTarget) == 0x000001, "Wrong size on IMeshCommandChangeTarget");
+DUMPER7_ASSERTS_IMeshCommandChangeTarget;
 
 // Class ModelingComponents.MeshOpPreviewWithBackgroundCompute
-// 0x0068 (0x0098 - 0x0030)
+// 0x0068 (0x0090 - 0x0028)
 class UMeshOpPreviewWithBackgroundCompute final : public UObject
 {
 public:
-	uint8                                         Pad_30[0x30];                                      // 0x0030(0x0030)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPreviewMesh*                           PreviewMesh;                                       // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<class UMaterialInterface*>             StandardMaterials;                                 // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	class UMaterialInterface*                     OverrideMaterial;                                  // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UMaterialInterface*                     WorkingMaterial;                                   // 0x0080(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_88[0x10];                                      // 0x0088(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x30];                                      // 0x0028(0x0030)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPreviewMesh*                           PreviewMesh;                                       // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class UMaterialInterface*>             StandardMaterials;                                 // 0x0060(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	class UMaterialInterface*                     OverrideMaterial;                                  // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMaterialInterface*                     WorkingMaterial;                                   // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_80[0x10];                                      // 0x0080(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MeshOpPreviewWithBackgroundCompute">();
+		STATIC_CLASS_IMPL("MeshOpPreviewWithBackgroundCompute")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MeshOpPreviewWithBackgroundCompute")
 	}
 	static class UMeshOpPreviewWithBackgroundCompute* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UMeshOpPreviewWithBackgroundCompute>();
 	}
 };
-static_assert(alignof(UMeshOpPreviewWithBackgroundCompute) == 0x000008, "Wrong alignment on UMeshOpPreviewWithBackgroundCompute");
-static_assert(sizeof(UMeshOpPreviewWithBackgroundCompute) == 0x000098, "Wrong size on UMeshOpPreviewWithBackgroundCompute");
-static_assert(offsetof(UMeshOpPreviewWithBackgroundCompute, PreviewMesh) == 0x000060, "Member 'UMeshOpPreviewWithBackgroundCompute::PreviewMesh' has a wrong offset!");
-static_assert(offsetof(UMeshOpPreviewWithBackgroundCompute, StandardMaterials) == 0x000068, "Member 'UMeshOpPreviewWithBackgroundCompute::StandardMaterials' has a wrong offset!");
-static_assert(offsetof(UMeshOpPreviewWithBackgroundCompute, OverrideMaterial) == 0x000078, "Member 'UMeshOpPreviewWithBackgroundCompute::OverrideMaterial' has a wrong offset!");
-static_assert(offsetof(UMeshOpPreviewWithBackgroundCompute, WorkingMaterial) == 0x000080, "Member 'UMeshOpPreviewWithBackgroundCompute::WorkingMaterial' has a wrong offset!");
+DUMPER7_ASSERTS_UMeshOpPreviewWithBackgroundCompute;
 
 // Class ModelingComponents.MeshReplacementCommandChangeTarget
 // 0x0000 (0x0000 - 0x0000)
@@ -425,7 +438,11 @@ class IMeshReplacementCommandChangeTarget final
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MeshReplacementCommandChangeTarget">();
+		STATIC_CLASS_IMPL("MeshReplacementCommandChangeTarget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MeshReplacementCommandChangeTarget")
 	}
 	static class IMeshReplacementCommandChangeTarget* GetDefaultObj()
 	{
@@ -441,8 +458,7 @@ public:
 		return reinterpret_cast<const UObject*>(this);
 	}
 };
-static_assert(alignof(IMeshReplacementCommandChangeTarget) == 0x000001, "Wrong alignment on IMeshReplacementCommandChangeTarget");
-static_assert(sizeof(IMeshReplacementCommandChangeTarget) == 0x000001, "Wrong size on IMeshReplacementCommandChangeTarget");
+DUMPER7_ASSERTS_IMeshReplacementCommandChangeTarget;
 
 // Class ModelingComponents.MeshVertexCommandChangeTarget
 // 0x0000 (0x0000 - 0x0000)
@@ -451,7 +467,11 @@ class IMeshVertexCommandChangeTarget final
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MeshVertexCommandChangeTarget">();
+		STATIC_CLASS_IMPL("MeshVertexCommandChangeTarget")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MeshVertexCommandChangeTarget")
 	}
 	static class IMeshVertexCommandChangeTarget* GetDefaultObj()
 	{
@@ -467,197 +487,199 @@ public:
 		return reinterpret_cast<const UObject*>(this);
 	}
 };
-static_assert(alignof(IMeshVertexCommandChangeTarget) == 0x000001, "Wrong alignment on IMeshVertexCommandChangeTarget");
-static_assert(sizeof(IMeshVertexCommandChangeTarget) == 0x000001, "Wrong size on IMeshVertexCommandChangeTarget");
+DUMPER7_ASSERTS_IMeshVertexCommandChangeTarget;
 
 // Class ModelingComponents.MultiTransformer
-// 0x0120 (0x0150 - 0x0030)
+// 0x0118 (0x0140 - 0x0028)
 class alignas(0x10) UMultiTransformer final : public UObject
 {
 public:
-	uint8                                         Pad_30[0x48];                                      // 0x0030(0x0048)(Fixing Size After Last Property [ Dumper-7 ])
-	class UInteractiveGizmoManager*               GizmoManager;                                      // 0x0078(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_80[0x68];                                      // 0x0080(0x0068)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTransformGizmo*                        TransformGizmo;                                    // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTransformProxy*                        TransformProxy;                                    // 0x00F0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_F8[0x58];                                      // 0x00F8(0x0058)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x48];                                      // 0x0028(0x0048)(Fixing Size After Last Property [ Dumper-7 ])
+	class UInteractiveGizmoManager*               GizmoManager;                                      // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_78[0x68];                                      // 0x0078(0x0068)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTransformGizmo*                        TransformGizmo;                                    // 0x00E0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTransformProxy*                        TransformProxy;                                    // 0x00E8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_F0[0x50];                                      // 0x00F0(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MultiTransformer">();
+		STATIC_CLASS_IMPL("MultiTransformer")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MultiTransformer")
 	}
 	static class UMultiTransformer* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UMultiTransformer>();
 	}
 };
-static_assert(alignof(UMultiTransformer) == 0x000010, "Wrong alignment on UMultiTransformer");
-static_assert(sizeof(UMultiTransformer) == 0x000150, "Wrong size on UMultiTransformer");
-static_assert(offsetof(UMultiTransformer, GizmoManager) == 0x000078, "Member 'UMultiTransformer::GizmoManager' has a wrong offset!");
-static_assert(offsetof(UMultiTransformer, TransformGizmo) == 0x0000E8, "Member 'UMultiTransformer::TransformGizmo' has a wrong offset!");
-static_assert(offsetof(UMultiTransformer, TransformProxy) == 0x0000F0, "Member 'UMultiTransformer::TransformProxy' has a wrong offset!");
+DUMPER7_ASSERTS_UMultiTransformer;
 
 // Class ModelingComponents.OctreeDynamicMeshComponent
-// 0x0110 (0x0630 - 0x0520)
+// 0x0110 (0x05D0 - 0x04C0)
 class UOctreeDynamicMeshComponent final : public UBaseDynamicMeshComponent
 {
 public:
-	uint8                                         Pad_518[0x18];                                     // 0x0518(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bExplicitShowWireframe;                            // 0x0530(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_531[0xFF];                                     // 0x0531(0x00FF)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_4C0[0x18];                                     // 0x04C0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bExplicitShowWireframe;                            // 0x04D8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4D9[0xF7];                                     // 0x04D9(0x00F7)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"OctreeDynamicMeshComponent">();
+		STATIC_CLASS_IMPL("OctreeDynamicMeshComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OctreeDynamicMeshComponent")
 	}
 	static class UOctreeDynamicMeshComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOctreeDynamicMeshComponent>();
 	}
 };
-static_assert(alignof(UOctreeDynamicMeshComponent) == 0x000010, "Wrong alignment on UOctreeDynamicMeshComponent");
-static_assert(sizeof(UOctreeDynamicMeshComponent) == 0x000630, "Wrong size on UOctreeDynamicMeshComponent");
-static_assert(offsetof(UOctreeDynamicMeshComponent, bExplicitShowWireframe) == 0x000530, "Member 'UOctreeDynamicMeshComponent::bExplicitShowWireframe' has a wrong offset!");
+DUMPER7_ASSERTS_UOctreeDynamicMeshComponent;
 
 // Class ModelingComponents.PlaneDistanceFromHitMechanic
-// 0x0488 (0x04C0 - 0x0038)
+// 0x0470 (0x04A0 - 0x0030)
 class UPlaneDistanceFromHitMechanic final : public UInteractionMechanic
 {
 public:
-	uint8                                         Pad_38[0x488];                                     // 0x0038(0x0488)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_30[0x470];                                     // 0x0030(0x0470)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PlaneDistanceFromHitMechanic">();
+		STATIC_CLASS_IMPL("PlaneDistanceFromHitMechanic")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PlaneDistanceFromHitMechanic")
 	}
 	static class UPlaneDistanceFromHitMechanic* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UPlaneDistanceFromHitMechanic>();
 	}
 };
-static_assert(alignof(UPlaneDistanceFromHitMechanic) == 0x000008, "Wrong alignment on UPlaneDistanceFromHitMechanic");
-static_assert(sizeof(UPlaneDistanceFromHitMechanic) == 0x0004C0, "Wrong size on UPlaneDistanceFromHitMechanic");
+DUMPER7_ASSERTS_UPlaneDistanceFromHitMechanic;
 
 // Class ModelingComponents.PointSetComponent
-// 0x0060 (0x0530 - 0x04D0)
+// 0x0060 (0x04E0 - 0x0480)
 class UPointSetComponent final : public UMeshComponent
 {
 public:
-	class UMaterialInterface*                     PointMaterial;                                     // 0x04D0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FBoxSphereBounds                       Bounds;                                            // 0x04D8(0x001C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
-	bool                                          bBoundsDirty;                                      // 0x04F4(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_4F5[0x3B];                                     // 0x04F5(0x003B)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UMaterialInterface*                     PointMaterial;                                     // 0x0478(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FBoxSphereBounds                       Bounds;                                            // 0x0480(0x001C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
+	bool                                          bBoundsDirty;                                      // 0x049C(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_49D[0x43];                                     // 0x049D(0x0043)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PointSetComponent">();
+		STATIC_CLASS_IMPL("PointSetComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PointSetComponent")
 	}
 	static class UPointSetComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UPointSetComponent>();
 	}
 };
-static_assert(alignof(UPointSetComponent) == 0x000010, "Wrong alignment on UPointSetComponent");
-static_assert(sizeof(UPointSetComponent) == 0x000530, "Wrong size on UPointSetComponent");
-static_assert(offsetof(UPointSetComponent, PointMaterial) == 0x0004D0, "Member 'UPointSetComponent::PointMaterial' has a wrong offset!");
-static_assert(offsetof(UPointSetComponent, Bounds) == 0x0004D8, "Member 'UPointSetComponent::Bounds' has a wrong offset!");
-static_assert(offsetof(UPointSetComponent, bBoundsDirty) == 0x0004F4, "Member 'UPointSetComponent::bBoundsDirty' has a wrong offset!");
+DUMPER7_ASSERTS_UPointSetComponent;
 
 // Class ModelingComponents.PreviewMesh
-// 0x00B8 (0x00E8 - 0x0030)
+// 0x00B8 (0x00E0 - 0x0028)
 class UPreviewMesh : public UObject
 {
 public:
-	uint8                                         Pad_30[0x18];                                      // 0x0030(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bBuildSpatialDataStructure;                        // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bDrawOnTop;                                        // 0x0049(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4A[0xE];                                       // 0x004A(0x000E)(Fixing Size After Last Property [ Dumper-7 ])
-	class USimpleDynamicMeshComponent*            DynamicMeshComponent;                              // 0x0058(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_60[0x88];                                      // 0x0060(0x0088)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x18];                                      // 0x0028(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bBuildSpatialDataStructure;                        // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bDrawOnTop;                                        // 0x0041(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_42[0xE];                                       // 0x0042(0x000E)(Fixing Size After Last Property [ Dumper-7 ])
+	class USimpleDynamicMeshComponent*            DynamicMeshComponent;                              // 0x0050(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_58[0x88];                                      // 0x0058(0x0088)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PreviewMesh">();
+		STATIC_CLASS_IMPL("PreviewMesh")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PreviewMesh")
 	}
 	static class UPreviewMesh* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UPreviewMesh>();
 	}
 };
-static_assert(alignof(UPreviewMesh) == 0x000008, "Wrong alignment on UPreviewMesh");
-static_assert(sizeof(UPreviewMesh) == 0x0000E8, "Wrong size on UPreviewMesh");
-static_assert(offsetof(UPreviewMesh, bBuildSpatialDataStructure) == 0x000048, "Member 'UPreviewMesh::bBuildSpatialDataStructure' has a wrong offset!");
-static_assert(offsetof(UPreviewMesh, bDrawOnTop) == 0x000049, "Member 'UPreviewMesh::bDrawOnTop' has a wrong offset!");
-static_assert(offsetof(UPreviewMesh, DynamicMeshComponent) == 0x000058, "Member 'UPreviewMesh::DynamicMeshComponent' has a wrong offset!");
+DUMPER7_ASSERTS_UPreviewMesh;
 
 // Class ModelingComponents.PolyEditPreviewMesh
-// 0x03F0 (0x04D8 - 0x00E8)
+// 0x03F0 (0x04D0 - 0x00E0)
 class UPolyEditPreviewMesh final : public UPreviewMesh
 {
 public:
-	uint8                                         Pad_E8[0x3F0];                                     // 0x00E8(0x03F0)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_E0[0x3F0];                                     // 0x00E0(0x03F0)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PolyEditPreviewMesh">();
+		STATIC_CLASS_IMPL("PolyEditPreviewMesh")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PolyEditPreviewMesh")
 	}
 	static class UPolyEditPreviewMesh* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UPolyEditPreviewMesh>();
 	}
 };
-static_assert(alignof(UPolyEditPreviewMesh) == 0x000008, "Wrong alignment on UPolyEditPreviewMesh");
-static_assert(sizeof(UPolyEditPreviewMesh) == 0x0004D8, "Wrong size on UPolyEditPreviewMesh");
+DUMPER7_ASSERTS_UPolyEditPreviewMesh;
 
 // Class ModelingComponents.PolygonSelectionMechanicProperties
-// 0x0008 (0x0070 - 0x0068)
+// 0x0008 (0x0068 - 0x0060)
 class UPolygonSelectionMechanicProperties final : public UInteractiveToolPropertySet
 {
 public:
-	bool                                          bSelectFaces;                                      // 0x0068(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSelectEdges;                                      // 0x0069(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSelectVertices;                                   // 0x006A(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSelectEdgeLoops;                                  // 0x006B(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSelectEdgeRings;                                  // 0x006C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bPreferProjectedElement;                           // 0x006D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSelectDownRay;                                    // 0x006E(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bIgnoreOcclusion;                                  // 0x006F(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSelectFaces;                                      // 0x0060(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSelectEdges;                                      // 0x0061(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSelectVertices;                                   // 0x0062(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSelectEdgeLoops;                                  // 0x0063(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSelectEdgeRings;                                  // 0x0064(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bPreferProjectedElement;                           // 0x0065(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSelectDownRay;                                    // 0x0066(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bIgnoreOcclusion;                                  // 0x0067(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PolygonSelectionMechanicProperties">();
+		STATIC_CLASS_IMPL("PolygonSelectionMechanicProperties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PolygonSelectionMechanicProperties")
 	}
 	static class UPolygonSelectionMechanicProperties* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UPolygonSelectionMechanicProperties>();
 	}
 };
-static_assert(alignof(UPolygonSelectionMechanicProperties) == 0x000008, "Wrong alignment on UPolygonSelectionMechanicProperties");
-static_assert(sizeof(UPolygonSelectionMechanicProperties) == 0x000070, "Wrong size on UPolygonSelectionMechanicProperties");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bSelectFaces) == 0x000068, "Member 'UPolygonSelectionMechanicProperties::bSelectFaces' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bSelectEdges) == 0x000069, "Member 'UPolygonSelectionMechanicProperties::bSelectEdges' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bSelectVertices) == 0x00006A, "Member 'UPolygonSelectionMechanicProperties::bSelectVertices' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bSelectEdgeLoops) == 0x00006B, "Member 'UPolygonSelectionMechanicProperties::bSelectEdgeLoops' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bSelectEdgeRings) == 0x00006C, "Member 'UPolygonSelectionMechanicProperties::bSelectEdgeRings' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bPreferProjectedElement) == 0x00006D, "Member 'UPolygonSelectionMechanicProperties::bPreferProjectedElement' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bSelectDownRay) == 0x00006E, "Member 'UPolygonSelectionMechanicProperties::bSelectDownRay' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanicProperties, bIgnoreOcclusion) == 0x00006F, "Member 'UPolygonSelectionMechanicProperties::bIgnoreOcclusion' has a wrong offset!");
+DUMPER7_ASSERTS_UPolygonSelectionMechanicProperties;
 
 // Class ModelingComponents.PolygonSelectionMechanic
-// 0x07F8 (0x0830 - 0x0038)
+// 0x0800 (0x0830 - 0x0030)
 class alignas(0x10) UPolygonSelectionMechanic final : public UInteractionMechanic
 {
 public:
-	uint8                                         Pad_38[0x20];                                      // 0x0038(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
-	class UPolygonSelectionMechanicProperties*    Properties;                                        // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_60[0x4C0];                                     // 0x0060(0x04C0)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_30[0x20];                                      // 0x0030(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
+	class UPolygonSelectionMechanicProperties*    Properties;                                        // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_58[0x4C8];                                     // 0x0058(0x04C8)(Fixing Size After Last Property [ Dumper-7 ])
 	class APreviewGeometryActor*                  PreviewGeometryActor;                              // 0x0520(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	class UTriangleSetComponent*                  DrawnTriangleSetComponent;                         // 0x0528(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 	uint8                                         Pad_530[0x50];                                     // 0x0530(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
@@ -667,44 +689,46 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PolygonSelectionMechanic">();
+		STATIC_CLASS_IMPL("PolygonSelectionMechanic")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PolygonSelectionMechanic")
 	}
 	static class UPolygonSelectionMechanic* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UPolygonSelectionMechanic>();
 	}
 };
-static_assert(alignof(UPolygonSelectionMechanic) == 0x000010, "Wrong alignment on UPolygonSelectionMechanic");
-static_assert(sizeof(UPolygonSelectionMechanic) == 0x000830, "Wrong size on UPolygonSelectionMechanic");
-static_assert(offsetof(UPolygonSelectionMechanic, Properties) == 0x000058, "Member 'UPolygonSelectionMechanic::Properties' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanic, PreviewGeometryActor) == 0x000520, "Member 'UPolygonSelectionMechanic::PreviewGeometryActor' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanic, DrawnTriangleSetComponent) == 0x000528, "Member 'UPolygonSelectionMechanic::DrawnTriangleSetComponent' has a wrong offset!");
-static_assert(offsetof(UPolygonSelectionMechanic, HighlightedFaceMaterial) == 0x000580, "Member 'UPolygonSelectionMechanic::HighlightedFaceMaterial' has a wrong offset!");
+DUMPER7_ASSERTS_UPolygonSelectionMechanic;
 
 // Class ModelingComponents.PreviewGeometryActor
-// 0x0000 (0x0230 - 0x0230)
+// 0x0000 (0x0220 - 0x0220)
 class APreviewGeometryActor final : public AInternalToolFrameworkActor
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PreviewGeometryActor">();
+		STATIC_CLASS_IMPL("PreviewGeometryActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PreviewGeometryActor")
 	}
 	static class APreviewGeometryActor* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<APreviewGeometryActor>();
 	}
 };
-static_assert(alignof(APreviewGeometryActor) == 0x000008, "Wrong alignment on APreviewGeometryActor");
-static_assert(sizeof(APreviewGeometryActor) == 0x000230, "Wrong size on APreviewGeometryActor");
+DUMPER7_ASSERTS_APreviewGeometryActor;
 
 // Class ModelingComponents.PreviewGeometry
-// 0x0058 (0x0088 - 0x0030)
+// 0x0058 (0x0080 - 0x0028)
 class UPreviewGeometry final : public UObject
 {
 public:
-	class APreviewGeometryActor*                  ParentActor;                                       // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TMap<class FString, class ULineSetComponent*> LineSets;                                          // 0x0038(0x0050)(ExportObject, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	class APreviewGeometryActor*                  ParentActor;                                       // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<class FString, class ULineSetComponent*> LineSets;                                          // 0x0030(0x0050)(ExportObject, ContainsInstancedReference, NativeAccessSpecifierPublic)
 
 public:
 	class ULineSetComponent* AddLineSet(const class FString& LineSetIdentifier);
@@ -722,278 +746,272 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PreviewGeometry">();
+		STATIC_CLASS_IMPL("PreviewGeometry")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PreviewGeometry")
 	}
 	static class UPreviewGeometry* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UPreviewGeometry>();
 	}
 };
-static_assert(alignof(UPreviewGeometry) == 0x000008, "Wrong alignment on UPreviewGeometry");
-static_assert(sizeof(UPreviewGeometry) == 0x000088, "Wrong size on UPreviewGeometry");
-static_assert(offsetof(UPreviewGeometry, ParentActor) == 0x000030, "Member 'UPreviewGeometry::ParentActor' has a wrong offset!");
-static_assert(offsetof(UPreviewGeometry, LineSets) == 0x000038, "Member 'UPreviewGeometry::LineSets' has a wrong offset!");
+DUMPER7_ASSERTS_UPreviewGeometry;
 
 // Class ModelingComponents.PreviewMeshActor
-// 0x0000 (0x0230 - 0x0230)
+// 0x0000 (0x0220 - 0x0220)
 class APreviewMeshActor final : public AInternalToolFrameworkActor
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"PreviewMeshActor">();
+		STATIC_CLASS_IMPL("PreviewMeshActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"PreviewMeshActor")
 	}
 	static class APreviewMeshActor* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<APreviewMeshActor>();
 	}
 };
-static_assert(alignof(APreviewMeshActor) == 0x000008, "Wrong alignment on APreviewMeshActor");
-static_assert(sizeof(APreviewMeshActor) == 0x000230, "Wrong size on APreviewMeshActor");
+DUMPER7_ASSERTS_APreviewMeshActor;
 
 // Class ModelingComponents.SimpleDynamicMeshComponent
-// 0x0150 (0x0670 - 0x0520)
+// 0x0150 (0x0610 - 0x04C0)
 class USimpleDynamicMeshComponent final : public UBaseDynamicMeshComponent
 {
 public:
-	EDynamicMeshTangentCalcType                   TangentsType;                                      // 0x0518(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bInvalidateProxyOnChange;                          // 0x0519(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_51A[0x36];                                     // 0x051A(0x0036)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bExplicitShowWireframe;                            // 0x0550(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_551[0x4F];                                     // 0x0551(0x004F)(Fixing Size After Last Property [ Dumper-7 ])
-	bool                                          bDrawOnTop;                                        // 0x05A0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5A1[0xCF];                                     // 0x05A1(0x00CF)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	EDynamicMeshTangentCalcType                   TangentsType;                                      // 0x04C0(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bInvalidateProxyOnChange;                          // 0x04C1(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4C2[0x36];                                     // 0x04C2(0x0036)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bExplicitShowWireframe;                            // 0x04F8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4F9[0x47];                                     // 0x04F9(0x0047)(Fixing Size After Last Property [ Dumper-7 ])
+	bool                                          bDrawOnTop;                                        // 0x0540(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_541[0xCF];                                     // 0x0541(0x00CF)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"SimpleDynamicMeshComponent">();
+		STATIC_CLASS_IMPL("SimpleDynamicMeshComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"SimpleDynamicMeshComponent")
 	}
 	static class USimpleDynamicMeshComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<USimpleDynamicMeshComponent>();
 	}
 };
-static_assert(alignof(USimpleDynamicMeshComponent) == 0x000010, "Wrong alignment on USimpleDynamicMeshComponent");
-static_assert(sizeof(USimpleDynamicMeshComponent) == 0x000670, "Wrong size on USimpleDynamicMeshComponent");
-static_assert(offsetof(USimpleDynamicMeshComponent, TangentsType) == 0x000518, "Member 'USimpleDynamicMeshComponent::TangentsType' has a wrong offset!");
-static_assert(offsetof(USimpleDynamicMeshComponent, bInvalidateProxyOnChange) == 0x000519, "Member 'USimpleDynamicMeshComponent::bInvalidateProxyOnChange' has a wrong offset!");
-static_assert(offsetof(USimpleDynamicMeshComponent, bExplicitShowWireframe) == 0x000550, "Member 'USimpleDynamicMeshComponent::bExplicitShowWireframe' has a wrong offset!");
-static_assert(offsetof(USimpleDynamicMeshComponent, bDrawOnTop) == 0x0005A0, "Member 'USimpleDynamicMeshComponent::bDrawOnTop' has a wrong offset!");
+DUMPER7_ASSERTS_USimpleDynamicMeshComponent;
 
 // Class ModelingComponents.SpaceCurveDeformationMechanicPropertySet
-// 0x0010 (0x0078 - 0x0068)
+// 0x0010 (0x0070 - 0x0060)
 class USpaceCurveDeformationMechanicPropertySet final : public UInteractiveToolPropertySet
 {
 public:
-	ESpaceCurveControlPointTransformMode          TransformMode;                                     // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESpaceCurveControlPointOriginMode             TransformOrigin;                                   // 0x006C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Softness;                                          // 0x0070(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESpaceCurveControlPointFalloffType            SoftFalloff;                                       // 0x0074(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESpaceCurveControlPointTransformMode          TransformMode;                                     // 0x0060(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESpaceCurveControlPointOriginMode             TransformOrigin;                                   // 0x0064(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Softness;                                          // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESpaceCurveControlPointFalloffType            SoftFalloff;                                       // 0x006C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"SpaceCurveDeformationMechanicPropertySet">();
+		STATIC_CLASS_IMPL("SpaceCurveDeformationMechanicPropertySet")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"SpaceCurveDeformationMechanicPropertySet")
 	}
 	static class USpaceCurveDeformationMechanicPropertySet* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<USpaceCurveDeformationMechanicPropertySet>();
 	}
 };
-static_assert(alignof(USpaceCurveDeformationMechanicPropertySet) == 0x000008, "Wrong alignment on USpaceCurveDeformationMechanicPropertySet");
-static_assert(sizeof(USpaceCurveDeformationMechanicPropertySet) == 0x000078, "Wrong size on USpaceCurveDeformationMechanicPropertySet");
-static_assert(offsetof(USpaceCurveDeformationMechanicPropertySet, TransformMode) == 0x000068, "Member 'USpaceCurveDeformationMechanicPropertySet::TransformMode' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanicPropertySet, TransformOrigin) == 0x00006C, "Member 'USpaceCurveDeformationMechanicPropertySet::TransformOrigin' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanicPropertySet, Softness) == 0x000070, "Member 'USpaceCurveDeformationMechanicPropertySet::Softness' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanicPropertySet, SoftFalloff) == 0x000074, "Member 'USpaceCurveDeformationMechanicPropertySet::SoftFalloff' has a wrong offset!");
+DUMPER7_ASSERTS_USpaceCurveDeformationMechanicPropertySet;
 
 // Class ModelingComponents.SpaceCurveDeformationMechanic
-// 0x0288 (0x02C0 - 0x0038)
+// 0x0280 (0x02B0 - 0x0030)
 class alignas(0x10) USpaceCurveDeformationMechanic final : public UInteractionMechanic
 {
 public:
-	uint8                                         Pad_38[0x10];                                      // 0x0038(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
-	class USingleClickInputBehavior*              ClickBehavior;                                     // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UMouseHoverBehavior*                    HoverBehavior;                                     // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_58[0x18];                                      // 0x0058(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	class USpaceCurveDeformationMechanicPropertySet* TransformProperties;                            // 0x0070(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_78[0xF8];                                      // 0x0078(0x00F8)(Fixing Size After Last Property [ Dumper-7 ])
-	class APreviewGeometryActor*                  PreviewGeometryActor;                              // 0x0170(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UPointSetComponent*                     RenderPoints;                                      // 0x0178(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class ULineSetComponent*                      RenderSegments;                                    // 0x0180(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_188[0x38];                                     // 0x0188(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
-	class UTransformProxy*                        PointTransformProxy;                               // 0x01C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UTransformGizmo*                        PointTransformGizmo;                               // 0x01C8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_1D0[0xF0];                                     // 0x01D0(0x00F0)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_30[0x10];                                      // 0x0030(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
+	class USingleClickInputBehavior*              ClickBehavior;                                     // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMouseHoverBehavior*                    HoverBehavior;                                     // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_50[0x18];                                      // 0x0050(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	class USpaceCurveDeformationMechanicPropertySet* TransformProperties;                            // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_70[0xF8];                                      // 0x0070(0x00F8)(Fixing Size After Last Property [ Dumper-7 ])
+	class APreviewGeometryActor*                  PreviewGeometryActor;                              // 0x0168(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UPointSetComponent*                     RenderPoints;                                      // 0x0170(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class ULineSetComponent*                      RenderSegments;                                    // 0x0178(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_180[0x38];                                     // 0x0180(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
+	class UTransformProxy*                        PointTransformProxy;                               // 0x01B8(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UTransformGizmo*                        PointTransformGizmo;                               // 0x01C0(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_1C8[0xE8];                                     // 0x01C8(0x00E8)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"SpaceCurveDeformationMechanic">();
+		STATIC_CLASS_IMPL("SpaceCurveDeformationMechanic")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"SpaceCurveDeformationMechanic")
 	}
 	static class USpaceCurveDeformationMechanic* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<USpaceCurveDeformationMechanic>();
 	}
 };
-static_assert(alignof(USpaceCurveDeformationMechanic) == 0x000010, "Wrong alignment on USpaceCurveDeformationMechanic");
-static_assert(sizeof(USpaceCurveDeformationMechanic) == 0x0002C0, "Wrong size on USpaceCurveDeformationMechanic");
-static_assert(offsetof(USpaceCurveDeformationMechanic, ClickBehavior) == 0x000048, "Member 'USpaceCurveDeformationMechanic::ClickBehavior' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanic, HoverBehavior) == 0x000050, "Member 'USpaceCurveDeformationMechanic::HoverBehavior' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanic, TransformProperties) == 0x000070, "Member 'USpaceCurveDeformationMechanic::TransformProperties' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanic, PreviewGeometryActor) == 0x000170, "Member 'USpaceCurveDeformationMechanic::PreviewGeometryActor' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanic, RenderPoints) == 0x000178, "Member 'USpaceCurveDeformationMechanic::RenderPoints' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanic, RenderSegments) == 0x000180, "Member 'USpaceCurveDeformationMechanic::RenderSegments' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanic, PointTransformProxy) == 0x0001C0, "Member 'USpaceCurveDeformationMechanic::PointTransformProxy' has a wrong offset!");
-static_assert(offsetof(USpaceCurveDeformationMechanic, PointTransformGizmo) == 0x0001C8, "Member 'USpaceCurveDeformationMechanic::PointTransformGizmo' has a wrong offset!");
+DUMPER7_ASSERTS_USpaceCurveDeformationMechanic;
 
 // Class ModelingComponents.SpatialCurveDistanceMechanic
-// 0x03C8 (0x0400 - 0x0038)
+// 0x03C0 (0x03F0 - 0x0030)
 class USpatialCurveDistanceMechanic final : public UInteractionMechanic
 {
 public:
-	uint8                                         Pad_38[0x3C8];                                     // 0x0038(0x03C8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_30[0x3C0];                                     // 0x0030(0x03C0)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"SpatialCurveDistanceMechanic">();
+		STATIC_CLASS_IMPL("SpatialCurveDistanceMechanic")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"SpatialCurveDistanceMechanic")
 	}
 	static class USpatialCurveDistanceMechanic* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<USpatialCurveDistanceMechanic>();
 	}
 };
-static_assert(alignof(USpatialCurveDistanceMechanic) == 0x000008, "Wrong alignment on USpatialCurveDistanceMechanic");
-static_assert(sizeof(USpatialCurveDistanceMechanic) == 0x000400, "Wrong size on USpatialCurveDistanceMechanic");
+DUMPER7_ASSERTS_USpatialCurveDistanceMechanic;
 
 // Class ModelingComponents.TriangleSetComponent
-// 0x00E0 (0x05B0 - 0x04D0)
+// 0x00E0 (0x0560 - 0x0480)
 class UTriangleSetComponent final : public UMeshComponent
 {
 public:
-	struct FBoxSphereBounds                       Bounds;                                            // 0x04D0(0x001C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
-	bool                                          bBoundsDirty;                                      // 0x04EC(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_4ED[0xC3];                                     // 0x04ED(0x00C3)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FBoxSphereBounds                       Bounds;                                            // 0x0478(0x001C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPrivate)
+	bool                                          bBoundsDirty;                                      // 0x0494(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_495[0xCB];                                     // 0x0495(0x00CB)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"TriangleSetComponent">();
+		STATIC_CLASS_IMPL("TriangleSetComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TriangleSetComponent")
 	}
 	static class UTriangleSetComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UTriangleSetComponent>();
 	}
 };
-static_assert(alignof(UTriangleSetComponent) == 0x000010, "Wrong alignment on UTriangleSetComponent");
-static_assert(sizeof(UTriangleSetComponent) == 0x0005B0, "Wrong size on UTriangleSetComponent");
-static_assert(offsetof(UTriangleSetComponent, Bounds) == 0x0004D0, "Member 'UTriangleSetComponent::Bounds' has a wrong offset!");
-static_assert(offsetof(UTriangleSetComponent, bBoundsDirty) == 0x0004EC, "Member 'UTriangleSetComponent::bBoundsDirty' has a wrong offset!");
+DUMPER7_ASSERTS_UTriangleSetComponent;
 
 // Class ModelingComponents.UVLayoutPreviewProperties
-// 0x0018 (0x0080 - 0x0068)
+// 0x0018 (0x0078 - 0x0060)
 class UUVLayoutPreviewProperties final : public UInteractiveToolPropertySet
 {
 public:
-	bool                                          bVisible;                                          // 0x0068(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_69[0x3];                                       // 0x0069(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         ScaleFactor;                                       // 0x006C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EUVLayoutPreviewSide                          WhichSide;                                         // 0x0070(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bShowWireframe;                                    // 0x0074(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_75[0x3];                                       // 0x0075(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              Shift;                                             // 0x0078(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bVisible;                                          // 0x0060(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_61[0x3];                                       // 0x0061(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ScaleFactor;                                       // 0x0064(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EUVLayoutPreviewSide                          WhichSide;                                         // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bShowWireframe;                                    // 0x006C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_6D[0x3];                                       // 0x006D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              Shift;                                             // 0x0070(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"UVLayoutPreviewProperties">();
+		STATIC_CLASS_IMPL("UVLayoutPreviewProperties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UVLayoutPreviewProperties")
 	}
 	static class UUVLayoutPreviewProperties* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UUVLayoutPreviewProperties>();
 	}
 };
-static_assert(alignof(UUVLayoutPreviewProperties) == 0x000008, "Wrong alignment on UUVLayoutPreviewProperties");
-static_assert(sizeof(UUVLayoutPreviewProperties) == 0x000080, "Wrong size on UUVLayoutPreviewProperties");
-static_assert(offsetof(UUVLayoutPreviewProperties, bVisible) == 0x000068, "Member 'UUVLayoutPreviewProperties::bVisible' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreviewProperties, ScaleFactor) == 0x00006C, "Member 'UUVLayoutPreviewProperties::ScaleFactor' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreviewProperties, WhichSide) == 0x000070, "Member 'UUVLayoutPreviewProperties::WhichSide' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreviewProperties, bShowWireframe) == 0x000074, "Member 'UUVLayoutPreviewProperties::bShowWireframe' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreviewProperties, Shift) == 0x000078, "Member 'UUVLayoutPreviewProperties::Shift' has a wrong offset!");
+DUMPER7_ASSERTS_UUVLayoutPreviewProperties;
 
 // Class ModelingComponents.UVLayoutPreview
-// 0x0120 (0x0150 - 0x0030)
+// 0x0118 (0x0140 - 0x0028)
 class alignas(0x10) UUVLayoutPreview final : public UObject
 {
 public:
-	class UUVLayoutPreviewProperties*             Settings;                                          // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UPreviewMesh*                           PreviewMesh;                                       // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTriangleSetComponent*                  TriangleComponent;                                 // 0x0040(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bShowBackingRectangle;                             // 0x0048(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_49[0x7];                                       // 0x0049(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInterface*                     BackingRectangleMaterial;                          // 0x0050(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_58[0xF8];                                      // 0x0058(0x00F8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UUVLayoutPreviewProperties*             Settings;                                          // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UPreviewMesh*                           PreviewMesh;                                       // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTriangleSetComponent*                  TriangleComponent;                                 // 0x0038(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bShowBackingRectangle;                             // 0x0040(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_41[0x7];                                       // 0x0041(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInterface*                     BackingRectangleMaterial;                          // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_50[0xF0];                                      // 0x0050(0x00F0)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"UVLayoutPreview">();
+		STATIC_CLASS_IMPL("UVLayoutPreview")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"UVLayoutPreview")
 	}
 	static class UUVLayoutPreview* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UUVLayoutPreview>();
 	}
 };
-static_assert(alignof(UUVLayoutPreview) == 0x000010, "Wrong alignment on UUVLayoutPreview");
-static_assert(sizeof(UUVLayoutPreview) == 0x000150, "Wrong size on UUVLayoutPreview");
-static_assert(offsetof(UUVLayoutPreview, Settings) == 0x000030, "Member 'UUVLayoutPreview::Settings' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreview, PreviewMesh) == 0x000038, "Member 'UUVLayoutPreview::PreviewMesh' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreview, TriangleComponent) == 0x000040, "Member 'UUVLayoutPreview::TriangleComponent' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreview, bShowBackingRectangle) == 0x000048, "Member 'UUVLayoutPreview::bShowBackingRectangle' has a wrong offset!");
-static_assert(offsetof(UUVLayoutPreview, BackingRectangleMaterial) == 0x000050, "Member 'UUVLayoutPreview::BackingRectangleMaterial' has a wrong offset!");
+DUMPER7_ASSERTS_UUVLayoutPreview;
 
 // Class ModelingComponents.VoxelProperties
-// 0x0018 (0x0080 - 0x0068)
+// 0x0018 (0x0078 - 0x0060)
 class UVoxelProperties final : public UInteractiveToolPropertySet
 {
 public:
-	int32                                         VoxelCount;                                        // 0x0068(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAutoSimplify;                                     // 0x006C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRemoveInternalSurfaces;                           // 0x006D(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_6E[0x2];                                       // 0x006E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	double                                        SimplifyMaxErrorFactor;                            // 0x0070(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	double                                        CubeRootMinComponentVolume;                        // 0x0078(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         VoxelCount;                                        // 0x0060(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAutoSimplify;                                     // 0x0064(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRemoveInternalSurfaces;                           // 0x0065(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_66[0x2];                                       // 0x0066(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	double                                        SimplifyMaxErrorFactor;                            // 0x0068(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	double                                        CubeRootMinComponentVolume;                        // 0x0070(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"VoxelProperties">();
+		STATIC_CLASS_IMPL("VoxelProperties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"VoxelProperties")
 	}
 	static class UVoxelProperties* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UVoxelProperties>();
 	}
 };
-static_assert(alignof(UVoxelProperties) == 0x000008, "Wrong alignment on UVoxelProperties");
-static_assert(sizeof(UVoxelProperties) == 0x000080, "Wrong size on UVoxelProperties");
-static_assert(offsetof(UVoxelProperties, VoxelCount) == 0x000068, "Member 'UVoxelProperties::VoxelCount' has a wrong offset!");
-static_assert(offsetof(UVoxelProperties, bAutoSimplify) == 0x00006C, "Member 'UVoxelProperties::bAutoSimplify' has a wrong offset!");
-static_assert(offsetof(UVoxelProperties, bRemoveInternalSurfaces) == 0x00006D, "Member 'UVoxelProperties::bRemoveInternalSurfaces' has a wrong offset!");
-static_assert(offsetof(UVoxelProperties, SimplifyMaxErrorFactor) == 0x000070, "Member 'UVoxelProperties::SimplifyMaxErrorFactor' has a wrong offset!");
-static_assert(offsetof(UVoxelProperties, CubeRootMinComponentVolume) == 0x000078, "Member 'UVoxelProperties::CubeRootMinComponentVolume' has a wrong offset!");
+DUMPER7_ASSERTS_UVoxelProperties;
 
 // Class ModelingComponents.WeightMapSetProperties
-// 0x0028 (0x0090 - 0x0068)
+// 0x0020 (0x0080 - 0x0060)
 class UWeightMapSetProperties : public UInteractiveToolPropertySet
 {
 public:
-	class FName                                   WeightMap;                                         // 0x0068(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class FString>                         WeightMapsList;                                    // 0x0078(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	bool                                          bInvertWeightMap;                                  // 0x0088(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_89[0x7];                                       // 0x0089(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   WeightMap;                                         // 0x0060(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class FString>                         WeightMapsList;                                    // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	bool                                          bInvertWeightMap;                                  // 0x0078(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_79[0x7];                                       // 0x0079(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	TArray<class FString> GetWeightMapsFunc();
@@ -1001,18 +1019,18 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"WeightMapSetProperties">();
+		STATIC_CLASS_IMPL("WeightMapSetProperties")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"WeightMapSetProperties")
 	}
 	static class UWeightMapSetProperties* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UWeightMapSetProperties>();
 	}
 };
-static_assert(alignof(UWeightMapSetProperties) == 0x000008, "Wrong alignment on UWeightMapSetProperties");
-static_assert(sizeof(UWeightMapSetProperties) == 0x000090, "Wrong size on UWeightMapSetProperties");
-static_assert(offsetof(UWeightMapSetProperties, WeightMap) == 0x000068, "Member 'UWeightMapSetProperties::WeightMap' has a wrong offset!");
-static_assert(offsetof(UWeightMapSetProperties, WeightMapsList) == 0x000078, "Member 'UWeightMapSetProperties::WeightMapsList' has a wrong offset!");
-static_assert(offsetof(UWeightMapSetProperties, bInvertWeightMap) == 0x000088, "Member 'UWeightMapSetProperties::bInvertWeightMap' has a wrong offset!");
+DUMPER7_ASSERTS_UWeightMapSetProperties;
 
 }
 

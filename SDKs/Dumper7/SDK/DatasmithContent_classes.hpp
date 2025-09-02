@@ -12,652 +12,613 @@
 
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "DatasmithContent_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
-#include "DatasmithContent_structs.hpp"
 
 
 namespace SDK
 {
 
-// Class DatasmithContent.DatasmithAssetImportData
-// 0x0000 (0x0030 - 0x0030)
-class UDatasmithAssetImportData : public UAssetImportData
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"DatasmithAssetImportData">();
-	}
-	static class UDatasmithAssetImportData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDatasmithAssetImportData>();
-	}
-};
-static_assert(alignof(UDatasmithAssetImportData) == 0x000008, "Wrong alignment on UDatasmithAssetImportData");
-static_assert(sizeof(UDatasmithAssetImportData) == 0x000030, "Wrong size on UDatasmithAssetImportData");
-
-// Class DatasmithContent.DatasmithStaticMeshImportData
-// 0x0000 (0x0030 - 0x0030)
-class UDatasmithStaticMeshImportData : public UDatasmithAssetImportData
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"DatasmithStaticMeshImportData">();
-	}
-	static class UDatasmithStaticMeshImportData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDatasmithStaticMeshImportData>();
-	}
-};
-static_assert(alignof(UDatasmithStaticMeshImportData) == 0x000008, "Wrong alignment on UDatasmithStaticMeshImportData");
-static_assert(sizeof(UDatasmithStaticMeshImportData) == 0x000030, "Wrong size on UDatasmithStaticMeshImportData");
-
-// Class DatasmithContent.DatasmithStaticMeshCADImportData
-// 0x0000 (0x0030 - 0x0030)
-class UDatasmithStaticMeshCADImportData final : public UDatasmithStaticMeshImportData
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"DatasmithStaticMeshCADImportData">();
-	}
-	static class UDatasmithStaticMeshCADImportData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDatasmithStaticMeshCADImportData>();
-	}
-};
-static_assert(alignof(UDatasmithStaticMeshCADImportData) == 0x000008, "Wrong alignment on UDatasmithStaticMeshCADImportData");
-static_assert(sizeof(UDatasmithStaticMeshCADImportData) == 0x000030, "Wrong size on UDatasmithStaticMeshCADImportData");
-
 // Class DatasmithContent.DatasmithObjectTemplate
-// 0x0008 (0x0038 - 0x0030)
+// 0x0008 (0x0030 - 0x0028)
 class UDatasmithObjectTemplate : public UObject
 {
 public:
-	uint8                                         Pad_30[0x8];                                       // 0x0030(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithObjectTemplate">();
+		STATIC_CLASS_IMPL("DatasmithObjectTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithObjectTemplate")
 	}
 	static class UDatasmithObjectTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithObjectTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithObjectTemplate) == 0x000008, "Wrong alignment on UDatasmithObjectTemplate");
-static_assert(sizeof(UDatasmithObjectTemplate) == 0x000038, "Wrong size on UDatasmithObjectTemplate");
+DUMPER7_ASSERTS_UDatasmithObjectTemplate;
 
 // Class DatasmithContent.DatasmithActorTemplate
-// 0x00A0 (0x00D8 - 0x0038)
+// 0x00A0 (0x00D0 - 0x0030)
 class UDatasmithActorTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	TSet<class FName>                             Layers;                                            // 0x0038(0x0050)(NativeAccessSpecifierPublic)
-	TSet<class FName>                             Tags;                                              // 0x0088(0x0050)(NativeAccessSpecifierPublic)
+	TSet<class FName>                             Layers;                                            // 0x0030(0x0050)(NativeAccessSpecifierPublic)
+	TSet<class FName>                             Tags;                                              // 0x0080(0x0050)(NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithActorTemplate">();
+		STATIC_CLASS_IMPL("DatasmithActorTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithActorTemplate")
 	}
 	static class UDatasmithActorTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithActorTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithActorTemplate) == 0x000008, "Wrong alignment on UDatasmithActorTemplate");
-static_assert(sizeof(UDatasmithActorTemplate) == 0x0000D8, "Wrong size on UDatasmithActorTemplate");
-static_assert(offsetof(UDatasmithActorTemplate, Layers) == 0x000038, "Member 'UDatasmithActorTemplate::Layers' has a wrong offset!");
-static_assert(offsetof(UDatasmithActorTemplate, Tags) == 0x000088, "Member 'UDatasmithActorTemplate::Tags' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithActorTemplate;
 
 // Class DatasmithContent.DatasmithAdditionalData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithAdditionalData final : public UObject
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithAdditionalData">();
+		STATIC_CLASS_IMPL("DatasmithAdditionalData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithAdditionalData")
 	}
 	static class UDatasmithAdditionalData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithAdditionalData>();
 	}
 };
-static_assert(alignof(UDatasmithAdditionalData) == 0x000008, "Wrong alignment on UDatasmithAdditionalData");
-static_assert(sizeof(UDatasmithAdditionalData) == 0x000030, "Wrong size on UDatasmithAdditionalData");
+DUMPER7_ASSERTS_UDatasmithAdditionalData;
 
 // Class DatasmithContent.DatasmithAreaLightActor
-// 0x0058 (0x0288 - 0x0230)
+// 0x0058 (0x0278 - 0x0220)
 class ADatasmithAreaLightActor final : public AActor
 {
 public:
-	EComponentMobility                            Mobility;                                          // 0x0230(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithAreaLightActorType                  LightType;                                         // 0x0231(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithAreaLightActorShape                 LightShape;                                        // 0x0232(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_233[0x1];                                      // 0x0233(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              Dimensions;                                        // 0x0234(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Intensity;                                         // 0x023C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ELightUnits                                   IntensityUnits;                                    // 0x0240(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_241[0x3];                                      // 0x0241(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FLinearColor                           Color;                                             // 0x0244(0x0010)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Temperature;                                       // 0x0254(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTextureLightProfile*                   IESTexture;                                        // 0x0258(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseIESBrightness;                                 // 0x0260(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_261[0x3];                                      // 0x0261(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         IESBrightnessScale;                                // 0x0264(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               Rotation;                                          // 0x0268(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         SourceRadius;                                      // 0x0274(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SourceLength;                                      // 0x0278(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         AttenuationRadius;                                 // 0x027C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SpotlightInnerAngle;                               // 0x0280(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SpotlightOuterAngle;                               // 0x0284(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EComponentMobility                            Mobility;                                          // 0x0220(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithAreaLightActorType                  LightType;                                         // 0x0221(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithAreaLightActorShape                 LightShape;                                        // 0x0222(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_223[0x1];                                      // 0x0223(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              Dimensions;                                        // 0x0224(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Intensity;                                         // 0x022C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ELightUnits                                   IntensityUnits;                                    // 0x0230(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_231[0x3];                                      // 0x0231(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FLinearColor                           Color;                                             // 0x0234(0x0010)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Temperature;                                       // 0x0244(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTextureLightProfile*                   IESTexture;                                        // 0x0248(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseIESBrightness;                                 // 0x0250(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_251[0x3];                                      // 0x0251(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         IESBrightnessScale;                                // 0x0254(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               Rotation;                                          // 0x0258(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         SourceRadius;                                      // 0x0264(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SourceLength;                                      // 0x0268(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         AttenuationRadius;                                 // 0x026C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SpotlightInnerAngle;                               // 0x0270(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SpotlightOuterAngle;                               // 0x0274(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithAreaLightActor">();
+		STATIC_CLASS_IMPL("DatasmithAreaLightActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithAreaLightActor")
 	}
 	static class ADatasmithAreaLightActor* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<ADatasmithAreaLightActor>();
 	}
 };
-static_assert(alignof(ADatasmithAreaLightActor) == 0x000008, "Wrong alignment on ADatasmithAreaLightActor");
-static_assert(sizeof(ADatasmithAreaLightActor) == 0x000288, "Wrong size on ADatasmithAreaLightActor");
-static_assert(offsetof(ADatasmithAreaLightActor, Mobility) == 0x000230, "Member 'ADatasmithAreaLightActor::Mobility' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, LightType) == 0x000231, "Member 'ADatasmithAreaLightActor::LightType' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, LightShape) == 0x000232, "Member 'ADatasmithAreaLightActor::LightShape' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, Dimensions) == 0x000234, "Member 'ADatasmithAreaLightActor::Dimensions' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, Intensity) == 0x00023C, "Member 'ADatasmithAreaLightActor::Intensity' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, IntensityUnits) == 0x000240, "Member 'ADatasmithAreaLightActor::IntensityUnits' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, Color) == 0x000244, "Member 'ADatasmithAreaLightActor::Color' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, Temperature) == 0x000254, "Member 'ADatasmithAreaLightActor::Temperature' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, IESTexture) == 0x000258, "Member 'ADatasmithAreaLightActor::IESTexture' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, bUseIESBrightness) == 0x000260, "Member 'ADatasmithAreaLightActor::bUseIESBrightness' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, IESBrightnessScale) == 0x000264, "Member 'ADatasmithAreaLightActor::IESBrightnessScale' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, Rotation) == 0x000268, "Member 'ADatasmithAreaLightActor::Rotation' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, SourceRadius) == 0x000274, "Member 'ADatasmithAreaLightActor::SourceRadius' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, SourceLength) == 0x000278, "Member 'ADatasmithAreaLightActor::SourceLength' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, AttenuationRadius) == 0x00027C, "Member 'ADatasmithAreaLightActor::AttenuationRadius' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, SpotlightInnerAngle) == 0x000280, "Member 'ADatasmithAreaLightActor::SpotlightInnerAngle' has a wrong offset!");
-static_assert(offsetof(ADatasmithAreaLightActor, SpotlightOuterAngle) == 0x000284, "Member 'ADatasmithAreaLightActor::SpotlightOuterAngle' has a wrong offset!");
+DUMPER7_ASSERTS_ADatasmithAreaLightActor;
 
 // Class DatasmithContent.DatasmithAreaLightActorTemplate
-// 0x0078 (0x00B0 - 0x0038)
+// 0x0070 (0x00A0 - 0x0030)
 class UDatasmithAreaLightActorTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	EDatasmithAreaLightActorType                  LightType;                                         // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithAreaLightActorShape                 LightShape;                                        // 0x0039(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3A[0x2];                                       // 0x003A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              Dimensions;                                        // 0x003C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           Color;                                             // 0x0044(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Intensity;                                         // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ELightUnits                                   IntensityUnits;                                    // 0x0058(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_59[0x3];                                       // 0x0059(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Temperature;                                       // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TSoftObjectPtr<class UTextureLightProfile>    IESTexture;                                        // 0x0060(0x0030)(UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bUseIESBrightness;                                 // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_91[0x3];                                       // 0x0091(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         IESBrightnessScale;                                // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FRotator                               Rotation;                                          // 0x0098(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         SourceRadius;                                      // 0x00A4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SourceLength;                                      // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         AttenuationRadius;                                 // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithAreaLightActorType                  LightType;                                         // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithAreaLightActorShape                 LightShape;                                        // 0x0031(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_32[0x2];                                       // 0x0032(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector2D                              Dimensions;                                        // 0x0034(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           Color;                                             // 0x003C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Intensity;                                         // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ELightUnits                                   IntensityUnits;                                    // 0x0050(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Temperature;                                       // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSoftObjectPtr<class UTextureLightProfile>    IESTexture;                                        // 0x0058(0x0028)(UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bUseIESBrightness;                                 // 0x0080(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_81[0x3];                                       // 0x0081(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         IESBrightnessScale;                                // 0x0084(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FRotator                               Rotation;                                          // 0x0088(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         SourceRadius;                                      // 0x0094(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SourceLength;                                      // 0x0098(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         AttenuationRadius;                                 // 0x009C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithAreaLightActorTemplate">();
+		STATIC_CLASS_IMPL("DatasmithAreaLightActorTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithAreaLightActorTemplate")
 	}
 	static class UDatasmithAreaLightActorTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithAreaLightActorTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithAreaLightActorTemplate) == 0x000008, "Wrong alignment on UDatasmithAreaLightActorTemplate");
-static_assert(sizeof(UDatasmithAreaLightActorTemplate) == 0x0000B0, "Wrong size on UDatasmithAreaLightActorTemplate");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, LightType) == 0x000038, "Member 'UDatasmithAreaLightActorTemplate::LightType' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, LightShape) == 0x000039, "Member 'UDatasmithAreaLightActorTemplate::LightShape' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, Dimensions) == 0x00003C, "Member 'UDatasmithAreaLightActorTemplate::Dimensions' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, Color) == 0x000044, "Member 'UDatasmithAreaLightActorTemplate::Color' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, Intensity) == 0x000054, "Member 'UDatasmithAreaLightActorTemplate::Intensity' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, IntensityUnits) == 0x000058, "Member 'UDatasmithAreaLightActorTemplate::IntensityUnits' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, Temperature) == 0x00005C, "Member 'UDatasmithAreaLightActorTemplate::Temperature' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, IESTexture) == 0x000060, "Member 'UDatasmithAreaLightActorTemplate::IESTexture' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, bUseIESBrightness) == 0x000090, "Member 'UDatasmithAreaLightActorTemplate::bUseIESBrightness' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, IESBrightnessScale) == 0x000094, "Member 'UDatasmithAreaLightActorTemplate::IESBrightnessScale' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, Rotation) == 0x000098, "Member 'UDatasmithAreaLightActorTemplate::Rotation' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, SourceRadius) == 0x0000A4, "Member 'UDatasmithAreaLightActorTemplate::SourceRadius' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, SourceLength) == 0x0000A8, "Member 'UDatasmithAreaLightActorTemplate::SourceLength' has a wrong offset!");
-static_assert(offsetof(UDatasmithAreaLightActorTemplate, AttenuationRadius) == 0x0000AC, "Member 'UDatasmithAreaLightActorTemplate::AttenuationRadius' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithAreaLightActorTemplate;
+
+// Class DatasmithContent.DatasmithAssetImportData
+// 0x0000 (0x0028 - 0x0028)
+class UDatasmithAssetImportData : public UAssetImportData
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DatasmithAssetImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithAssetImportData")
+	}
+	static class UDatasmithAssetImportData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDatasmithAssetImportData>();
+	}
+};
+DUMPER7_ASSERTS_UDatasmithAssetImportData;
+
+// Class DatasmithContent.DatasmithStaticMeshImportData
+// 0x0000 (0x0028 - 0x0028)
+class UDatasmithStaticMeshImportData : public UDatasmithAssetImportData
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DatasmithStaticMeshImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithStaticMeshImportData")
+	}
+	static class UDatasmithStaticMeshImportData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDatasmithStaticMeshImportData>();
+	}
+};
+DUMPER7_ASSERTS_UDatasmithStaticMeshImportData;
+
+// Class DatasmithContent.DatasmithStaticMeshCADImportData
+// 0x0000 (0x0028 - 0x0028)
+class UDatasmithStaticMeshCADImportData final : public UDatasmithStaticMeshImportData
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DatasmithStaticMeshCADImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithStaticMeshCADImportData")
+	}
+	static class UDatasmithStaticMeshCADImportData* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDatasmithStaticMeshCADImportData>();
+	}
+};
+DUMPER7_ASSERTS_UDatasmithStaticMeshCADImportData;
 
 // Class DatasmithContent.DatasmithSceneImportData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithSceneImportData : public UAssetImportData
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithSceneImportData")
 	}
 	static class UDatasmithSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithSceneImportData) == 0x000008, "Wrong alignment on UDatasmithSceneImportData");
-static_assert(sizeof(UDatasmithSceneImportData) == 0x000030, "Wrong size on UDatasmithSceneImportData");
+DUMPER7_ASSERTS_UDatasmithSceneImportData;
 
 // Class DatasmithContent.DatasmithTranslatedSceneImportData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithTranslatedSceneImportData final : public UDatasmithSceneImportData
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithTranslatedSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithTranslatedSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithTranslatedSceneImportData")
 	}
 	static class UDatasmithTranslatedSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithTranslatedSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithTranslatedSceneImportData) == 0x000008, "Wrong alignment on UDatasmithTranslatedSceneImportData");
-static_assert(sizeof(UDatasmithTranslatedSceneImportData) == 0x000030, "Wrong size on UDatasmithTranslatedSceneImportData");
+DUMPER7_ASSERTS_UDatasmithTranslatedSceneImportData;
 
 // Class DatasmithContent.DatasmithCADImportSceneData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithCADImportSceneData final : public UDatasmithSceneImportData
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithCADImportSceneData">();
+		STATIC_CLASS_IMPL("DatasmithCADImportSceneData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithCADImportSceneData")
 	}
 	static class UDatasmithCADImportSceneData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithCADImportSceneData>();
 	}
 };
-static_assert(alignof(UDatasmithCADImportSceneData) == 0x000008, "Wrong alignment on UDatasmithCADImportSceneData");
-static_assert(sizeof(UDatasmithCADImportSceneData) == 0x000030, "Wrong size on UDatasmithCADImportSceneData");
+DUMPER7_ASSERTS_UDatasmithCADImportSceneData;
 
 // Class DatasmithContent.DatasmithMDLSceneImportData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithMDLSceneImportData final : public UDatasmithSceneImportData
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithMDLSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithMDLSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithMDLSceneImportData")
 	}
 	static class UDatasmithMDLSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithMDLSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithMDLSceneImportData) == 0x000008, "Wrong alignment on UDatasmithMDLSceneImportData");
-static_assert(sizeof(UDatasmithMDLSceneImportData) == 0x000030, "Wrong size on UDatasmithMDLSceneImportData");
+DUMPER7_ASSERTS_UDatasmithMDLSceneImportData;
 
 // Class DatasmithContent.DatasmithGLTFSceneImportData
-// 0x0048 (0x0078 - 0x0030)
+// 0x0048 (0x0070 - 0x0028)
 class UDatasmithGLTFSceneImportData final : public UDatasmithSceneImportData
 {
 public:
-	class FString                                 Generator;                                         // 0x0030(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Version;                                           // 0x0040(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 Author;                                            // 0x0048(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 License;                                           // 0x0058(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 Source;                                            // 0x0068(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 Generator;                                         // 0x0028(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Version;                                           // 0x0038(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Author;                                            // 0x0040(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 License;                                           // 0x0050(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 Source;                                            // 0x0060(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithGLTFSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithGLTFSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithGLTFSceneImportData")
 	}
 	static class UDatasmithGLTFSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithGLTFSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithGLTFSceneImportData) == 0x000008, "Wrong alignment on UDatasmithGLTFSceneImportData");
-static_assert(sizeof(UDatasmithGLTFSceneImportData) == 0x000078, "Wrong size on UDatasmithGLTFSceneImportData");
-static_assert(offsetof(UDatasmithGLTFSceneImportData, Generator) == 0x000030, "Member 'UDatasmithGLTFSceneImportData::Generator' has a wrong offset!");
-static_assert(offsetof(UDatasmithGLTFSceneImportData, Version) == 0x000040, "Member 'UDatasmithGLTFSceneImportData::Version' has a wrong offset!");
-static_assert(offsetof(UDatasmithGLTFSceneImportData, Author) == 0x000048, "Member 'UDatasmithGLTFSceneImportData::Author' has a wrong offset!");
-static_assert(offsetof(UDatasmithGLTFSceneImportData, License) == 0x000058, "Member 'UDatasmithGLTFSceneImportData::License' has a wrong offset!");
-static_assert(offsetof(UDatasmithGLTFSceneImportData, Source) == 0x000068, "Member 'UDatasmithGLTFSceneImportData::Source' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithGLTFSceneImportData;
 
 // Class DatasmithContent.DatasmithStaticMeshGLTFImportData
-// 0x0010 (0x0040 - 0x0030)
+// 0x0010 (0x0038 - 0x0028)
 class UDatasmithStaticMeshGLTFImportData final : public UDatasmithStaticMeshImportData
 {
 public:
-	class FString                                 SourceMeshName;                                    // 0x0030(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 SourceMeshName;                                    // 0x0028(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithStaticMeshGLTFImportData">();
+		STATIC_CLASS_IMPL("DatasmithStaticMeshGLTFImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithStaticMeshGLTFImportData")
 	}
 	static class UDatasmithStaticMeshGLTFImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithStaticMeshGLTFImportData>();
 	}
 };
-static_assert(alignof(UDatasmithStaticMeshGLTFImportData) == 0x000008, "Wrong alignment on UDatasmithStaticMeshGLTFImportData");
-static_assert(sizeof(UDatasmithStaticMeshGLTFImportData) == 0x000040, "Wrong size on UDatasmithStaticMeshGLTFImportData");
-static_assert(offsetof(UDatasmithStaticMeshGLTFImportData, SourceMeshName) == 0x000030, "Member 'UDatasmithStaticMeshGLTFImportData::SourceMeshName' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithStaticMeshGLTFImportData;
 
 // Class DatasmithContent.DatasmithFBXSceneImportData
-// 0x0020 (0x0050 - 0x0030)
+// 0x0020 (0x0048 - 0x0028)
 class UDatasmithFBXSceneImportData : public UDatasmithSceneImportData
 {
 public:
-	bool                                          bGenerateLightmapUVs;                              // 0x0030(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 TexturesDir;                                       // 0x0038(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         IntermediateSerialization;                         // 0x0048(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bColorizeMaterials;                                // 0x0049(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_4A[0x6];                                       // 0x004A(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bGenerateLightmapUVs;                              // 0x0028(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 TexturesDir;                                       // 0x0030(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         IntermediateSerialization;                         // 0x0040(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bColorizeMaterials;                                // 0x0041(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_42[0x6];                                       // 0x0042(0x0006)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithFBXSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithFBXSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithFBXSceneImportData")
 	}
 	static class UDatasmithFBXSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithFBXSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithFBXSceneImportData) == 0x000008, "Wrong alignment on UDatasmithFBXSceneImportData");
-static_assert(sizeof(UDatasmithFBXSceneImportData) == 0x000050, "Wrong size on UDatasmithFBXSceneImportData");
-static_assert(offsetof(UDatasmithFBXSceneImportData, bGenerateLightmapUVs) == 0x000030, "Member 'UDatasmithFBXSceneImportData::bGenerateLightmapUVs' has a wrong offset!");
-static_assert(offsetof(UDatasmithFBXSceneImportData, TexturesDir) == 0x000038, "Member 'UDatasmithFBXSceneImportData::TexturesDir' has a wrong offset!");
-static_assert(offsetof(UDatasmithFBXSceneImportData, IntermediateSerialization) == 0x000048, "Member 'UDatasmithFBXSceneImportData::IntermediateSerialization' has a wrong offset!");
-static_assert(offsetof(UDatasmithFBXSceneImportData, bColorizeMaterials) == 0x000049, "Member 'UDatasmithFBXSceneImportData::bColorizeMaterials' has a wrong offset!");
-
-// Class DatasmithContent.DatasmithOptionsBase
-// 0x0000 (0x0030 - 0x0030)
-class UDatasmithOptionsBase : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"DatasmithOptionsBase">();
-	}
-	static class UDatasmithOptionsBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDatasmithOptionsBase>();
-	}
-};
-static_assert(alignof(UDatasmithOptionsBase) == 0x000008, "Wrong alignment on UDatasmithOptionsBase");
-static_assert(sizeof(UDatasmithOptionsBase) == 0x000030, "Wrong size on UDatasmithOptionsBase");
-
-// Class DatasmithContent.DatasmithCommonTessellationOptions
-// 0x0010 (0x0040 - 0x0030)
-class UDatasmithCommonTessellationOptions final : public UDatasmithOptionsBase
-{
-public:
-	struct FDatasmithTessellationOptions          Options;                                           // 0x0030(0x0010)(Edit, BlueprintVisible, Config, NoDestructor, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"DatasmithCommonTessellationOptions">();
-	}
-	static class UDatasmithCommonTessellationOptions* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDatasmithCommonTessellationOptions>();
-	}
-};
-static_assert(alignof(UDatasmithCommonTessellationOptions) == 0x000008, "Wrong alignment on UDatasmithCommonTessellationOptions");
-static_assert(sizeof(UDatasmithCommonTessellationOptions) == 0x000040, "Wrong size on UDatasmithCommonTessellationOptions");
-static_assert(offsetof(UDatasmithCommonTessellationOptions, Options) == 0x000030, "Member 'UDatasmithCommonTessellationOptions::Options' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithFBXSceneImportData;
 
 // Class DatasmithContent.DatasmithDeltaGenAssetImportData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithDeltaGenAssetImportData final : public UDatasmithAssetImportData
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithDeltaGenAssetImportData">();
+		STATIC_CLASS_IMPL("DatasmithDeltaGenAssetImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithDeltaGenAssetImportData")
 	}
 	static class UDatasmithDeltaGenAssetImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithDeltaGenAssetImportData>();
 	}
 };
-static_assert(alignof(UDatasmithDeltaGenAssetImportData) == 0x000008, "Wrong alignment on UDatasmithDeltaGenAssetImportData");
-static_assert(sizeof(UDatasmithDeltaGenAssetImportData) == 0x000030, "Wrong size on UDatasmithDeltaGenAssetImportData");
+DUMPER7_ASSERTS_UDatasmithDeltaGenAssetImportData;
 
 // Class DatasmithContent.DatasmithDeltaGenSceneImportData
-// 0x0048 (0x0098 - 0x0050)
+// 0x0048 (0x0090 - 0x0048)
 class UDatasmithDeltaGenSceneImportData final : public UDatasmithFBXSceneImportData
 {
 public:
-	bool                                          bMergeNodes;                                       // 0x0050(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bOptimizeDuplicatedNodes;                          // 0x0051(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bRemoveInvisibleNodes;                             // 0x0052(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSimplifyNodeHierarchy;                            // 0x0053(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bImportVar;                                        // 0x0054(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_55[0x3];                                       // 0x0055(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 VarPath;                                           // 0x0058(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bImportPos;                                        // 0x0068(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_69[0x7];                                       // 0x0069(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 PosPath;                                           // 0x0070(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bImportTml;                                        // 0x0080(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 TmlPath;                                           // 0x0088(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMergeNodes;                                       // 0x0048(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bOptimizeDuplicatedNodes;                          // 0x0049(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bRemoveInvisibleNodes;                             // 0x004A(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSimplifyNodeHierarchy;                            // 0x004B(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bImportVar;                                        // 0x004C(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4D[0x3];                                       // 0x004D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 VarPath;                                           // 0x0050(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bImportPos;                                        // 0x0060(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 PosPath;                                           // 0x0068(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bImportTml;                                        // 0x0078(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_79[0x7];                                       // 0x0079(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 TmlPath;                                           // 0x0080(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithDeltaGenSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithDeltaGenSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithDeltaGenSceneImportData")
 	}
 	static class UDatasmithDeltaGenSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithDeltaGenSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithDeltaGenSceneImportData) == 0x000008, "Wrong alignment on UDatasmithDeltaGenSceneImportData");
-static_assert(sizeof(UDatasmithDeltaGenSceneImportData) == 0x000098, "Wrong size on UDatasmithDeltaGenSceneImportData");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, bMergeNodes) == 0x000050, "Member 'UDatasmithDeltaGenSceneImportData::bMergeNodes' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, bOptimizeDuplicatedNodes) == 0x000051, "Member 'UDatasmithDeltaGenSceneImportData::bOptimizeDuplicatedNodes' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, bRemoveInvisibleNodes) == 0x000052, "Member 'UDatasmithDeltaGenSceneImportData::bRemoveInvisibleNodes' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, bSimplifyNodeHierarchy) == 0x000053, "Member 'UDatasmithDeltaGenSceneImportData::bSimplifyNodeHierarchy' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, bImportVar) == 0x000054, "Member 'UDatasmithDeltaGenSceneImportData::bImportVar' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, VarPath) == 0x000058, "Member 'UDatasmithDeltaGenSceneImportData::VarPath' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, bImportPos) == 0x000068, "Member 'UDatasmithDeltaGenSceneImportData::bImportPos' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, PosPath) == 0x000070, "Member 'UDatasmithDeltaGenSceneImportData::PosPath' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, bImportTml) == 0x000080, "Member 'UDatasmithDeltaGenSceneImportData::bImportTml' has a wrong offset!");
-static_assert(offsetof(UDatasmithDeltaGenSceneImportData, TmlPath) == 0x000088, "Member 'UDatasmithDeltaGenSceneImportData::TmlPath' has a wrong offset!");
-
-// Class DatasmithContent.DatasmithCineCameraComponentTemplate
-// 0x0068 (0x00A0 - 0x0038)
-class UDatasmithCineCameraComponentTemplate final : public UDatasmithObjectTemplate
-{
-public:
-	struct FDatasmithCameraFilmbackSettingsTemplate FilmbackSettings;                                // 0x0038(0x0008)(NoDestructor, NativeAccessSpecifierPublic)
-	struct FDatasmithCameraLensSettingsTemplate   LensSettings;                                      // 0x0040(0x0004)(NoDestructor, NativeAccessSpecifierPublic)
-	struct FDatasmithCameraFocusSettingsTemplate  FocusSettings;                                     // 0x0044(0x0008)(NoDestructor, NativeAccessSpecifierPublic)
-	float                                         CurrentFocalLength;                                // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CurrentAperture;                                   // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_54[0xC];                                       // 0x0054(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FDatasmithPostProcessSettingsTemplate  PostProcessSettings;                               // 0x0060(0x0040)(NoDestructor, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"DatasmithCineCameraComponentTemplate">();
-	}
-	static class UDatasmithCineCameraComponentTemplate* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDatasmithCineCameraComponentTemplate>();
-	}
-};
-static_assert(alignof(UDatasmithCineCameraComponentTemplate) == 0x000010, "Wrong alignment on UDatasmithCineCameraComponentTemplate");
-static_assert(sizeof(UDatasmithCineCameraComponentTemplate) == 0x0000A0, "Wrong size on UDatasmithCineCameraComponentTemplate");
-static_assert(offsetof(UDatasmithCineCameraComponentTemplate, FilmbackSettings) == 0x000038, "Member 'UDatasmithCineCameraComponentTemplate::FilmbackSettings' has a wrong offset!");
-static_assert(offsetof(UDatasmithCineCameraComponentTemplate, LensSettings) == 0x000040, "Member 'UDatasmithCineCameraComponentTemplate::LensSettings' has a wrong offset!");
-static_assert(offsetof(UDatasmithCineCameraComponentTemplate, FocusSettings) == 0x000044, "Member 'UDatasmithCineCameraComponentTemplate::FocusSettings' has a wrong offset!");
-static_assert(offsetof(UDatasmithCineCameraComponentTemplate, CurrentFocalLength) == 0x00004C, "Member 'UDatasmithCineCameraComponentTemplate::CurrentFocalLength' has a wrong offset!");
-static_assert(offsetof(UDatasmithCineCameraComponentTemplate, CurrentAperture) == 0x000050, "Member 'UDatasmithCineCameraComponentTemplate::CurrentAperture' has a wrong offset!");
-static_assert(offsetof(UDatasmithCineCameraComponentTemplate, PostProcessSettings) == 0x000060, "Member 'UDatasmithCineCameraComponentTemplate::PostProcessSettings' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithDeltaGenSceneImportData;
 
 // Class DatasmithContent.DatasmithVREDAssetImportData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithVREDAssetImportData final : public UDatasmithAssetImportData
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithVREDAssetImportData">();
+		STATIC_CLASS_IMPL("DatasmithVREDAssetImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithVREDAssetImportData")
 	}
 	static class UDatasmithVREDAssetImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithVREDAssetImportData>();
 	}
 };
-static_assert(alignof(UDatasmithVREDAssetImportData) == 0x000008, "Wrong alignment on UDatasmithVREDAssetImportData");
-static_assert(sizeof(UDatasmithVREDAssetImportData) == 0x000030, "Wrong size on UDatasmithVREDAssetImportData");
+DUMPER7_ASSERTS_UDatasmithVREDAssetImportData;
 
 // Class DatasmithContent.DatasmithVREDSceneImportData
-// 0x0060 (0x00B0 - 0x0050)
+// 0x0060 (0x00A8 - 0x0048)
 class UDatasmithVREDSceneImportData final : public UDatasmithFBXSceneImportData
 {
 public:
-	bool                                          bMergeNodes;                                       // 0x0050(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bOptimizeDuplicatedNodes;                          // 0x0051(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bImportMats;                                       // 0x0052(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_53[0x5];                                       // 0x0053(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 MatsPath;                                          // 0x0058(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bImportVar;                                        // 0x0068(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bCleanVar;                                         // 0x0069(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_6A[0x6];                                       // 0x006A(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 VarPath;                                           // 0x0070(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bImportLightInfo;                                  // 0x0080(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_81[0x7];                                       // 0x0081(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 LightInfoPath;                                     // 0x0088(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bImportClipInfo;                                   // 0x0098(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 ClipInfoPath;                                      // 0x00A0(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMergeNodes;                                       // 0x0048(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bOptimizeDuplicatedNodes;                          // 0x0049(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bImportMats;                                       // 0x004A(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4B[0x5];                                       // 0x004B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 MatsPath;                                          // 0x0050(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bImportVar;                                        // 0x0060(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bCleanVar;                                         // 0x0061(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_62[0x6];                                       // 0x0062(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 VarPath;                                           // 0x0068(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bImportLightInfo;                                  // 0x0078(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_79[0x7];                                       // 0x0079(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 LightInfoPath;                                     // 0x0080(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bImportClipInfo;                                   // 0x0090(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_91[0x7];                                       // 0x0091(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 ClipInfoPath;                                      // 0x0098(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithVREDSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithVREDSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithVREDSceneImportData")
 	}
 	static class UDatasmithVREDSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithVREDSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithVREDSceneImportData) == 0x000008, "Wrong alignment on UDatasmithVREDSceneImportData");
-static_assert(sizeof(UDatasmithVREDSceneImportData) == 0x0000B0, "Wrong size on UDatasmithVREDSceneImportData");
-static_assert(offsetof(UDatasmithVREDSceneImportData, bMergeNodes) == 0x000050, "Member 'UDatasmithVREDSceneImportData::bMergeNodes' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, bOptimizeDuplicatedNodes) == 0x000051, "Member 'UDatasmithVREDSceneImportData::bOptimizeDuplicatedNodes' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, bImportMats) == 0x000052, "Member 'UDatasmithVREDSceneImportData::bImportMats' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, MatsPath) == 0x000058, "Member 'UDatasmithVREDSceneImportData::MatsPath' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, bImportVar) == 0x000068, "Member 'UDatasmithVREDSceneImportData::bImportVar' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, bCleanVar) == 0x000069, "Member 'UDatasmithVREDSceneImportData::bCleanVar' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, VarPath) == 0x000070, "Member 'UDatasmithVREDSceneImportData::VarPath' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, bImportLightInfo) == 0x000080, "Member 'UDatasmithVREDSceneImportData::bImportLightInfo' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, LightInfoPath) == 0x000088, "Member 'UDatasmithVREDSceneImportData::LightInfoPath' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, bImportClipInfo) == 0x000098, "Member 'UDatasmithVREDSceneImportData::bImportClipInfo' has a wrong offset!");
-static_assert(offsetof(UDatasmithVREDSceneImportData, ClipInfoPath) == 0x0000A0, "Member 'UDatasmithVREDSceneImportData::ClipInfoPath' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithVREDSceneImportData;
 
 // Class DatasmithContent.DatasmithIFCSceneImportData
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithIFCSceneImportData final : public UDatasmithSceneImportData
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithIFCSceneImportData">();
+		STATIC_CLASS_IMPL("DatasmithIFCSceneImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithIFCSceneImportData")
 	}
 	static class UDatasmithIFCSceneImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithIFCSceneImportData>();
 	}
 };
-static_assert(alignof(UDatasmithIFCSceneImportData) == 0x000008, "Wrong alignment on UDatasmithIFCSceneImportData");
-static_assert(sizeof(UDatasmithIFCSceneImportData) == 0x000030, "Wrong size on UDatasmithIFCSceneImportData");
+DUMPER7_ASSERTS_UDatasmithIFCSceneImportData;
 
 // Class DatasmithContent.DatasmithStaticMeshIFCImportData
-// 0x0010 (0x0040 - 0x0030)
+// 0x0010 (0x0038 - 0x0028)
 class UDatasmithStaticMeshIFCImportData final : public UDatasmithStaticMeshImportData
 {
 public:
-	class FString                                 SourceGlobalId;                                    // 0x0030(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 SourceGlobalId;                                    // 0x0028(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithStaticMeshIFCImportData">();
+		STATIC_CLASS_IMPL("DatasmithStaticMeshIFCImportData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithStaticMeshIFCImportData")
 	}
 	static class UDatasmithStaticMeshIFCImportData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithStaticMeshIFCImportData>();
 	}
 };
-static_assert(alignof(UDatasmithStaticMeshIFCImportData) == 0x000008, "Wrong alignment on UDatasmithStaticMeshIFCImportData");
-static_assert(sizeof(UDatasmithStaticMeshIFCImportData) == 0x000040, "Wrong size on UDatasmithStaticMeshIFCImportData");
-static_assert(offsetof(UDatasmithStaticMeshIFCImportData, SourceGlobalId) == 0x000030, "Member 'UDatasmithStaticMeshIFCImportData::SourceGlobalId' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithStaticMeshIFCImportData;
 
 // Class DatasmithContent.DatasmithAssetUserData
-// 0x0050 (0x0080 - 0x0030)
+// 0x0050 (0x0078 - 0x0028)
 class UDatasmithAssetUserData final : public UAssetUserData
 {
 public:
-	TMap<class FName, class FString>              MetaData;                                          // 0x0030(0x0050)(Edit, BlueprintVisible, EditConst, AdvancedDisplay, NativeAccessSpecifierPublic)
+	TMap<class FName, class FString>              MetaData;                                          // 0x0028(0x0050)(Edit, BlueprintVisible, EditConst, AdvancedDisplay, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithAssetUserData">();
+		STATIC_CLASS_IMPL("DatasmithAssetUserData")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithAssetUserData")
 	}
 	static class UDatasmithAssetUserData* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithAssetUserData>();
 	}
 };
-static_assert(alignof(UDatasmithAssetUserData) == 0x000008, "Wrong alignment on UDatasmithAssetUserData");
-static_assert(sizeof(UDatasmithAssetUserData) == 0x000080, "Wrong size on UDatasmithAssetUserData");
-static_assert(offsetof(UDatasmithAssetUserData, MetaData) == 0x000030, "Member 'UDatasmithAssetUserData::MetaData' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithAssetUserData;
 
 // Class DatasmithContent.DatasmithCineCameraActorTemplate
-// 0x0038 (0x0070 - 0x0038)
+// 0x0030 (0x0060 - 0x0030)
 class UDatasmithCineCameraActorTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	struct FDatasmithCameraLookatTrackingSettingsTemplate LookatTrackingSettings;                    // 0x0038(0x0038)(NativeAccessSpecifierPublic)
+	struct FDatasmithCameraLookatTrackingSettingsTemplate LookatTrackingSettings;                    // 0x0030(0x0030)(NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithCineCameraActorTemplate">();
+		STATIC_CLASS_IMPL("DatasmithCineCameraActorTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithCineCameraActorTemplate")
 	}
 	static class UDatasmithCineCameraActorTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithCineCameraActorTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithCineCameraActorTemplate) == 0x000008, "Wrong alignment on UDatasmithCineCameraActorTemplate");
-static_assert(sizeof(UDatasmithCineCameraActorTemplate) == 0x000070, "Wrong size on UDatasmithCineCameraActorTemplate");
-static_assert(offsetof(UDatasmithCineCameraActorTemplate, LookatTrackingSettings) == 0x000038, "Member 'UDatasmithCineCameraActorTemplate::LookatTrackingSettings' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithCineCameraActorTemplate;
+
+// Class DatasmithContent.DatasmithCineCameraComponentTemplate
+// 0x0060 (0x0090 - 0x0030)
+class UDatasmithCineCameraComponentTemplate final : public UDatasmithObjectTemplate
+{
+public:
+	struct FDatasmithCameraFilmbackSettingsTemplate FilmbackSettings;                                // 0x0030(0x0008)(NoDestructor, NativeAccessSpecifierPublic)
+	struct FDatasmithCameraLensSettingsTemplate   LensSettings;                                      // 0x0038(0x0004)(NoDestructor, NativeAccessSpecifierPublic)
+	struct FDatasmithCameraFocusSettingsTemplate  FocusSettings;                                     // 0x003C(0x0008)(NoDestructor, NativeAccessSpecifierPublic)
+	float                                         CurrentFocalLength;                                // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CurrentAperture;                                   // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4C[0x4];                                       // 0x004C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FDatasmithPostProcessSettingsTemplate  PostProcessSettings;                               // 0x0050(0x0040)(NoDestructor, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DatasmithCineCameraComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithCineCameraComponentTemplate")
+	}
+	static class UDatasmithCineCameraComponentTemplate* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDatasmithCineCameraComponentTemplate>();
+	}
+};
+DUMPER7_ASSERTS_UDatasmithCineCameraComponentTemplate;
 
 // Class DatasmithContent.DatasmithContentBlueprintLibrary
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UDatasmithContentBlueprintLibrary final : public UBlueprintFunctionLibrary
 {
 public:
@@ -668,67 +629,73 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithContentBlueprintLibrary">();
+		STATIC_CLASS_IMPL("DatasmithContentBlueprintLibrary")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithContentBlueprintLibrary")
 	}
 	static class UDatasmithContentBlueprintLibrary* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithContentBlueprintLibrary>();
 	}
 };
-static_assert(alignof(UDatasmithContentBlueprintLibrary) == 0x000008, "Wrong alignment on UDatasmithContentBlueprintLibrary");
-static_assert(sizeof(UDatasmithContentBlueprintLibrary) == 0x000030, "Wrong size on UDatasmithContentBlueprintLibrary");
+DUMPER7_ASSERTS_UDatasmithContentBlueprintLibrary;
 
 // Class DatasmithContent.DatasmithCustomActionBase
-// 0x0008 (0x0038 - 0x0030)
+// 0x0008 (0x0030 - 0x0028)
 class UDatasmithCustomActionBase final : public UObject
 {
 public:
-	uint8                                         Pad_30[0x8];                                       // 0x0030(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithCustomActionBase">();
+		STATIC_CLASS_IMPL("DatasmithCustomActionBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithCustomActionBase")
 	}
 	static class UDatasmithCustomActionBase* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithCustomActionBase>();
 	}
 };
-static_assert(alignof(UDatasmithCustomActionBase) == 0x000008, "Wrong alignment on UDatasmithCustomActionBase");
-static_assert(sizeof(UDatasmithCustomActionBase) == 0x000038, "Wrong size on UDatasmithCustomActionBase");
+DUMPER7_ASSERTS_UDatasmithCustomActionBase;
 
 // Class DatasmithContent.DatasmithDecalComponentTemplate
-// 0x0018 (0x0050 - 0x0038)
+// 0x0018 (0x0048 - 0x0030)
 class UDatasmithDecalComponentTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	int32                                         SortOrder;                                         // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                DecalSize;                                         // 0x003C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UMaterialInterface*                     Material;                                          // 0x0048(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SortOrder;                                         // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                DecalSize;                                         // 0x0034(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMaterialInterface*                     Material;                                          // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithDecalComponentTemplate">();
+		STATIC_CLASS_IMPL("DatasmithDecalComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithDecalComponentTemplate")
 	}
 	static class UDatasmithDecalComponentTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithDecalComponentTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithDecalComponentTemplate) == 0x000008, "Wrong alignment on UDatasmithDecalComponentTemplate");
-static_assert(sizeof(UDatasmithDecalComponentTemplate) == 0x000050, "Wrong size on UDatasmithDecalComponentTemplate");
-static_assert(offsetof(UDatasmithDecalComponentTemplate, SortOrder) == 0x000038, "Member 'UDatasmithDecalComponentTemplate::SortOrder' has a wrong offset!");
-static_assert(offsetof(UDatasmithDecalComponentTemplate, DecalSize) == 0x00003C, "Member 'UDatasmithDecalComponentTemplate::DecalSize' has a wrong offset!");
-static_assert(offsetof(UDatasmithDecalComponentTemplate, Material) == 0x000048, "Member 'UDatasmithDecalComponentTemplate::Material' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithDecalComponentTemplate;
 
 // Class DatasmithContent.DatasmithImportedSequencesActor
-// 0x0010 (0x0240 - 0x0230)
+// 0x0010 (0x0230 - 0x0220)
 class ADatasmithImportedSequencesActor final : public AActor
 {
 public:
-	TArray<class ULevelSequence*>                 ImportedSequences;                                 // 0x0230(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<class ULevelSequence*>                 ImportedSequences;                                 // 0x0220(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 
 public:
 	void PlayLevelSequence(class ULevelSequence* SequenceToPlay);
@@ -736,382 +703,416 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithImportedSequencesActor">();
+		STATIC_CLASS_IMPL("DatasmithImportedSequencesActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithImportedSequencesActor")
 	}
 	static class ADatasmithImportedSequencesActor* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<ADatasmithImportedSequencesActor>();
 	}
 };
-static_assert(alignof(ADatasmithImportedSequencesActor) == 0x000008, "Wrong alignment on ADatasmithImportedSequencesActor");
-static_assert(sizeof(ADatasmithImportedSequencesActor) == 0x000240, "Wrong size on ADatasmithImportedSequencesActor");
-static_assert(offsetof(ADatasmithImportedSequencesActor, ImportedSequences) == 0x000230, "Member 'ADatasmithImportedSequencesActor::ImportedSequences' has a wrong offset!");
+DUMPER7_ASSERTS_ADatasmithImportedSequencesActor;
 
-// Class DatasmithContent.DatasmithImportOptions
-// 0x0050 (0x0080 - 0x0030)
-class UDatasmithImportOptions final : public UDatasmithOptionsBase
+// Class DatasmithContent.DatasmithOptionsBase
+// 0x0000 (0x0028 - 0x0028)
+class UDatasmithOptionsBase : public UObject
 {
 public:
-	EDatasmithImportSearchPackagePolicy           SearchPackagePolicy;                               // 0x0030(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithImportAssetConflictPolicy           MaterialConflictPolicy;                            // 0x0031(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithImportAssetConflictPolicy           TextureConflictPolicy;                             // 0x0032(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithImportActorPolicy                   StaticMeshActorImportPolicy;                       // 0x0033(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithImportActorPolicy                   LightImportPolicy;                                 // 0x0034(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithImportActorPolicy                   CameraImportPolicy;                                // 0x0035(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithImportActorPolicy                   OtherActorImportPolicy;                            // 0x0036(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EDatasmithImportMaterialQuality               MaterialQuality;                                   // 0x0037(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FDatasmithImportBaseOptions            BaseOptions;                                       // 0x0038(0x0018)(Edit, BlueprintVisible, Config, NoDestructor, NativeAccessSpecifierPublic)
-	struct FDatasmithReimportOptions              ReimportOptions;                                   // 0x0050(0x0002)(Edit, BlueprintVisible, Config, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_52[0x6];                                       // 0x0052(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 FileName;                                          // 0x0058(0x0010)(BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 FilePath;                                          // 0x0068(0x0010)(BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_78[0x8];                                       // 0x0078(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DatasmithOptionsBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithOptionsBase")
+	}
+	static class UDatasmithOptionsBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDatasmithOptionsBase>();
+	}
+};
+DUMPER7_ASSERTS_UDatasmithOptionsBase;
+
+// Class DatasmithContent.DatasmithCommonTessellationOptions
+// 0x0010 (0x0038 - 0x0028)
+class UDatasmithCommonTessellationOptions final : public UDatasmithOptionsBase
+{
+public:
+	struct FDatasmithTessellationOptions          Options;                                           // 0x0028(0x0010)(Edit, BlueprintVisible, Config, NoDestructor, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithImportOptions">();
+		STATIC_CLASS_IMPL("DatasmithCommonTessellationOptions")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithCommonTessellationOptions")
+	}
+	static class UDatasmithCommonTessellationOptions* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UDatasmithCommonTessellationOptions>();
+	}
+};
+DUMPER7_ASSERTS_UDatasmithCommonTessellationOptions;
+
+// Class DatasmithContent.DatasmithImportOptions
+// 0x0048 (0x0070 - 0x0028)
+class UDatasmithImportOptions final : public UDatasmithOptionsBase
+{
+public:
+	EDatasmithImportSearchPackagePolicy           SearchPackagePolicy;                               // 0x0028(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithImportAssetConflictPolicy           MaterialConflictPolicy;                            // 0x0029(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithImportAssetConflictPolicy           TextureConflictPolicy;                             // 0x002A(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithImportActorPolicy                   StaticMeshActorImportPolicy;                       // 0x002B(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithImportActorPolicy                   LightImportPolicy;                                 // 0x002C(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithImportActorPolicy                   CameraImportPolicy;                                // 0x002D(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithImportActorPolicy                   OtherActorImportPolicy;                            // 0x002E(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EDatasmithImportMaterialQuality               MaterialQuality;                                   // 0x002F(0x0001)(ZeroConstructor, Transient, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FDatasmithImportBaseOptions            BaseOptions;                                       // 0x0030(0x0014)(Edit, BlueprintVisible, Config, NoDestructor, NativeAccessSpecifierPublic)
+	struct FDatasmithReimportOptions              ReimportOptions;                                   // 0x0044(0x0002)(Edit, BlueprintVisible, Config, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_46[0x2];                                       // 0x0046(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 Filename;                                          // 0x0048(0x0010)(BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 FilePath;                                          // 0x0058(0x0010)(BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_68[0x8];                                       // 0x0068(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("DatasmithImportOptions")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithImportOptions")
 	}
 	static class UDatasmithImportOptions* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithImportOptions>();
 	}
 };
-static_assert(alignof(UDatasmithImportOptions) == 0x000008, "Wrong alignment on UDatasmithImportOptions");
-static_assert(sizeof(UDatasmithImportOptions) == 0x000080, "Wrong size on UDatasmithImportOptions");
-static_assert(offsetof(UDatasmithImportOptions, SearchPackagePolicy) == 0x000030, "Member 'UDatasmithImportOptions::SearchPackagePolicy' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, MaterialConflictPolicy) == 0x000031, "Member 'UDatasmithImportOptions::MaterialConflictPolicy' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, TextureConflictPolicy) == 0x000032, "Member 'UDatasmithImportOptions::TextureConflictPolicy' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, StaticMeshActorImportPolicy) == 0x000033, "Member 'UDatasmithImportOptions::StaticMeshActorImportPolicy' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, LightImportPolicy) == 0x000034, "Member 'UDatasmithImportOptions::LightImportPolicy' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, CameraImportPolicy) == 0x000035, "Member 'UDatasmithImportOptions::CameraImportPolicy' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, OtherActorImportPolicy) == 0x000036, "Member 'UDatasmithImportOptions::OtherActorImportPolicy' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, MaterialQuality) == 0x000037, "Member 'UDatasmithImportOptions::MaterialQuality' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, BaseOptions) == 0x000038, "Member 'UDatasmithImportOptions::BaseOptions' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, ReimportOptions) == 0x000050, "Member 'UDatasmithImportOptions::ReimportOptions' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, FileName) == 0x000058, "Member 'UDatasmithImportOptions::FileName' has a wrong offset!");
-static_assert(offsetof(UDatasmithImportOptions, FilePath) == 0x000068, "Member 'UDatasmithImportOptions::FilePath' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithImportOptions;
 
 // Class DatasmithContent.DatasmithLandscapeTemplate
-// 0x0010 (0x0048 - 0x0038)
+// 0x0010 (0x0040 - 0x0030)
 class UDatasmithLandscapeTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	class UMaterialInterface*                     LandscapeMaterial;                                 // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         StaticLightingLOD;                                 // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_44[0x4];                                       // 0x0044(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UMaterialInterface*                     LandscapeMaterial;                                 // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         StaticLightingLOD;                                 // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithLandscapeTemplate">();
+		STATIC_CLASS_IMPL("DatasmithLandscapeTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithLandscapeTemplate")
 	}
 	static class UDatasmithLandscapeTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithLandscapeTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithLandscapeTemplate) == 0x000008, "Wrong alignment on UDatasmithLandscapeTemplate");
-static_assert(sizeof(UDatasmithLandscapeTemplate) == 0x000048, "Wrong size on UDatasmithLandscapeTemplate");
-static_assert(offsetof(UDatasmithLandscapeTemplate, LandscapeMaterial) == 0x000038, "Member 'UDatasmithLandscapeTemplate::LandscapeMaterial' has a wrong offset!");
-static_assert(offsetof(UDatasmithLandscapeTemplate, StaticLightingLOD) == 0x000040, "Member 'UDatasmithLandscapeTemplate::StaticLightingLOD' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithLandscapeTemplate;
 
 // Class DatasmithContent.DatasmithLightComponentTemplate
-// 0x0038 (0x0070 - 0x0038)
+// 0x0038 (0x0068 - 0x0030)
 class UDatasmithLightComponentTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	uint8                                         bVisible : 1;                                      // 0x0038(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         BitPad_38_1 : 7;                                   // 0x0038(0x0001)(Fixing Bit-Field Size For New Byte [ Dumper-7 ])
-	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	uint8                                         CastShadows : 1;                                   // 0x003C(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bUseTemperature : 1;                               // 0x003C(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bUseIESBrightness : 1;                             // 0x003C(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         Intensity;                                         // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Temperature;                                       // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         IESBrightnessScale;                                // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FLinearColor                           LightColor;                                        // 0x004C(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInterface*                     LightFunctionMaterial;                             // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTextureLightProfile*                   IESTexture;                                        // 0x0068(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         bVisible : 1;                                      // 0x0030(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         BitPad_30_1 : 7;                                   // 0x0030(0x0001)(Fixing Bit-Field Size For New Byte [ Dumper-7 ])
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         CastShadows : 1;                                   // 0x0034(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bUseTemperature : 1;                               // 0x0034(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bUseIESBrightness : 1;                             // 0x0034(0x0001)(BitIndex: 0x02, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Intensity;                                         // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Temperature;                                       // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         IESBrightnessScale;                                // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FLinearColor                           LightColor;                                        // 0x0044(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UMaterialInterface*                     LightFunctionMaterial;                             // 0x0058(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTextureLightProfile*                   IESTexture;                                        // 0x0060(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithLightComponentTemplate">();
+		STATIC_CLASS_IMPL("DatasmithLightComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithLightComponentTemplate")
 	}
 	static class UDatasmithLightComponentTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithLightComponentTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithLightComponentTemplate) == 0x000008, "Wrong alignment on UDatasmithLightComponentTemplate");
-static_assert(sizeof(UDatasmithLightComponentTemplate) == 0x000070, "Wrong size on UDatasmithLightComponentTemplate");
-static_assert(offsetof(UDatasmithLightComponentTemplate, Intensity) == 0x000040, "Member 'UDatasmithLightComponentTemplate::Intensity' has a wrong offset!");
-static_assert(offsetof(UDatasmithLightComponentTemplate, Temperature) == 0x000044, "Member 'UDatasmithLightComponentTemplate::Temperature' has a wrong offset!");
-static_assert(offsetof(UDatasmithLightComponentTemplate, IESBrightnessScale) == 0x000048, "Member 'UDatasmithLightComponentTemplate::IESBrightnessScale' has a wrong offset!");
-static_assert(offsetof(UDatasmithLightComponentTemplate, LightColor) == 0x00004C, "Member 'UDatasmithLightComponentTemplate::LightColor' has a wrong offset!");
-static_assert(offsetof(UDatasmithLightComponentTemplate, LightFunctionMaterial) == 0x000060, "Member 'UDatasmithLightComponentTemplate::LightFunctionMaterial' has a wrong offset!");
-static_assert(offsetof(UDatasmithLightComponentTemplate, IESTexture) == 0x000068, "Member 'UDatasmithLightComponentTemplate::IESTexture' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithLightComponentTemplate;
 
 // Class DatasmithContent.DatasmithMaterialInstanceTemplate
-// 0x0170 (0x01A8 - 0x0038)
+// 0x0168 (0x0198 - 0x0030)
 class UDatasmithMaterialInstanceTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	TSoftObjectPtr<class UMaterialInterface>      ParentMaterial;                                    // 0x0038(0x0030)(UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TMap<class FName, float>                      ScalarParameterValues;                             // 0x0068(0x0050)(NativeAccessSpecifierPublic)
-	TMap<class FName, struct FLinearColor>        VectorParameterValues;                             // 0x00B8(0x0050)(NativeAccessSpecifierPublic)
-	TMap<class FName, TSoftObjectPtr<class UTexture>> TextureParameterValues;                        // 0x0108(0x0050)(UObjectWrapper, NativeAccessSpecifierPublic)
-	struct FDatasmithStaticParameterSetTemplate   StaticParameters;                                  // 0x0158(0x0050)(NativeAccessSpecifierPublic)
+	TSoftObjectPtr<class UMaterialInterface>      ParentMaterial;                                    // 0x0030(0x0028)(UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<class FName, float>                      ScalarParameterValues;                             // 0x0058(0x0050)(NativeAccessSpecifierPublic)
+	TMap<class FName, struct FLinearColor>        VectorParameterValues;                             // 0x00A8(0x0050)(NativeAccessSpecifierPublic)
+	TMap<class FName, TSoftObjectPtr<class UTexture>> TextureParameterValues;                        // 0x00F8(0x0050)(UObjectWrapper, NativeAccessSpecifierPublic)
+	struct FDatasmithStaticParameterSetTemplate   StaticParameters;                                  // 0x0148(0x0050)(NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithMaterialInstanceTemplate">();
+		STATIC_CLASS_IMPL("DatasmithMaterialInstanceTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithMaterialInstanceTemplate")
 	}
 	static class UDatasmithMaterialInstanceTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithMaterialInstanceTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithMaterialInstanceTemplate) == 0x000008, "Wrong alignment on UDatasmithMaterialInstanceTemplate");
-static_assert(sizeof(UDatasmithMaterialInstanceTemplate) == 0x0001A8, "Wrong size on UDatasmithMaterialInstanceTemplate");
-static_assert(offsetof(UDatasmithMaterialInstanceTemplate, ParentMaterial) == 0x000038, "Member 'UDatasmithMaterialInstanceTemplate::ParentMaterial' has a wrong offset!");
-static_assert(offsetof(UDatasmithMaterialInstanceTemplate, ScalarParameterValues) == 0x000068, "Member 'UDatasmithMaterialInstanceTemplate::ScalarParameterValues' has a wrong offset!");
-static_assert(offsetof(UDatasmithMaterialInstanceTemplate, VectorParameterValues) == 0x0000B8, "Member 'UDatasmithMaterialInstanceTemplate::VectorParameterValues' has a wrong offset!");
-static_assert(offsetof(UDatasmithMaterialInstanceTemplate, TextureParameterValues) == 0x000108, "Member 'UDatasmithMaterialInstanceTemplate::TextureParameterValues' has a wrong offset!");
-static_assert(offsetof(UDatasmithMaterialInstanceTemplate, StaticParameters) == 0x000158, "Member 'UDatasmithMaterialInstanceTemplate::StaticParameters' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithMaterialInstanceTemplate;
 
 // Class DatasmithContent.DatasmithPointLightComponentTemplate
-// 0x0010 (0x0048 - 0x0038)
+// 0x0010 (0x0040 - 0x0030)
 class UDatasmithPointLightComponentTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	ELightUnits                                   IntensityUnits;                                    // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         SourceRadius;                                      // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         SourceLength;                                      // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         AttenuationRadius;                                 // 0x0044(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ELightUnits                                   IntensityUnits;                                    // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         SourceRadius;                                      // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         SourceLength;                                      // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         AttenuationRadius;                                 // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithPointLightComponentTemplate">();
+		STATIC_CLASS_IMPL("DatasmithPointLightComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithPointLightComponentTemplate")
 	}
 	static class UDatasmithPointLightComponentTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithPointLightComponentTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithPointLightComponentTemplate) == 0x000008, "Wrong alignment on UDatasmithPointLightComponentTemplate");
-static_assert(sizeof(UDatasmithPointLightComponentTemplate) == 0x000048, "Wrong size on UDatasmithPointLightComponentTemplate");
-static_assert(offsetof(UDatasmithPointLightComponentTemplate, IntensityUnits) == 0x000038, "Member 'UDatasmithPointLightComponentTemplate::IntensityUnits' has a wrong offset!");
-static_assert(offsetof(UDatasmithPointLightComponentTemplate, SourceRadius) == 0x00003C, "Member 'UDatasmithPointLightComponentTemplate::SourceRadius' has a wrong offset!");
-static_assert(offsetof(UDatasmithPointLightComponentTemplate, SourceLength) == 0x000040, "Member 'UDatasmithPointLightComponentTemplate::SourceLength' has a wrong offset!");
-static_assert(offsetof(UDatasmithPointLightComponentTemplate, AttenuationRadius) == 0x000044, "Member 'UDatasmithPointLightComponentTemplate::AttenuationRadius' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithPointLightComponentTemplate;
 
 // Class DatasmithContent.DatasmithPostProcessVolumeTemplate
-// 0x0058 (0x0090 - 0x0038)
+// 0x0050 (0x0080 - 0x0030)
 class UDatasmithPostProcessVolumeTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	uint8                                         Pad_38[0x8];                                       // 0x0038(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FDatasmithPostProcessSettingsTemplate  Settings;                                          // 0x0040(0x0040)(NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         bEnabled : 1;                                      // 0x0080(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bUnbound : 1;                                      // 0x0080(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         Pad_81[0xF];                                       // 0x0081(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FDatasmithPostProcessSettingsTemplate  Settings;                                          // 0x0030(0x0040)(NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         bEnabled : 1;                                      // 0x0070(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         bUnbound : 1;                                      // 0x0070(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
+	uint8                                         Pad_71[0xF];                                       // 0x0071(0x000F)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithPostProcessVolumeTemplate">();
+		STATIC_CLASS_IMPL("DatasmithPostProcessVolumeTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithPostProcessVolumeTemplate")
 	}
 	static class UDatasmithPostProcessVolumeTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithPostProcessVolumeTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithPostProcessVolumeTemplate) == 0x000010, "Wrong alignment on UDatasmithPostProcessVolumeTemplate");
-static_assert(sizeof(UDatasmithPostProcessVolumeTemplate) == 0x000090, "Wrong size on UDatasmithPostProcessVolumeTemplate");
-static_assert(offsetof(UDatasmithPostProcessVolumeTemplate, Settings) == 0x000040, "Member 'UDatasmithPostProcessVolumeTemplate::Settings' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithPostProcessVolumeTemplate;
 
 // Class DatasmithContent.DatasmithScene
-// 0x0008 (0x0038 - 0x0030)
+// 0x0008 (0x0030 - 0x0028)
 class UDatasmithScene final : public UObject
 {
 public:
-	uint8                                         Pad_30[0x8];                                       // 0x0030(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithScene">();
+		STATIC_CLASS_IMPL("DatasmithScene")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithScene")
 	}
 	static class UDatasmithScene* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithScene>();
 	}
 };
-static_assert(alignof(UDatasmithScene) == 0x000008, "Wrong alignment on UDatasmithScene");
-static_assert(sizeof(UDatasmithScene) == 0x000038, "Wrong size on UDatasmithScene");
+DUMPER7_ASSERTS_UDatasmithScene;
 
 // Class DatasmithContent.DatasmithSceneActor
-// 0x0058 (0x0288 - 0x0230)
+// 0x0058 (0x0278 - 0x0220)
 class ADatasmithSceneActor final : public AActor
 {
 public:
-	class UDatasmithScene*                        Scene;                                             // 0x0230(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TMap<class FName, TSoftObjectPtr<class AActor>> RelatedActors;                                   // 0x0238(0x0050)(Edit, EditConst, AdvancedDisplay, UObjectWrapper, NativeAccessSpecifierPublic)
+	class UDatasmithScene*                        Scene;                                             // 0x0220(0x0008)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<class FName, TSoftObjectPtr<class AActor>> RelatedActors;                                   // 0x0228(0x0050)(Edit, EditConst, AdvancedDisplay, UObjectWrapper, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithSceneActor">();
+		STATIC_CLASS_IMPL("DatasmithSceneActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithSceneActor")
 	}
 	static class ADatasmithSceneActor* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<ADatasmithSceneActor>();
 	}
 };
-static_assert(alignof(ADatasmithSceneActor) == 0x000008, "Wrong alignment on ADatasmithSceneActor");
-static_assert(sizeof(ADatasmithSceneActor) == 0x000288, "Wrong size on ADatasmithSceneActor");
-static_assert(offsetof(ADatasmithSceneActor, Scene) == 0x000230, "Member 'ADatasmithSceneActor::Scene' has a wrong offset!");
-static_assert(offsetof(ADatasmithSceneActor, RelatedActors) == 0x000238, "Member 'ADatasmithSceneActor::RelatedActors' has a wrong offset!");
+DUMPER7_ASSERTS_ADatasmithSceneActor;
 
 // Class DatasmithContent.DatasmithSceneComponentTemplate
-// 0x00C8 (0x0100 - 0x0038)
+// 0x00C0 (0x00F0 - 0x0030)
 class UDatasmithSceneComponentTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	uint8                                         Pad_38[0x8];                                       // 0x0038(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FTransform                             RelativeTransform;                                 // 0x0040(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-	EComponentMobility                            Mobility;                                          // 0x0070(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_71[0x7];                                       // 0x0071(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class USceneComponent>         AttachParent;                                      // 0x0078(0x0030)(ExportObject, InstancedReference, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bVisible;                                          // 0x00A8(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A9[0x7];                                       // 0x00A9(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSet<class FName>                             Tags;                                              // 0x00B0(0x0050)(NativeAccessSpecifierPublic)
+	struct FTransform                             RelativeTransform;                                 // 0x0030(0x0030)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	EComponentMobility                            Mobility;                                          // 0x0060(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_61[0x7];                                       // 0x0061(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSoftObjectPtr<class USceneComponent>         AttachParent;                                      // 0x0068(0x0028)(ExportObject, InstancedReference, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bVisible;                                          // 0x0090(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_91[0x7];                                       // 0x0091(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	TSet<class FName>                             Tags;                                              // 0x0098(0x0050)(NativeAccessSpecifierPublic)
+	uint8                                         Pad_E8[0x8];                                       // 0x00E8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithSceneComponentTemplate">();
+		STATIC_CLASS_IMPL("DatasmithSceneComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithSceneComponentTemplate")
 	}
 	static class UDatasmithSceneComponentTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithSceneComponentTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithSceneComponentTemplate) == 0x000010, "Wrong alignment on UDatasmithSceneComponentTemplate");
-static_assert(sizeof(UDatasmithSceneComponentTemplate) == 0x000100, "Wrong size on UDatasmithSceneComponentTemplate");
-static_assert(offsetof(UDatasmithSceneComponentTemplate, RelativeTransform) == 0x000040, "Member 'UDatasmithSceneComponentTemplate::RelativeTransform' has a wrong offset!");
-static_assert(offsetof(UDatasmithSceneComponentTemplate, Mobility) == 0x000070, "Member 'UDatasmithSceneComponentTemplate::Mobility' has a wrong offset!");
-static_assert(offsetof(UDatasmithSceneComponentTemplate, AttachParent) == 0x000078, "Member 'UDatasmithSceneComponentTemplate::AttachParent' has a wrong offset!");
-static_assert(offsetof(UDatasmithSceneComponentTemplate, bVisible) == 0x0000A8, "Member 'UDatasmithSceneComponentTemplate::bVisible' has a wrong offset!");
-static_assert(offsetof(UDatasmithSceneComponentTemplate, Tags) == 0x0000B0, "Member 'UDatasmithSceneComponentTemplate::Tags' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithSceneComponentTemplate;
 
 // Class DatasmithContent.DatasmithSkyLightComponentTemplate
-// 0x0010 (0x0048 - 0x0038)
+// 0x0010 (0x0040 - 0x0030)
 class UDatasmithSkyLightComponentTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	ESkyLightSourceType                           SourceType;                                        // 0x0038(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_39[0x3];                                       // 0x0039(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         CubemapResolution;                                 // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTextureCube*                           Cubemap;                                           // 0x0040(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESkyLightSourceType                           SourceType;                                        // 0x0030(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         CubemapResolution;                                 // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTextureCube*                           Cubemap;                                           // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithSkyLightComponentTemplate">();
+		STATIC_CLASS_IMPL("DatasmithSkyLightComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithSkyLightComponentTemplate")
 	}
 	static class UDatasmithSkyLightComponentTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithSkyLightComponentTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithSkyLightComponentTemplate) == 0x000008, "Wrong alignment on UDatasmithSkyLightComponentTemplate");
-static_assert(sizeof(UDatasmithSkyLightComponentTemplate) == 0x000048, "Wrong size on UDatasmithSkyLightComponentTemplate");
-static_assert(offsetof(UDatasmithSkyLightComponentTemplate, SourceType) == 0x000038, "Member 'UDatasmithSkyLightComponentTemplate::SourceType' has a wrong offset!");
-static_assert(offsetof(UDatasmithSkyLightComponentTemplate, CubemapResolution) == 0x00003C, "Member 'UDatasmithSkyLightComponentTemplate::CubemapResolution' has a wrong offset!");
-static_assert(offsetof(UDatasmithSkyLightComponentTemplate, Cubemap) == 0x000040, "Member 'UDatasmithSkyLightComponentTemplate::Cubemap' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithSkyLightComponentTemplate;
 
 // Class DatasmithContent.DatasmithSpotLightComponentTemplate
-// 0x0008 (0x0040 - 0x0038)
+// 0x0008 (0x0038 - 0x0030)
 class UDatasmithSpotLightComponentTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	float                                         InnerConeAngle;                                    // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         OuterConeAngle;                                    // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         InnerConeAngle;                                    // 0x0030(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         OuterConeAngle;                                    // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithSpotLightComponentTemplate">();
+		STATIC_CLASS_IMPL("DatasmithSpotLightComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithSpotLightComponentTemplate")
 	}
 	static class UDatasmithSpotLightComponentTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithSpotLightComponentTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithSpotLightComponentTemplate) == 0x000008, "Wrong alignment on UDatasmithSpotLightComponentTemplate");
-static_assert(sizeof(UDatasmithSpotLightComponentTemplate) == 0x000040, "Wrong size on UDatasmithSpotLightComponentTemplate");
-static_assert(offsetof(UDatasmithSpotLightComponentTemplate, InnerConeAngle) == 0x000038, "Member 'UDatasmithSpotLightComponentTemplate::InnerConeAngle' has a wrong offset!");
-static_assert(offsetof(UDatasmithSpotLightComponentTemplate, OuterConeAngle) == 0x00003C, "Member 'UDatasmithSpotLightComponentTemplate::OuterConeAngle' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithSpotLightComponentTemplate;
 
 // Class DatasmithContent.DatasmithStaticMeshComponentTemplate
-// 0x0018 (0x0050 - 0x0038)
+// 0x0018 (0x0048 - 0x0030)
 class UDatasmithStaticMeshComponentTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	class UStaticMesh*                            StaticMesh;                                        // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<class UMaterialInterface*>             OverrideMaterials;                                 // 0x0040(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	class UStaticMesh*                            StaticMesh;                                        // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<class UMaterialInterface*>             OverrideMaterials;                                 // 0x0038(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithStaticMeshComponentTemplate">();
+		STATIC_CLASS_IMPL("DatasmithStaticMeshComponentTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithStaticMeshComponentTemplate")
 	}
 	static class UDatasmithStaticMeshComponentTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithStaticMeshComponentTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithStaticMeshComponentTemplate) == 0x000008, "Wrong alignment on UDatasmithStaticMeshComponentTemplate");
-static_assert(sizeof(UDatasmithStaticMeshComponentTemplate) == 0x000050, "Wrong size on UDatasmithStaticMeshComponentTemplate");
-static_assert(offsetof(UDatasmithStaticMeshComponentTemplate, StaticMesh) == 0x000038, "Member 'UDatasmithStaticMeshComponentTemplate::StaticMesh' has a wrong offset!");
-static_assert(offsetof(UDatasmithStaticMeshComponentTemplate, OverrideMaterials) == 0x000040, "Member 'UDatasmithStaticMeshComponentTemplate::OverrideMaterials' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithStaticMeshComponentTemplate;
 
 // Class DatasmithContent.DatasmithStaticMeshTemplate
-// 0x0078 (0x00B0 - 0x0038)
+// 0x0078 (0x00A8 - 0x0030)
 class UDatasmithStaticMeshTemplate final : public UDatasmithObjectTemplate
 {
 public:
-	struct FDatasmithMeshSectionInfoMapTemplate   SectionInfoMap;                                    // 0x0038(0x0050)(Edit, EditConst, NativeAccessSpecifierPublic)
-	int32                                         LightMapCoordinateIndex;                           // 0x0088(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         LightMapResolution;                                // 0x008C(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<struct FDatasmithMeshBuildSettingsTemplate> BuildSettings;                                // 0x0090(0x0010)(Edit, ZeroConstructor, EditConst, NativeAccessSpecifierPublic)
-	TArray<struct FDatasmithStaticMaterialTemplate> StaticMaterials;                                 // 0x00A0(0x0010)(Edit, ZeroConstructor, EditConst, NativeAccessSpecifierPublic)
+	struct FDatasmithMeshSectionInfoMapTemplate   SectionInfoMap;                                    // 0x0030(0x0050)(Edit, EditConst, NativeAccessSpecifierPublic)
+	int32                                         LightMapCoordinateIndex;                           // 0x0080(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         LightMapResolution;                                // 0x0084(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<struct FDatasmithMeshBuildSettingsTemplate> BuildSettings;                                // 0x0088(0x0010)(Edit, ZeroConstructor, EditConst, NativeAccessSpecifierPublic)
+	TArray<struct FDatasmithStaticMaterialTemplate> StaticMaterials;                                 // 0x0098(0x0010)(Edit, ZeroConstructor, EditConst, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DatasmithStaticMeshTemplate">();
+		STATIC_CLASS_IMPL("DatasmithStaticMeshTemplate")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DatasmithStaticMeshTemplate")
 	}
 	static class UDatasmithStaticMeshTemplate* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDatasmithStaticMeshTemplate>();
 	}
 };
-static_assert(alignof(UDatasmithStaticMeshTemplate) == 0x000008, "Wrong alignment on UDatasmithStaticMeshTemplate");
-static_assert(sizeof(UDatasmithStaticMeshTemplate) == 0x0000B0, "Wrong size on UDatasmithStaticMeshTemplate");
-static_assert(offsetof(UDatasmithStaticMeshTemplate, SectionInfoMap) == 0x000038, "Member 'UDatasmithStaticMeshTemplate::SectionInfoMap' has a wrong offset!");
-static_assert(offsetof(UDatasmithStaticMeshTemplate, LightMapCoordinateIndex) == 0x000088, "Member 'UDatasmithStaticMeshTemplate::LightMapCoordinateIndex' has a wrong offset!");
-static_assert(offsetof(UDatasmithStaticMeshTemplate, LightMapResolution) == 0x00008C, "Member 'UDatasmithStaticMeshTemplate::LightMapResolution' has a wrong offset!");
-static_assert(offsetof(UDatasmithStaticMeshTemplate, BuildSettings) == 0x000090, "Member 'UDatasmithStaticMeshTemplate::BuildSettings' has a wrong offset!");
-static_assert(offsetof(UDatasmithStaticMeshTemplate, StaticMaterials) == 0x0000A0, "Member 'UDatasmithStaticMeshTemplate::StaticMaterials' has a wrong offset!");
+DUMPER7_ASSERTS_UDatasmithStaticMeshTemplate;
 
 }
 

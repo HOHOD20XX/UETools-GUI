@@ -137,18 +137,16 @@ enum class EDatasmithImportSearchPackagePolicy : uint8
 };
 
 // ScriptStruct DatasmithContent.DatasmithCameraLookatTrackingSettingsTemplate
-// 0x0038 (0x0038 - 0x0000)
+// 0x0030 (0x0030 - 0x0000)
 struct FDatasmithCameraLookatTrackingSettingsTemplate final
 {
 public:
 	uint8                                         bEnableLookAtTracking : 1;                         // 0x0000(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
 	uint8                                         bAllowRoll : 1;                                    // 0x0000(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class AActor>                  ActorToTrack;                                      // 0x0008(0x0030)(UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSoftObjectPtr<class AActor>                  ActorToTrack;                                      // 0x0008(0x0028)(UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithCameraLookatTrackingSettingsTemplate) == 0x000008, "Wrong alignment on FDatasmithCameraLookatTrackingSettingsTemplate");
-static_assert(sizeof(FDatasmithCameraLookatTrackingSettingsTemplate) == 0x000038, "Wrong size on FDatasmithCameraLookatTrackingSettingsTemplate");
-static_assert(offsetof(FDatasmithCameraLookatTrackingSettingsTemplate, ActorToTrack) == 0x000008, "Member 'FDatasmithCameraLookatTrackingSettingsTemplate::ActorToTrack' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithCameraLookatTrackingSettingsTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithPostProcessSettingsTemplate
 // 0x0040 (0x0040 - 0x0000)
@@ -176,16 +174,7 @@ public:
 	float                                         CameraShutterSpeed;                                // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         DepthOfFieldFstop;                                 // 0x003C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithPostProcessSettingsTemplate) == 0x000010, "Wrong alignment on FDatasmithPostProcessSettingsTemplate");
-static_assert(sizeof(FDatasmithPostProcessSettingsTemplate) == 0x000040, "Wrong size on FDatasmithPostProcessSettingsTemplate");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, WhiteTemp) == 0x000008, "Member 'FDatasmithPostProcessSettingsTemplate::WhiteTemp' has a wrong offset!");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, VignetteIntensity) == 0x00000C, "Member 'FDatasmithPostProcessSettingsTemplate::VignetteIntensity' has a wrong offset!");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, FilmWhitePoint) == 0x000010, "Member 'FDatasmithPostProcessSettingsTemplate::FilmWhitePoint' has a wrong offset!");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, ColorSaturation) == 0x000020, "Member 'FDatasmithPostProcessSettingsTemplate::ColorSaturation' has a wrong offset!");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, AutoExposureMethod) == 0x000030, "Member 'FDatasmithPostProcessSettingsTemplate::AutoExposureMethod' has a wrong offset!");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, CameraISO) == 0x000034, "Member 'FDatasmithPostProcessSettingsTemplate::CameraISO' has a wrong offset!");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, CameraShutterSpeed) == 0x000038, "Member 'FDatasmithPostProcessSettingsTemplate::CameraShutterSpeed' has a wrong offset!");
-static_assert(offsetof(FDatasmithPostProcessSettingsTemplate, DepthOfFieldFstop) == 0x00003C, "Member 'FDatasmithPostProcessSettingsTemplate::DepthOfFieldFstop' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithPostProcessSettingsTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithCameraFocusSettingsTemplate
 // 0x0008 (0x0008 - 0x0000)
@@ -196,10 +185,7 @@ public:
 	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         ManualFocusDistance;                               // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithCameraFocusSettingsTemplate) == 0x000004, "Wrong alignment on FDatasmithCameraFocusSettingsTemplate");
-static_assert(sizeof(FDatasmithCameraFocusSettingsTemplate) == 0x000008, "Wrong size on FDatasmithCameraFocusSettingsTemplate");
-static_assert(offsetof(FDatasmithCameraFocusSettingsTemplate, FocusMethod) == 0x000000, "Member 'FDatasmithCameraFocusSettingsTemplate::FocusMethod' has a wrong offset!");
-static_assert(offsetof(FDatasmithCameraFocusSettingsTemplate, ManualFocusDistance) == 0x000004, "Member 'FDatasmithCameraFocusSettingsTemplate::ManualFocusDistance' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithCameraFocusSettingsTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithCameraLensSettingsTemplate
 // 0x0004 (0x0004 - 0x0000)
@@ -208,9 +194,7 @@ struct FDatasmithCameraLensSettingsTemplate final
 public:
 	float                                         MaxFStop;                                          // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithCameraLensSettingsTemplate) == 0x000004, "Wrong alignment on FDatasmithCameraLensSettingsTemplate");
-static_assert(sizeof(FDatasmithCameraLensSettingsTemplate) == 0x000004, "Wrong size on FDatasmithCameraLensSettingsTemplate");
-static_assert(offsetof(FDatasmithCameraLensSettingsTemplate, MaxFStop) == 0x000000, "Member 'FDatasmithCameraLensSettingsTemplate::MaxFStop' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithCameraLensSettingsTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithCameraFilmbackSettingsTemplate
 // 0x0008 (0x0008 - 0x0000)
@@ -220,10 +204,7 @@ public:
 	float                                         SensorWidth;                                       // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         SensorHeight;                                      // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithCameraFilmbackSettingsTemplate) == 0x000004, "Wrong alignment on FDatasmithCameraFilmbackSettingsTemplate");
-static_assert(sizeof(FDatasmithCameraFilmbackSettingsTemplate) == 0x000008, "Wrong size on FDatasmithCameraFilmbackSettingsTemplate");
-static_assert(offsetof(FDatasmithCameraFilmbackSettingsTemplate, SensorWidth) == 0x000000, "Member 'FDatasmithCameraFilmbackSettingsTemplate::SensorWidth' has a wrong offset!");
-static_assert(offsetof(FDatasmithCameraFilmbackSettingsTemplate, SensorHeight) == 0x000004, "Member 'FDatasmithCameraFilmbackSettingsTemplate::SensorHeight' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithCameraFilmbackSettingsTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithTessellationOptions
 // 0x0010 (0x0010 - 0x0000)
@@ -236,12 +217,7 @@ public:
 	EDatasmithCADStitchingTechnique               StitchingTechnique;                                // 0x000C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FDatasmithTessellationOptions) == 0x000004, "Wrong alignment on FDatasmithTessellationOptions");
-static_assert(sizeof(FDatasmithTessellationOptions) == 0x000010, "Wrong size on FDatasmithTessellationOptions");
-static_assert(offsetof(FDatasmithTessellationOptions, ChordTolerance) == 0x000000, "Member 'FDatasmithTessellationOptions::ChordTolerance' has a wrong offset!");
-static_assert(offsetof(FDatasmithTessellationOptions, MaxEdgeLength) == 0x000004, "Member 'FDatasmithTessellationOptions::MaxEdgeLength' has a wrong offset!");
-static_assert(offsetof(FDatasmithTessellationOptions, NormalTolerance) == 0x000008, "Member 'FDatasmithTessellationOptions::NormalTolerance' has a wrong offset!");
-static_assert(offsetof(FDatasmithTessellationOptions, StitchingTechnique) == 0x00000C, "Member 'FDatasmithTessellationOptions::StitchingTechnique' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithTessellationOptions;
 
 // ScriptStruct DatasmithContent.DatasmithRetessellationOptions
 // 0x0004 (0x0014 - 0x0010)
@@ -251,20 +227,16 @@ public:
 	EDatasmithCADRetessellationRule               RetessellationRule;                                // 0x0010(0x0001)(Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FDatasmithRetessellationOptions) == 0x000004, "Wrong alignment on FDatasmithRetessellationOptions");
-static_assert(sizeof(FDatasmithRetessellationOptions) == 0x000014, "Wrong size on FDatasmithRetessellationOptions");
-static_assert(offsetof(FDatasmithRetessellationOptions, RetessellationRule) == 0x000010, "Member 'FDatasmithRetessellationOptions::RetessellationRule' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithRetessellationOptions;
 
 // ScriptStruct DatasmithContent.DatasmithAssetImportOptions
-// 0x000C (0x000C - 0x0000)
+// 0x0008 (0x0008 - 0x0000)
 struct FDatasmithAssetImportOptions final
 {
 public:
-	class FName                                   PackagePath;                                       // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   PackagePath;                                       // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithAssetImportOptions) == 0x000004, "Wrong alignment on FDatasmithAssetImportOptions");
-static_assert(sizeof(FDatasmithAssetImportOptions) == 0x00000C, "Wrong size on FDatasmithAssetImportOptions");
-static_assert(offsetof(FDatasmithAssetImportOptions, PackagePath) == 0x000000, "Member 'FDatasmithAssetImportOptions::PackagePath' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithAssetImportOptions;
 
 // ScriptStruct DatasmithContent.DatasmithStaticMeshImportOptions
 // 0x0004 (0x0004 - 0x0000)
@@ -276,15 +248,10 @@ public:
 	bool                                          bGenerateLightmapUVs;                              // 0x0002(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bRemoveDegenerates;                                // 0x0003(0x0001)(BlueprintVisible, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithStaticMeshImportOptions) == 0x000001, "Wrong alignment on FDatasmithStaticMeshImportOptions");
-static_assert(sizeof(FDatasmithStaticMeshImportOptions) == 0x000004, "Wrong size on FDatasmithStaticMeshImportOptions");
-static_assert(offsetof(FDatasmithStaticMeshImportOptions, MinLightmapResolution) == 0x000000, "Member 'FDatasmithStaticMeshImportOptions::MinLightmapResolution' has a wrong offset!");
-static_assert(offsetof(FDatasmithStaticMeshImportOptions, MaxLightmapResolution) == 0x000001, "Member 'FDatasmithStaticMeshImportOptions::MaxLightmapResolution' has a wrong offset!");
-static_assert(offsetof(FDatasmithStaticMeshImportOptions, bGenerateLightmapUVs) == 0x000002, "Member 'FDatasmithStaticMeshImportOptions::bGenerateLightmapUVs' has a wrong offset!");
-static_assert(offsetof(FDatasmithStaticMeshImportOptions, bRemoveDegenerates) == 0x000003, "Member 'FDatasmithStaticMeshImportOptions::bRemoveDegenerates' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithStaticMeshImportOptions;
 
 // ScriptStruct DatasmithContent.DatasmithImportBaseOptions
-// 0x0018 (0x0018 - 0x0000)
+// 0x0014 (0x0014 - 0x0000)
 struct FDatasmithImportBaseOptions final
 {
 public:
@@ -295,19 +262,10 @@ public:
 	bool                                          bIncludeCamera;                                    // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bIncludeAnimation;                                 // 0x0005(0x0001)(Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FDatasmithAssetImportOptions           AssetOptions;                                      // 0x0008(0x000C)(BlueprintVisible, NoDestructor, AdvancedDisplay, NativeAccessSpecifierPublic)
-	struct FDatasmithStaticMeshImportOptions      StaticMeshOptions;                                 // 0x0014(0x0004)(Edit, BlueprintVisible, Config, NoDestructor, AdvancedDisplay, NativeAccessSpecifierPublic)
+	struct FDatasmithAssetImportOptions           AssetOptions;                                      // 0x0008(0x0008)(BlueprintVisible, NoDestructor, AdvancedDisplay, NativeAccessSpecifierPublic)
+	struct FDatasmithStaticMeshImportOptions      StaticMeshOptions;                                 // 0x0010(0x0004)(Edit, BlueprintVisible, Config, NoDestructor, AdvancedDisplay, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithImportBaseOptions) == 0x000004, "Wrong alignment on FDatasmithImportBaseOptions");
-static_assert(sizeof(FDatasmithImportBaseOptions) == 0x000018, "Wrong size on FDatasmithImportBaseOptions");
-static_assert(offsetof(FDatasmithImportBaseOptions, SceneHandling) == 0x000000, "Member 'FDatasmithImportBaseOptions::SceneHandling' has a wrong offset!");
-static_assert(offsetof(FDatasmithImportBaseOptions, bIncludeGeometry) == 0x000001, "Member 'FDatasmithImportBaseOptions::bIncludeGeometry' has a wrong offset!");
-static_assert(offsetof(FDatasmithImportBaseOptions, bIncludeMaterial) == 0x000002, "Member 'FDatasmithImportBaseOptions::bIncludeMaterial' has a wrong offset!");
-static_assert(offsetof(FDatasmithImportBaseOptions, bIncludeLight) == 0x000003, "Member 'FDatasmithImportBaseOptions::bIncludeLight' has a wrong offset!");
-static_assert(offsetof(FDatasmithImportBaseOptions, bIncludeCamera) == 0x000004, "Member 'FDatasmithImportBaseOptions::bIncludeCamera' has a wrong offset!");
-static_assert(offsetof(FDatasmithImportBaseOptions, bIncludeAnimation) == 0x000005, "Member 'FDatasmithImportBaseOptions::bIncludeAnimation' has a wrong offset!");
-static_assert(offsetof(FDatasmithImportBaseOptions, AssetOptions) == 0x000008, "Member 'FDatasmithImportBaseOptions::AssetOptions' has a wrong offset!");
-static_assert(offsetof(FDatasmithImportBaseOptions, StaticMeshOptions) == 0x000014, "Member 'FDatasmithImportBaseOptions::StaticMeshOptions' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithImportBaseOptions;
 
 // ScriptStruct DatasmithContent.DatasmithReimportOptions
 // 0x0002 (0x0002 - 0x0000)
@@ -317,10 +275,7 @@ public:
 	bool                                          bUpdateActors;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bRespawnDeletedActors;                             // 0x0001(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithReimportOptions) == 0x000001, "Wrong alignment on FDatasmithReimportOptions");
-static_assert(sizeof(FDatasmithReimportOptions) == 0x000002, "Wrong size on FDatasmithReimportOptions");
-static_assert(offsetof(FDatasmithReimportOptions, bUpdateActors) == 0x000000, "Member 'FDatasmithReimportOptions::bUpdateActors' has a wrong offset!");
-static_assert(offsetof(FDatasmithReimportOptions, bRespawnDeletedActors) == 0x000001, "Member 'FDatasmithReimportOptions::bRespawnDeletedActors' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithReimportOptions;
 
 // ScriptStruct DatasmithContent.DatasmithStaticParameterSetTemplate
 // 0x0050 (0x0050 - 0x0000)
@@ -329,9 +284,7 @@ struct FDatasmithStaticParameterSetTemplate final
 public:
 	TMap<class FName, bool>                       StaticSwitchParameters;                            // 0x0000(0x0050)(NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithStaticParameterSetTemplate) == 0x000008, "Wrong alignment on FDatasmithStaticParameterSetTemplate");
-static_assert(sizeof(FDatasmithStaticParameterSetTemplate) == 0x000050, "Wrong size on FDatasmithStaticParameterSetTemplate");
-static_assert(offsetof(FDatasmithStaticParameterSetTemplate, StaticSwitchParameters) == 0x000000, "Member 'FDatasmithStaticParameterSetTemplate::StaticSwitchParameters' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithStaticParameterSetTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithMeshSectionInfoTemplate
 // 0x0004 (0x0004 - 0x0000)
@@ -340,9 +293,7 @@ struct FDatasmithMeshSectionInfoTemplate final
 public:
 	int32                                         MaterialIndex;                                     // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithMeshSectionInfoTemplate) == 0x000004, "Wrong alignment on FDatasmithMeshSectionInfoTemplate");
-static_assert(sizeof(FDatasmithMeshSectionInfoTemplate) == 0x000004, "Wrong size on FDatasmithMeshSectionInfoTemplate");
-static_assert(offsetof(FDatasmithMeshSectionInfoTemplate, MaterialIndex) == 0x000000, "Member 'FDatasmithMeshSectionInfoTemplate::MaterialIndex' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithMeshSectionInfoTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithMeshSectionInfoMapTemplate
 // 0x0050 (0x0050 - 0x0000)
@@ -351,23 +302,17 @@ struct FDatasmithMeshSectionInfoMapTemplate final
 public:
 	TMap<uint32, struct FDatasmithMeshSectionInfoTemplate> Map;                                      // 0x0000(0x0050)(NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithMeshSectionInfoMapTemplate) == 0x000008, "Wrong alignment on FDatasmithMeshSectionInfoMapTemplate");
-static_assert(sizeof(FDatasmithMeshSectionInfoMapTemplate) == 0x000050, "Wrong size on FDatasmithMeshSectionInfoMapTemplate");
-static_assert(offsetof(FDatasmithMeshSectionInfoMapTemplate, Map) == 0x000000, "Member 'FDatasmithMeshSectionInfoMapTemplate::Map' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithMeshSectionInfoMapTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithStaticMaterialTemplate
-// 0x0018 (0x0018 - 0x0000)
+// 0x0010 (0x0010 - 0x0000)
 struct FDatasmithStaticMaterialTemplate final
 {
 public:
-	class FName                                   MaterialSlotName;                                  // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInterface*                     MaterialInterface;                                 // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   MaterialSlotName;                                  // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMaterialInterface*                     MaterialInterface;                                 // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithStaticMaterialTemplate) == 0x000008, "Wrong alignment on FDatasmithStaticMaterialTemplate");
-static_assert(sizeof(FDatasmithStaticMaterialTemplate) == 0x000018, "Wrong size on FDatasmithStaticMaterialTemplate");
-static_assert(offsetof(FDatasmithStaticMaterialTemplate, MaterialSlotName) == 0x000000, "Member 'FDatasmithStaticMaterialTemplate::MaterialSlotName' has a wrong offset!");
-static_assert(offsetof(FDatasmithStaticMaterialTemplate, MaterialInterface) == 0x000010, "Member 'FDatasmithStaticMaterialTemplate::MaterialInterface' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithStaticMaterialTemplate;
 
 // ScriptStruct DatasmithContent.DatasmithMeshBuildSettingsTemplate
 // 0x0010 (0x0010 - 0x0000)
@@ -387,11 +332,7 @@ public:
 	int32                                         SrcLightmapIndex;                                  // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         DstLightmapIndex;                                  // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FDatasmithMeshBuildSettingsTemplate) == 0x000004, "Wrong alignment on FDatasmithMeshBuildSettingsTemplate");
-static_assert(sizeof(FDatasmithMeshBuildSettingsTemplate) == 0x000010, "Wrong size on FDatasmithMeshBuildSettingsTemplate");
-static_assert(offsetof(FDatasmithMeshBuildSettingsTemplate, MinLightmapResolution) == 0x000004, "Member 'FDatasmithMeshBuildSettingsTemplate::MinLightmapResolution' has a wrong offset!");
-static_assert(offsetof(FDatasmithMeshBuildSettingsTemplate, SrcLightmapIndex) == 0x000008, "Member 'FDatasmithMeshBuildSettingsTemplate::SrcLightmapIndex' has a wrong offset!");
-static_assert(offsetof(FDatasmithMeshBuildSettingsTemplate, DstLightmapIndex) == 0x00000C, "Member 'FDatasmithMeshBuildSettingsTemplate::DstLightmapIndex' has a wrong offset!");
+DUMPER7_ASSERTS_FDatasmithMeshBuildSettingsTemplate;
 
 }
 

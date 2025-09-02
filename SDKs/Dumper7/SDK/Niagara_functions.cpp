@@ -2678,11 +2678,11 @@ bool UNiagaraDataInterfaceGrid2DCollection::FillRawTexture2D(const class UNiagar
 // (Native, Public, BlueprintCallable)
 // Parameters:
 // const class UNiagaraComponent*          Component                                              (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UTextureRenderTarget2D*           dest                                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UTextureRenderTarget2D*           Dest                                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   AttributeIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UNiagaraDataInterfaceGrid2DCollection::FillTexture2D(const class UNiagaraComponent* Component, class UTextureRenderTarget2D* dest, int32 AttributeIndex)
+bool UNiagaraDataInterfaceGrid2DCollection::FillTexture2D(const class UNiagaraComponent* Component, class UTextureRenderTarget2D* Dest, int32 AttributeIndex)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2692,7 +2692,7 @@ bool UNiagaraDataInterfaceGrid2DCollection::FillTexture2D(const class UNiagaraCo
 	Params::NiagaraDataInterfaceGrid2DCollection_FillTexture2D Parms{};
 
 	Parms.Component = Component;
-	Parms.dest = dest;
+	Parms.Dest = Dest;
 	Parms.AttributeIndex = AttributeIndex;
 
 	auto Flgs = Func->FunctionFlags;
@@ -2818,11 +2818,11 @@ bool UNiagaraDataInterfaceGrid3DCollection::FillRawVolumeTexture(const class UNi
 // (Native, Public, BlueprintCallable)
 // Parameters:
 // const class UNiagaraComponent*          Component                                              (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UVolumeTexture*                   dest                                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UVolumeTexture*                   Dest                                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   AttributeIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UNiagaraDataInterfaceGrid3DCollection::FillVolumeTexture(const class UNiagaraComponent* Component, class UVolumeTexture* dest, int32 AttributeIndex)
+bool UNiagaraDataInterfaceGrid3DCollection::FillVolumeTexture(const class UNiagaraComponent* Component, class UVolumeTexture* Dest, int32 AttributeIndex)
 {
 	static class UFunction* Func = nullptr;
 
@@ -2832,7 +2832,7 @@ bool UNiagaraDataInterfaceGrid3DCollection::FillVolumeTexture(const class UNiaga
 	Params::NiagaraDataInterfaceGrid3DCollection_FillVolumeTexture Parms{};
 
 	Parms.Component = Component;
-	Parms.dest = dest;
+	Parms.Dest = Dest;
 	Parms.AttributeIndex = AttributeIndex;
 
 	auto Flgs = Func->FunctionFlags;

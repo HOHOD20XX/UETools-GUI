@@ -17,26 +17,28 @@ namespace SDK
 {
 
 // Class SoundFields.AmbisonicsEncodingSettings
-// 0x0008 (0x0038 - 0x0030)
+// 0x0008 (0x0030 - 0x0028)
 class UAmbisonicsEncodingSettings final : public USoundfieldEncodingSettingsBase
 {
 public:
-	int32                                         AmbisonicsOrder;                                   // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         AmbisonicsOrder;                                   // 0x0028(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	uint8                                         Pad_2C[0x4];                                       // 0x002C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"AmbisonicsEncodingSettings">();
+		STATIC_CLASS_IMPL("AmbisonicsEncodingSettings")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AmbisonicsEncodingSettings")
 	}
 	static class UAmbisonicsEncodingSettings* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UAmbisonicsEncodingSettings>();
 	}
 };
-static_assert(alignof(UAmbisonicsEncodingSettings) == 0x000008, "Wrong alignment on UAmbisonicsEncodingSettings");
-static_assert(sizeof(UAmbisonicsEncodingSettings) == 0x000038, "Wrong size on UAmbisonicsEncodingSettings");
-static_assert(offsetof(UAmbisonicsEncodingSettings, AmbisonicsOrder) == 0x000030, "Member 'UAmbisonicsEncodingSettings::AmbisonicsOrder' has a wrong offset!");
+DUMPER7_ASSERTS_UAmbisonicsEncodingSettings;
 
 }
 

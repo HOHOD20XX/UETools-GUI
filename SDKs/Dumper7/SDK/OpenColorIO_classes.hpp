@@ -10,17 +10,17 @@
 
 #include "Basic.hpp"
 
-#include "OpenColorIO_structs.hpp"
 #include "Engine_structs.hpp"
 #include "Engine_classes.hpp"
 #include "CoreUObject_classes.hpp"
+#include "OpenColorIO_structs.hpp"
 
 
 namespace SDK
 {
 
 // Class OpenColorIO.OpenColorIOBlueprintLibrary
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UOpenColorIOBlueprintLibrary final : public UBlueprintFunctionLibrary
 {
 public:
@@ -29,74 +29,77 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"OpenColorIOBlueprintLibrary">();
+		STATIC_CLASS_IMPL("OpenColorIOBlueprintLibrary")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OpenColorIOBlueprintLibrary")
 	}
 	static class UOpenColorIOBlueprintLibrary* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOpenColorIOBlueprintLibrary>();
 	}
 };
-static_assert(alignof(UOpenColorIOBlueprintLibrary) == 0x000008, "Wrong alignment on UOpenColorIOBlueprintLibrary");
-static_assert(sizeof(UOpenColorIOBlueprintLibrary) == 0x000030, "Wrong size on UOpenColorIOBlueprintLibrary");
+DUMPER7_ASSERTS_UOpenColorIOBlueprintLibrary;
 
 // Class OpenColorIO.OpenColorIOColorTransform
-// 0x0070 (0x00A0 - 0x0030)
+// 0x0070 (0x0098 - 0x0028)
 class UOpenColorIOColorTransform final : public UObject
 {
 public:
-	class UOpenColorIOConfiguration*              ConfigurationOwner;                                // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 SourceColorSpace;                                  // 0x0038(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 DestinationColorSpace;                             // 0x0048(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_58[0x48];                                      // 0x0058(0x0048)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UOpenColorIOConfiguration*              ConfigurationOwner;                                // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 SourceColorSpace;                                  // 0x0030(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 DestinationColorSpace;                             // 0x0040(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_50[0x48];                                      // 0x0050(0x0048)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"OpenColorIOColorTransform">();
+		STATIC_CLASS_IMPL("OpenColorIOColorTransform")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OpenColorIOColorTransform")
 	}
 	static class UOpenColorIOColorTransform* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOpenColorIOColorTransform>();
 	}
 };
-static_assert(alignof(UOpenColorIOColorTransform) == 0x000008, "Wrong alignment on UOpenColorIOColorTransform");
-static_assert(sizeof(UOpenColorIOColorTransform) == 0x0000A0, "Wrong size on UOpenColorIOColorTransform");
-static_assert(offsetof(UOpenColorIOColorTransform, ConfigurationOwner) == 0x000030, "Member 'UOpenColorIOColorTransform::ConfigurationOwner' has a wrong offset!");
-static_assert(offsetof(UOpenColorIOColorTransform, SourceColorSpace) == 0x000038, "Member 'UOpenColorIOColorTransform::SourceColorSpace' has a wrong offset!");
-static_assert(offsetof(UOpenColorIOColorTransform, DestinationColorSpace) == 0x000048, "Member 'UOpenColorIOColorTransform::DestinationColorSpace' has a wrong offset!");
+DUMPER7_ASSERTS_UOpenColorIOColorTransform;
 
 // Class OpenColorIO.OpenColorIOConfiguration
-// 0x0058 (0x0088 - 0x0030)
+// 0x0058 (0x0080 - 0x0028)
 class UOpenColorIOConfiguration final : public UObject
 {
 public:
-	struct FFilePath                              ConfigurationFile;                                 // 0x0030(0x0010)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	TArray<struct FOpenColorIOColorSpace>         DesiredColorSpaces;                                // 0x0040(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<class UOpenColorIOColorTransform*>     ColorTransforms;                                   // 0x0050(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_60[0x28];                                      // 0x0060(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FFilePath                              ConfigurationFile;                                 // 0x0028(0x0010)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	TArray<struct FOpenColorIOColorSpace>         DesiredColorSpaces;                                // 0x0038(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<class UOpenColorIOColorTransform*>     ColorTransforms;                                   // 0x0048(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_58[0x28];                                      // 0x0058(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"OpenColorIOConfiguration">();
+		STATIC_CLASS_IMPL("OpenColorIOConfiguration")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OpenColorIOConfiguration")
 	}
 	static class UOpenColorIOConfiguration* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOpenColorIOConfiguration>();
 	}
 };
-static_assert(alignof(UOpenColorIOConfiguration) == 0x000008, "Wrong alignment on UOpenColorIOConfiguration");
-static_assert(sizeof(UOpenColorIOConfiguration) == 0x000088, "Wrong size on UOpenColorIOConfiguration");
-static_assert(offsetof(UOpenColorIOConfiguration, ConfigurationFile) == 0x000030, "Member 'UOpenColorIOConfiguration::ConfigurationFile' has a wrong offset!");
-static_assert(offsetof(UOpenColorIOConfiguration, DesiredColorSpaces) == 0x000040, "Member 'UOpenColorIOConfiguration::DesiredColorSpaces' has a wrong offset!");
-static_assert(offsetof(UOpenColorIOConfiguration, ColorTransforms) == 0x000050, "Member 'UOpenColorIOConfiguration::ColorTransforms' has a wrong offset!");
+DUMPER7_ASSERTS_UOpenColorIOConfiguration;
 
 // Class OpenColorIO.OpenColorIODisplayExtensionWrapper
-// 0x0010 (0x0040 - 0x0030)
+// 0x0010 (0x0038 - 0x0028)
 class UOpenColorIODisplayExtensionWrapper final : public UObject
 {
 public:
-	uint8                                         Pad_30[0x10];                                      // 0x0030(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x10];                                      // 0x0028(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UOpenColorIODisplayExtensionWrapper* CreateOpenColorIODisplayExtension(const struct FOpenColorIODisplayConfiguration& InDisplayConfiguration, const struct FSceneViewExtensionIsActiveFunctor& IsActiveFunction);
@@ -109,15 +112,18 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"OpenColorIODisplayExtensionWrapper">();
+		STATIC_CLASS_IMPL("OpenColorIODisplayExtensionWrapper")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OpenColorIODisplayExtensionWrapper")
 	}
 	static class UOpenColorIODisplayExtensionWrapper* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOpenColorIODisplayExtensionWrapper>();
 	}
 };
-static_assert(alignof(UOpenColorIODisplayExtensionWrapper) == 0x000008, "Wrong alignment on UOpenColorIODisplayExtensionWrapper");
-static_assert(sizeof(UOpenColorIODisplayExtensionWrapper) == 0x000040, "Wrong size on UOpenColorIODisplayExtensionWrapper");
+DUMPER7_ASSERTS_UOpenColorIODisplayExtensionWrapper;
 
 }
 

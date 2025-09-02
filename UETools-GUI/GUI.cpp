@@ -252,7 +252,7 @@ void GUI::Draw()
 
 				SetIsInWaitMode(false);
 			}
-				
+
 
 			ImGuiIO& io = ImGui::GetIO();
 			ImDrawList* drawList = ImGui::GetBackgroundDrawList();
@@ -279,7 +279,7 @@ void GUI::Draw()
 
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.4) | ");
+			ImGui::Text("UETools GUI (v0.5) | ");
 			if (ImGui::BeginMenu("Debug"))
 			{
 				if (SharedData::debugInfo.isActive)
@@ -448,11 +448,55 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Game Mode: %s", SharedData::debugInfo.isGameModePresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isGameModePresent)
+					ImGui::Text("Game Mode: %s", SharedData::debugInfo.gameMode.gameModeReference ? "Is Present" : "Doesn't Exist!");
+					if (SharedData::debugInfo.gameMode.gameModeReference)
 					{
-						ImGui::Text("Game Mode Class: %s", SharedData::debugInfo.gameModeClass.c_str());
-						ImGui::Text("Game Mode Object: %s", SharedData::debugInfo.gameModeObject.c_str());
+						ImGui::Text("Game Mode Class: %s", SharedData::debugInfo.gameMode.gameModeClass.c_str());
+						ImGui::Text("Game Mode Object: %s", SharedData::debugInfo.gameMode.gameModeObject.c_str());
+
+						ImGui::NewLine();
+
+						ImGui::Text("Game Session: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionReference ? "Is Present" : "Doesn't Exist!");
+						if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+						{
+							if (ImGui::TreeNode("Game Session"))
+							{
+								ImGui::Text("Game Session Class: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionClass.c_str());
+								ImGui::Text("Game Session Object: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionObject.c_str());
+
+								ImGui::NewLine();
+
+								ImGui::Text("Max Players: %d", SharedData::debugInfo.gameMode.gameSession.maxPlayers);
+								ImGui::Text("Max Spectators: %d", SharedData::debugInfo.gameMode.gameSession.maxSpectators);
+								ImGui::Text("Max Party Size: %d", SharedData::debugInfo.gameMode.gameSession.maxPartySize);
+								ImGui::Text("Max Splitscreens Per Connection: %d", SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection);
+
+								ImGui::NewLine();
+
+								ImGui::Text("Session Name: %s", SharedData::debugInfo.gameMode.gameSession.sessionName);
+
+								ImGui::TreePop();
+							}
+						}
+
+						ImGui::NewLine();
+
+						ImGui::Text("Players Count: %d", SharedData::debugInfo.gameMode.playersCount);
+						ImGui::Text("Spectators Count: %d", SharedData::debugInfo.gameMode.spectatorsCount);
+
+						ImGui::NewLine();
+
+						ImGui::Text("Start Players As Spectator: %s", SharedData::debugInfo.gameMode.startPlayersAsSpectators ? "True" : "False");
+						ImGui::Text("Default Player Name: %s", SharedData::debugInfo.gameMode.defaultPlayerName);
+
+						ImGui::NewLine();
+
+						ImGui::Text("Use Seamless Travel: %s", SharedData::debugInfo.gameMode.useSeamlessTravel ? "True" : "False");
+
+						ImGui::NewLine();
+
+						ImGui::Text("Options: %s", SharedData::debugInfo.gameMode.options);
+						ImGui::Text("Is Pausable: %s", SharedData::debugInfo.gameMode.isPausable ? "True" : "False");
 					}
 
 					ImGui::NewLine();
@@ -598,17 +642,22 @@ void GUI::Draw()
 						ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present" : "Doesn't Exist!");
 						if (worldSettingsPresent)
 						{
-							ImGui::Text("World Settings Class: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsClass.c_str());
-							ImGui::Text("World Settings Object: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsObject.c_str());
+							if (ImGui::TreeNode("World Settings"))
+							{
+								ImGui::Text("World Settings Class: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsClass.c_str());
+								ImGui::Text("World Settings Object: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsObject.c_str());
 
-							ImGui::NewLine();
+								ImGui::NewLine();
 
-							ImGui::Text("High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldHighPriorityLoading ? "True" : "False");
-							ImGui::Text("Local High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
+								ImGui::Text("High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldHighPriorityLoading ? "True" : "False");
+								ImGui::Text("Local High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
 
-							ImGui::NewLine();
+								ImGui::NewLine();
 
-							ImGui::Text("Unreal Units = 1m: %f", SharedData::debugInfo.persistentLevel.worldSettings.worldToMeters);
+								ImGui::Text("Unreal Units = 1m: %f", SharedData::debugInfo.persistentLevel.worldSettings.worldToMeters);
+
+								ImGui::TreePop();
+							}
 						}
 
 						ImGui::NewLine();
@@ -681,17 +730,22 @@ void GUI::Draw()
 										ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present" : "Doesn't Exist!");
 										if (worldSettingsPresent)
 										{
-											ImGui::Text("World Settings Class: %s", streamingLevel.level.worldSettings.worldSettingsClass.c_str());
-											ImGui::Text("World Settings Object: %s", streamingLevel.level.worldSettings.worldSettingsObject.c_str());
+											if (ImGui::TreeNode("World Settings"))
+											{
+												ImGui::Text("World Settings Class: %s", streamingLevel.level.worldSettings.worldSettingsClass.c_str());
+												ImGui::Text("World Settings Object: %s", streamingLevel.level.worldSettings.worldSettingsObject.c_str());
 
-											ImGui::NewLine();
+												ImGui::NewLine();
 
-											ImGui::Text("High Priority Loading: %s", streamingLevel.level.worldSettings.worldHighPriorityLoading ? "True" : "False");
-											ImGui::Text("Local High Priority Loading: %s", streamingLevel.level.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
+												ImGui::Text("High Priority Loading: %s", streamingLevel.level.worldSettings.worldHighPriorityLoading ? "True" : "False");
+												ImGui::Text("Local High Priority Loading: %s", streamingLevel.level.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
 
-											ImGui::NewLine();
+												ImGui::NewLine();
 
-											ImGui::Text("Unreal Units = 1m: %f", streamingLevel.level.worldSettings.worldToMeters);
+												ImGui::Text("Unreal Units = 1m: %f", streamingLevel.level.worldSettings.worldToMeters);
+
+												ImGui::TreePop();
+											}
 										}
 
 										ImGui::TreePop();
@@ -888,7 +942,7 @@ void GUI::Draw()
 							}
 							ImGui::Text("Custom Movement Mode: %d", movementComponent->CustomMovementMode);
 
-							if (ImGui::Button("Ghost", { 150, 32 }))
+							if (ImGui::Button("Ghost"))
 							{
 								SharedFunctions::Ghost();
 							}
@@ -897,7 +951,7 @@ void GUI::Draw()
 							ImGui::SameLine();
 							ImGui::KeyBindingInput("Key:##Ghost", &SharedData::keybindingsInfo.ghost);
 
-							if (ImGui::Button("Fly", { 150, 32 }))
+							if (ImGui::Button("Fly"))
 							{
 								SharedFunctions::Fly();
 							}
@@ -906,7 +960,7 @@ void GUI::Draw()
 							ImGui::SameLine();
 							ImGui::KeyBindingInput("Key:##Fly", &SharedData::keybindingsInfo.fly);
 
-							if (ImGui::Button("Walk", { 150, 32 }))
+							if (ImGui::Button("Walk"))
 							{
 								SharedFunctions::Walk();
 							}
@@ -925,7 +979,7 @@ void GUI::Draw()
 							ImGui::Separator();
 							ImGui::NewLine();
 
-							if (ImGui::Button("Jump", { 150, 32 }))
+							if (ImGui::Button("Jump"))
 							{
 								SharedFunctions::Jump();
 							}
@@ -940,7 +994,7 @@ void GUI::Draw()
 							ImGui::Separator();
 							ImGui::NewLine();
 
-							if (ImGui::Button("Launch", { 150, 32 }))
+							if (ImGui::Button("Launch"))
 							{
 								SharedFunctions::Launch();
 							}
@@ -952,7 +1006,7 @@ void GUI::Draw()
 
 							ImGui::NewLine();
 
-							if (ImGui::Button("Dash", { 150, 32 }))
+							if (ImGui::Button("Dash"))
 							{
 								SharedFunctions::Dash();
 							}
@@ -1099,10 +1153,35 @@ void GUI::SharedCalls::UpdateDebugInformation()
 
 
 	SDK::AGameModeBase* gameMode = GameMode::GetGameMode();
-	if (SharedData::debugInfo.isGameModePresent = gameMode)
+	if (SharedData::debugInfo.gameMode.gameModeReference = gameMode)
 	{
-		SharedData::debugInfo.gameModeClass = gameMode->Class->GetFullName();
-		SharedData::debugInfo.gameModeObject = gameMode->GetFullName();
+		SharedData::debugInfo.gameMode.gameModeClass = gameMode->Class->GetFullName();
+		SharedData::debugInfo.gameMode.gameModeObject = gameMode->GetFullName();
+
+		SDK::AGameSession* gameSession = gameMode->GameSession;
+		if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference = gameSession)
+		{
+			SharedData::debugInfo.gameMode.gameSession.gameSessionClass = gameSession->Class->GetFullName();
+			SharedData::debugInfo.gameMode.gameSession.gameSessionObject = gameSession->GetFullName();
+
+			SharedData::debugInfo.gameMode.gameSession.maxPlayers = gameSession->MaxPlayers;
+			SharedData::debugInfo.gameMode.gameSession.maxSpectators = gameSession->MaxSpectators;
+			SharedData::debugInfo.gameMode.gameSession.maxPartySize = gameSession->MaxPartySize;
+			SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection = gameSession->MaxSplitscreensPerConnection;
+
+			SharedData::debugInfo.gameMode.gameSession.sessionName = gameSession->SessionName.ToString();
+		}
+
+		SharedData::debugInfo.gameMode.playersCount = gameMode->GetNumPlayers();
+		SharedData::debugInfo.gameMode.spectatorsCount = gameMode->GetNumSpectators();
+
+		SharedData::debugInfo.gameMode.startPlayersAsSpectators = gameMode->bStartPlayersAsSpectators;
+		SharedData::debugInfo.gameMode.defaultPlayerName = gameMode->DefaultPlayerName.ToString();
+
+		SharedData::debugInfo.gameMode.useSeamlessTravel = gameMode->bUseSeamlessTravel;
+		SharedData::debugInfo.gameMode.options = gameMode->OptionsString.ToString();
+		
+		SharedData::debugInfo.gameMode.isPausable = gameMode->bPauseable;
 	}
 
 

@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // Class AssetTags.AssetTagsSubsystem
-// 0x0000 (0x0038 - 0x0038)
+// 0x0000 (0x0030 - 0x0030)
 class UAssetTagsSubsystem final : public UEngineSubsystem
 {
 public:
@@ -31,15 +31,18 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"AssetTagsSubsystem">();
+		STATIC_CLASS_IMPL("AssetTagsSubsystem")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AssetTagsSubsystem")
 	}
 	static class UAssetTagsSubsystem* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UAssetTagsSubsystem>();
 	}
 };
-static_assert(alignof(UAssetTagsSubsystem) == 0x000008, "Wrong alignment on UAssetTagsSubsystem");
-static_assert(sizeof(UAssetTagsSubsystem) == 0x000038, "Wrong size on UAssetTagsSubsystem");
+DUMPER7_ASSERTS_UAssetTagsSubsystem;
 
 }
 

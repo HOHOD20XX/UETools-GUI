@@ -17,6 +17,44 @@
 namespace SDK
 {
 
+// Function MeshModelingTools.HoleFillToolActions.Clear
+// (Final, Native, Public)
+
+void UHoleFillToolActions::Clear()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HoleFillToolActions", "Clear");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MeshModelingTools.HoleFillToolActions.SelectAll
+// (Final, Native, Public)
+
+void UHoleFillToolActions::SelectAll()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("HoleFillToolActions", "SelectAll");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
 // Function MeshModelingTools.BakeMeshAttributeMapsToolProperties.GetUVLayerNamesFunc
 // (Final, Native, Public)
 // Parameters:
@@ -30,6 +68,31 @@ TArray<class FString> UBakeMeshAttributeMapsToolProperties::GetUVLayerNamesFunc(
 		Func = Class->GetFunction("BakeMeshAttributeMapsToolProperties", "GetUVLayerNamesFunc");
 
 	Params::BakeMeshAttributeMapsToolProperties_GetUVLayerNamesFunc Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function MeshModelingTools.DisplaceMeshCommonProperties.GetWeightMapsFunc
+// (Final, Native, Public)
+// Parameters:
+// TArray<class FString>                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
+
+TArray<class FString> UDisplaceMeshCommonProperties::GetWeightMapsFunc()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("DisplaceMeshCommonProperties", "GetWeightMapsFunc");
+
+	Params::DisplaceMeshCommonProperties_GetWeightMapsFunc Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -175,28 +238,22 @@ void UMirrorToolActionPropertySet::Up()
 }
 
 
-// Function MeshModelingTools.DisplaceMeshCommonProperties.GetWeightMapsFunc
+// Function MeshModelingTools.DynamicSculptToolActions.DiscardAttributes
 // (Final, Native, Public)
-// Parameters:
-// TArray<class FString>                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NativeAccessSpecifierPublic)
 
-TArray<class FString> UDisplaceMeshCommonProperties::GetWeightMapsFunc()
+void UDynamicSculptToolActions::DiscardAttributes()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("DisplaceMeshCommonProperties", "GetWeightMapsFunc");
-
-	Params::DisplaceMeshCommonProperties_GetWeightMapsFunc Parms{};
+		Func = Class->GetFunction("DynamicSculptToolActions", "DiscardAttributes");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
 
-	UObject::ProcessEvent(Func, &Parms);
+	UObject::ProcessEvent(Func, nullptr);
 
 	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
 }
 
 
@@ -209,25 +266,6 @@ void UPlaneCutTool::Cut()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("PlaneCutTool", "Cut");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingTools.DynamicSculptToolActions.DiscardAttributes
-// (Final, Native, Public)
-
-void UDynamicSculptToolActions::DiscardAttributes()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("DynamicSculptToolActions", "DiscardAttributes");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -950,44 +988,6 @@ void UEditPivotToolActionPropertySet::Top()
 
 	if (Func == nullptr)
 		Func = Class->GetFunction("EditPivotToolActionPropertySet", "Top");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingTools.HoleFillToolActions.Clear
-// (Final, Native, Public)
-
-void UHoleFillToolActions::Clear()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HoleFillToolActions", "Clear");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MeshModelingTools.HoleFillToolActions.SelectAll
-// (Final, Native, Public)
-
-void UHoleFillToolActions::SelectAll()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("HoleFillToolActions", "SelectAll");
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

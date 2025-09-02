@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "EditableMesh_structs.hpp"
 #include "MeshDescription_structs.hpp"
+#include "EditableMesh_structs.hpp"
 #include "CoreUObject_structs.hpp"
 
 
@@ -25,9 +25,7 @@ struct EditableMesh_InvalidEdgeID final
 public:
 	struct FEdgeID                                ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_InvalidEdgeID) == 0x000004, "Wrong alignment on EditableMesh_InvalidEdgeID");
-static_assert(sizeof(EditableMesh_InvalidEdgeID) == 0x000004, "Wrong size on EditableMesh_InvalidEdgeID");
-static_assert(offsetof(EditableMesh_InvalidEdgeID, ReturnValue) == 0x000000, "Member 'EditableMesh_InvalidEdgeID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_InvalidEdgeID;
 
 // Function EditableMesh.EditableMesh.InvalidPolygonGroupID
 // 0x0004 (0x0004 - 0x0000)
@@ -36,9 +34,7 @@ struct EditableMesh_InvalidPolygonGroupID final
 public:
 	struct FPolygonGroupID                        ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_InvalidPolygonGroupID) == 0x000004, "Wrong alignment on EditableMesh_InvalidPolygonGroupID");
-static_assert(sizeof(EditableMesh_InvalidPolygonGroupID) == 0x000004, "Wrong size on EditableMesh_InvalidPolygonGroupID");
-static_assert(offsetof(EditableMesh_InvalidPolygonGroupID, ReturnValue) == 0x000000, "Member 'EditableMesh_InvalidPolygonGroupID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_InvalidPolygonGroupID;
 
 // Function EditableMesh.EditableMesh.InvalidPolygonID
 // 0x0004 (0x0004 - 0x0000)
@@ -47,9 +43,7 @@ struct EditableMesh_InvalidPolygonID final
 public:
 	struct FPolygonID                             ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_InvalidPolygonID) == 0x000004, "Wrong alignment on EditableMesh_InvalidPolygonID");
-static_assert(sizeof(EditableMesh_InvalidPolygonID) == 0x000004, "Wrong size on EditableMesh_InvalidPolygonID");
-static_assert(offsetof(EditableMesh_InvalidPolygonID, ReturnValue) == 0x000000, "Member 'EditableMesh_InvalidPolygonID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_InvalidPolygonID;
 
 // Function EditableMesh.EditableMesh.InvalidVertexID
 // 0x0004 (0x0004 - 0x0000)
@@ -58,9 +52,7 @@ struct EditableMesh_InvalidVertexID final
 public:
 	struct FVertexID                              ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_InvalidVertexID) == 0x000004, "Wrong alignment on EditableMesh_InvalidVertexID");
-static_assert(sizeof(EditableMesh_InvalidVertexID) == 0x000004, "Wrong size on EditableMesh_InvalidVertexID");
-static_assert(offsetof(EditableMesh_InvalidVertexID, ReturnValue) == 0x000000, "Member 'EditableMesh_InvalidVertexID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_InvalidVertexID;
 
 // Function EditableMesh.EditableMesh.MakeEdgeID
 // 0x0008 (0x0008 - 0x0000)
@@ -70,10 +62,7 @@ public:
 	int32                                         EdgeIndex;                                         // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FEdgeID                                ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_MakeEdgeID) == 0x000004, "Wrong alignment on EditableMesh_MakeEdgeID");
-static_assert(sizeof(EditableMesh_MakeEdgeID) == 0x000008, "Wrong size on EditableMesh_MakeEdgeID");
-static_assert(offsetof(EditableMesh_MakeEdgeID, EdgeIndex) == 0x000000, "Member 'EditableMesh_MakeEdgeID::EdgeIndex' has a wrong offset!");
-static_assert(offsetof(EditableMesh_MakeEdgeID, ReturnValue) == 0x000004, "Member 'EditableMesh_MakeEdgeID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_MakeEdgeID;
 
 // Function EditableMesh.EditableMesh.MakePolygonGroupID
 // 0x0008 (0x0008 - 0x0000)
@@ -83,10 +72,7 @@ public:
 	int32                                         PolygonGroupIndex;                                 // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FPolygonGroupID                        ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_MakePolygonGroupID) == 0x000004, "Wrong alignment on EditableMesh_MakePolygonGroupID");
-static_assert(sizeof(EditableMesh_MakePolygonGroupID) == 0x000008, "Wrong size on EditableMesh_MakePolygonGroupID");
-static_assert(offsetof(EditableMesh_MakePolygonGroupID, PolygonGroupIndex) == 0x000000, "Member 'EditableMesh_MakePolygonGroupID::PolygonGroupIndex' has a wrong offset!");
-static_assert(offsetof(EditableMesh_MakePolygonGroupID, ReturnValue) == 0x000004, "Member 'EditableMesh_MakePolygonGroupID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_MakePolygonGroupID;
 
 // Function EditableMesh.EditableMesh.MakePolygonID
 // 0x0008 (0x0008 - 0x0000)
@@ -96,10 +82,7 @@ public:
 	int32                                         PolygonIndex;                                      // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FPolygonID                             ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_MakePolygonID) == 0x000004, "Wrong alignment on EditableMesh_MakePolygonID");
-static_assert(sizeof(EditableMesh_MakePolygonID) == 0x000008, "Wrong size on EditableMesh_MakePolygonID");
-static_assert(offsetof(EditableMesh_MakePolygonID, PolygonIndex) == 0x000000, "Member 'EditableMesh_MakePolygonID::PolygonIndex' has a wrong offset!");
-static_assert(offsetof(EditableMesh_MakePolygonID, ReturnValue) == 0x000004, "Member 'EditableMesh_MakePolygonID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_MakePolygonID;
 
 // Function EditableMesh.EditableMesh.MakeVertexID
 // 0x0008 (0x0008 - 0x0000)
@@ -109,10 +92,7 @@ public:
 	int32                                         VertexIndex;                                       // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexID                              ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_MakeVertexID) == 0x000004, "Wrong alignment on EditableMesh_MakeVertexID");
-static_assert(sizeof(EditableMesh_MakeVertexID) == 0x000008, "Wrong size on EditableMesh_MakeVertexID");
-static_assert(offsetof(EditableMesh_MakeVertexID, VertexIndex) == 0x000000, "Member 'EditableMesh_MakeVertexID::VertexIndex' has a wrong offset!");
-static_assert(offsetof(EditableMesh_MakeVertexID, ReturnValue) == 0x000004, "Member 'EditableMesh_MakeVertexID::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_MakeVertexID;
 
 // Function EditableMesh.EditableMesh.AssignPolygonsToPolygonGroups
 // 0x0018 (0x0018 - 0x0000)
@@ -123,10 +103,7 @@ public:
 	bool                                          bDeleteOrphanedPolygonGroups;                      // 0x0010(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_AssignPolygonsToPolygonGroups) == 0x000008, "Wrong alignment on EditableMesh_AssignPolygonsToPolygonGroups");
-static_assert(sizeof(EditableMesh_AssignPolygonsToPolygonGroups) == 0x000018, "Wrong size on EditableMesh_AssignPolygonsToPolygonGroups");
-static_assert(offsetof(EditableMesh_AssignPolygonsToPolygonGroups, PolygonGroupForPolygons) == 0x000000, "Member 'EditableMesh_AssignPolygonsToPolygonGroups::PolygonGroupForPolygons' has a wrong offset!");
-static_assert(offsetof(EditableMesh_AssignPolygonsToPolygonGroups, bDeleteOrphanedPolygonGroups) == 0x000010, "Member 'EditableMesh_AssignPolygonsToPolygonGroups::bDeleteOrphanedPolygonGroups' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_AssignPolygonsToPolygonGroups;
 
 // Function EditableMesh.EditableMesh.BevelPolygons
 // 0x0038 (0x0038 - 0x0000)
@@ -139,13 +116,7 @@ public:
 	TArray<struct FPolygonID>                     OutNewCenterPolygonIDs;                            // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonID>                     OutNewSidePolygonIDs;                              // 0x0028(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_BevelPolygons) == 0x000008, "Wrong alignment on EditableMesh_BevelPolygons");
-static_assert(sizeof(EditableMesh_BevelPolygons) == 0x000038, "Wrong size on EditableMesh_BevelPolygons");
-static_assert(offsetof(EditableMesh_BevelPolygons, PolygonIDs) == 0x000000, "Member 'EditableMesh_BevelPolygons::PolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_BevelPolygons, BevelFixedDistance) == 0x000010, "Member 'EditableMesh_BevelPolygons::BevelFixedDistance' has a wrong offset!");
-static_assert(offsetof(EditableMesh_BevelPolygons, BevelProgressTowardCenter) == 0x000014, "Member 'EditableMesh_BevelPolygons::BevelProgressTowardCenter' has a wrong offset!");
-static_assert(offsetof(EditableMesh_BevelPolygons, OutNewCenterPolygonIDs) == 0x000018, "Member 'EditableMesh_BevelPolygons::OutNewCenterPolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_BevelPolygons, OutNewSidePolygonIDs) == 0x000028, "Member 'EditableMesh_BevelPolygons::OutNewSidePolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_BevelPolygons;
 
 // Function EditableMesh.EditableMesh.ChangePolygonsVertexInstances
 // 0x0010 (0x0010 - 0x0000)
@@ -154,9 +125,7 @@ struct EditableMesh_ChangePolygonsVertexInstances final
 public:
 	TArray<struct FChangeVertexInstancesForPolygon> VertexInstancesForPolygons;                      // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ChangePolygonsVertexInstances) == 0x000008, "Wrong alignment on EditableMesh_ChangePolygonsVertexInstances");
-static_assert(sizeof(EditableMesh_ChangePolygonsVertexInstances) == 0x000010, "Wrong size on EditableMesh_ChangePolygonsVertexInstances");
-static_assert(offsetof(EditableMesh_ChangePolygonsVertexInstances, VertexInstancesForPolygons) == 0x000000, "Member 'EditableMesh_ChangePolygonsVertexInstances::VertexInstancesForPolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ChangePolygonsVertexInstances;
 
 // Function EditableMesh.EditableMesh.CommitInstance
 // 0x0010 (0x0010 - 0x0000)
@@ -166,10 +135,7 @@ public:
 	class UPrimitiveComponent*                    ComponentToInstanceTo;                             // 0x0000(0x0008)(Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UEditableMesh*                          ReturnValue;                                       // 0x0008(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CommitInstance) == 0x000008, "Wrong alignment on EditableMesh_CommitInstance");
-static_assert(sizeof(EditableMesh_CommitInstance) == 0x000010, "Wrong size on EditableMesh_CommitInstance");
-static_assert(offsetof(EditableMesh_CommitInstance, ComponentToInstanceTo) == 0x000000, "Member 'EditableMesh_CommitInstance::ComponentToInstanceTo' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CommitInstance, ReturnValue) == 0x000008, "Member 'EditableMesh_CommitInstance::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CommitInstance;
 
 // Function EditableMesh.EditableMesh.CreateEdges
 // 0x0020 (0x0020 - 0x0000)
@@ -179,10 +145,7 @@ public:
 	TArray<struct FEdgeToCreate>                  EdgesToCreate;                                     // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FEdgeID>                        OutNewEdgeIDs;                                     // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CreateEdges) == 0x000008, "Wrong alignment on EditableMesh_CreateEdges");
-static_assert(sizeof(EditableMesh_CreateEdges) == 0x000020, "Wrong size on EditableMesh_CreateEdges");
-static_assert(offsetof(EditableMesh_CreateEdges, EdgesToCreate) == 0x000000, "Member 'EditableMesh_CreateEdges::EdgesToCreate' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreateEdges, OutNewEdgeIDs) == 0x000010, "Member 'EditableMesh_CreateEdges::OutNewEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CreateEdges;
 
 // Function EditableMesh.EditableMesh.CreateEmptyVertexRange
 // 0x0018 (0x0018 - 0x0000)
@@ -193,10 +156,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FVertexID>                      OutNewVertexIDs;                                   // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CreateEmptyVertexRange) == 0x000008, "Wrong alignment on EditableMesh_CreateEmptyVertexRange");
-static_assert(sizeof(EditableMesh_CreateEmptyVertexRange) == 0x000018, "Wrong size on EditableMesh_CreateEmptyVertexRange");
-static_assert(offsetof(EditableMesh_CreateEmptyVertexRange, NumVerticesToCreate) == 0x000000, "Member 'EditableMesh_CreateEmptyVertexRange::NumVerticesToCreate' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreateEmptyVertexRange, OutNewVertexIDs) == 0x000008, "Member 'EditableMesh_CreateEmptyVertexRange::OutNewVertexIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CreateEmptyVertexRange;
 
 // Function EditableMesh.EditableMesh.CreateMissingPolygonPerimeterEdges
 // 0x0018 (0x0018 - 0x0000)
@@ -207,10 +167,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FEdgeID>                        OutNewEdgeIDs;                                     // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CreateMissingPolygonPerimeterEdges) == 0x000008, "Wrong alignment on EditableMesh_CreateMissingPolygonPerimeterEdges");
-static_assert(sizeof(EditableMesh_CreateMissingPolygonPerimeterEdges) == 0x000018, "Wrong size on EditableMesh_CreateMissingPolygonPerimeterEdges");
-static_assert(offsetof(EditableMesh_CreateMissingPolygonPerimeterEdges, PolygonID) == 0x000000, "Member 'EditableMesh_CreateMissingPolygonPerimeterEdges::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreateMissingPolygonPerimeterEdges, OutNewEdgeIDs) == 0x000008, "Member 'EditableMesh_CreateMissingPolygonPerimeterEdges::OutNewEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CreateMissingPolygonPerimeterEdges;
 
 // Function EditableMesh.EditableMesh.CreatePolygonGroups
 // 0x0020 (0x0020 - 0x0000)
@@ -220,10 +177,7 @@ public:
 	TArray<struct FPolygonGroupToCreate>          PolygonGroupsToCreate;                             // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonGroupID>                OutNewPolygonGroupIDs;                             // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CreatePolygonGroups) == 0x000008, "Wrong alignment on EditableMesh_CreatePolygonGroups");
-static_assert(sizeof(EditableMesh_CreatePolygonGroups) == 0x000020, "Wrong size on EditableMesh_CreatePolygonGroups");
-static_assert(offsetof(EditableMesh_CreatePolygonGroups, PolygonGroupsToCreate) == 0x000000, "Member 'EditableMesh_CreatePolygonGroups::PolygonGroupsToCreate' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreatePolygonGroups, OutNewPolygonGroupIDs) == 0x000010, "Member 'EditableMesh_CreatePolygonGroups::OutNewPolygonGroupIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CreatePolygonGroups;
 
 // Function EditableMesh.EditableMesh.CreatePolygons
 // 0x0030 (0x0030 - 0x0000)
@@ -234,11 +188,7 @@ public:
 	TArray<struct FPolygonID>                     OutNewPolygonIDs;                                  // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FEdgeID>                        OutNewEdgeIDs;                                     // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CreatePolygons) == 0x000008, "Wrong alignment on EditableMesh_CreatePolygons");
-static_assert(sizeof(EditableMesh_CreatePolygons) == 0x000030, "Wrong size on EditableMesh_CreatePolygons");
-static_assert(offsetof(EditableMesh_CreatePolygons, PolygonsToCreate) == 0x000000, "Member 'EditableMesh_CreatePolygons::PolygonsToCreate' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreatePolygons, OutNewPolygonIDs) == 0x000010, "Member 'EditableMesh_CreatePolygons::OutNewPolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreatePolygons, OutNewEdgeIDs) == 0x000020, "Member 'EditableMesh_CreatePolygons::OutNewEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CreatePolygons;
 
 // Function EditableMesh.EditableMesh.CreateVertexInstances
 // 0x0020 (0x0020 - 0x0000)
@@ -248,10 +198,7 @@ public:
 	TArray<struct FVertexInstanceToCreate>        VertexInstancesToCreate;                           // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FVertexInstanceID>              OutNewVertexInstanceIDs;                           // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CreateVertexInstances) == 0x000008, "Wrong alignment on EditableMesh_CreateVertexInstances");
-static_assert(sizeof(EditableMesh_CreateVertexInstances) == 0x000020, "Wrong size on EditableMesh_CreateVertexInstances");
-static_assert(offsetof(EditableMesh_CreateVertexInstances, VertexInstancesToCreate) == 0x000000, "Member 'EditableMesh_CreateVertexInstances::VertexInstancesToCreate' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreateVertexInstances, OutNewVertexInstanceIDs) == 0x000010, "Member 'EditableMesh_CreateVertexInstances::OutNewVertexInstanceIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CreateVertexInstances;
 
 // Function EditableMesh.EditableMesh.CreateVertices
 // 0x0020 (0x0020 - 0x0000)
@@ -261,10 +208,7 @@ public:
 	TArray<struct FVertexToCreate>                VerticesToCreate;                                  // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FVertexID>                      OutNewVertexIDs;                                   // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_CreateVertices) == 0x000008, "Wrong alignment on EditableMesh_CreateVertices");
-static_assert(sizeof(EditableMesh_CreateVertices) == 0x000020, "Wrong size on EditableMesh_CreateVertices");
-static_assert(offsetof(EditableMesh_CreateVertices, VerticesToCreate) == 0x000000, "Member 'EditableMesh_CreateVertices::VerticesToCreate' has a wrong offset!");
-static_assert(offsetof(EditableMesh_CreateVertices, OutNewVertexIDs) == 0x000010, "Member 'EditableMesh_CreateVertices::OutNewVertexIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_CreateVertices;
 
 // Function EditableMesh.EditableMesh.DeleteEdgeAndConnectedPolygons
 // 0x0008 (0x0008 - 0x0000)
@@ -277,13 +221,7 @@ public:
 	bool                                          bDeleteOrphanedVertexInstances;                    // 0x0006(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bDeleteEmptyPolygonGroups;                         // 0x0007(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_DeleteEdgeAndConnectedPolygons) == 0x000004, "Wrong alignment on EditableMesh_DeleteEdgeAndConnectedPolygons");
-static_assert(sizeof(EditableMesh_DeleteEdgeAndConnectedPolygons) == 0x000008, "Wrong size on EditableMesh_DeleteEdgeAndConnectedPolygons");
-static_assert(offsetof(EditableMesh_DeleteEdgeAndConnectedPolygons, EdgeID) == 0x000000, "Member 'EditableMesh_DeleteEdgeAndConnectedPolygons::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteEdgeAndConnectedPolygons, bDeleteOrphanedEdges) == 0x000004, "Member 'EditableMesh_DeleteEdgeAndConnectedPolygons::bDeleteOrphanedEdges' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteEdgeAndConnectedPolygons, bDeleteOrphanedVertices) == 0x000005, "Member 'EditableMesh_DeleteEdgeAndConnectedPolygons::bDeleteOrphanedVertices' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteEdgeAndConnectedPolygons, bDeleteOrphanedVertexInstances) == 0x000006, "Member 'EditableMesh_DeleteEdgeAndConnectedPolygons::bDeleteOrphanedVertexInstances' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteEdgeAndConnectedPolygons, bDeleteEmptyPolygonGroups) == 0x000007, "Member 'EditableMesh_DeleteEdgeAndConnectedPolygons::bDeleteEmptyPolygonGroups' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_DeleteEdgeAndConnectedPolygons;
 
 // Function EditableMesh.EditableMesh.DeleteEdges
 // 0x0018 (0x0018 - 0x0000)
@@ -294,10 +232,7 @@ public:
 	bool                                          bDeleteOrphanedVertices;                           // 0x0010(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_DeleteEdges) == 0x000008, "Wrong alignment on EditableMesh_DeleteEdges");
-static_assert(sizeof(EditableMesh_DeleteEdges) == 0x000018, "Wrong size on EditableMesh_DeleteEdges");
-static_assert(offsetof(EditableMesh_DeleteEdges, EdgeIDsToDelete) == 0x000000, "Member 'EditableMesh_DeleteEdges::EdgeIDsToDelete' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteEdges, bDeleteOrphanedVertices) == 0x000010, "Member 'EditableMesh_DeleteEdges::bDeleteOrphanedVertices' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_DeleteEdges;
 
 // Function EditableMesh.EditableMesh.DeleteOrphanVertices
 // 0x0010 (0x0010 - 0x0000)
@@ -306,9 +241,7 @@ struct EditableMesh_DeleteOrphanVertices final
 public:
 	TArray<struct FVertexID>                      VertexIDsToDelete;                                 // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_DeleteOrphanVertices) == 0x000008, "Wrong alignment on EditableMesh_DeleteOrphanVertices");
-static_assert(sizeof(EditableMesh_DeleteOrphanVertices) == 0x000010, "Wrong size on EditableMesh_DeleteOrphanVertices");
-static_assert(offsetof(EditableMesh_DeleteOrphanVertices, VertexIDsToDelete) == 0x000000, "Member 'EditableMesh_DeleteOrphanVertices::VertexIDsToDelete' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_DeleteOrphanVertices;
 
 // Function EditableMesh.EditableMesh.DeletePolygonGroups
 // 0x0010 (0x0010 - 0x0000)
@@ -317,9 +250,7 @@ struct EditableMesh_DeletePolygonGroups final
 public:
 	TArray<struct FPolygonGroupID>                PolygonGroupIDs;                                   // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_DeletePolygonGroups) == 0x000008, "Wrong alignment on EditableMesh_DeletePolygonGroups");
-static_assert(sizeof(EditableMesh_DeletePolygonGroups) == 0x000010, "Wrong size on EditableMesh_DeletePolygonGroups");
-static_assert(offsetof(EditableMesh_DeletePolygonGroups, PolygonGroupIDs) == 0x000000, "Member 'EditableMesh_DeletePolygonGroups::PolygonGroupIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_DeletePolygonGroups;
 
 // Function EditableMesh.EditableMesh.DeletePolygons
 // 0x0018 (0x0018 - 0x0000)
@@ -333,13 +264,7 @@ public:
 	bool                                          bDeleteEmptyPolygonGroups;                         // 0x0013(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_DeletePolygons) == 0x000008, "Wrong alignment on EditableMesh_DeletePolygons");
-static_assert(sizeof(EditableMesh_DeletePolygons) == 0x000018, "Wrong size on EditableMesh_DeletePolygons");
-static_assert(offsetof(EditableMesh_DeletePolygons, PolygonIDsToDelete) == 0x000000, "Member 'EditableMesh_DeletePolygons::PolygonIDsToDelete' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeletePolygons, bDeleteOrphanedEdges) == 0x000010, "Member 'EditableMesh_DeletePolygons::bDeleteOrphanedEdges' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeletePolygons, bDeleteOrphanedVertices) == 0x000011, "Member 'EditableMesh_DeletePolygons::bDeleteOrphanedVertices' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeletePolygons, bDeleteOrphanedVertexInstances) == 0x000012, "Member 'EditableMesh_DeletePolygons::bDeleteOrphanedVertexInstances' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeletePolygons, bDeleteEmptyPolygonGroups) == 0x000013, "Member 'EditableMesh_DeletePolygons::bDeleteEmptyPolygonGroups' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_DeletePolygons;
 
 // Function EditableMesh.EditableMesh.DeleteVertexAndConnectedEdgesAndPolygons
 // 0x0008 (0x0008 - 0x0000)
@@ -352,13 +277,7 @@ public:
 	bool                                          bDeleteOrphanedVertexInstances;                    // 0x0006(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bDeleteEmptyPolygonGroups;                         // 0x0007(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons) == 0x000004, "Wrong alignment on EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons");
-static_assert(sizeof(EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons) == 0x000008, "Wrong size on EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons");
-static_assert(offsetof(EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons, VertexID) == 0x000000, "Member 'EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons, bDeleteOrphanedEdges) == 0x000004, "Member 'EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons::bDeleteOrphanedEdges' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons, bDeleteOrphanedVertices) == 0x000005, "Member 'EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons::bDeleteOrphanedVertices' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons, bDeleteOrphanedVertexInstances) == 0x000006, "Member 'EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons::bDeleteOrphanedVertexInstances' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons, bDeleteEmptyPolygonGroups) == 0x000007, "Member 'EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons::bDeleteEmptyPolygonGroups' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_DeleteVertexAndConnectedEdgesAndPolygons;
 
 // Function EditableMesh.EditableMesh.DeleteVertexInstances
 // 0x0018 (0x0018 - 0x0000)
@@ -369,10 +288,7 @@ public:
 	bool                                          bDeleteOrphanedVertices;                           // 0x0010(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_DeleteVertexInstances) == 0x000008, "Wrong alignment on EditableMesh_DeleteVertexInstances");
-static_assert(sizeof(EditableMesh_DeleteVertexInstances) == 0x000018, "Wrong size on EditableMesh_DeleteVertexInstances");
-static_assert(offsetof(EditableMesh_DeleteVertexInstances, VertexInstanceIDsToDelete) == 0x000000, "Member 'EditableMesh_DeleteVertexInstances::VertexInstanceIDsToDelete' has a wrong offset!");
-static_assert(offsetof(EditableMesh_DeleteVertexInstances, bDeleteOrphanedVertices) == 0x000010, "Member 'EditableMesh_DeleteVertexInstances::bDeleteOrphanedVertices' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_DeleteVertexInstances;
 
 // Function EditableMesh.EditableMesh.EndModification
 // 0x0001 (0x0001 - 0x0000)
@@ -381,9 +297,7 @@ struct EditableMesh_EndModification final
 public:
 	bool                                          bFromUndo;                                         // 0x0000(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_EndModification) == 0x000001, "Wrong alignment on EditableMesh_EndModification");
-static_assert(sizeof(EditableMesh_EndModification) == 0x000001, "Wrong size on EditableMesh_EndModification");
-static_assert(offsetof(EditableMesh_EndModification, bFromUndo) == 0x000000, "Member 'EditableMesh_EndModification::bFromUndo' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_EndModification;
 
 // Function EditableMesh.EditableMesh.ExtendEdges
 // 0x0028 (0x0028 - 0x0000)
@@ -395,11 +309,7 @@ public:
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FEdgeID>                        OutNewExtendedEdgeIDs;                             // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ExtendEdges) == 0x000008, "Wrong alignment on EditableMesh_ExtendEdges");
-static_assert(sizeof(EditableMesh_ExtendEdges) == 0x000028, "Wrong size on EditableMesh_ExtendEdges");
-static_assert(offsetof(EditableMesh_ExtendEdges, EdgeIDs) == 0x000000, "Member 'EditableMesh_ExtendEdges::EdgeIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtendEdges, bWeldNeighbors) == 0x000010, "Member 'EditableMesh_ExtendEdges::bWeldNeighbors' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtendEdges, OutNewExtendedEdgeIDs) == 0x000018, "Member 'EditableMesh_ExtendEdges::OutNewExtendedEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ExtendEdges;
 
 // Function EditableMesh.EditableMesh.ExtendVertices
 // 0x0030 (0x0030 - 0x0000)
@@ -412,12 +322,7 @@ public:
 	struct FVector                                ReferencePosition;                                 // 0x0014(0x000C)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	TArray<struct FVertexID>                      OutNewExtendedVertexIDs;                           // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ExtendVertices) == 0x000008, "Wrong alignment on EditableMesh_ExtendVertices");
-static_assert(sizeof(EditableMesh_ExtendVertices) == 0x000030, "Wrong size on EditableMesh_ExtendVertices");
-static_assert(offsetof(EditableMesh_ExtendVertices, VertexIDs) == 0x000000, "Member 'EditableMesh_ExtendVertices::VertexIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtendVertices, bOnlyExtendClosestEdge) == 0x000010, "Member 'EditableMesh_ExtendVertices::bOnlyExtendClosestEdge' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtendVertices, ReferencePosition) == 0x000014, "Member 'EditableMesh_ExtendVertices::ReferencePosition' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtendVertices, OutNewExtendedVertexIDs) == 0x000020, "Member 'EditableMesh_ExtendVertices::OutNewExtendedVertexIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ExtendVertices;
 
 // Function EditableMesh.EditableMesh.ExtrudePolygons
 // 0x0028 (0x0028 - 0x0000)
@@ -430,12 +335,7 @@ public:
 	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FPolygonID>                     OutNewExtrudedFrontPolygons;                       // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ExtrudePolygons) == 0x000008, "Wrong alignment on EditableMesh_ExtrudePolygons");
-static_assert(sizeof(EditableMesh_ExtrudePolygons) == 0x000028, "Wrong size on EditableMesh_ExtrudePolygons");
-static_assert(offsetof(EditableMesh_ExtrudePolygons, Polygons) == 0x000000, "Member 'EditableMesh_ExtrudePolygons::Polygons' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtrudePolygons, ExtrudeDistance) == 0x000010, "Member 'EditableMesh_ExtrudePolygons::ExtrudeDistance' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtrudePolygons, bKeepNeighborsTogether) == 0x000014, "Member 'EditableMesh_ExtrudePolygons::bKeepNeighborsTogether' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ExtrudePolygons, OutNewExtrudedFrontPolygons) == 0x000018, "Member 'EditableMesh_ExtrudePolygons::OutNewExtrudedFrontPolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ExtrudePolygons;
 
 // Function EditableMesh.EditableMesh.FlipPolygons
 // 0x0010 (0x0010 - 0x0000)
@@ -444,9 +344,7 @@ struct EditableMesh_FlipPolygons final
 public:
 	TArray<struct FPolygonID>                     PolygonIDs;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_FlipPolygons) == 0x000008, "Wrong alignment on EditableMesh_FlipPolygons");
-static_assert(sizeof(EditableMesh_FlipPolygons) == 0x000010, "Wrong size on EditableMesh_FlipPolygons");
-static_assert(offsetof(EditableMesh_FlipPolygons, PolygonIDs) == 0x000000, "Member 'EditableMesh_FlipPolygons::PolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_FlipPolygons;
 
 // Function EditableMesh.EditableMesh.GeneratePolygonTangentsAndNormals
 // 0x0010 (0x0010 - 0x0000)
@@ -455,9 +353,7 @@ struct EditableMesh_GeneratePolygonTangentsAndNormals final
 public:
 	TArray<struct FPolygonID>                     PolygonIDs;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GeneratePolygonTangentsAndNormals) == 0x000008, "Wrong alignment on EditableMesh_GeneratePolygonTangentsAndNormals");
-static_assert(sizeof(EditableMesh_GeneratePolygonTangentsAndNormals) == 0x000010, "Wrong size on EditableMesh_GeneratePolygonTangentsAndNormals");
-static_assert(offsetof(EditableMesh_GeneratePolygonTangentsAndNormals, PolygonIDs) == 0x000000, "Member 'EditableMesh_GeneratePolygonTangentsAndNormals::PolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GeneratePolygonTangentsAndNormals;
 
 // Function EditableMesh.EditableMesh.InsertEdgeLoop
 // 0x0028 (0x0028 - 0x0000)
@@ -469,11 +365,7 @@ public:
 	TArray<float>                                 Splits;                                            // 0x0008(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FEdgeID>                        OutNewEdgeIDs;                                     // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_InsertEdgeLoop) == 0x000008, "Wrong alignment on EditableMesh_InsertEdgeLoop");
-static_assert(sizeof(EditableMesh_InsertEdgeLoop) == 0x000028, "Wrong size on EditableMesh_InsertEdgeLoop");
-static_assert(offsetof(EditableMesh_InsertEdgeLoop, EdgeID) == 0x000000, "Member 'EditableMesh_InsertEdgeLoop::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_InsertEdgeLoop, Splits) == 0x000008, "Member 'EditableMesh_InsertEdgeLoop::Splits' has a wrong offset!");
-static_assert(offsetof(EditableMesh_InsertEdgeLoop, OutNewEdgeIDs) == 0x000018, "Member 'EditableMesh_InsertEdgeLoop::OutNewEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_InsertEdgeLoop;
 
 // Function EditableMesh.EditableMesh.InsetPolygons
 // 0x0040 (0x0040 - 0x0000)
@@ -488,14 +380,7 @@ public:
 	TArray<struct FPolygonID>                     OutNewCenterPolygonIDs;                            // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonID>                     OutNewSidePolygonIDs;                              // 0x0030(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_InsetPolygons) == 0x000008, "Wrong alignment on EditableMesh_InsetPolygons");
-static_assert(sizeof(EditableMesh_InsetPolygons) == 0x000040, "Wrong size on EditableMesh_InsetPolygons");
-static_assert(offsetof(EditableMesh_InsetPolygons, PolygonIDs) == 0x000000, "Member 'EditableMesh_InsetPolygons::PolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_InsetPolygons, InsetFixedDistance) == 0x000010, "Member 'EditableMesh_InsetPolygons::InsetFixedDistance' has a wrong offset!");
-static_assert(offsetof(EditableMesh_InsetPolygons, InsetProgressTowardCenter) == 0x000014, "Member 'EditableMesh_InsetPolygons::InsetProgressTowardCenter' has a wrong offset!");
-static_assert(offsetof(EditableMesh_InsetPolygons, Mode) == 0x000018, "Member 'EditableMesh_InsetPolygons::Mode' has a wrong offset!");
-static_assert(offsetof(EditableMesh_InsetPolygons, OutNewCenterPolygonIDs) == 0x000020, "Member 'EditableMesh_InsetPolygons::OutNewCenterPolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_InsetPolygons, OutNewSidePolygonIDs) == 0x000030, "Member 'EditableMesh_InsetPolygons::OutNewSidePolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_InsetPolygons;
 
 // Function EditableMesh.EditableMesh.MoveVertices
 // 0x0010 (0x0010 - 0x0000)
@@ -504,9 +389,7 @@ struct EditableMesh_MoveVertices final
 public:
 	TArray<struct FVertexToMove>                  VerticesToMove;                                    // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_MoveVertices) == 0x000008, "Wrong alignment on EditableMesh_MoveVertices");
-static_assert(sizeof(EditableMesh_MoveVertices) == 0x000010, "Wrong size on EditableMesh_MoveVertices");
-static_assert(offsetof(EditableMesh_MoveVertices, VerticesToMove) == 0x000000, "Member 'EditableMesh_MoveVertices::VerticesToMove' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_MoveVertices;
 
 // Function EditableMesh.EditableMesh.QuadrangulateMesh
 // 0x0010 (0x0010 - 0x0000)
@@ -515,9 +398,7 @@ struct EditableMesh_QuadrangulateMesh final
 public:
 	TArray<struct FPolygonID>                     OutNewPolygonIDs;                                  // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_QuadrangulateMesh) == 0x000008, "Wrong alignment on EditableMesh_QuadrangulateMesh");
-static_assert(sizeof(EditableMesh_QuadrangulateMesh) == 0x000010, "Wrong size on EditableMesh_QuadrangulateMesh");
-static_assert(offsetof(EditableMesh_QuadrangulateMesh, OutNewPolygonIDs) == 0x000000, "Member 'EditableMesh_QuadrangulateMesh::OutNewPolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_QuadrangulateMesh;
 
 // Function EditableMesh.EditableMesh.RevertInstance
 // 0x0008 (0x0008 - 0x0000)
@@ -526,9 +407,7 @@ struct EditableMesh_RevertInstance final
 public:
 	class UEditableMesh*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_RevertInstance) == 0x000008, "Wrong alignment on EditableMesh_RevertInstance");
-static_assert(sizeof(EditableMesh_RevertInstance) == 0x000008, "Wrong size on EditableMesh_RevertInstance");
-static_assert(offsetof(EditableMesh_RevertInstance, ReturnValue) == 0x000000, "Member 'EditableMesh_RevertInstance::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_RevertInstance;
 
 // Function EditableMesh.EditableMesh.SetAllowCompact
 // 0x0001 (0x0001 - 0x0000)
@@ -537,9 +416,7 @@ struct EditableMesh_SetAllowCompact final
 public:
 	bool                                          bInAllowCompact;                                   // 0x0000(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetAllowCompact) == 0x000001, "Wrong alignment on EditableMesh_SetAllowCompact");
-static_assert(sizeof(EditableMesh_SetAllowCompact) == 0x000001, "Wrong size on EditableMesh_SetAllowCompact");
-static_assert(offsetof(EditableMesh_SetAllowCompact, bInAllowCompact) == 0x000000, "Member 'EditableMesh_SetAllowCompact::bInAllowCompact' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetAllowCompact;
 
 // Function EditableMesh.EditableMesh.SetAllowSpatialDatabase
 // 0x0001 (0x0001 - 0x0000)
@@ -548,9 +425,7 @@ struct EditableMesh_SetAllowSpatialDatabase final
 public:
 	bool                                          bInAllowSpatialDatabase;                           // 0x0000(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetAllowSpatialDatabase) == 0x000001, "Wrong alignment on EditableMesh_SetAllowSpatialDatabase");
-static_assert(sizeof(EditableMesh_SetAllowSpatialDatabase) == 0x000001, "Wrong size on EditableMesh_SetAllowSpatialDatabase");
-static_assert(offsetof(EditableMesh_SetAllowSpatialDatabase, bInAllowSpatialDatabase) == 0x000000, "Member 'EditableMesh_SetAllowSpatialDatabase::bInAllowSpatialDatabase' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetAllowSpatialDatabase;
 
 // Function EditableMesh.EditableMesh.SetAllowUndo
 // 0x0001 (0x0001 - 0x0000)
@@ -559,9 +434,7 @@ struct EditableMesh_SetAllowUndo final
 public:
 	bool                                          bInAllowUndo;                                      // 0x0000(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetAllowUndo) == 0x000001, "Wrong alignment on EditableMesh_SetAllowUndo");
-static_assert(sizeof(EditableMesh_SetAllowUndo) == 0x000001, "Wrong size on EditableMesh_SetAllowUndo");
-static_assert(offsetof(EditableMesh_SetAllowUndo, bInAllowUndo) == 0x000000, "Member 'EditableMesh_SetAllowUndo::bInAllowUndo' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetAllowUndo;
 
 // Function EditableMesh.EditableMesh.SetEdgesAttributes
 // 0x0010 (0x0010 - 0x0000)
@@ -570,9 +443,7 @@ struct EditableMesh_SetEdgesAttributes final
 public:
 	TArray<struct FAttributesForEdge>             AttributesForEdges;                                // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetEdgesAttributes) == 0x000008, "Wrong alignment on EditableMesh_SetEdgesAttributes");
-static_assert(sizeof(EditableMesh_SetEdgesAttributes) == 0x000010, "Wrong size on EditableMesh_SetEdgesAttributes");
-static_assert(offsetof(EditableMesh_SetEdgesAttributes, AttributesForEdges) == 0x000000, "Member 'EditableMesh_SetEdgesAttributes::AttributesForEdges' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetEdgesAttributes;
 
 // Function EditableMesh.EditableMesh.SetEdgesCreaseSharpness
 // 0x0020 (0x0020 - 0x0000)
@@ -582,10 +453,7 @@ public:
 	TArray<struct FEdgeID>                        EdgeIDs;                                           // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<float>                                 EdgesNewCreaseSharpness;                           // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetEdgesCreaseSharpness) == 0x000008, "Wrong alignment on EditableMesh_SetEdgesCreaseSharpness");
-static_assert(sizeof(EditableMesh_SetEdgesCreaseSharpness) == 0x000020, "Wrong size on EditableMesh_SetEdgesCreaseSharpness");
-static_assert(offsetof(EditableMesh_SetEdgesCreaseSharpness, EdgeIDs) == 0x000000, "Member 'EditableMesh_SetEdgesCreaseSharpness::EdgeIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SetEdgesCreaseSharpness, EdgesNewCreaseSharpness) == 0x000010, "Member 'EditableMesh_SetEdgesCreaseSharpness::EdgesNewCreaseSharpness' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetEdgesCreaseSharpness;
 
 // Function EditableMesh.EditableMesh.SetEdgesHardness
 // 0x0020 (0x0020 - 0x0000)
@@ -595,10 +463,7 @@ public:
 	TArray<struct FEdgeID>                        EdgeIDs;                                           // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<bool>                                  EdgesNewIsHard;                                    // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetEdgesHardness) == 0x000008, "Wrong alignment on EditableMesh_SetEdgesHardness");
-static_assert(sizeof(EditableMesh_SetEdgesHardness) == 0x000020, "Wrong size on EditableMesh_SetEdgesHardness");
-static_assert(offsetof(EditableMesh_SetEdgesHardness, EdgeIDs) == 0x000000, "Member 'EditableMesh_SetEdgesHardness::EdgeIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SetEdgesHardness, EdgesNewIsHard) == 0x000010, "Member 'EditableMesh_SetEdgesHardness::EdgesNewIsHard' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetEdgesHardness;
 
 // Function EditableMesh.EditableMesh.SetEdgesHardnessAutomatically
 // 0x0018 (0x0018 - 0x0000)
@@ -609,10 +474,7 @@ public:
 	float                                         MaxDotProductForSoftEdge;                          // 0x0010(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_SetEdgesHardnessAutomatically) == 0x000008, "Wrong alignment on EditableMesh_SetEdgesHardnessAutomatically");
-static_assert(sizeof(EditableMesh_SetEdgesHardnessAutomatically) == 0x000018, "Wrong size on EditableMesh_SetEdgesHardnessAutomatically");
-static_assert(offsetof(EditableMesh_SetEdgesHardnessAutomatically, EdgeIDs) == 0x000000, "Member 'EditableMesh_SetEdgesHardnessAutomatically::EdgeIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SetEdgesHardnessAutomatically, MaxDotProductForSoftEdge) == 0x000010, "Member 'EditableMesh_SetEdgesHardnessAutomatically::MaxDotProductForSoftEdge' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetEdgesHardnessAutomatically;
 
 // Function EditableMesh.EditableMesh.SetPolygonsVertexAttributes
 // 0x0010 (0x0010 - 0x0000)
@@ -621,9 +483,7 @@ struct EditableMesh_SetPolygonsVertexAttributes final
 public:
 	TArray<struct FVertexAttributesForPolygon>    VertexAttributesForPolygons;                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetPolygonsVertexAttributes) == 0x000008, "Wrong alignment on EditableMesh_SetPolygonsVertexAttributes");
-static_assert(sizeof(EditableMesh_SetPolygonsVertexAttributes) == 0x000010, "Wrong size on EditableMesh_SetPolygonsVertexAttributes");
-static_assert(offsetof(EditableMesh_SetPolygonsVertexAttributes, VertexAttributesForPolygons) == 0x000000, "Member 'EditableMesh_SetPolygonsVertexAttributes::VertexAttributesForPolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetPolygonsVertexAttributes;
 
 // Function EditableMesh.EditableMesh.SetSubdivisionCount
 // 0x0004 (0x0004 - 0x0000)
@@ -632,9 +492,7 @@ struct EditableMesh_SetSubdivisionCount final
 public:
 	int32                                         NewSubdivisionCount;                               // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetSubdivisionCount) == 0x000004, "Wrong alignment on EditableMesh_SetSubdivisionCount");
-static_assert(sizeof(EditableMesh_SetSubdivisionCount) == 0x000004, "Wrong size on EditableMesh_SetSubdivisionCount");
-static_assert(offsetof(EditableMesh_SetSubdivisionCount, NewSubdivisionCount) == 0x000000, "Member 'EditableMesh_SetSubdivisionCount::NewSubdivisionCount' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetSubdivisionCount;
 
 // Function EditableMesh.EditableMesh.SetTextureCoordinateCount
 // 0x0004 (0x0004 - 0x0000)
@@ -643,9 +501,7 @@ struct EditableMesh_SetTextureCoordinateCount final
 public:
 	int32                                         NumTexCoords;                                      // 0x0000(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetTextureCoordinateCount) == 0x000004, "Wrong alignment on EditableMesh_SetTextureCoordinateCount");
-static_assert(sizeof(EditableMesh_SetTextureCoordinateCount) == 0x000004, "Wrong size on EditableMesh_SetTextureCoordinateCount");
-static_assert(offsetof(EditableMesh_SetTextureCoordinateCount, NumTexCoords) == 0x000000, "Member 'EditableMesh_SetTextureCoordinateCount::NumTexCoords' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetTextureCoordinateCount;
 
 // Function EditableMesh.EditableMesh.SetVertexInstancesAttributes
 // 0x0010 (0x0010 - 0x0000)
@@ -654,9 +510,7 @@ struct EditableMesh_SetVertexInstancesAttributes final
 public:
 	TArray<struct FAttributesForVertexInstance>   AttributesForVertexInstances;                      // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetVertexInstancesAttributes) == 0x000008, "Wrong alignment on EditableMesh_SetVertexInstancesAttributes");
-static_assert(sizeof(EditableMesh_SetVertexInstancesAttributes) == 0x000010, "Wrong size on EditableMesh_SetVertexInstancesAttributes");
-static_assert(offsetof(EditableMesh_SetVertexInstancesAttributes, AttributesForVertexInstances) == 0x000000, "Member 'EditableMesh_SetVertexInstancesAttributes::AttributesForVertexInstances' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetVertexInstancesAttributes;
 
 // Function EditableMesh.EditableMesh.SetVerticesAttributes
 // 0x0010 (0x0010 - 0x0000)
@@ -665,9 +519,7 @@ struct EditableMesh_SetVerticesAttributes final
 public:
 	TArray<struct FAttributesForVertex>           AttributesForVertices;                             // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetVerticesAttributes) == 0x000008, "Wrong alignment on EditableMesh_SetVerticesAttributes");
-static_assert(sizeof(EditableMesh_SetVerticesAttributes) == 0x000010, "Wrong size on EditableMesh_SetVerticesAttributes");
-static_assert(offsetof(EditableMesh_SetVerticesAttributes, AttributesForVertices) == 0x000000, "Member 'EditableMesh_SetVerticesAttributes::AttributesForVertices' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetVerticesAttributes;
 
 // Function EditableMesh.EditableMesh.SetVerticesCornerSharpness
 // 0x0020 (0x0020 - 0x0000)
@@ -677,10 +529,7 @@ public:
 	TArray<struct FVertexID>                      VertexIDs;                                         // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<float>                                 VerticesNewCornerSharpness;                        // 0x0010(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SetVerticesCornerSharpness) == 0x000008, "Wrong alignment on EditableMesh_SetVerticesCornerSharpness");
-static_assert(sizeof(EditableMesh_SetVerticesCornerSharpness) == 0x000020, "Wrong size on EditableMesh_SetVerticesCornerSharpness");
-static_assert(offsetof(EditableMesh_SetVerticesCornerSharpness, VertexIDs) == 0x000000, "Member 'EditableMesh_SetVerticesCornerSharpness::VertexIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SetVerticesCornerSharpness, VerticesNewCornerSharpness) == 0x000010, "Member 'EditableMesh_SetVerticesCornerSharpness::VerticesNewCornerSharpness' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SetVerticesCornerSharpness;
 
 // Function EditableMesh.EditableMesh.SplitEdge
 // 0x0028 (0x0028 - 0x0000)
@@ -692,11 +541,7 @@ public:
 	TArray<float>                                 Splits;                                            // 0x0008(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FVertexID>                      OutNewVertexIDs;                                   // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SplitEdge) == 0x000008, "Wrong alignment on EditableMesh_SplitEdge");
-static_assert(sizeof(EditableMesh_SplitEdge) == 0x000028, "Wrong size on EditableMesh_SplitEdge");
-static_assert(offsetof(EditableMesh_SplitEdge, EdgeID) == 0x000000, "Member 'EditableMesh_SplitEdge::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SplitEdge, Splits) == 0x000008, "Member 'EditableMesh_SplitEdge::Splits' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SplitEdge, OutNewVertexIDs) == 0x000018, "Member 'EditableMesh_SplitEdge::OutNewVertexIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SplitEdge;
 
 // Function EditableMesh.EditableMesh.SplitPolygonalMesh
 // 0x0040 (0x0040 - 0x0000)
@@ -708,12 +553,7 @@ public:
 	TArray<struct FPolygonID>                     PolygonIDs2;                                       // 0x0020(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FEdgeID>                        BoundaryIDs;                                       // 0x0030(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SplitPolygonalMesh) == 0x000010, "Wrong alignment on EditableMesh_SplitPolygonalMesh");
-static_assert(sizeof(EditableMesh_SplitPolygonalMesh) == 0x000040, "Wrong size on EditableMesh_SplitPolygonalMesh");
-static_assert(offsetof(EditableMesh_SplitPolygonalMesh, InPlane) == 0x000000, "Member 'EditableMesh_SplitPolygonalMesh::InPlane' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SplitPolygonalMesh, PolygonIDs1) == 0x000010, "Member 'EditableMesh_SplitPolygonalMesh::PolygonIDs1' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SplitPolygonalMesh, PolygonIDs2) == 0x000020, "Member 'EditableMesh_SplitPolygonalMesh::PolygonIDs2' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SplitPolygonalMesh, BoundaryIDs) == 0x000030, "Member 'EditableMesh_SplitPolygonalMesh::BoundaryIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SplitPolygonalMesh;
 
 // Function EditableMesh.EditableMesh.SplitPolygons
 // 0x0020 (0x0020 - 0x0000)
@@ -723,10 +563,7 @@ public:
 	TArray<struct FPolygonToSplit>                PolygonsToSplit;                                   // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FEdgeID>                        OutNewEdgeIDs;                                     // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SplitPolygons) == 0x000008, "Wrong alignment on EditableMesh_SplitPolygons");
-static_assert(sizeof(EditableMesh_SplitPolygons) == 0x000020, "Wrong size on EditableMesh_SplitPolygons");
-static_assert(offsetof(EditableMesh_SplitPolygons, PolygonsToSplit) == 0x000000, "Member 'EditableMesh_SplitPolygons::PolygonsToSplit' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SplitPolygons, OutNewEdgeIDs) == 0x000010, "Member 'EditableMesh_SplitPolygons::OutNewEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SplitPolygons;
 
 // Function EditableMesh.EditableMesh.StartModification
 // 0x0002 (0x0002 - 0x0000)
@@ -736,10 +573,7 @@ public:
 	EMeshModificationType                         MeshModificationType;                              // 0x0000(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	EMeshTopologyChange                           MeshTopologyChange;                                // 0x0001(0x0001)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_StartModification) == 0x000001, "Wrong alignment on EditableMesh_StartModification");
-static_assert(sizeof(EditableMesh_StartModification) == 0x000002, "Wrong size on EditableMesh_StartModification");
-static_assert(offsetof(EditableMesh_StartModification, MeshModificationType) == 0x000000, "Member 'EditableMesh_StartModification::MeshModificationType' has a wrong offset!");
-static_assert(offsetof(EditableMesh_StartModification, MeshTopologyChange) == 0x000001, "Member 'EditableMesh_StartModification::MeshTopologyChange' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_StartModification;
 
 // Function EditableMesh.EditableMesh.TessellatePolygons
 // 0x0028 (0x0028 - 0x0000)
@@ -751,11 +585,7 @@ public:
 	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FPolygonID>                     OutNewPolygonIDs;                                  // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_TessellatePolygons) == 0x000008, "Wrong alignment on EditableMesh_TessellatePolygons");
-static_assert(sizeof(EditableMesh_TessellatePolygons) == 0x000028, "Wrong size on EditableMesh_TessellatePolygons");
-static_assert(offsetof(EditableMesh_TessellatePolygons, PolygonIDs) == 0x000000, "Member 'EditableMesh_TessellatePolygons::PolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_TessellatePolygons, TriangleTessellationMode) == 0x000010, "Member 'EditableMesh_TessellatePolygons::TriangleTessellationMode' has a wrong offset!");
-static_assert(offsetof(EditableMesh_TessellatePolygons, OutNewPolygonIDs) == 0x000018, "Member 'EditableMesh_TessellatePolygons::OutNewPolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_TessellatePolygons;
 
 // Function EditableMesh.EditableMesh.TriangulatePolygons
 // 0x0020 (0x0020 - 0x0000)
@@ -765,10 +595,7 @@ public:
 	TArray<struct FPolygonID>                     PolygonIDs;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonID>                     OutNewTrianglePolygons;                            // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_TriangulatePolygons) == 0x000008, "Wrong alignment on EditableMesh_TriangulatePolygons");
-static_assert(sizeof(EditableMesh_TriangulatePolygons) == 0x000020, "Wrong size on EditableMesh_TriangulatePolygons");
-static_assert(offsetof(EditableMesh_TriangulatePolygons, PolygonIDs) == 0x000000, "Member 'EditableMesh_TriangulatePolygons::PolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_TriangulatePolygons, OutNewTrianglePolygons) == 0x000010, "Member 'EditableMesh_TriangulatePolygons::OutNewTrianglePolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_TriangulatePolygons;
 
 // Function EditableMesh.EditableMesh.TryToRemovePolygonEdge
 // 0x000C (0x000C - 0x0000)
@@ -780,11 +607,7 @@ public:
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPolygonID                             OutNewPolygonID;                                   // 0x0008(0x0004)(Parm, OutParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_TryToRemovePolygonEdge) == 0x000004, "Wrong alignment on EditableMesh_TryToRemovePolygonEdge");
-static_assert(sizeof(EditableMesh_TryToRemovePolygonEdge) == 0x00000C, "Wrong size on EditableMesh_TryToRemovePolygonEdge");
-static_assert(offsetof(EditableMesh_TryToRemovePolygonEdge, EdgeID) == 0x000000, "Member 'EditableMesh_TryToRemovePolygonEdge::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_TryToRemovePolygonEdge, bOutWasEdgeRemoved) == 0x000004, "Member 'EditableMesh_TryToRemovePolygonEdge::bOutWasEdgeRemoved' has a wrong offset!");
-static_assert(offsetof(EditableMesh_TryToRemovePolygonEdge, OutNewPolygonID) == 0x000008, "Member 'EditableMesh_TryToRemovePolygonEdge::OutNewPolygonID' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_TryToRemovePolygonEdge;
 
 // Function EditableMesh.EditableMesh.TryToRemoveVertex
 // 0x000C (0x000C - 0x0000)
@@ -796,11 +619,7 @@ public:
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FEdgeID                                OutNewEdgeID;                                      // 0x0008(0x0004)(Parm, OutParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_TryToRemoveVertex) == 0x000004, "Wrong alignment on EditableMesh_TryToRemoveVertex");
-static_assert(sizeof(EditableMesh_TryToRemoveVertex) == 0x00000C, "Wrong size on EditableMesh_TryToRemoveVertex");
-static_assert(offsetof(EditableMesh_TryToRemoveVertex, VertexID) == 0x000000, "Member 'EditableMesh_TryToRemoveVertex::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_TryToRemoveVertex, bOutWasVertexRemoved) == 0x000004, "Member 'EditableMesh_TryToRemoveVertex::bOutWasVertexRemoved' has a wrong offset!");
-static_assert(offsetof(EditableMesh_TryToRemoveVertex, OutNewEdgeID) == 0x000008, "Member 'EditableMesh_TryToRemoveVertex::OutNewEdgeID' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_TryToRemoveVertex;
 
 // Function EditableMesh.EditableMesh.WeldVertices
 // 0x0018 (0x0018 - 0x0000)
@@ -811,10 +630,7 @@ public:
 	struct FVertexID                              OutNewVertexID;                                    // 0x0010(0x0004)(Parm, OutParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_WeldVertices) == 0x000008, "Wrong alignment on EditableMesh_WeldVertices");
-static_assert(sizeof(EditableMesh_WeldVertices) == 0x000018, "Wrong size on EditableMesh_WeldVertices");
-static_assert(offsetof(EditableMesh_WeldVertices, VertexIDs) == 0x000000, "Member 'EditableMesh_WeldVertices::VertexIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_WeldVertices, OutNewVertexID) == 0x000010, "Member 'EditableMesh_WeldVertices::OutNewVertexID' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_WeldVertices;
 
 // Function EditableMesh.EditableMesh.AnyChangesToUndo
 // 0x0001 (0x0001 - 0x0000)
@@ -823,9 +639,7 @@ struct EditableMesh_AnyChangesToUndo final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_AnyChangesToUndo) == 0x000001, "Wrong alignment on EditableMesh_AnyChangesToUndo");
-static_assert(sizeof(EditableMesh_AnyChangesToUndo) == 0x000001, "Wrong size on EditableMesh_AnyChangesToUndo");
-static_assert(offsetof(EditableMesh_AnyChangesToUndo, ReturnValue) == 0x000000, "Member 'EditableMesh_AnyChangesToUndo::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_AnyChangesToUndo;
 
 // Function EditableMesh.EditableMesh.ComputeBoundingBox
 // 0x001C (0x001C - 0x0000)
@@ -834,9 +648,7 @@ struct EditableMesh_ComputeBoundingBox final
 public:
 	struct FBox                                   ReturnValue;                                       // 0x0000(0x001C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ComputeBoundingBox) == 0x000004, "Wrong alignment on EditableMesh_ComputeBoundingBox");
-static_assert(sizeof(EditableMesh_ComputeBoundingBox) == 0x00001C, "Wrong size on EditableMesh_ComputeBoundingBox");
-static_assert(offsetof(EditableMesh_ComputeBoundingBox, ReturnValue) == 0x000000, "Member 'EditableMesh_ComputeBoundingBox::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ComputeBoundingBox;
 
 // Function EditableMesh.EditableMesh.ComputeBoundingBoxAndSphere
 // 0x001C (0x001C - 0x0000)
@@ -845,9 +657,7 @@ struct EditableMesh_ComputeBoundingBoxAndSphere final
 public:
 	struct FBoxSphereBounds                       ReturnValue;                                       // 0x0000(0x001C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ComputeBoundingBoxAndSphere) == 0x000004, "Wrong alignment on EditableMesh_ComputeBoundingBoxAndSphere");
-static_assert(sizeof(EditableMesh_ComputeBoundingBoxAndSphere) == 0x00001C, "Wrong size on EditableMesh_ComputeBoundingBoxAndSphere");
-static_assert(offsetof(EditableMesh_ComputeBoundingBoxAndSphere, ReturnValue) == 0x000000, "Member 'EditableMesh_ComputeBoundingBoxAndSphere::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ComputeBoundingBoxAndSphere;
 
 // Function EditableMesh.EditableMesh.ComputePolygonCenter
 // 0x0010 (0x0010 - 0x0000)
@@ -857,10 +667,7 @@ public:
 	struct FPolygonID                             PolygonID;                                         // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVector                                ReturnValue;                                       // 0x0004(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ComputePolygonCenter) == 0x000004, "Wrong alignment on EditableMesh_ComputePolygonCenter");
-static_assert(sizeof(EditableMesh_ComputePolygonCenter) == 0x000010, "Wrong size on EditableMesh_ComputePolygonCenter");
-static_assert(offsetof(EditableMesh_ComputePolygonCenter, PolygonID) == 0x000000, "Member 'EditableMesh_ComputePolygonCenter::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ComputePolygonCenter, ReturnValue) == 0x000004, "Member 'EditableMesh_ComputePolygonCenter::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ComputePolygonCenter;
 
 // Function EditableMesh.EditableMesh.ComputePolygonNormal
 // 0x0010 (0x0010 - 0x0000)
@@ -870,10 +677,7 @@ public:
 	struct FPolygonID                             PolygonID;                                         // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVector                                ReturnValue;                                       // 0x0004(0x000C)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ComputePolygonNormal) == 0x000004, "Wrong alignment on EditableMesh_ComputePolygonNormal");
-static_assert(sizeof(EditableMesh_ComputePolygonNormal) == 0x000010, "Wrong size on EditableMesh_ComputePolygonNormal");
-static_assert(offsetof(EditableMesh_ComputePolygonNormal, PolygonID) == 0x000000, "Member 'EditableMesh_ComputePolygonNormal::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ComputePolygonNormal, ReturnValue) == 0x000004, "Member 'EditableMesh_ComputePolygonNormal::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ComputePolygonNormal;
 
 // Function EditableMesh.EditableMesh.ComputePolygonPlane
 // 0x0020 (0x0020 - 0x0000)
@@ -884,10 +688,7 @@ public:
 	uint8                                         Pad_4[0xC];                                        // 0x0004(0x000C)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FPlane                                 ReturnValue;                                       // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ComputePolygonPlane) == 0x000010, "Wrong alignment on EditableMesh_ComputePolygonPlane");
-static_assert(sizeof(EditableMesh_ComputePolygonPlane) == 0x000020, "Wrong size on EditableMesh_ComputePolygonPlane");
-static_assert(offsetof(EditableMesh_ComputePolygonPlane, PolygonID) == 0x000000, "Member 'EditableMesh_ComputePolygonPlane::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ComputePolygonPlane, ReturnValue) == 0x000010, "Member 'EditableMesh_ComputePolygonPlane::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ComputePolygonPlane;
 
 // Function EditableMesh.EditableMesh.ComputePolygonsSharedEdges
 // 0x0020 (0x0020 - 0x0000)
@@ -897,10 +698,7 @@ public:
 	TArray<struct FPolygonID>                     PolygonIDs;                                        // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FEdgeID>                        OutSharedEdgeIDs;                                  // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_ComputePolygonsSharedEdges) == 0x000008, "Wrong alignment on EditableMesh_ComputePolygonsSharedEdges");
-static_assert(sizeof(EditableMesh_ComputePolygonsSharedEdges) == 0x000020, "Wrong size on EditableMesh_ComputePolygonsSharedEdges");
-static_assert(offsetof(EditableMesh_ComputePolygonsSharedEdges, PolygonIDs) == 0x000000, "Member 'EditableMesh_ComputePolygonsSharedEdges::PolygonIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_ComputePolygonsSharedEdges, OutSharedEdgeIDs) == 0x000010, "Member 'EditableMesh_ComputePolygonsSharedEdges::OutSharedEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_ComputePolygonsSharedEdges;
 
 // Function EditableMesh.EditableMesh.FindPolygonLoop
 // 0x0048 (0x0048 - 0x0000)
@@ -914,13 +712,7 @@ public:
 	TArray<struct FEdgeID>                        OutReversedEdgeIDPathToTake;                       // 0x0028(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonID>                     OutPolygonIDsToSplit;                              // 0x0038(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_FindPolygonLoop) == 0x000008, "Wrong alignment on EditableMesh_FindPolygonLoop");
-static_assert(sizeof(EditableMesh_FindPolygonLoop) == 0x000048, "Wrong size on EditableMesh_FindPolygonLoop");
-static_assert(offsetof(EditableMesh_FindPolygonLoop, EdgeID) == 0x000000, "Member 'EditableMesh_FindPolygonLoop::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonLoop, OutEdgeLoopEdgeIDs) == 0x000008, "Member 'EditableMesh_FindPolygonLoop::OutEdgeLoopEdgeIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonLoop, OutFlippedEdgeIDs) == 0x000018, "Member 'EditableMesh_FindPolygonLoop::OutFlippedEdgeIDs' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonLoop, OutReversedEdgeIDPathToTake) == 0x000028, "Member 'EditableMesh_FindPolygonLoop::OutReversedEdgeIDPathToTake' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonLoop, OutPolygonIDsToSplit) == 0x000038, "Member 'EditableMesh_FindPolygonLoop::OutPolygonIDsToSplit' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_FindPolygonLoop;
 
 // Function EditableMesh.EditableMesh.FindPolygonPerimeterEdgeNumberForVertices
 // 0x0010 (0x0010 - 0x0000)
@@ -932,12 +724,7 @@ public:
 	struct FVertexID                              EdgeVertexID1;                                     // 0x0008(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_FindPolygonPerimeterEdgeNumberForVertices) == 0x000004, "Wrong alignment on EditableMesh_FindPolygonPerimeterEdgeNumberForVertices");
-static_assert(sizeof(EditableMesh_FindPolygonPerimeterEdgeNumberForVertices) == 0x000010, "Wrong size on EditableMesh_FindPolygonPerimeterEdgeNumberForVertices");
-static_assert(offsetof(EditableMesh_FindPolygonPerimeterEdgeNumberForVertices, PolygonID) == 0x000000, "Member 'EditableMesh_FindPolygonPerimeterEdgeNumberForVertices::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonPerimeterEdgeNumberForVertices, EdgeVertexID0) == 0x000004, "Member 'EditableMesh_FindPolygonPerimeterEdgeNumberForVertices::EdgeVertexID0' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonPerimeterEdgeNumberForVertices, EdgeVertexID1) == 0x000008, "Member 'EditableMesh_FindPolygonPerimeterEdgeNumberForVertices::EdgeVertexID1' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonPerimeterEdgeNumberForVertices, ReturnValue) == 0x00000C, "Member 'EditableMesh_FindPolygonPerimeterEdgeNumberForVertices::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_FindPolygonPerimeterEdgeNumberForVertices;
 
 // Function EditableMesh.EditableMesh.FindPolygonPerimeterVertexNumberForVertex
 // 0x000C (0x000C - 0x0000)
@@ -948,11 +735,7 @@ public:
 	struct FVertexID                              VertexID;                                          // 0x0004(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_FindPolygonPerimeterVertexNumberForVertex) == 0x000004, "Wrong alignment on EditableMesh_FindPolygonPerimeterVertexNumberForVertex");
-static_assert(sizeof(EditableMesh_FindPolygonPerimeterVertexNumberForVertex) == 0x00000C, "Wrong size on EditableMesh_FindPolygonPerimeterVertexNumberForVertex");
-static_assert(offsetof(EditableMesh_FindPolygonPerimeterVertexNumberForVertex, PolygonID) == 0x000000, "Member 'EditableMesh_FindPolygonPerimeterVertexNumberForVertex::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonPerimeterVertexNumberForVertex, VertexID) == 0x000004, "Member 'EditableMesh_FindPolygonPerimeterVertexNumberForVertex::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_FindPolygonPerimeterVertexNumberForVertex, ReturnValue) == 0x000008, "Member 'EditableMesh_FindPolygonPerimeterVertexNumberForVertex::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_FindPolygonPerimeterVertexNumberForVertex;
 
 // Function EditableMesh.EditableMesh.GetEdgeConnectedPolygon
 // 0x000C (0x000C - 0x0000)
@@ -963,11 +746,7 @@ public:
 	int32                                         ConnectedPolygonNumber;                            // 0x0004(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FPolygonID                             ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeConnectedPolygon) == 0x000004, "Wrong alignment on EditableMesh_GetEdgeConnectedPolygon");
-static_assert(sizeof(EditableMesh_GetEdgeConnectedPolygon) == 0x00000C, "Wrong size on EditableMesh_GetEdgeConnectedPolygon");
-static_assert(offsetof(EditableMesh_GetEdgeConnectedPolygon, EdgeID) == 0x000000, "Member 'EditableMesh_GetEdgeConnectedPolygon::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeConnectedPolygon, ConnectedPolygonNumber) == 0x000004, "Member 'EditableMesh_GetEdgeConnectedPolygon::ConnectedPolygonNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeConnectedPolygon, ReturnValue) == 0x000008, "Member 'EditableMesh_GetEdgeConnectedPolygon::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeConnectedPolygon;
 
 // Function EditableMesh.EditableMesh.GetEdgeConnectedPolygonCount
 // 0x0008 (0x0008 - 0x0000)
@@ -977,10 +756,7 @@ public:
 	struct FEdgeID                                EdgeID;                                            // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeConnectedPolygonCount) == 0x000004, "Wrong alignment on EditableMesh_GetEdgeConnectedPolygonCount");
-static_assert(sizeof(EditableMesh_GetEdgeConnectedPolygonCount) == 0x000008, "Wrong size on EditableMesh_GetEdgeConnectedPolygonCount");
-static_assert(offsetof(EditableMesh_GetEdgeConnectedPolygonCount, EdgeID) == 0x000000, "Member 'EditableMesh_GetEdgeConnectedPolygonCount::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeConnectedPolygonCount, ReturnValue) == 0x000004, "Member 'EditableMesh_GetEdgeConnectedPolygonCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeConnectedPolygonCount;
 
 // Function EditableMesh.EditableMesh.GetEdgeConnectedPolygons
 // 0x0018 (0x0018 - 0x0000)
@@ -991,10 +767,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FPolygonID>                     OutConnectedPolygonIDs;                            // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeConnectedPolygons) == 0x000008, "Wrong alignment on EditableMesh_GetEdgeConnectedPolygons");
-static_assert(sizeof(EditableMesh_GetEdgeConnectedPolygons) == 0x000018, "Wrong size on EditableMesh_GetEdgeConnectedPolygons");
-static_assert(offsetof(EditableMesh_GetEdgeConnectedPolygons, EdgeID) == 0x000000, "Member 'EditableMesh_GetEdgeConnectedPolygons::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeConnectedPolygons, OutConnectedPolygonIDs) == 0x000008, "Member 'EditableMesh_GetEdgeConnectedPolygons::OutConnectedPolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeConnectedPolygons;
 
 // Function EditableMesh.EditableMesh.GetEdgeCount
 // 0x0004 (0x0004 - 0x0000)
@@ -1003,9 +776,7 @@ struct EditableMesh_GetEdgeCount final
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeCount) == 0x000004, "Wrong alignment on EditableMesh_GetEdgeCount");
-static_assert(sizeof(EditableMesh_GetEdgeCount) == 0x000004, "Wrong size on EditableMesh_GetEdgeCount");
-static_assert(offsetof(EditableMesh_GetEdgeCount, ReturnValue) == 0x000000, "Member 'EditableMesh_GetEdgeCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeCount;
 
 // Function EditableMesh.EditableMesh.GetEdgeLoopElements
 // 0x0018 (0x0018 - 0x0000)
@@ -1016,10 +787,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FEdgeID>                        EdgeLoopIDs;                                       // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeLoopElements) == 0x000008, "Wrong alignment on EditableMesh_GetEdgeLoopElements");
-static_assert(sizeof(EditableMesh_GetEdgeLoopElements) == 0x000018, "Wrong size on EditableMesh_GetEdgeLoopElements");
-static_assert(offsetof(EditableMesh_GetEdgeLoopElements, EdgeID) == 0x000000, "Member 'EditableMesh_GetEdgeLoopElements::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeLoopElements, EdgeLoopIDs) == 0x000008, "Member 'EditableMesh_GetEdgeLoopElements::EdgeLoopIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeLoopElements;
 
 // Function EditableMesh.EditableMesh.GetEdgeThatConnectsVertices
 // 0x000C (0x000C - 0x0000)
@@ -1030,11 +798,7 @@ public:
 	struct FVertexID                              VertexID1;                                         // 0x0004(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FEdgeID                                ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeThatConnectsVertices) == 0x000004, "Wrong alignment on EditableMesh_GetEdgeThatConnectsVertices");
-static_assert(sizeof(EditableMesh_GetEdgeThatConnectsVertices) == 0x00000C, "Wrong size on EditableMesh_GetEdgeThatConnectsVertices");
-static_assert(offsetof(EditableMesh_GetEdgeThatConnectsVertices, VertexID0) == 0x000000, "Member 'EditableMesh_GetEdgeThatConnectsVertices::VertexID0' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeThatConnectsVertices, VertexID1) == 0x000004, "Member 'EditableMesh_GetEdgeThatConnectsVertices::VertexID1' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeThatConnectsVertices, ReturnValue) == 0x000008, "Member 'EditableMesh_GetEdgeThatConnectsVertices::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeThatConnectsVertices;
 
 // Function EditableMesh.EditableMesh.GetEdgeVertex
 // 0x000C (0x000C - 0x0000)
@@ -1045,11 +809,7 @@ public:
 	int32                                         EdgeVertexNumber;                                  // 0x0004(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexID                              ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeVertex) == 0x000004, "Wrong alignment on EditableMesh_GetEdgeVertex");
-static_assert(sizeof(EditableMesh_GetEdgeVertex) == 0x00000C, "Wrong size on EditableMesh_GetEdgeVertex");
-static_assert(offsetof(EditableMesh_GetEdgeVertex, EdgeID) == 0x000000, "Member 'EditableMesh_GetEdgeVertex::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeVertex, EdgeVertexNumber) == 0x000004, "Member 'EditableMesh_GetEdgeVertex::EdgeVertexNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeVertex, ReturnValue) == 0x000008, "Member 'EditableMesh_GetEdgeVertex::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeVertex;
 
 // Function EditableMesh.EditableMesh.GetEdgeVertices
 // 0x000C (0x000C - 0x0000)
@@ -1060,11 +820,7 @@ public:
 	struct FVertexID                              OutEdgeVertexID0;                                  // 0x0004(0x0004)(Parm, OutParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexID                              OutEdgeVertexID1;                                  // 0x0008(0x0004)(Parm, OutParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetEdgeVertices) == 0x000004, "Wrong alignment on EditableMesh_GetEdgeVertices");
-static_assert(sizeof(EditableMesh_GetEdgeVertices) == 0x00000C, "Wrong size on EditableMesh_GetEdgeVertices");
-static_assert(offsetof(EditableMesh_GetEdgeVertices, EdgeID) == 0x000000, "Member 'EditableMesh_GetEdgeVertices::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeVertices, OutEdgeVertexID0) == 0x000004, "Member 'EditableMesh_GetEdgeVertices::OutEdgeVertexID0' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetEdgeVertices, OutEdgeVertexID1) == 0x000008, "Member 'EditableMesh_GetEdgeVertices::OutEdgeVertexID1' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetEdgeVertices;
 
 // Function EditableMesh.EditableMesh.GetFirstValidPolygonGroup
 // 0x0004 (0x0004 - 0x0000)
@@ -1073,9 +829,7 @@ struct EditableMesh_GetFirstValidPolygonGroup final
 public:
 	struct FPolygonGroupID                        ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetFirstValidPolygonGroup) == 0x000004, "Wrong alignment on EditableMesh_GetFirstValidPolygonGroup");
-static_assert(sizeof(EditableMesh_GetFirstValidPolygonGroup) == 0x000004, "Wrong size on EditableMesh_GetFirstValidPolygonGroup");
-static_assert(offsetof(EditableMesh_GetFirstValidPolygonGroup, ReturnValue) == 0x000000, "Member 'EditableMesh_GetFirstValidPolygonGroup::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetFirstValidPolygonGroup;
 
 // Function EditableMesh.EditableMesh.GetGroupForPolygon
 // 0x0008 (0x0008 - 0x0000)
@@ -1085,10 +839,7 @@ public:
 	struct FPolygonID                             PolygonID;                                         // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FPolygonGroupID                        ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetGroupForPolygon) == 0x000004, "Wrong alignment on EditableMesh_GetGroupForPolygon");
-static_assert(sizeof(EditableMesh_GetGroupForPolygon) == 0x000008, "Wrong size on EditableMesh_GetGroupForPolygon");
-static_assert(offsetof(EditableMesh_GetGroupForPolygon, PolygonID) == 0x000000, "Member 'EditableMesh_GetGroupForPolygon::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetGroupForPolygon, ReturnValue) == 0x000004, "Member 'EditableMesh_GetGroupForPolygon::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetGroupForPolygon;
 
 // Function EditableMesh.EditableMesh.GetPolygonAdjacentPolygons
 // 0x0018 (0x0018 - 0x0000)
@@ -1099,10 +850,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FPolygonID>                     OutAdjacentPolygons;                               // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonAdjacentPolygons) == 0x000008, "Wrong alignment on EditableMesh_GetPolygonAdjacentPolygons");
-static_assert(sizeof(EditableMesh_GetPolygonAdjacentPolygons) == 0x000018, "Wrong size on EditableMesh_GetPolygonAdjacentPolygons");
-static_assert(offsetof(EditableMesh_GetPolygonAdjacentPolygons, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonAdjacentPolygons::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonAdjacentPolygons, OutAdjacentPolygons) == 0x000008, "Member 'EditableMesh_GetPolygonAdjacentPolygons::OutAdjacentPolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonAdjacentPolygons;
 
 // Function EditableMesh.EditableMesh.GetPolygonCount
 // 0x0004 (0x0004 - 0x0000)
@@ -1111,9 +859,7 @@ struct EditableMesh_GetPolygonCount final
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonCount) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonCount");
-static_assert(sizeof(EditableMesh_GetPolygonCount) == 0x000004, "Wrong size on EditableMesh_GetPolygonCount");
-static_assert(offsetof(EditableMesh_GetPolygonCount, ReturnValue) == 0x000000, "Member 'EditableMesh_GetPolygonCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonCount;
 
 // Function EditableMesh.EditableMesh.GetPolygonCountInGroup
 // 0x0008 (0x0008 - 0x0000)
@@ -1123,10 +869,7 @@ public:
 	struct FPolygonGroupID                        PolygonGroupID;                                    // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonCountInGroup) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonCountInGroup");
-static_assert(sizeof(EditableMesh_GetPolygonCountInGroup) == 0x000008, "Wrong size on EditableMesh_GetPolygonCountInGroup");
-static_assert(offsetof(EditableMesh_GetPolygonCountInGroup, PolygonGroupID) == 0x000000, "Member 'EditableMesh_GetPolygonCountInGroup::PolygonGroupID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonCountInGroup, ReturnValue) == 0x000004, "Member 'EditableMesh_GetPolygonCountInGroup::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonCountInGroup;
 
 // Function EditableMesh.EditableMesh.GetPolygonGroupCount
 // 0x0004 (0x0004 - 0x0000)
@@ -1135,9 +878,7 @@ struct EditableMesh_GetPolygonGroupCount final
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonGroupCount) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonGroupCount");
-static_assert(sizeof(EditableMesh_GetPolygonGroupCount) == 0x000004, "Wrong size on EditableMesh_GetPolygonGroupCount");
-static_assert(offsetof(EditableMesh_GetPolygonGroupCount, ReturnValue) == 0x000000, "Member 'EditableMesh_GetPolygonGroupCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonGroupCount;
 
 // Function EditableMesh.EditableMesh.GetPolygonInGroup
 // 0x000C (0x000C - 0x0000)
@@ -1148,11 +889,7 @@ public:
 	int32                                         PolygonNumber;                                     // 0x0004(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FPolygonID                             ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonInGroup) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonInGroup");
-static_assert(sizeof(EditableMesh_GetPolygonInGroup) == 0x00000C, "Wrong size on EditableMesh_GetPolygonInGroup");
-static_assert(offsetof(EditableMesh_GetPolygonInGroup, PolygonGroupID) == 0x000000, "Member 'EditableMesh_GetPolygonInGroup::PolygonGroupID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonInGroup, PolygonNumber) == 0x000004, "Member 'EditableMesh_GetPolygonInGroup::PolygonNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonInGroup, ReturnValue) == 0x000008, "Member 'EditableMesh_GetPolygonInGroup::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonInGroup;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterEdge
 // 0x0010 (0x0010 - 0x0000)
@@ -1165,12 +902,7 @@ public:
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FEdgeID                                ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterEdge) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonPerimeterEdge");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterEdge) == 0x000010, "Wrong size on EditableMesh_GetPolygonPerimeterEdge");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdge, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterEdge::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdge, PerimeterEdgeNumber) == 0x000004, "Member 'EditableMesh_GetPolygonPerimeterEdge::PerimeterEdgeNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdge, bOutEdgeWindingIsReversedForPolygon) == 0x000008, "Member 'EditableMesh_GetPolygonPerimeterEdge::bOutEdgeWindingIsReversedForPolygon' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdge, ReturnValue) == 0x00000C, "Member 'EditableMesh_GetPolygonPerimeterEdge::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterEdge;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterEdgeCount
 // 0x0008 (0x0008 - 0x0000)
@@ -1180,10 +912,7 @@ public:
 	struct FPolygonID                             PolygonID;                                         // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterEdgeCount) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonPerimeterEdgeCount");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterEdgeCount) == 0x000008, "Wrong size on EditableMesh_GetPolygonPerimeterEdgeCount");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdgeCount, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterEdgeCount::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdgeCount, ReturnValue) == 0x000004, "Member 'EditableMesh_GetPolygonPerimeterEdgeCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterEdgeCount;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterEdges
 // 0x0018 (0x0018 - 0x0000)
@@ -1194,10 +923,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FEdgeID>                        OutPolygonPerimeterEdgeIDs;                        // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterEdges) == 0x000008, "Wrong alignment on EditableMesh_GetPolygonPerimeterEdges");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterEdges) == 0x000018, "Wrong size on EditableMesh_GetPolygonPerimeterEdges");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdges, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterEdges::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterEdges, OutPolygonPerimeterEdgeIDs) == 0x000008, "Member 'EditableMesh_GetPolygonPerimeterEdges::OutPolygonPerimeterEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterEdges;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterVertex
 // 0x000C (0x000C - 0x0000)
@@ -1208,11 +934,7 @@ public:
 	int32                                         PolygonVertexNumber;                               // 0x0004(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexID                              ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterVertex) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonPerimeterVertex");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterVertex) == 0x00000C, "Wrong size on EditableMesh_GetPolygonPerimeterVertex");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertex, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterVertex::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertex, PolygonVertexNumber) == 0x000004, "Member 'EditableMesh_GetPolygonPerimeterVertex::PolygonVertexNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertex, ReturnValue) == 0x000008, "Member 'EditableMesh_GetPolygonPerimeterVertex::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterVertex;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterVertexCount
 // 0x0008 (0x0008 - 0x0000)
@@ -1222,10 +944,7 @@ public:
 	struct FPolygonID                             PolygonID;                                         // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterVertexCount) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonPerimeterVertexCount");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterVertexCount) == 0x000008, "Wrong size on EditableMesh_GetPolygonPerimeterVertexCount");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertexCount, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterVertexCount::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertexCount, ReturnValue) == 0x000004, "Member 'EditableMesh_GetPolygonPerimeterVertexCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterVertexCount;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterVertexInstance
 // 0x000C (0x000C - 0x0000)
@@ -1236,11 +955,7 @@ public:
 	int32                                         PolygonVertexNumber;                               // 0x0004(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexInstanceID                      ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterVertexInstance) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonPerimeterVertexInstance");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterVertexInstance) == 0x00000C, "Wrong size on EditableMesh_GetPolygonPerimeterVertexInstance");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertexInstance, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterVertexInstance::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertexInstance, PolygonVertexNumber) == 0x000004, "Member 'EditableMesh_GetPolygonPerimeterVertexInstance::PolygonVertexNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertexInstance, ReturnValue) == 0x000008, "Member 'EditableMesh_GetPolygonPerimeterVertexInstance::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterVertexInstance;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterVertexInstances
 // 0x0018 (0x0018 - 0x0000)
@@ -1251,10 +966,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FVertexInstanceID>              OutPolygonPerimeterVertexInstanceIDs;              // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterVertexInstances) == 0x000008, "Wrong alignment on EditableMesh_GetPolygonPerimeterVertexInstances");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterVertexInstances) == 0x000018, "Wrong size on EditableMesh_GetPolygonPerimeterVertexInstances");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertexInstances, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterVertexInstances::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertexInstances, OutPolygonPerimeterVertexInstanceIDs) == 0x000008, "Member 'EditableMesh_GetPolygonPerimeterVertexInstances::OutPolygonPerimeterVertexInstanceIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterVertexInstances;
 
 // Function EditableMesh.EditableMesh.GetPolygonPerimeterVertices
 // 0x0018 (0x0018 - 0x0000)
@@ -1265,10 +977,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FVertexID>                      OutPolygonPerimeterVertexIDs;                      // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonPerimeterVertices) == 0x000008, "Wrong alignment on EditableMesh_GetPolygonPerimeterVertices");
-static_assert(sizeof(EditableMesh_GetPolygonPerimeterVertices) == 0x000018, "Wrong size on EditableMesh_GetPolygonPerimeterVertices");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertices, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonPerimeterVertices::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonPerimeterVertices, OutPolygonPerimeterVertexIDs) == 0x000008, "Member 'EditableMesh_GetPolygonPerimeterVertices::OutPolygonPerimeterVertexIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonPerimeterVertices;
 
 // Function EditableMesh.EditableMesh.GetPolygonTriangulatedTriangle
 // 0x000C (0x000C - 0x0000)
@@ -1279,11 +988,7 @@ public:
 	int32                                         PolygonTriangleNumber;                             // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FTriangleID                            ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonTriangulatedTriangle) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonTriangulatedTriangle");
-static_assert(sizeof(EditableMesh_GetPolygonTriangulatedTriangle) == 0x00000C, "Wrong size on EditableMesh_GetPolygonTriangulatedTriangle");
-static_assert(offsetof(EditableMesh_GetPolygonTriangulatedTriangle, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonTriangulatedTriangle::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonTriangulatedTriangle, PolygonTriangleNumber) == 0x000004, "Member 'EditableMesh_GetPolygonTriangulatedTriangle::PolygonTriangleNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonTriangulatedTriangle, ReturnValue) == 0x000008, "Member 'EditableMesh_GetPolygonTriangulatedTriangle::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonTriangulatedTriangle;
 
 // Function EditableMesh.EditableMesh.GetPolygonTriangulatedTriangleCount
 // 0x0008 (0x0008 - 0x0000)
@@ -1293,10 +998,7 @@ public:
 	struct FPolygonID                             PolygonID;                                         // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetPolygonTriangulatedTriangleCount) == 0x000004, "Wrong alignment on EditableMesh_GetPolygonTriangulatedTriangleCount");
-static_assert(sizeof(EditableMesh_GetPolygonTriangulatedTriangleCount) == 0x000008, "Wrong size on EditableMesh_GetPolygonTriangulatedTriangleCount");
-static_assert(offsetof(EditableMesh_GetPolygonTriangulatedTriangleCount, PolygonID) == 0x000000, "Member 'EditableMesh_GetPolygonTriangulatedTriangleCount::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetPolygonTriangulatedTriangleCount, ReturnValue) == 0x000004, "Member 'EditableMesh_GetPolygonTriangulatedTriangleCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetPolygonTriangulatedTriangleCount;
 
 // Function EditableMesh.EditableMesh.GetSubdivisionCount
 // 0x0004 (0x0004 - 0x0000)
@@ -1305,9 +1007,7 @@ struct EditableMesh_GetSubdivisionCount final
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetSubdivisionCount) == 0x000004, "Wrong alignment on EditableMesh_GetSubdivisionCount");
-static_assert(sizeof(EditableMesh_GetSubdivisionCount) == 0x000004, "Wrong size on EditableMesh_GetSubdivisionCount");
-static_assert(offsetof(EditableMesh_GetSubdivisionCount, ReturnValue) == 0x000000, "Member 'EditableMesh_GetSubdivisionCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetSubdivisionCount;
 
 // Function EditableMesh.EditableMesh.GetSubdivisionLimitData
 // 0x0030 (0x0030 - 0x0000)
@@ -1316,9 +1016,7 @@ struct EditableMesh_GetSubdivisionLimitData final
 public:
 	struct FSubdivisionLimitData                  ReturnValue;                                       // 0x0000(0x0030)(ConstParm, Parm, OutParm, ReturnParm, ReferenceParm, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetSubdivisionLimitData) == 0x000008, "Wrong alignment on EditableMesh_GetSubdivisionLimitData");
-static_assert(sizeof(EditableMesh_GetSubdivisionLimitData) == 0x000030, "Wrong size on EditableMesh_GetSubdivisionLimitData");
-static_assert(offsetof(EditableMesh_GetSubdivisionLimitData, ReturnValue) == 0x000000, "Member 'EditableMesh_GetSubdivisionLimitData::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetSubdivisionLimitData;
 
 // Function EditableMesh.EditableMesh.GetTextureCoordinateCount
 // 0x0004 (0x0004 - 0x0000)
@@ -1327,9 +1025,7 @@ struct EditableMesh_GetTextureCoordinateCount final
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetTextureCoordinateCount) == 0x000004, "Wrong alignment on EditableMesh_GetTextureCoordinateCount");
-static_assert(sizeof(EditableMesh_GetTextureCoordinateCount) == 0x000004, "Wrong size on EditableMesh_GetTextureCoordinateCount");
-static_assert(offsetof(EditableMesh_GetTextureCoordinateCount, ReturnValue) == 0x000000, "Member 'EditableMesh_GetTextureCoordinateCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetTextureCoordinateCount;
 
 // Function EditableMesh.EditableMesh.GetVertexAdjacentVertices
 // 0x0018 (0x0018 - 0x0000)
@@ -1340,10 +1036,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FVertexID>                      OutAdjacentVertexIDs;                              // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexAdjacentVertices) == 0x000008, "Wrong alignment on EditableMesh_GetVertexAdjacentVertices");
-static_assert(sizeof(EditableMesh_GetVertexAdjacentVertices) == 0x000018, "Wrong size on EditableMesh_GetVertexAdjacentVertices");
-static_assert(offsetof(EditableMesh_GetVertexAdjacentVertices, VertexID) == 0x000000, "Member 'EditableMesh_GetVertexAdjacentVertices::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexAdjacentVertices, OutAdjacentVertexIDs) == 0x000008, "Member 'EditableMesh_GetVertexAdjacentVertices::OutAdjacentVertexIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexAdjacentVertices;
 
 // Function EditableMesh.EditableMesh.GetVertexConnectedEdge
 // 0x000C (0x000C - 0x0000)
@@ -1354,11 +1047,7 @@ public:
 	int32                                         ConnectedEdgeNumber;                               // 0x0004(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FEdgeID                                ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexConnectedEdge) == 0x000004, "Wrong alignment on EditableMesh_GetVertexConnectedEdge");
-static_assert(sizeof(EditableMesh_GetVertexConnectedEdge) == 0x00000C, "Wrong size on EditableMesh_GetVertexConnectedEdge");
-static_assert(offsetof(EditableMesh_GetVertexConnectedEdge, VertexID) == 0x000000, "Member 'EditableMesh_GetVertexConnectedEdge::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexConnectedEdge, ConnectedEdgeNumber) == 0x000004, "Member 'EditableMesh_GetVertexConnectedEdge::ConnectedEdgeNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexConnectedEdge, ReturnValue) == 0x000008, "Member 'EditableMesh_GetVertexConnectedEdge::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexConnectedEdge;
 
 // Function EditableMesh.EditableMesh.GetVertexConnectedEdgeCount
 // 0x0008 (0x0008 - 0x0000)
@@ -1368,10 +1057,7 @@ public:
 	struct FVertexID                              VertexID;                                          // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexConnectedEdgeCount) == 0x000004, "Wrong alignment on EditableMesh_GetVertexConnectedEdgeCount");
-static_assert(sizeof(EditableMesh_GetVertexConnectedEdgeCount) == 0x000008, "Wrong size on EditableMesh_GetVertexConnectedEdgeCount");
-static_assert(offsetof(EditableMesh_GetVertexConnectedEdgeCount, VertexID) == 0x000000, "Member 'EditableMesh_GetVertexConnectedEdgeCount::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexConnectedEdgeCount, ReturnValue) == 0x000004, "Member 'EditableMesh_GetVertexConnectedEdgeCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexConnectedEdgeCount;
 
 // Function EditableMesh.EditableMesh.GetVertexConnectedEdges
 // 0x0018 (0x0018 - 0x0000)
@@ -1382,10 +1068,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FEdgeID>                        OutConnectedEdgeIDs;                               // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexConnectedEdges) == 0x000008, "Wrong alignment on EditableMesh_GetVertexConnectedEdges");
-static_assert(sizeof(EditableMesh_GetVertexConnectedEdges) == 0x000018, "Wrong size on EditableMesh_GetVertexConnectedEdges");
-static_assert(offsetof(EditableMesh_GetVertexConnectedEdges, VertexID) == 0x000000, "Member 'EditableMesh_GetVertexConnectedEdges::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexConnectedEdges, OutConnectedEdgeIDs) == 0x000008, "Member 'EditableMesh_GetVertexConnectedEdges::OutConnectedEdgeIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexConnectedEdges;
 
 // Function EditableMesh.EditableMesh.GetVertexConnectedPolygons
 // 0x0018 (0x0018 - 0x0000)
@@ -1396,10 +1079,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FPolygonID>                     OutConnectedPolygonIDs;                            // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexConnectedPolygons) == 0x000008, "Wrong alignment on EditableMesh_GetVertexConnectedPolygons");
-static_assert(sizeof(EditableMesh_GetVertexConnectedPolygons) == 0x000018, "Wrong size on EditableMesh_GetVertexConnectedPolygons");
-static_assert(offsetof(EditableMesh_GetVertexConnectedPolygons, VertexID) == 0x000000, "Member 'EditableMesh_GetVertexConnectedPolygons::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexConnectedPolygons, OutConnectedPolygonIDs) == 0x000008, "Member 'EditableMesh_GetVertexConnectedPolygons::OutConnectedPolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexConnectedPolygons;
 
 // Function EditableMesh.EditableMesh.GetVertexCount
 // 0x0004 (0x0004 - 0x0000)
@@ -1408,9 +1088,7 @@ struct EditableMesh_GetVertexCount final
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexCount) == 0x000004, "Wrong alignment on EditableMesh_GetVertexCount");
-static_assert(sizeof(EditableMesh_GetVertexCount) == 0x000004, "Wrong size on EditableMesh_GetVertexCount");
-static_assert(offsetof(EditableMesh_GetVertexCount, ReturnValue) == 0x000000, "Member 'EditableMesh_GetVertexCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexCount;
 
 // Function EditableMesh.EditableMesh.GetVertexInstanceConnectedPolygon
 // 0x000C (0x000C - 0x0000)
@@ -1421,11 +1099,7 @@ public:
 	int32                                         ConnectedPolygonNumber;                            // 0x0004(0x0004)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FPolygonID                             ReturnValue;                                       // 0x0008(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexInstanceConnectedPolygon) == 0x000004, "Wrong alignment on EditableMesh_GetVertexInstanceConnectedPolygon");
-static_assert(sizeof(EditableMesh_GetVertexInstanceConnectedPolygon) == 0x00000C, "Wrong size on EditableMesh_GetVertexInstanceConnectedPolygon");
-static_assert(offsetof(EditableMesh_GetVertexInstanceConnectedPolygon, VertexInstanceID) == 0x000000, "Member 'EditableMesh_GetVertexInstanceConnectedPolygon::VertexInstanceID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexInstanceConnectedPolygon, ConnectedPolygonNumber) == 0x000004, "Member 'EditableMesh_GetVertexInstanceConnectedPolygon::ConnectedPolygonNumber' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexInstanceConnectedPolygon, ReturnValue) == 0x000008, "Member 'EditableMesh_GetVertexInstanceConnectedPolygon::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexInstanceConnectedPolygon;
 
 // Function EditableMesh.EditableMesh.GetVertexInstanceConnectedPolygonCount
 // 0x0008 (0x0008 - 0x0000)
@@ -1435,10 +1109,7 @@ public:
 	struct FVertexInstanceID                      VertexInstanceID;                                  // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexInstanceConnectedPolygonCount) == 0x000004, "Wrong alignment on EditableMesh_GetVertexInstanceConnectedPolygonCount");
-static_assert(sizeof(EditableMesh_GetVertexInstanceConnectedPolygonCount) == 0x000008, "Wrong size on EditableMesh_GetVertexInstanceConnectedPolygonCount");
-static_assert(offsetof(EditableMesh_GetVertexInstanceConnectedPolygonCount, VertexInstanceID) == 0x000000, "Member 'EditableMesh_GetVertexInstanceConnectedPolygonCount::VertexInstanceID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexInstanceConnectedPolygonCount, ReturnValue) == 0x000004, "Member 'EditableMesh_GetVertexInstanceConnectedPolygonCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexInstanceConnectedPolygonCount;
 
 // Function EditableMesh.EditableMesh.GetVertexInstanceConnectedPolygons
 // 0x0018 (0x0018 - 0x0000)
@@ -1449,10 +1120,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FPolygonID>                     OutConnectedPolygonIDs;                            // 0x0008(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexInstanceConnectedPolygons) == 0x000008, "Wrong alignment on EditableMesh_GetVertexInstanceConnectedPolygons");
-static_assert(sizeof(EditableMesh_GetVertexInstanceConnectedPolygons) == 0x000018, "Wrong size on EditableMesh_GetVertexInstanceConnectedPolygons");
-static_assert(offsetof(EditableMesh_GetVertexInstanceConnectedPolygons, VertexInstanceID) == 0x000000, "Member 'EditableMesh_GetVertexInstanceConnectedPolygons::VertexInstanceID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexInstanceConnectedPolygons, OutConnectedPolygonIDs) == 0x000008, "Member 'EditableMesh_GetVertexInstanceConnectedPolygons::OutConnectedPolygonIDs' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexInstanceConnectedPolygons;
 
 // Function EditableMesh.EditableMesh.GetVertexInstanceCount
 // 0x0004 (0x0004 - 0x0000)
@@ -1461,9 +1129,7 @@ struct EditableMesh_GetVertexInstanceCount final
 public:
 	int32                                         ReturnValue;                                       // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexInstanceCount) == 0x000004, "Wrong alignment on EditableMesh_GetVertexInstanceCount");
-static_assert(sizeof(EditableMesh_GetVertexInstanceCount) == 0x000004, "Wrong size on EditableMesh_GetVertexInstanceCount");
-static_assert(offsetof(EditableMesh_GetVertexInstanceCount, ReturnValue) == 0x000000, "Member 'EditableMesh_GetVertexInstanceCount::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexInstanceCount;
 
 // Function EditableMesh.EditableMesh.GetVertexInstanceVertex
 // 0x0008 (0x0008 - 0x0000)
@@ -1473,10 +1139,7 @@ public:
 	struct FVertexInstanceID                      VertexInstanceID;                                  // 0x0000(0x0004)(ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexID                              ReturnValue;                                       // 0x0004(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexInstanceVertex) == 0x000004, "Wrong alignment on EditableMesh_GetVertexInstanceVertex");
-static_assert(sizeof(EditableMesh_GetVertexInstanceVertex) == 0x000008, "Wrong size on EditableMesh_GetVertexInstanceVertex");
-static_assert(offsetof(EditableMesh_GetVertexInstanceVertex, VertexInstanceID) == 0x000000, "Member 'EditableMesh_GetVertexInstanceVertex::VertexInstanceID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexInstanceVertex, ReturnValue) == 0x000004, "Member 'EditableMesh_GetVertexInstanceVertex::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexInstanceVertex;
 
 // Function EditableMesh.EditableMesh.GetVertexPairEdge
 // 0x0010 (0x0010 - 0x0000)
@@ -1489,12 +1152,7 @@ public:
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FEdgeID                                ReturnValue;                                       // 0x000C(0x0004)(Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_GetVertexPairEdge) == 0x000004, "Wrong alignment on EditableMesh_GetVertexPairEdge");
-static_assert(sizeof(EditableMesh_GetVertexPairEdge) == 0x000010, "Wrong size on EditableMesh_GetVertexPairEdge");
-static_assert(offsetof(EditableMesh_GetVertexPairEdge, VertexID) == 0x000000, "Member 'EditableMesh_GetVertexPairEdge::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexPairEdge, NextVertexID) == 0x000004, "Member 'EditableMesh_GetVertexPairEdge::NextVertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexPairEdge, bOutEdgeWindingIsReversed) == 0x000008, "Member 'EditableMesh_GetVertexPairEdge::bOutEdgeWindingIsReversed' has a wrong offset!");
-static_assert(offsetof(EditableMesh_GetVertexPairEdge, ReturnValue) == 0x00000C, "Member 'EditableMesh_GetVertexPairEdge::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_GetVertexPairEdge;
 
 // Function EditableMesh.EditableMesh.IsBeingModified
 // 0x0001 (0x0001 - 0x0000)
@@ -1503,9 +1161,7 @@ struct EditableMesh_IsBeingModified final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_IsBeingModified) == 0x000001, "Wrong alignment on EditableMesh_IsBeingModified");
-static_assert(sizeof(EditableMesh_IsBeingModified) == 0x000001, "Wrong size on EditableMesh_IsBeingModified");
-static_assert(offsetof(EditableMesh_IsBeingModified, ReturnValue) == 0x000000, "Member 'EditableMesh_IsBeingModified::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsBeingModified;
 
 // Function EditableMesh.EditableMesh.IsCommitted
 // 0x0001 (0x0001 - 0x0000)
@@ -1514,9 +1170,7 @@ struct EditableMesh_IsCommitted final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_IsCommitted) == 0x000001, "Wrong alignment on EditableMesh_IsCommitted");
-static_assert(sizeof(EditableMesh_IsCommitted) == 0x000001, "Wrong size on EditableMesh_IsCommitted");
-static_assert(offsetof(EditableMesh_IsCommitted, ReturnValue) == 0x000000, "Member 'EditableMesh_IsCommitted::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsCommitted;
 
 // Function EditableMesh.EditableMesh.IsCommittedAsInstance
 // 0x0001 (0x0001 - 0x0000)
@@ -1525,9 +1179,7 @@ struct EditableMesh_IsCommittedAsInstance final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_IsCommittedAsInstance) == 0x000001, "Wrong alignment on EditableMesh_IsCommittedAsInstance");
-static_assert(sizeof(EditableMesh_IsCommittedAsInstance) == 0x000001, "Wrong size on EditableMesh_IsCommittedAsInstance");
-static_assert(offsetof(EditableMesh_IsCommittedAsInstance, ReturnValue) == 0x000000, "Member 'EditableMesh_IsCommittedAsInstance::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsCommittedAsInstance;
 
 // Function EditableMesh.EditableMesh.IsCompactAllowed
 // 0x0001 (0x0001 - 0x0000)
@@ -1536,9 +1188,7 @@ struct EditableMesh_IsCompactAllowed final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_IsCompactAllowed) == 0x000001, "Wrong alignment on EditableMesh_IsCompactAllowed");
-static_assert(sizeof(EditableMesh_IsCompactAllowed) == 0x000001, "Wrong size on EditableMesh_IsCompactAllowed");
-static_assert(offsetof(EditableMesh_IsCompactAllowed, ReturnValue) == 0x000000, "Member 'EditableMesh_IsCompactAllowed::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsCompactAllowed;
 
 // Function EditableMesh.EditableMesh.IsOrphanedVertex
 // 0x0008 (0x0008 - 0x0000)
@@ -1549,10 +1199,7 @@ public:
 	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_IsOrphanedVertex) == 0x000004, "Wrong alignment on EditableMesh_IsOrphanedVertex");
-static_assert(sizeof(EditableMesh_IsOrphanedVertex) == 0x000008, "Wrong size on EditableMesh_IsOrphanedVertex");
-static_assert(offsetof(EditableMesh_IsOrphanedVertex, VertexID) == 0x000000, "Member 'EditableMesh_IsOrphanedVertex::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_IsOrphanedVertex, ReturnValue) == 0x000004, "Member 'EditableMesh_IsOrphanedVertex::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsOrphanedVertex;
 
 // Function EditableMesh.EditableMesh.IsPreviewingSubdivisions
 // 0x0001 (0x0001 - 0x0000)
@@ -1561,9 +1208,7 @@ struct EditableMesh_IsPreviewingSubdivisions final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_IsPreviewingSubdivisions) == 0x000001, "Wrong alignment on EditableMesh_IsPreviewingSubdivisions");
-static_assert(sizeof(EditableMesh_IsPreviewingSubdivisions) == 0x000001, "Wrong size on EditableMesh_IsPreviewingSubdivisions");
-static_assert(offsetof(EditableMesh_IsPreviewingSubdivisions, ReturnValue) == 0x000000, "Member 'EditableMesh_IsPreviewingSubdivisions::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsPreviewingSubdivisions;
 
 // Function EditableMesh.EditableMesh.IsSpatialDatabaseAllowed
 // 0x0001 (0x0001 - 0x0000)
@@ -1572,9 +1217,7 @@ struct EditableMesh_IsSpatialDatabaseAllowed final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_IsSpatialDatabaseAllowed) == 0x000001, "Wrong alignment on EditableMesh_IsSpatialDatabaseAllowed");
-static_assert(sizeof(EditableMesh_IsSpatialDatabaseAllowed) == 0x000001, "Wrong size on EditableMesh_IsSpatialDatabaseAllowed");
-static_assert(offsetof(EditableMesh_IsSpatialDatabaseAllowed, ReturnValue) == 0x000000, "Member 'EditableMesh_IsSpatialDatabaseAllowed::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsSpatialDatabaseAllowed;
 
 // Function EditableMesh.EditableMesh.IsUndoAllowed
 // 0x0001 (0x0001 - 0x0000)
@@ -1583,9 +1226,7 @@ struct EditableMesh_IsUndoAllowed final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_IsUndoAllowed) == 0x000001, "Wrong alignment on EditableMesh_IsUndoAllowed");
-static_assert(sizeof(EditableMesh_IsUndoAllowed) == 0x000001, "Wrong size on EditableMesh_IsUndoAllowed");
-static_assert(offsetof(EditableMesh_IsUndoAllowed, ReturnValue) == 0x000000, "Member 'EditableMesh_IsUndoAllowed::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsUndoAllowed;
 
 // Function EditableMesh.EditableMesh.IsValidEdge
 // 0x0008 (0x0008 - 0x0000)
@@ -1596,10 +1237,7 @@ public:
 	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_IsValidEdge) == 0x000004, "Wrong alignment on EditableMesh_IsValidEdge");
-static_assert(sizeof(EditableMesh_IsValidEdge) == 0x000008, "Wrong size on EditableMesh_IsValidEdge");
-static_assert(offsetof(EditableMesh_IsValidEdge, EdgeID) == 0x000000, "Member 'EditableMesh_IsValidEdge::EdgeID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_IsValidEdge, ReturnValue) == 0x000004, "Member 'EditableMesh_IsValidEdge::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsValidEdge;
 
 // Function EditableMesh.EditableMesh.IsValidPolygon
 // 0x0008 (0x0008 - 0x0000)
@@ -1610,10 +1248,7 @@ public:
 	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_IsValidPolygon) == 0x000004, "Wrong alignment on EditableMesh_IsValidPolygon");
-static_assert(sizeof(EditableMesh_IsValidPolygon) == 0x000008, "Wrong size on EditableMesh_IsValidPolygon");
-static_assert(offsetof(EditableMesh_IsValidPolygon, PolygonID) == 0x000000, "Member 'EditableMesh_IsValidPolygon::PolygonID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_IsValidPolygon, ReturnValue) == 0x000004, "Member 'EditableMesh_IsValidPolygon::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsValidPolygon;
 
 // Function EditableMesh.EditableMesh.IsValidPolygonGroup
 // 0x0008 (0x0008 - 0x0000)
@@ -1624,10 +1259,7 @@ public:
 	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_IsValidPolygonGroup) == 0x000004, "Wrong alignment on EditableMesh_IsValidPolygonGroup");
-static_assert(sizeof(EditableMesh_IsValidPolygonGroup) == 0x000008, "Wrong size on EditableMesh_IsValidPolygonGroup");
-static_assert(offsetof(EditableMesh_IsValidPolygonGroup, PolygonGroupID) == 0x000000, "Member 'EditableMesh_IsValidPolygonGroup::PolygonGroupID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_IsValidPolygonGroup, ReturnValue) == 0x000004, "Member 'EditableMesh_IsValidPolygonGroup::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsValidPolygonGroup;
 
 // Function EditableMesh.EditableMesh.IsValidVertex
 // 0x0008 (0x0008 - 0x0000)
@@ -1638,10 +1270,7 @@ public:
 	bool                                          ReturnValue;                                       // 0x0004(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(EditableMesh_IsValidVertex) == 0x000004, "Wrong alignment on EditableMesh_IsValidVertex");
-static_assert(sizeof(EditableMesh_IsValidVertex) == 0x000008, "Wrong size on EditableMesh_IsValidVertex");
-static_assert(offsetof(EditableMesh_IsValidVertex, VertexID) == 0x000000, "Member 'EditableMesh_IsValidVertex::VertexID' has a wrong offset!");
-static_assert(offsetof(EditableMesh_IsValidVertex, ReturnValue) == 0x000004, "Member 'EditableMesh_IsValidVertex::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_IsValidVertex;
 
 // Function EditableMesh.EditableMesh.SearchSpatialDatabaseForPolygonsInVolume
 // 0x0020 (0x0020 - 0x0000)
@@ -1651,10 +1280,7 @@ public:
 	TArray<struct FPlane>                         Planes;                                            // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonID>                     OutPolygons;                                       // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SearchSpatialDatabaseForPolygonsInVolume) == 0x000008, "Wrong alignment on EditableMesh_SearchSpatialDatabaseForPolygonsInVolume");
-static_assert(sizeof(EditableMesh_SearchSpatialDatabaseForPolygonsInVolume) == 0x000020, "Wrong size on EditableMesh_SearchSpatialDatabaseForPolygonsInVolume");
-static_assert(offsetof(EditableMesh_SearchSpatialDatabaseForPolygonsInVolume, Planes) == 0x000000, "Member 'EditableMesh_SearchSpatialDatabaseForPolygonsInVolume::Planes' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SearchSpatialDatabaseForPolygonsInVolume, OutPolygons) == 0x000010, "Member 'EditableMesh_SearchSpatialDatabaseForPolygonsInVolume::OutPolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SearchSpatialDatabaseForPolygonsInVolume;
 
 // Function EditableMesh.EditableMesh.SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment
 // 0x0028 (0x0028 - 0x0000)
@@ -1665,11 +1291,7 @@ public:
 	struct FVector                                LineSegmentEnd;                                    // 0x000C(0x000C)(ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonID>                     OutPolygons;                                       // 0x0018(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment) == 0x000008, "Wrong alignment on EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment");
-static_assert(sizeof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment) == 0x000028, "Wrong size on EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment");
-static_assert(offsetof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment, LineSegmentStart) == 0x000000, "Member 'EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment::LineSegmentStart' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment, LineSegmentEnd) == 0x00000C, "Member 'EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment::LineSegmentEnd' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment, OutPolygons) == 0x000018, "Member 'EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment::OutPolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingLineSegment;
 
 // Function EditableMesh.EditableMesh.SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane
 // 0x0020 (0x0020 - 0x0000)
@@ -1679,10 +1301,7 @@ public:
 	struct FPlane                                 InPlane;                                           // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	TArray<struct FPolygonID>                     OutPolygons;                                       // 0x0010(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane) == 0x000010, "Wrong alignment on EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane");
-static_assert(sizeof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane) == 0x000020, "Wrong size on EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane");
-static_assert(offsetof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane, InPlane) == 0x000000, "Member 'EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane::InPlane' has a wrong offset!");
-static_assert(offsetof(EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane, OutPolygons) == 0x000010, "Member 'EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane::OutPolygons' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMesh_SearchSpatialDatabaseForPolygonsPotentiallyIntersectingPlane;
 
 // Function EditableMesh.EditableMeshFactory.MakeEditableMesh
 // 0x0018 (0x0018 - 0x0000)
@@ -1694,11 +1313,7 @@ public:
 	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UEditableMesh*                          ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(EditableMeshFactory_MakeEditableMesh) == 0x000008, "Wrong alignment on EditableMeshFactory_MakeEditableMesh");
-static_assert(sizeof(EditableMeshFactory_MakeEditableMesh) == 0x000018, "Wrong size on EditableMeshFactory_MakeEditableMesh");
-static_assert(offsetof(EditableMeshFactory_MakeEditableMesh, PrimitiveComponent) == 0x000000, "Member 'EditableMeshFactory_MakeEditableMesh::PrimitiveComponent' has a wrong offset!");
-static_assert(offsetof(EditableMeshFactory_MakeEditableMesh, LODIndex) == 0x000008, "Member 'EditableMeshFactory_MakeEditableMesh::LODIndex' has a wrong offset!");
-static_assert(offsetof(EditableMeshFactory_MakeEditableMesh, ReturnValue) == 0x000010, "Member 'EditableMeshFactory_MakeEditableMesh::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_EditableMeshFactory_MakeEditableMesh;
 
 }
 

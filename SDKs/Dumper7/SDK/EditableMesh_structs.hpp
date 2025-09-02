@@ -88,23 +88,19 @@ struct alignas(0x10) FMeshElementAttributeValue final
 public:
 	uint8                                         Pad_0[0x50];                                       // 0x0000(0x0050)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FMeshElementAttributeValue) == 0x000010, "Wrong alignment on FMeshElementAttributeValue");
-static_assert(sizeof(FMeshElementAttributeValue) == 0x000050, "Wrong size on FMeshElementAttributeValue");
+DUMPER7_ASSERTS_FMeshElementAttributeValue;
 
 // ScriptStruct EditableMesh.MeshElementAttributeData
 // 0x0060 (0x0060 - 0x0000)
 struct FMeshElementAttributeData final
 {
 public:
-	class FName                                   AttributeName;                                     // 0x0000(0x000C)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         AttributeIndex;                                    // 0x000C(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   AttributeName;                                     // 0x0000(0x0008)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         AttributeIndex;                                    // 0x0008(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FMeshElementAttributeValue             AttributeValue;                                    // 0x0010(0x0050)(BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMeshElementAttributeData) == 0x000010, "Wrong alignment on FMeshElementAttributeData");
-static_assert(sizeof(FMeshElementAttributeData) == 0x000060, "Wrong size on FMeshElementAttributeData");
-static_assert(offsetof(FMeshElementAttributeData, AttributeName) == 0x000000, "Member 'FMeshElementAttributeData::AttributeName' has a wrong offset!");
-static_assert(offsetof(FMeshElementAttributeData, AttributeIndex) == 0x00000C, "Member 'FMeshElementAttributeData::AttributeIndex' has a wrong offset!");
-static_assert(offsetof(FMeshElementAttributeData, AttributeValue) == 0x000010, "Member 'FMeshElementAttributeData::AttributeValue' has a wrong offset!");
+DUMPER7_ASSERTS_FMeshElementAttributeData;
 
 // ScriptStruct EditableMesh.MeshElementAttributeList
 // 0x0010 (0x0010 - 0x0000)
@@ -113,9 +109,7 @@ struct FMeshElementAttributeList final
 public:
 	TArray<struct FMeshElementAttributeData>      Attributes;                                        // 0x0000(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMeshElementAttributeList) == 0x000008, "Wrong alignment on FMeshElementAttributeList");
-static_assert(sizeof(FMeshElementAttributeList) == 0x000010, "Wrong size on FMeshElementAttributeList");
-static_assert(offsetof(FMeshElementAttributeList, Attributes) == 0x000000, "Member 'FMeshElementAttributeList::Attributes' has a wrong offset!");
+DUMPER7_ASSERTS_FMeshElementAttributeList;
 
 // ScriptStruct EditableMesh.AdaptorPolygon2Group
 // 0x0048 (0x0048 - 0x0000)
@@ -127,19 +121,14 @@ public:
 	int32                                         MaxTriangles;                                      // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_C[0x3C];                                       // 0x000C(0x003C)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FAdaptorPolygon2Group) == 0x000008, "Wrong alignment on FAdaptorPolygon2Group");
-static_assert(sizeof(FAdaptorPolygon2Group) == 0x000048, "Wrong size on FAdaptorPolygon2Group");
-static_assert(offsetof(FAdaptorPolygon2Group, RenderingSectionIndex) == 0x000000, "Member 'FAdaptorPolygon2Group::RenderingSectionIndex' has a wrong offset!");
-static_assert(offsetof(FAdaptorPolygon2Group, MaterialIndex) == 0x000004, "Member 'FAdaptorPolygon2Group::MaterialIndex' has a wrong offset!");
-static_assert(offsetof(FAdaptorPolygon2Group, MaxTriangles) == 0x000008, "Member 'FAdaptorPolygon2Group::MaxTriangles' has a wrong offset!");
+DUMPER7_ASSERTS_FAdaptorPolygon2Group;
 
 // ScriptStruct EditableMesh.AdaptorTriangleID
 // 0x0000 (0x0004 - 0x0004)
 struct FAdaptorTriangleID final : public FElementID
 {
 };
-static_assert(alignof(FAdaptorTriangleID) == 0x000004, "Wrong alignment on FAdaptorTriangleID");
-static_assert(sizeof(FAdaptorTriangleID) == 0x000004, "Wrong size on FAdaptorTriangleID");
+DUMPER7_ASSERTS_FAdaptorTriangleID;
 
 // ScriptStruct EditableMesh.AdaptorPolygon
 // 0x0018 (0x0018 - 0x0000)
@@ -150,10 +139,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FAdaptorTriangleID>             TriangulatedPolygonTriangleIndices;                // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FAdaptorPolygon) == 0x000008, "Wrong alignment on FAdaptorPolygon");
-static_assert(sizeof(FAdaptorPolygon) == 0x000018, "Wrong size on FAdaptorPolygon");
-static_assert(offsetof(FAdaptorPolygon, PolygonGroupID) == 0x000000, "Member 'FAdaptorPolygon::PolygonGroupID' has a wrong offset!");
-static_assert(offsetof(FAdaptorPolygon, TriangulatedPolygonTriangleIndices) == 0x000008, "Member 'FAdaptorPolygon::TriangulatedPolygonTriangleIndices' has a wrong offset!");
+DUMPER7_ASSERTS_FAdaptorPolygon;
 
 // ScriptStruct EditableMesh.PolygonGroupForPolygon
 // 0x0008 (0x0008 - 0x0000)
@@ -163,10 +149,7 @@ public:
 	struct FPolygonID                             PolygonID;                                         // 0x0000(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FPolygonGroupID                        PolygonGroupID;                                    // 0x0004(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPolygonGroupForPolygon) == 0x000004, "Wrong alignment on FPolygonGroupForPolygon");
-static_assert(sizeof(FPolygonGroupForPolygon) == 0x000008, "Wrong size on FPolygonGroupForPolygon");
-static_assert(offsetof(FPolygonGroupForPolygon, PolygonID) == 0x000000, "Member 'FPolygonGroupForPolygon::PolygonID' has a wrong offset!");
-static_assert(offsetof(FPolygonGroupForPolygon, PolygonGroupID) == 0x000004, "Member 'FPolygonGroupForPolygon::PolygonGroupID' has a wrong offset!");
+DUMPER7_ASSERTS_FPolygonGroupForPolygon;
 
 // ScriptStruct EditableMesh.PolygonGroupToCreate
 // 0x0018 (0x0018 - 0x0000)
@@ -177,10 +160,7 @@ public:
 	struct FPolygonGroupID                        OriginalPolygonGroupID;                            // 0x0010(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FPolygonGroupToCreate) == 0x000008, "Wrong alignment on FPolygonGroupToCreate");
-static_assert(sizeof(FPolygonGroupToCreate) == 0x000018, "Wrong size on FPolygonGroupToCreate");
-static_assert(offsetof(FPolygonGroupToCreate, PolygonGroupAttributes) == 0x000000, "Member 'FPolygonGroupToCreate::PolygonGroupAttributes' has a wrong offset!");
-static_assert(offsetof(FPolygonGroupToCreate, OriginalPolygonGroupID) == 0x000010, "Member 'FPolygonGroupToCreate::OriginalPolygonGroupID' has a wrong offset!");
+DUMPER7_ASSERTS_FPolygonGroupToCreate;
 
 // ScriptStruct EditableMesh.VertexToMove
 // 0x0010 (0x0010 - 0x0000)
@@ -190,10 +170,7 @@ public:
 	struct FVertexID                              VertexID;                                          // 0x0000(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVector                                NewVertexPosition;                                 // 0x0004(0x000C)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVertexToMove) == 0x000004, "Wrong alignment on FVertexToMove");
-static_assert(sizeof(FVertexToMove) == 0x000010, "Wrong size on FVertexToMove");
-static_assert(offsetof(FVertexToMove, VertexID) == 0x000000, "Member 'FVertexToMove::VertexID' has a wrong offset!");
-static_assert(offsetof(FVertexToMove, NewVertexPosition) == 0x000004, "Member 'FVertexToMove::NewVertexPosition' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexToMove;
 
 // ScriptStruct EditableMesh.VertexIndexAndInstanceID
 // 0x0008 (0x0008 - 0x0000)
@@ -203,10 +180,7 @@ public:
 	int32                                         ContourIndex;                                      // 0x0000(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexInstanceID                      VertexInstanceID;                                  // 0x0004(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVertexIndexAndInstanceID) == 0x000004, "Wrong alignment on FVertexIndexAndInstanceID");
-static_assert(sizeof(FVertexIndexAndInstanceID) == 0x000008, "Wrong size on FVertexIndexAndInstanceID");
-static_assert(offsetof(FVertexIndexAndInstanceID, ContourIndex) == 0x000000, "Member 'FVertexIndexAndInstanceID::ContourIndex' has a wrong offset!");
-static_assert(offsetof(FVertexIndexAndInstanceID, VertexInstanceID) == 0x000004, "Member 'FVertexIndexAndInstanceID::VertexInstanceID' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexIndexAndInstanceID;
 
 // ScriptStruct EditableMesh.VertexInstancesForPolygonHole
 // 0x0010 (0x0010 - 0x0000)
@@ -215,9 +189,7 @@ struct FVertexInstancesForPolygonHole final
 public:
 	TArray<struct FVertexIndexAndInstanceID>      VertexIndicesAndInstanceIDs;                       // 0x0000(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVertexInstancesForPolygonHole) == 0x000008, "Wrong alignment on FVertexInstancesForPolygonHole");
-static_assert(sizeof(FVertexInstancesForPolygonHole) == 0x000010, "Wrong size on FVertexInstancesForPolygonHole");
-static_assert(offsetof(FVertexInstancesForPolygonHole, VertexIndicesAndInstanceIDs) == 0x000000, "Member 'FVertexInstancesForPolygonHole::VertexIndicesAndInstanceIDs' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexInstancesForPolygonHole;
 
 // ScriptStruct EditableMesh.ChangeVertexInstancesForPolygon
 // 0x0028 (0x0028 - 0x0000)
@@ -229,11 +201,7 @@ public:
 	TArray<struct FVertexIndexAndInstanceID>      PerimeterVertexIndicesAndInstanceIDs;              // 0x0008(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FVertexInstancesForPolygonHole> VertexIndicesAndInstanceIDsForEachHole;            // 0x0018(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FChangeVertexInstancesForPolygon) == 0x000008, "Wrong alignment on FChangeVertexInstancesForPolygon");
-static_assert(sizeof(FChangeVertexInstancesForPolygon) == 0x000028, "Wrong size on FChangeVertexInstancesForPolygon");
-static_assert(offsetof(FChangeVertexInstancesForPolygon, PolygonID) == 0x000000, "Member 'FChangeVertexInstancesForPolygon::PolygonID' has a wrong offset!");
-static_assert(offsetof(FChangeVertexInstancesForPolygon, PerimeterVertexIndicesAndInstanceIDs) == 0x000008, "Member 'FChangeVertexInstancesForPolygon::PerimeterVertexIndicesAndInstanceIDs' has a wrong offset!");
-static_assert(offsetof(FChangeVertexInstancesForPolygon, VertexIndicesAndInstanceIDsForEachHole) == 0x000018, "Member 'FChangeVertexInstancesForPolygon::VertexIndicesAndInstanceIDsForEachHole' has a wrong offset!");
+DUMPER7_ASSERTS_FChangeVertexInstancesForPolygon;
 
 // ScriptStruct EditableMesh.VertexAttributesForPolygonHole
 // 0x0010 (0x0010 - 0x0000)
@@ -242,9 +210,7 @@ struct FVertexAttributesForPolygonHole final
 public:
 	TArray<struct FMeshElementAttributeList>      VertexAttributeList;                               // 0x0000(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVertexAttributesForPolygonHole) == 0x000008, "Wrong alignment on FVertexAttributesForPolygonHole");
-static_assert(sizeof(FVertexAttributesForPolygonHole) == 0x000010, "Wrong size on FVertexAttributesForPolygonHole");
-static_assert(offsetof(FVertexAttributesForPolygonHole, VertexAttributeList) == 0x000000, "Member 'FVertexAttributesForPolygonHole::VertexAttributeList' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexAttributesForPolygonHole;
 
 // ScriptStruct EditableMesh.VertexAttributesForPolygon
 // 0x0028 (0x0028 - 0x0000)
@@ -256,11 +222,7 @@ public:
 	TArray<struct FMeshElementAttributeList>      PerimeterVertexAttributeLists;                     // 0x0008(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FVertexAttributesForPolygonHole> VertexAttributeListsForEachHole;                  // 0x0018(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVertexAttributesForPolygon) == 0x000008, "Wrong alignment on FVertexAttributesForPolygon");
-static_assert(sizeof(FVertexAttributesForPolygon) == 0x000028, "Wrong size on FVertexAttributesForPolygon");
-static_assert(offsetof(FVertexAttributesForPolygon, PolygonID) == 0x000000, "Member 'FVertexAttributesForPolygon::PolygonID' has a wrong offset!");
-static_assert(offsetof(FVertexAttributesForPolygon, PerimeterVertexAttributeLists) == 0x000008, "Member 'FVertexAttributesForPolygon::PerimeterVertexAttributeLists' has a wrong offset!");
-static_assert(offsetof(FVertexAttributesForPolygon, VertexAttributeListsForEachHole) == 0x000018, "Member 'FVertexAttributesForPolygon::VertexAttributeListsForEachHole' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexAttributesForPolygon;
 
 // ScriptStruct EditableMesh.AttributesForEdge
 // 0x0018 (0x0018 - 0x0000)
@@ -271,10 +233,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FMeshElementAttributeList              EdgeAttributes;                                    // 0x0008(0x0010)(BlueprintVisible, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FAttributesForEdge) == 0x000008, "Wrong alignment on FAttributesForEdge");
-static_assert(sizeof(FAttributesForEdge) == 0x000018, "Wrong size on FAttributesForEdge");
-static_assert(offsetof(FAttributesForEdge, EdgeID) == 0x000000, "Member 'FAttributesForEdge::EdgeID' has a wrong offset!");
-static_assert(offsetof(FAttributesForEdge, EdgeAttributes) == 0x000008, "Member 'FAttributesForEdge::EdgeAttributes' has a wrong offset!");
+DUMPER7_ASSERTS_FAttributesForEdge;
 
 // ScriptStruct EditableMesh.AttributesForVertexInstance
 // 0x0018 (0x0018 - 0x0000)
@@ -285,10 +244,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FMeshElementAttributeList              VertexInstanceAttributes;                          // 0x0008(0x0010)(BlueprintVisible, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FAttributesForVertexInstance) == 0x000008, "Wrong alignment on FAttributesForVertexInstance");
-static_assert(sizeof(FAttributesForVertexInstance) == 0x000018, "Wrong size on FAttributesForVertexInstance");
-static_assert(offsetof(FAttributesForVertexInstance, VertexInstanceID) == 0x000000, "Member 'FAttributesForVertexInstance::VertexInstanceID' has a wrong offset!");
-static_assert(offsetof(FAttributesForVertexInstance, VertexInstanceAttributes) == 0x000008, "Member 'FAttributesForVertexInstance::VertexInstanceAttributes' has a wrong offset!");
+DUMPER7_ASSERTS_FAttributesForVertexInstance;
 
 // ScriptStruct EditableMesh.AttributesForVertex
 // 0x0018 (0x0018 - 0x0000)
@@ -299,10 +255,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FMeshElementAttributeList              VertexAttributes;                                  // 0x0008(0x0010)(BlueprintVisible, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FAttributesForVertex) == 0x000008, "Wrong alignment on FAttributesForVertex");
-static_assert(sizeof(FAttributesForVertex) == 0x000018, "Wrong size on FAttributesForVertex");
-static_assert(offsetof(FAttributesForVertex, VertexID) == 0x000000, "Member 'FAttributesForVertex::VertexID' has a wrong offset!");
-static_assert(offsetof(FAttributesForVertex, VertexAttributes) == 0x000008, "Member 'FAttributesForVertex::VertexAttributes' has a wrong offset!");
+DUMPER7_ASSERTS_FAttributesForVertex;
 
 // ScriptStruct EditableMesh.VertexPair
 // 0x0008 (0x0008 - 0x0000)
@@ -312,10 +265,7 @@ public:
 	struct FVertexID                              VertexID0;                                         // 0x0000(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVertexID                              VertexID1;                                         // 0x0004(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVertexPair) == 0x000004, "Wrong alignment on FVertexPair");
-static_assert(sizeof(FVertexPair) == 0x000008, "Wrong size on FVertexPair");
-static_assert(offsetof(FVertexPair, VertexID0) == 0x000000, "Member 'FVertexPair::VertexID0' has a wrong offset!");
-static_assert(offsetof(FVertexPair, VertexID1) == 0x000004, "Member 'FVertexPair::VertexID1' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexPair;
 
 // ScriptStruct EditableMesh.PolygonToSplit
 // 0x0018 (0x0018 - 0x0000)
@@ -326,10 +276,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FVertexPair>                    VertexPairsToSplitAt;                              // 0x0008(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPolygonToSplit) == 0x000008, "Wrong alignment on FPolygonToSplit");
-static_assert(sizeof(FPolygonToSplit) == 0x000018, "Wrong size on FPolygonToSplit");
-static_assert(offsetof(FPolygonToSplit, PolygonID) == 0x000000, "Member 'FPolygonToSplit::PolygonID' has a wrong offset!");
-static_assert(offsetof(FPolygonToSplit, VertexPairsToSplitAt) == 0x000008, "Member 'FPolygonToSplit::VertexPairsToSplitAt' has a wrong offset!");
+DUMPER7_ASSERTS_FPolygonToSplit;
 
 // ScriptStruct EditableMesh.VertexAndAttributes
 // 0x0018 (0x0018 - 0x0000)
@@ -340,11 +287,7 @@ public:
 	struct FVertexID                              VertexID;                                          // 0x0004(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FMeshElementAttributeList              PolygonVertexAttributes;                           // 0x0008(0x0010)(BlueprintVisible, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVertexAndAttributes) == 0x000008, "Wrong alignment on FVertexAndAttributes");
-static_assert(sizeof(FVertexAndAttributes) == 0x000018, "Wrong size on FVertexAndAttributes");
-static_assert(offsetof(FVertexAndAttributes, VertexInstanceID) == 0x000000, "Member 'FVertexAndAttributes::VertexInstanceID' has a wrong offset!");
-static_assert(offsetof(FVertexAndAttributes, VertexID) == 0x000004, "Member 'FVertexAndAttributes::VertexID' has a wrong offset!");
-static_assert(offsetof(FVertexAndAttributes, PolygonVertexAttributes) == 0x000008, "Member 'FVertexAndAttributes::PolygonVertexAttributes' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexAndAttributes;
 
 // ScriptStruct EditableMesh.PolygonToCreate
 // 0x0020 (0x0020 - 0x0000)
@@ -358,12 +301,7 @@ public:
 	EPolygonEdgeHardness                          PolygonEdgeHardness;                               // 0x001C(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FPolygonToCreate) == 0x000008, "Wrong alignment on FPolygonToCreate");
-static_assert(sizeof(FPolygonToCreate) == 0x000020, "Wrong size on FPolygonToCreate");
-static_assert(offsetof(FPolygonToCreate, PolygonGroupID) == 0x000000, "Member 'FPolygonToCreate::PolygonGroupID' has a wrong offset!");
-static_assert(offsetof(FPolygonToCreate, PerimeterVertices) == 0x000008, "Member 'FPolygonToCreate::PerimeterVertices' has a wrong offset!");
-static_assert(offsetof(FPolygonToCreate, OriginalPolygonID) == 0x000018, "Member 'FPolygonToCreate::OriginalPolygonID' has a wrong offset!");
-static_assert(offsetof(FPolygonToCreate, PolygonEdgeHardness) == 0x00001C, "Member 'FPolygonToCreate::PolygonEdgeHardness' has a wrong offset!");
+DUMPER7_ASSERTS_FPolygonToCreate;
 
 // ScriptStruct EditableMesh.EdgeToCreate
 // 0x0020 (0x0020 - 0x0000)
@@ -376,12 +314,7 @@ public:
 	struct FEdgeID                                OriginalEdgeID;                                    // 0x0018(0x0004)(BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FEdgeToCreate) == 0x000008, "Wrong alignment on FEdgeToCreate");
-static_assert(sizeof(FEdgeToCreate) == 0x000020, "Wrong size on FEdgeToCreate");
-static_assert(offsetof(FEdgeToCreate, VertexID0) == 0x000000, "Member 'FEdgeToCreate::VertexID0' has a wrong offset!");
-static_assert(offsetof(FEdgeToCreate, VertexID1) == 0x000004, "Member 'FEdgeToCreate::VertexID1' has a wrong offset!");
-static_assert(offsetof(FEdgeToCreate, EdgeAttributes) == 0x000008, "Member 'FEdgeToCreate::EdgeAttributes' has a wrong offset!");
-static_assert(offsetof(FEdgeToCreate, OriginalEdgeID) == 0x000018, "Member 'FEdgeToCreate::OriginalEdgeID' has a wrong offset!");
+DUMPER7_ASSERTS_FEdgeToCreate;
 
 // ScriptStruct EditableMesh.VertexInstanceToCreate
 // 0x0020 (0x0020 - 0x0000)
@@ -394,11 +327,7 @@ public:
 	struct FVertexInstanceID                      OriginalVertexInstanceID;                          // 0x0018(0x0004)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FVertexInstanceToCreate) == 0x000008, "Wrong alignment on FVertexInstanceToCreate");
-static_assert(sizeof(FVertexInstanceToCreate) == 0x000020, "Wrong size on FVertexInstanceToCreate");
-static_assert(offsetof(FVertexInstanceToCreate, VertexID) == 0x000000, "Member 'FVertexInstanceToCreate::VertexID' has a wrong offset!");
-static_assert(offsetof(FVertexInstanceToCreate, VertexInstanceAttributes) == 0x000008, "Member 'FVertexInstanceToCreate::VertexInstanceAttributes' has a wrong offset!");
-static_assert(offsetof(FVertexInstanceToCreate, OriginalVertexInstanceID) == 0x000018, "Member 'FVertexInstanceToCreate::OriginalVertexInstanceID' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexInstanceToCreate;
 
 // ScriptStruct EditableMesh.VertexToCreate
 // 0x0018 (0x0018 - 0x0000)
@@ -409,10 +338,18 @@ public:
 	struct FVertexID                              OriginalVertexID;                                  // 0x0010(0x0004)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FVertexToCreate) == 0x000008, "Wrong alignment on FVertexToCreate");
-static_assert(sizeof(FVertexToCreate) == 0x000018, "Wrong size on FVertexToCreate");
-static_assert(offsetof(FVertexToCreate, VertexAttributes) == 0x000000, "Member 'FVertexToCreate::VertexAttributes' has a wrong offset!");
-static_assert(offsetof(FVertexToCreate, OriginalVertexID) == 0x000010, "Member 'FVertexToCreate::OriginalVertexID' has a wrong offset!");
+DUMPER7_ASSERTS_FVertexToCreate;
+
+// ScriptStruct EditableMesh.SubdividedWireEdge
+// 0x000C (0x000C - 0x0000)
+struct FSubdividedWireEdge final
+{
+public:
+	int32                                         EdgeVertex0PositionIndex;                          // 0x0000(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         EdgeVertex1PositionIndex;                          // 0x0004(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_8[0x4];                                        // 0x0008(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FSubdividedWireEdge;
 
 // ScriptStruct EditableMesh.SubdividedQuadVertex
 // 0x0034 (0x0034 - 0x0000)
@@ -427,15 +364,7 @@ public:
 	struct FVector                                VertexTangent;                                     // 0x0024(0x000C)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         VertexBinormalSign;                                // 0x0030(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSubdividedQuadVertex) == 0x000004, "Wrong alignment on FSubdividedQuadVertex");
-static_assert(sizeof(FSubdividedQuadVertex) == 0x000034, "Wrong size on FSubdividedQuadVertex");
-static_assert(offsetof(FSubdividedQuadVertex, VertexPositionIndex) == 0x000000, "Member 'FSubdividedQuadVertex::VertexPositionIndex' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuadVertex, TextureCoordinate0) == 0x000004, "Member 'FSubdividedQuadVertex::TextureCoordinate0' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuadVertex, TextureCoordinate1) == 0x00000C, "Member 'FSubdividedQuadVertex::TextureCoordinate1' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuadVertex, VertexColor) == 0x000014, "Member 'FSubdividedQuadVertex::VertexColor' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuadVertex, VertexNormal) == 0x000018, "Member 'FSubdividedQuadVertex::VertexNormal' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuadVertex, VertexTangent) == 0x000024, "Member 'FSubdividedQuadVertex::VertexTangent' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuadVertex, VertexBinormalSign) == 0x000030, "Member 'FSubdividedQuadVertex::VertexBinormalSign' has a wrong offset!");
+DUMPER7_ASSERTS_FSubdividedQuadVertex;
 
 // ScriptStruct EditableMesh.SubdividedQuad
 // 0x00D0 (0x00D0 - 0x0000)
@@ -447,12 +376,7 @@ public:
 	struct FSubdividedQuadVertex                  QuadVertex2;                                       // 0x0068(0x0034)(BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 	struct FSubdividedQuadVertex                  QuadVertex3;                                       // 0x009C(0x0034)(BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSubdividedQuad) == 0x000004, "Wrong alignment on FSubdividedQuad");
-static_assert(sizeof(FSubdividedQuad) == 0x0000D0, "Wrong size on FSubdividedQuad");
-static_assert(offsetof(FSubdividedQuad, QuadVertex0) == 0x000000, "Member 'FSubdividedQuad::QuadVertex0' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuad, QuadVertex1) == 0x000034, "Member 'FSubdividedQuad::QuadVertex1' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuad, QuadVertex2) == 0x000068, "Member 'FSubdividedQuad::QuadVertex2' has a wrong offset!");
-static_assert(offsetof(FSubdividedQuad, QuadVertex3) == 0x00009C, "Member 'FSubdividedQuad::QuadVertex3' has a wrong offset!");
+DUMPER7_ASSERTS_FSubdividedQuad;
 
 // ScriptStruct EditableMesh.SubdivisionLimitSection
 // 0x0010 (0x0010 - 0x0000)
@@ -461,23 +385,7 @@ struct FSubdivisionLimitSection final
 public:
 	TArray<struct FSubdividedQuad>                SubdividedQuads;                                   // 0x0000(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSubdivisionLimitSection) == 0x000008, "Wrong alignment on FSubdivisionLimitSection");
-static_assert(sizeof(FSubdivisionLimitSection) == 0x000010, "Wrong size on FSubdivisionLimitSection");
-static_assert(offsetof(FSubdivisionLimitSection, SubdividedQuads) == 0x000000, "Member 'FSubdivisionLimitSection::SubdividedQuads' has a wrong offset!");
-
-// ScriptStruct EditableMesh.SubdividedWireEdge
-// 0x000C (0x000C - 0x0000)
-struct FSubdividedWireEdge final
-{
-public:
-	int32                                         EdgeVertex0PositionIndex;                          // 0x0000(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         EdgeVertex1PositionIndex;                          // 0x0004(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_8[0x4];                                        // 0x0008(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FSubdividedWireEdge) == 0x000004, "Wrong alignment on FSubdividedWireEdge");
-static_assert(sizeof(FSubdividedWireEdge) == 0x00000C, "Wrong size on FSubdividedWireEdge");
-static_assert(offsetof(FSubdividedWireEdge, EdgeVertex0PositionIndex) == 0x000000, "Member 'FSubdividedWireEdge::EdgeVertex0PositionIndex' has a wrong offset!");
-static_assert(offsetof(FSubdividedWireEdge, EdgeVertex1PositionIndex) == 0x000004, "Member 'FSubdividedWireEdge::EdgeVertex1PositionIndex' has a wrong offset!");
+DUMPER7_ASSERTS_FSubdivisionLimitSection;
 
 // ScriptStruct EditableMesh.SubdivisionLimitData
 // 0x0030 (0x0030 - 0x0000)
@@ -488,11 +396,7 @@ public:
 	TArray<struct FSubdivisionLimitSection>       Sections;                                          // 0x0010(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FSubdividedWireEdge>            SubdividedWireEdges;                               // 0x0020(0x0010)(BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSubdivisionLimitData) == 0x000008, "Wrong alignment on FSubdivisionLimitData");
-static_assert(sizeof(FSubdivisionLimitData) == 0x000030, "Wrong size on FSubdivisionLimitData");
-static_assert(offsetof(FSubdivisionLimitData, VertexPositions) == 0x000000, "Member 'FSubdivisionLimitData::VertexPositions' has a wrong offset!");
-static_assert(offsetof(FSubdivisionLimitData, Sections) == 0x000010, "Member 'FSubdivisionLimitData::Sections' has a wrong offset!");
-static_assert(offsetof(FSubdivisionLimitData, SubdividedWireEdges) == 0x000020, "Member 'FSubdivisionLimitData::SubdividedWireEdges' has a wrong offset!");
+DUMPER7_ASSERTS_FSubdivisionLimitData;
 
 // ScriptStruct EditableMesh.RenderingPolygonGroup
 // 0x0048 (0x0048 - 0x0000)
@@ -504,11 +408,7 @@ public:
 	int32                                         MaxTriangles;                                      // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_C[0x3C];                                       // 0x000C(0x003C)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRenderingPolygonGroup) == 0x000008, "Wrong alignment on FRenderingPolygonGroup");
-static_assert(sizeof(FRenderingPolygonGroup) == 0x000048, "Wrong size on FRenderingPolygonGroup");
-static_assert(offsetof(FRenderingPolygonGroup, RenderingSectionIndex) == 0x000000, "Member 'FRenderingPolygonGroup::RenderingSectionIndex' has a wrong offset!");
-static_assert(offsetof(FRenderingPolygonGroup, MaterialIndex) == 0x000004, "Member 'FRenderingPolygonGroup::MaterialIndex' has a wrong offset!");
-static_assert(offsetof(FRenderingPolygonGroup, MaxTriangles) == 0x000008, "Member 'FRenderingPolygonGroup::MaxTriangles' has a wrong offset!");
+DUMPER7_ASSERTS_FRenderingPolygonGroup;
 
 // ScriptStruct EditableMesh.RenderingPolygon
 // 0x0018 (0x0018 - 0x0000)
@@ -519,10 +419,7 @@ public:
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	TArray<struct FTriangleID>                    TriangulatedPolygonTriangleIndices;                // 0x0008(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRenderingPolygon) == 0x000008, "Wrong alignment on FRenderingPolygon");
-static_assert(sizeof(FRenderingPolygon) == 0x000018, "Wrong size on FRenderingPolygon");
-static_assert(offsetof(FRenderingPolygon, PolygonGroupID) == 0x000000, "Member 'FRenderingPolygon::PolygonGroupID' has a wrong offset!");
-static_assert(offsetof(FRenderingPolygon, TriangulatedPolygonTriangleIndices) == 0x000008, "Member 'FRenderingPolygon::TriangulatedPolygonTriangleIndices' has a wrong offset!");
+DUMPER7_ASSERTS_FRenderingPolygon;
 
 }
 

@@ -33,10 +33,7 @@ public:
 	struct FGuid                                  BindingID;                                         // 0x0000(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UMovieSceneSequence*                    Sequence;                                          // 0x0010(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSequencerBindingProxy) == 0x000008, "Wrong alignment on FSequencerBindingProxy");
-static_assert(sizeof(FSequencerBindingProxy) == 0x000018, "Wrong size on FSequencerBindingProxy");
-static_assert(offsetof(FSequencerBindingProxy, BindingID) == 0x000000, "Member 'FSequencerBindingProxy::BindingID' has a wrong offset!");
-static_assert(offsetof(FSequencerBindingProxy, Sequence) == 0x000010, "Member 'FSequencerBindingProxy::Sequence' has a wrong offset!");
+DUMPER7_ASSERTS_FSequencerBindingProxy;
 
 // ScriptStruct SequencerScripting.SequencerScriptingRange
 // 0x0014 (0x0014 - 0x0000)
@@ -50,11 +47,7 @@ public:
 	int32                                         ExclusiveEnd;                                      // 0x0008(0x0004)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FFrameRate                             InternalRate;                                      // 0x000C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FSequencerScriptingRange) == 0x000004, "Wrong alignment on FSequencerScriptingRange");
-static_assert(sizeof(FSequencerScriptingRange) == 0x000014, "Wrong size on FSequencerScriptingRange");
-static_assert(offsetof(FSequencerScriptingRange, InclusiveStart) == 0x000004, "Member 'FSequencerScriptingRange::InclusiveStart' has a wrong offset!");
-static_assert(offsetof(FSequencerScriptingRange, ExclusiveEnd) == 0x000008, "Member 'FSequencerScriptingRange::ExclusiveEnd' has a wrong offset!");
-static_assert(offsetof(FSequencerScriptingRange, InternalRate) == 0x00000C, "Member 'FSequencerScriptingRange::InternalRate' has a wrong offset!");
+DUMPER7_ASSERTS_FSequencerScriptingRange;
 
 }
 

@@ -21,9 +21,7 @@ struct MoviePipelineBurnInWidget_OnOutputFrameStarted final
 public:
 	class UMoviePipeline*                         ForPipeline;                                       // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(MoviePipelineBurnInWidget_OnOutputFrameStarted) == 0x000008, "Wrong alignment on MoviePipelineBurnInWidget_OnOutputFrameStarted");
-static_assert(sizeof(MoviePipelineBurnInWidget_OnOutputFrameStarted) == 0x000008, "Wrong size on MoviePipelineBurnInWidget_OnOutputFrameStarted");
-static_assert(offsetof(MoviePipelineBurnInWidget_OnOutputFrameStarted, ForPipeline) == 0x000000, "Member 'MoviePipelineBurnInWidget_OnOutputFrameStarted::ForPipeline' has a wrong offset!");
+DUMPER7_ASSERTS_MoviePipelineBurnInWidget_OnOutputFrameStarted;
 
 }
 

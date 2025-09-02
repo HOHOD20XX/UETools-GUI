@@ -17,18 +17,15 @@ namespace SDK::Params
 {
 
 // Function AudioCapture.AudioCapture.GetAudioCaptureDeviceInfo
-// 0x0018 (0x0018 - 0x0000)
+// 0x0014 (0x0014 - 0x0000)
 struct AudioCapture_GetAudioCaptureDeviceInfo final
 {
 public:
-	struct FAudioCaptureDeviceInfo                OutInfo;                                           // 0x0000(0x0014)(Parm, OutParm, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          ReturnValue;                                       // 0x0014(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FAudioCaptureDeviceInfo                OutInfo;                                           // 0x0000(0x0010)(Parm, OutParm, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          ReturnValue;                                       // 0x0010(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x3];                                       // 0x0011(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(AudioCapture_GetAudioCaptureDeviceInfo) == 0x000004, "Wrong alignment on AudioCapture_GetAudioCaptureDeviceInfo");
-static_assert(sizeof(AudioCapture_GetAudioCaptureDeviceInfo) == 0x000018, "Wrong size on AudioCapture_GetAudioCaptureDeviceInfo");
-static_assert(offsetof(AudioCapture_GetAudioCaptureDeviceInfo, OutInfo) == 0x000000, "Member 'AudioCapture_GetAudioCaptureDeviceInfo::OutInfo' has a wrong offset!");
-static_assert(offsetof(AudioCapture_GetAudioCaptureDeviceInfo, ReturnValue) == 0x000014, "Member 'AudioCapture_GetAudioCaptureDeviceInfo::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_AudioCapture_GetAudioCaptureDeviceInfo;
 
 // Function AudioCapture.AudioCapture.IsCapturingAudio
 // 0x0001 (0x0001 - 0x0000)
@@ -37,9 +34,7 @@ struct AudioCapture_IsCapturingAudio final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(AudioCapture_IsCapturingAudio) == 0x000001, "Wrong alignment on AudioCapture_IsCapturingAudio");
-static_assert(sizeof(AudioCapture_IsCapturingAudio) == 0x000001, "Wrong size on AudioCapture_IsCapturingAudio");
-static_assert(offsetof(AudioCapture_IsCapturingAudio, ReturnValue) == 0x000000, "Member 'AudioCapture_IsCapturingAudio::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_AudioCapture_IsCapturingAudio;
 
 // Function AudioCapture.AudioCaptureFunctionLibrary.CreateAudioCapture
 // 0x0008 (0x0008 - 0x0000)
@@ -48,9 +43,7 @@ struct AudioCaptureFunctionLibrary_CreateAudioCapture final
 public:
 	class UAudioCapture*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(AudioCaptureFunctionLibrary_CreateAudioCapture) == 0x000008, "Wrong alignment on AudioCaptureFunctionLibrary_CreateAudioCapture");
-static_assert(sizeof(AudioCaptureFunctionLibrary_CreateAudioCapture) == 0x000008, "Wrong size on AudioCaptureFunctionLibrary_CreateAudioCapture");
-static_assert(offsetof(AudioCaptureFunctionLibrary_CreateAudioCapture, ReturnValue) == 0x000000, "Member 'AudioCaptureFunctionLibrary_CreateAudioCapture::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_AudioCaptureFunctionLibrary_CreateAudioCapture;
 
 }
 

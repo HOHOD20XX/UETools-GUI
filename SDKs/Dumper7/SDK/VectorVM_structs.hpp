@@ -15,7 +15,7 @@ namespace SDK
 {
 
 // Enum VectorVM.EVectorVMOp
-// NumValues: 0x0061
+// NumValues: 0x0060
 enum class EVectorVMOp : uint8
 {
 	done                                     = 0,
@@ -114,7 +114,6 @@ enum class EVectorVMOp : uint8
 	update_id                                = 93,
 	acquire_id                               = 94,
 	NumOpcodes                               = 95,
-	EVectorVMOp_MAX                          = 96,
 };
 
 // Enum VectorVM.EVectorVMOperandLocation

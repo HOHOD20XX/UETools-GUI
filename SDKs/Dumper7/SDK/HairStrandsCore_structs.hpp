@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
+#include "MovieScene_structs.hpp"
 #include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
-#include "MovieScene_structs.hpp"
 
 
 namespace SDK
@@ -215,14 +215,7 @@ public:
 	int32                                         NumGuideVertices;                                  // 0x0010(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         MaxCurveLength;                                    // 0x0014(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupInfo) == 0x000004, "Wrong alignment on FHairGroupInfo");
-static_assert(sizeof(FHairGroupInfo) == 0x000018, "Wrong size on FHairGroupInfo");
-static_assert(offsetof(FHairGroupInfo, GroupID) == 0x000000, "Member 'FHairGroupInfo::GroupID' has a wrong offset!");
-static_assert(offsetof(FHairGroupInfo, NumCurves) == 0x000004, "Member 'FHairGroupInfo::NumCurves' has a wrong offset!");
-static_assert(offsetof(FHairGroupInfo, NumGuides) == 0x000008, "Member 'FHairGroupInfo::NumGuides' has a wrong offset!");
-static_assert(offsetof(FHairGroupInfo, NumCurveVertices) == 0x00000C, "Member 'FHairGroupInfo::NumCurveVertices' has a wrong offset!");
-static_assert(offsetof(FHairGroupInfo, NumGuideVertices) == 0x000010, "Member 'FHairGroupInfo::NumGuideVertices' has a wrong offset!");
-static_assert(offsetof(FHairGroupInfo, MaxCurveLength) == 0x000014, "Member 'FHairGroupInfo::MaxCurveLength' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupInfo;
 
 // ScriptStruct HairStrandsCore.HairGroupInfoWithVisibility
 // 0x0004 (0x001C - 0x0018)
@@ -232,43 +225,17 @@ public:
 	bool                                          bIsVisible;                                        // 0x0018(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_19[0x3];                                       // 0x0019(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FHairGroupInfoWithVisibility) == 0x000004, "Wrong alignment on FHairGroupInfoWithVisibility");
-static_assert(sizeof(FHairGroupInfoWithVisibility) == 0x00001C, "Wrong size on FHairGroupInfoWithVisibility");
-static_assert(offsetof(FHairGroupInfoWithVisibility, bIsVisible) == 0x000018, "Member 'FHairGroupInfoWithVisibility::bIsVisible' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupInfoWithVisibility;
 
 // ScriptStruct HairStrandsCore.HairGroupsMaterial
-// 0x0018 (0x0018 - 0x0000)
+// 0x0010 (0x0010 - 0x0000)
 struct FHairGroupsMaterial final
 {
 public:
 	class UMaterialInterface*                     Material;                                          // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   SlotName;                                          // 0x0008(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   SlotName;                                          // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupsMaterial) == 0x000008, "Wrong alignment on FHairGroupsMaterial");
-static_assert(sizeof(FHairGroupsMaterial) == 0x000018, "Wrong size on FHairGroupsMaterial");
-static_assert(offsetof(FHairGroupsMaterial, Material) == 0x000000, "Member 'FHairGroupsMaterial::Material' has a wrong offset!");
-static_assert(offsetof(FHairGroupsMaterial, SlotName) == 0x000008, "Member 'FHairGroupsMaterial::SlotName' has a wrong offset!");
-
-// ScriptStruct HairStrandsCore.HairGroupCardsTextures
-// 0x0030 (0x0030 - 0x0000)
-struct FHairGroupCardsTextures final
-{
-public:
-	class UTexture2D*                             DepthTexture;                                      // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTexture2D*                             CoverageTexture;                                   // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTexture2D*                             TangentTexture;                                    // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTexture2D*                             AttributeTexture;                                  // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UTexture2D*                             AuxilaryDataTexture;                               // 0x0020(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-static_assert(alignof(FHairGroupCardsTextures) == 0x000008, "Wrong alignment on FHairGroupCardsTextures");
-static_assert(sizeof(FHairGroupCardsTextures) == 0x000030, "Wrong size on FHairGroupCardsTextures");
-static_assert(offsetof(FHairGroupCardsTextures, DepthTexture) == 0x000000, "Member 'FHairGroupCardsTextures::DepthTexture' has a wrong offset!");
-static_assert(offsetof(FHairGroupCardsTextures, CoverageTexture) == 0x000008, "Member 'FHairGroupCardsTextures::CoverageTexture' has a wrong offset!");
-static_assert(offsetof(FHairGroupCardsTextures, TangentTexture) == 0x000010, "Member 'FHairGroupCardsTextures::TangentTexture' has a wrong offset!");
-static_assert(offsetof(FHairGroupCardsTextures, AttributeTexture) == 0x000018, "Member 'FHairGroupCardsTextures::AttributeTexture' has a wrong offset!");
-static_assert(offsetof(FHairGroupCardsTextures, AuxilaryDataTexture) == 0x000020, "Member 'FHairGroupCardsTextures::AuxilaryDataTexture' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsMaterial;
 
 // ScriptStruct HairStrandsCore.HairCardsClusterSettings
 // 0x0008 (0x0008 - 0x0000)
@@ -280,11 +247,7 @@ public:
 	bool                                          bUseGuide;                                         // 0x0005(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_6[0x2];                                        // 0x0006(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FHairCardsClusterSettings) == 0x000004, "Wrong alignment on FHairCardsClusterSettings");
-static_assert(sizeof(FHairCardsClusterSettings) == 0x000008, "Wrong size on FHairCardsClusterSettings");
-static_assert(offsetof(FHairCardsClusterSettings, ClusterDecimation) == 0x000000, "Member 'FHairCardsClusterSettings::ClusterDecimation' has a wrong offset!");
-static_assert(offsetof(FHairCardsClusterSettings, Type) == 0x000004, "Member 'FHairCardsClusterSettings::Type' has a wrong offset!");
-static_assert(offsetof(FHairCardsClusterSettings, bUseGuide) == 0x000005, "Member 'FHairCardsClusterSettings::bUseGuide' has a wrong offset!");
+DUMPER7_ASSERTS_FHairCardsClusterSettings;
 
 // ScriptStruct HairStrandsCore.HairCardsGeometrySettings
 // 0x001C (0x001C - 0x0000)
@@ -301,15 +264,7 @@ public:
 	float                                         MinCardsLength;                                    // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         MaxCardsLength;                                    // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairCardsGeometrySettings) == 0x000004, "Wrong alignment on FHairCardsGeometrySettings");
-static_assert(sizeof(FHairCardsGeometrySettings) == 0x00001C, "Wrong size on FHairCardsGeometrySettings");
-static_assert(offsetof(FHairCardsGeometrySettings, GenerationType) == 0x000000, "Member 'FHairCardsGeometrySettings::GenerationType' has a wrong offset!");
-static_assert(offsetof(FHairCardsGeometrySettings, CardsCount) == 0x000004, "Member 'FHairCardsGeometrySettings::CardsCount' has a wrong offset!");
-static_assert(offsetof(FHairCardsGeometrySettings, ClusterType) == 0x000008, "Member 'FHairCardsGeometrySettings::ClusterType' has a wrong offset!");
-static_assert(offsetof(FHairCardsGeometrySettings, MinSegmentLength) == 0x00000C, "Member 'FHairCardsGeometrySettings::MinSegmentLength' has a wrong offset!");
-static_assert(offsetof(FHairCardsGeometrySettings, AngularThreshold) == 0x000010, "Member 'FHairCardsGeometrySettings::AngularThreshold' has a wrong offset!");
-static_assert(offsetof(FHairCardsGeometrySettings, MinCardsLength) == 0x000014, "Member 'FHairCardsGeometrySettings::MinCardsLength' has a wrong offset!");
-static_assert(offsetof(FHairCardsGeometrySettings, MaxCardsLength) == 0x000018, "Member 'FHairCardsGeometrySettings::MaxCardsLength' has a wrong offset!");
+DUMPER7_ASSERTS_FHairCardsGeometrySettings;
 
 // ScriptStruct HairStrandsCore.HairCardsTextureSettings
 // 0x0010 (0x0010 - 0x0000)
@@ -321,12 +276,7 @@ public:
 	int32                                         LengthTextureCount;                                // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         DensityTextureCount;                               // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairCardsTextureSettings) == 0x000004, "Wrong alignment on FHairCardsTextureSettings");
-static_assert(sizeof(FHairCardsTextureSettings) == 0x000010, "Wrong size on FHairCardsTextureSettings");
-static_assert(offsetof(FHairCardsTextureSettings, AtlasMaxResolution) == 0x000000, "Member 'FHairCardsTextureSettings::AtlasMaxResolution' has a wrong offset!");
-static_assert(offsetof(FHairCardsTextureSettings, PixelPerCentimeters) == 0x000004, "Member 'FHairCardsTextureSettings::PixelPerCentimeters' has a wrong offset!");
-static_assert(offsetof(FHairCardsTextureSettings, LengthTextureCount) == 0x000008, "Member 'FHairCardsTextureSettings::LengthTextureCount' has a wrong offset!");
-static_assert(offsetof(FHairCardsTextureSettings, DensityTextureCount) == 0x00000C, "Member 'FHairCardsTextureSettings::DensityTextureCount' has a wrong offset!");
+DUMPER7_ASSERTS_FHairCardsTextureSettings;
 
 // ScriptStruct HairStrandsCore.HairGroupsProceduralCards
 // 0x0038 (0x0038 - 0x0000)
@@ -338,12 +288,21 @@ public:
 	struct FHairCardsTextureSettings              TextureSettings;                                   // 0x0024(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
 	int32                                         Version;                                           // 0x0034(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupsProceduralCards) == 0x000004, "Wrong alignment on FHairGroupsProceduralCards");
-static_assert(sizeof(FHairGroupsProceduralCards) == 0x000038, "Wrong size on FHairGroupsProceduralCards");
-static_assert(offsetof(FHairGroupsProceduralCards, ClusterSettings) == 0x000000, "Member 'FHairGroupsProceduralCards::ClusterSettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsProceduralCards, GeometrySettings) == 0x000008, "Member 'FHairGroupsProceduralCards::GeometrySettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsProceduralCards, TextureSettings) == 0x000024, "Member 'FHairGroupsProceduralCards::TextureSettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsProceduralCards, Version) == 0x000034, "Member 'FHairGroupsProceduralCards::Version' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsProceduralCards;
+
+// ScriptStruct HairStrandsCore.HairGroupCardsTextures
+// 0x0030 (0x0030 - 0x0000)
+struct FHairGroupCardsTextures final
+{
+public:
+	class UTexture2D*                             DepthTexture;                                      // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTexture2D*                             CoverageTexture;                                   // 0x0008(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTexture2D*                             TangentTexture;                                    // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTexture2D*                             AttributeTexture;                                  // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTexture2D*                             AuxilaryDataTexture;                               // 0x0020(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_28[0x8];                                       // 0x0028(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+};
+DUMPER7_ASSERTS_FHairGroupCardsTextures;
 
 // ScriptStruct HairStrandsCore.HairGroupCardsInfo
 // 0x0008 (0x0008 - 0x0000)
@@ -353,10 +312,7 @@ public:
 	int32                                         NumCards;                                          // 0x0000(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         NumCardVertices;                                   // 0x0004(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupCardsInfo) == 0x000004, "Wrong alignment on FHairGroupCardsInfo");
-static_assert(sizeof(FHairGroupCardsInfo) == 0x000008, "Wrong size on FHairGroupCardsInfo");
-static_assert(offsetof(FHairGroupCardsInfo, NumCards) == 0x000000, "Member 'FHairGroupCardsInfo::NumCards' has a wrong offset!");
-static_assert(offsetof(FHairGroupCardsInfo, NumCardVertices) == 0x000004, "Member 'FHairGroupCardsInfo::NumCardVertices' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupCardsInfo;
 
 // ScriptStruct HairStrandsCore.HairGroupsCardsSourceDescription
 // 0x00C0 (0x00C0 - 0x0000)
@@ -364,9 +320,9 @@ struct FHairGroupsCardsSourceDescription final
 {
 public:
 	class UMaterialInterface*                     Material;                                          // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   MaterialSlotName;                                  // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EHairCardsSourceType                          SourceType;                                        // 0x0014(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   MaterialSlotName;                                  // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EHairCardsSourceType                          SourceType;                                        // 0x0010(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_11[0x7];                                       // 0x0011(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	class UStaticMesh*                            ProceduralMesh;                                    // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class FString                                 ProceduralMeshKey;                                 // 0x0020(0x0010)(ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UStaticMesh*                            ImportedMesh;                                      // 0x0030(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -377,20 +333,7 @@ public:
 	struct FHairGroupCardsInfo                    CardsInfo;                                         // 0x00A8(0x0008)(Edit, Transient, EditConst, NoDestructor, NativeAccessSpecifierPublic)
 	class FString                                 ImportedMeshKey;                                   // 0x00B0(0x0010)(ZeroConstructor, Transient, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupsCardsSourceDescription) == 0x000008, "Wrong alignment on FHairGroupsCardsSourceDescription");
-static_assert(sizeof(FHairGroupsCardsSourceDescription) == 0x0000C0, "Wrong size on FHairGroupsCardsSourceDescription");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, Material) == 0x000000, "Member 'FHairGroupsCardsSourceDescription::Material' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, MaterialSlotName) == 0x000008, "Member 'FHairGroupsCardsSourceDescription::MaterialSlotName' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, SourceType) == 0x000014, "Member 'FHairGroupsCardsSourceDescription::SourceType' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, ProceduralMesh) == 0x000018, "Member 'FHairGroupsCardsSourceDescription::ProceduralMesh' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, ProceduralMeshKey) == 0x000020, "Member 'FHairGroupsCardsSourceDescription::ProceduralMeshKey' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, ImportedMesh) == 0x000030, "Member 'FHairGroupsCardsSourceDescription::ImportedMesh' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, ProceduralSettings) == 0x000038, "Member 'FHairGroupsCardsSourceDescription::ProceduralSettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, Textures) == 0x000070, "Member 'FHairGroupsCardsSourceDescription::Textures' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, GroupIndex) == 0x0000A0, "Member 'FHairGroupsCardsSourceDescription::GroupIndex' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, LODIndex) == 0x0000A4, "Member 'FHairGroupsCardsSourceDescription::LODIndex' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, CardsInfo) == 0x0000A8, "Member 'FHairGroupsCardsSourceDescription::CardsInfo' has a wrong offset!");
-static_assert(offsetof(FHairGroupsCardsSourceDescription, ImportedMeshKey) == 0x0000B0, "Member 'FHairGroupsCardsSourceDescription::ImportedMeshKey' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsCardsSourceDescription;
 
 // ScriptStruct HairStrandsCore.HairLODSettings
 // 0x0018 (0x0018 - 0x0000)
@@ -406,15 +349,7 @@ public:
 	EGroomGeometryType                            GeometryType;                                      // 0x0015(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FHairLODSettings) == 0x000004, "Wrong alignment on FHairLODSettings");
-static_assert(sizeof(FHairLODSettings) == 0x000018, "Wrong size on FHairLODSettings");
-static_assert(offsetof(FHairLODSettings, CurveDecimation) == 0x000000, "Member 'FHairLODSettings::CurveDecimation' has a wrong offset!");
-static_assert(offsetof(FHairLODSettings, VertexDecimation) == 0x000004, "Member 'FHairLODSettings::VertexDecimation' has a wrong offset!");
-static_assert(offsetof(FHairLODSettings, AngularThreshold) == 0x000008, "Member 'FHairLODSettings::AngularThreshold' has a wrong offset!");
-static_assert(offsetof(FHairLODSettings, ScreenSize) == 0x00000C, "Member 'FHairLODSettings::ScreenSize' has a wrong offset!");
-static_assert(offsetof(FHairLODSettings, ThicknessScale) == 0x000010, "Member 'FHairLODSettings::ThicknessScale' has a wrong offset!");
-static_assert(offsetof(FHairLODSettings, bVisible) == 0x000014, "Member 'FHairLODSettings::bVisible' has a wrong offset!");
-static_assert(offsetof(FHairLODSettings, GeometryType) == 0x000015, "Member 'FHairLODSettings::GeometryType' has a wrong offset!");
+DUMPER7_ASSERTS_FHairLODSettings;
 
 // ScriptStruct HairStrandsCore.HairGroupsLOD
 // 0x0018 (0x0018 - 0x0000)
@@ -425,11 +360,7 @@ public:
 	float                                         ClusterWorldSize;                                  // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         ClusterScreenSizeScale;                            // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupsLOD) == 0x000008, "Wrong alignment on FHairGroupsLOD");
-static_assert(sizeof(FHairGroupsLOD) == 0x000018, "Wrong size on FHairGroupsLOD");
-static_assert(offsetof(FHairGroupsLOD, LODs) == 0x000000, "Member 'FHairGroupsLOD::LODs' has a wrong offset!");
-static_assert(offsetof(FHairGroupsLOD, ClusterWorldSize) == 0x000010, "Member 'FHairGroupsLOD::ClusterWorldSize' has a wrong offset!");
-static_assert(offsetof(FHairGroupsLOD, ClusterScreenSizeScale) == 0x000014, "Member 'FHairGroupsLOD::ClusterScreenSizeScale' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsLOD;
 
 // ScriptStruct HairStrandsCore.HairDecimationSettings
 // 0x0008 (0x0008 - 0x0000)
@@ -439,10 +370,7 @@ public:
 	float                                         CurveDecimation;                                   // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         VertexDecimation;                                  // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairDecimationSettings) == 0x000004, "Wrong alignment on FHairDecimationSettings");
-static_assert(sizeof(FHairDecimationSettings) == 0x000008, "Wrong size on FHairDecimationSettings");
-static_assert(offsetof(FHairDecimationSettings, CurveDecimation) == 0x000000, "Member 'FHairDecimationSettings::CurveDecimation' has a wrong offset!");
-static_assert(offsetof(FHairDecimationSettings, VertexDecimation) == 0x000004, "Member 'FHairDecimationSettings::VertexDecimation' has a wrong offset!");
+DUMPER7_ASSERTS_FHairDecimationSettings;
 
 // ScriptStruct HairStrandsCore.HairInterpolationSettings
 // 0x000C (0x000C - 0x0000)
@@ -457,14 +385,7 @@ public:
 	bool                                          bRandomizeGuide;                                   // 0x000A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bUseUniqueGuide;                                   // 0x000B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairInterpolationSettings) == 0x000004, "Wrong alignment on FHairInterpolationSettings");
-static_assert(sizeof(FHairInterpolationSettings) == 0x00000C, "Wrong size on FHairInterpolationSettings");
-static_assert(offsetof(FHairInterpolationSettings, bOverrideGuides) == 0x000000, "Member 'FHairInterpolationSettings::bOverrideGuides' has a wrong offset!");
-static_assert(offsetof(FHairInterpolationSettings, HairToGuideDensity) == 0x000004, "Member 'FHairInterpolationSettings::HairToGuideDensity' has a wrong offset!");
-static_assert(offsetof(FHairInterpolationSettings, InterpolationQuality) == 0x000008, "Member 'FHairInterpolationSettings::InterpolationQuality' has a wrong offset!");
-static_assert(offsetof(FHairInterpolationSettings, InterpolationDistance) == 0x000009, "Member 'FHairInterpolationSettings::InterpolationDistance' has a wrong offset!");
-static_assert(offsetof(FHairInterpolationSettings, bRandomizeGuide) == 0x00000A, "Member 'FHairInterpolationSettings::bRandomizeGuide' has a wrong offset!");
-static_assert(offsetof(FHairInterpolationSettings, bUseUniqueGuide) == 0x00000B, "Member 'FHairInterpolationSettings::bUseUniqueGuide' has a wrong offset!");
+DUMPER7_ASSERTS_FHairInterpolationSettings;
 
 // ScriptStruct HairStrandsCore.HairGroupsInterpolation
 // 0x0014 (0x0014 - 0x0000)
@@ -474,54 +395,36 @@ public:
 	struct FHairDecimationSettings                DecimationSettings;                                // 0x0000(0x0008)(Edit, NoDestructor, NativeAccessSpecifierPublic)
 	struct FHairInterpolationSettings             InterpolationSettings;                             // 0x0008(0x000C)(Edit, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupsInterpolation) == 0x000004, "Wrong alignment on FHairGroupsInterpolation");
-static_assert(sizeof(FHairGroupsInterpolation) == 0x000014, "Wrong size on FHairGroupsInterpolation");
-static_assert(offsetof(FHairGroupsInterpolation, DecimationSettings) == 0x000000, "Member 'FHairGroupsInterpolation::DecimationSettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsInterpolation, InterpolationSettings) == 0x000008, "Member 'FHairGroupsInterpolation::InterpolationSettings' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsInterpolation;
 
 // ScriptStruct HairStrandsCore.HairGroupsMeshesSourceDescription
-// 0x0068 (0x0068 - 0x0000)
+// 0x0060 (0x0060 - 0x0000)
 struct FHairGroupsMeshesSourceDescription final
 {
 public:
 	class UMaterialInterface*                     Material;                                          // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FName                                   MaterialSlotName;                                  // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UStaticMesh*                            ImportedMesh;                                      // 0x0018(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FHairGroupCardsTextures                Textures;                                          // 0x0020(0x0030)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         GroupIndex;                                        // 0x0050(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         LODIndex;                                          // 0x0054(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FString                                 ImportedMeshKey;                                   // 0x0058(0x0010)(ZeroConstructor, Transient, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FName                                   MaterialSlotName;                                  // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStaticMesh*                            ImportedMesh;                                      // 0x0010(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FHairGroupCardsTextures                Textures;                                          // 0x0018(0x0030)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	int32                                         GroupIndex;                                        // 0x0048(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         LODIndex;                                          // 0x004C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class FString                                 ImportedMeshKey;                                   // 0x0050(0x0010)(ZeroConstructor, Transient, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupsMeshesSourceDescription) == 0x000008, "Wrong alignment on FHairGroupsMeshesSourceDescription");
-static_assert(sizeof(FHairGroupsMeshesSourceDescription) == 0x000068, "Wrong size on FHairGroupsMeshesSourceDescription");
-static_assert(offsetof(FHairGroupsMeshesSourceDescription, Material) == 0x000000, "Member 'FHairGroupsMeshesSourceDescription::Material' has a wrong offset!");
-static_assert(offsetof(FHairGroupsMeshesSourceDescription, MaterialSlotName) == 0x000008, "Member 'FHairGroupsMeshesSourceDescription::MaterialSlotName' has a wrong offset!");
-static_assert(offsetof(FHairGroupsMeshesSourceDescription, ImportedMesh) == 0x000018, "Member 'FHairGroupsMeshesSourceDescription::ImportedMesh' has a wrong offset!");
-static_assert(offsetof(FHairGroupsMeshesSourceDescription, Textures) == 0x000020, "Member 'FHairGroupsMeshesSourceDescription::Textures' has a wrong offset!");
-static_assert(offsetof(FHairGroupsMeshesSourceDescription, GroupIndex) == 0x000050, "Member 'FHairGroupsMeshesSourceDescription::GroupIndex' has a wrong offset!");
-static_assert(offsetof(FHairGroupsMeshesSourceDescription, LODIndex) == 0x000054, "Member 'FHairGroupsMeshesSourceDescription::LODIndex' has a wrong offset!");
-static_assert(offsetof(FHairGroupsMeshesSourceDescription, ImportedMeshKey) == 0x000058, "Member 'FHairGroupsMeshesSourceDescription::ImportedMeshKey' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsMeshesSourceDescription;
 
 // ScriptStruct HairStrandsCore.HairSolverSettings
-// 0x0040 (0x0040 - 0x0000)
+// 0x0038 (0x0038 - 0x0000)
 struct FHairSolverSettings final
 {
 public:
 	bool                                          EnableSimulation;                                  // 0x0000(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	EGroomNiagaraSolvers                          NiagaraSolver;                                     // 0x0001(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	TSoftObjectPtr<class UNiagaraSystem>          CustomSystem;                                      // 0x0008(0x0030)(Edit, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         SubSteps;                                          // 0x0038(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         IterationCount;                                    // 0x003C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSoftObjectPtr<class UNiagaraSystem>          CustomSystem;                                      // 0x0008(0x0028)(Edit, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SubSteps;                                          // 0x0030(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         IterationCount;                                    // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairSolverSettings) == 0x000008, "Wrong alignment on FHairSolverSettings");
-static_assert(sizeof(FHairSolverSettings) == 0x000040, "Wrong size on FHairSolverSettings");
-static_assert(offsetof(FHairSolverSettings, EnableSimulation) == 0x000000, "Member 'FHairSolverSettings::EnableSimulation' has a wrong offset!");
-static_assert(offsetof(FHairSolverSettings, NiagaraSolver) == 0x000001, "Member 'FHairSolverSettings::NiagaraSolver' has a wrong offset!");
-static_assert(offsetof(FHairSolverSettings, CustomSystem) == 0x000008, "Member 'FHairSolverSettings::CustomSystem' has a wrong offset!");
-static_assert(offsetof(FHairSolverSettings, SubSteps) == 0x000038, "Member 'FHairSolverSettings::SubSteps' has a wrong offset!");
-static_assert(offsetof(FHairSolverSettings, IterationCount) == 0x00003C, "Member 'FHairSolverSettings::IterationCount' has a wrong offset!");
+DUMPER7_ASSERTS_FHairSolverSettings;
 
 // ScriptStruct HairStrandsCore.HairExternalForces
 // 0x001C (0x001C - 0x0000)
@@ -532,11 +435,7 @@ public:
 	float                                         AirDrag;                                           // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVector                                AirVelocity;                                       // 0x0010(0x000C)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairExternalForces) == 0x000004, "Wrong alignment on FHairExternalForces");
-static_assert(sizeof(FHairExternalForces) == 0x00001C, "Wrong size on FHairExternalForces");
-static_assert(offsetof(FHairExternalForces, GravityVector) == 0x000000, "Member 'FHairExternalForces::GravityVector' has a wrong offset!");
-static_assert(offsetof(FHairExternalForces, AirDrag) == 0x00000C, "Member 'FHairExternalForces::AirDrag' has a wrong offset!");
-static_assert(offsetof(FHairExternalForces, AirVelocity) == 0x000010, "Member 'FHairExternalForces::AirVelocity' has a wrong offset!");
+DUMPER7_ASSERTS_FHairExternalForces;
 
 // ScriptStruct HairStrandsCore.HairBendConstraint
 // 0x0098 (0x0098 - 0x0000)
@@ -551,13 +450,7 @@ public:
 	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FRuntimeFloatCurve                     BendScale;                                         // 0x0010(0x0088)(Edit, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairBendConstraint) == 0x000008, "Wrong alignment on FHairBendConstraint");
-static_assert(sizeof(FHairBendConstraint) == 0x000098, "Wrong size on FHairBendConstraint");
-static_assert(offsetof(FHairBendConstraint, SolveBend) == 0x000000, "Member 'FHairBendConstraint::SolveBend' has a wrong offset!");
-static_assert(offsetof(FHairBendConstraint, ProjectBend) == 0x000001, "Member 'FHairBendConstraint::ProjectBend' has a wrong offset!");
-static_assert(offsetof(FHairBendConstraint, BendDamping) == 0x000004, "Member 'FHairBendConstraint::BendDamping' has a wrong offset!");
-static_assert(offsetof(FHairBendConstraint, BendStiffness) == 0x000008, "Member 'FHairBendConstraint::BendStiffness' has a wrong offset!");
-static_assert(offsetof(FHairBendConstraint, BendScale) == 0x000010, "Member 'FHairBendConstraint::BendScale' has a wrong offset!");
+DUMPER7_ASSERTS_FHairBendConstraint;
 
 // ScriptStruct HairStrandsCore.HairStretchConstraint
 // 0x0098 (0x0098 - 0x0000)
@@ -572,13 +465,7 @@ public:
 	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FRuntimeFloatCurve                     StretchScale;                                      // 0x0010(0x0088)(Edit, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairStretchConstraint) == 0x000008, "Wrong alignment on FHairStretchConstraint");
-static_assert(sizeof(FHairStretchConstraint) == 0x000098, "Wrong size on FHairStretchConstraint");
-static_assert(offsetof(FHairStretchConstraint, SolveStretch) == 0x000000, "Member 'FHairStretchConstraint::SolveStretch' has a wrong offset!");
-static_assert(offsetof(FHairStretchConstraint, ProjectStretch) == 0x000001, "Member 'FHairStretchConstraint::ProjectStretch' has a wrong offset!");
-static_assert(offsetof(FHairStretchConstraint, StretchDamping) == 0x000004, "Member 'FHairStretchConstraint::StretchDamping' has a wrong offset!");
-static_assert(offsetof(FHairStretchConstraint, StretchStiffness) == 0x000008, "Member 'FHairStretchConstraint::StretchStiffness' has a wrong offset!");
-static_assert(offsetof(FHairStretchConstraint, StretchScale) == 0x000010, "Member 'FHairStretchConstraint::StretchScale' has a wrong offset!");
+DUMPER7_ASSERTS_FHairStretchConstraint;
 
 // ScriptStruct HairStrandsCore.HairCollisionConstraint
 // 0x00A8 (0x00A8 - 0x0000)
@@ -595,16 +482,7 @@ public:
 	float                                         CollisionRadius;                                   // 0x001C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FRuntimeFloatCurve                     RadiusScale;                                       // 0x0020(0x0088)(Edit, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairCollisionConstraint) == 0x000008, "Wrong alignment on FHairCollisionConstraint");
-static_assert(sizeof(FHairCollisionConstraint) == 0x0000A8, "Wrong size on FHairCollisionConstraint");
-static_assert(offsetof(FHairCollisionConstraint, SolveCollision) == 0x000000, "Member 'FHairCollisionConstraint::SolveCollision' has a wrong offset!");
-static_assert(offsetof(FHairCollisionConstraint, ProjectCollision) == 0x000001, "Member 'FHairCollisionConstraint::ProjectCollision' has a wrong offset!");
-static_assert(offsetof(FHairCollisionConstraint, StaticFriction) == 0x000004, "Member 'FHairCollisionConstraint::StaticFriction' has a wrong offset!");
-static_assert(offsetof(FHairCollisionConstraint, KineticFriction) == 0x000008, "Member 'FHairCollisionConstraint::KineticFriction' has a wrong offset!");
-static_assert(offsetof(FHairCollisionConstraint, StrandsViscosity) == 0x00000C, "Member 'FHairCollisionConstraint::StrandsViscosity' has a wrong offset!");
-static_assert(offsetof(FHairCollisionConstraint, GridDimension) == 0x000010, "Member 'FHairCollisionConstraint::GridDimension' has a wrong offset!");
-static_assert(offsetof(FHairCollisionConstraint, CollisionRadius) == 0x00001C, "Member 'FHairCollisionConstraint::CollisionRadius' has a wrong offset!");
-static_assert(offsetof(FHairCollisionConstraint, RadiusScale) == 0x000020, "Member 'FHairCollisionConstraint::RadiusScale' has a wrong offset!");
+DUMPER7_ASSERTS_FHairCollisionConstraint;
 
 // ScriptStruct HairStrandsCore.HairMaterialConstraints
 // 0x01D8 (0x01D8 - 0x0000)
@@ -615,11 +493,7 @@ public:
 	struct FHairStretchConstraint                 StretchConstraint;                                 // 0x0098(0x0098)(Edit, NativeAccessSpecifierPublic)
 	struct FHairCollisionConstraint               CollisionConstraint;                               // 0x0130(0x00A8)(Edit, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairMaterialConstraints) == 0x000008, "Wrong alignment on FHairMaterialConstraints");
-static_assert(sizeof(FHairMaterialConstraints) == 0x0001D8, "Wrong size on FHairMaterialConstraints");
-static_assert(offsetof(FHairMaterialConstraints, BendConstraint) == 0x000000, "Member 'FHairMaterialConstraints::BendConstraint' has a wrong offset!");
-static_assert(offsetof(FHairMaterialConstraints, StretchConstraint) == 0x000098, "Member 'FHairMaterialConstraints::StretchConstraint' has a wrong offset!");
-static_assert(offsetof(FHairMaterialConstraints, CollisionConstraint) == 0x000130, "Member 'FHairMaterialConstraints::CollisionConstraint' has a wrong offset!");
+DUMPER7_ASSERTS_FHairMaterialConstraints;
 
 // ScriptStruct HairStrandsCore.HairStrandsParameters
 // 0x0098 (0x0098 - 0x0000)
@@ -633,31 +507,20 @@ public:
 	float                                         StrandsThickness;                                  // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FRuntimeFloatCurve                     ThicknessScale;                                    // 0x0010(0x0088)(Edit, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairStrandsParameters) == 0x000008, "Wrong alignment on FHairStrandsParameters");
-static_assert(sizeof(FHairStrandsParameters) == 0x000098, "Wrong size on FHairStrandsParameters");
-static_assert(offsetof(FHairStrandsParameters, StrandsSize) == 0x000000, "Member 'FHairStrandsParameters::StrandsSize' has a wrong offset!");
-static_assert(offsetof(FHairStrandsParameters, StrandsDensity) == 0x000004, "Member 'FHairStrandsParameters::StrandsDensity' has a wrong offset!");
-static_assert(offsetof(FHairStrandsParameters, StrandsSmoothing) == 0x000008, "Member 'FHairStrandsParameters::StrandsSmoothing' has a wrong offset!");
-static_assert(offsetof(FHairStrandsParameters, StrandsThickness) == 0x00000C, "Member 'FHairStrandsParameters::StrandsThickness' has a wrong offset!");
-static_assert(offsetof(FHairStrandsParameters, ThicknessScale) == 0x000010, "Member 'FHairStrandsParameters::ThicknessScale' has a wrong offset!");
+DUMPER7_ASSERTS_FHairStrandsParameters;
 
 // ScriptStruct HairStrandsCore.HairGroupsPhysics
-// 0x02D0 (0x02D0 - 0x0000)
+// 0x02C8 (0x02C8 - 0x0000)
 struct FHairGroupsPhysics final
 {
 public:
-	struct FHairSolverSettings                    SolverSettings;                                    // 0x0000(0x0040)(Edit, NativeAccessSpecifierPublic)
-	struct FHairExternalForces                    ExternalForces;                                    // 0x0040(0x001C)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FHairMaterialConstraints               MaterialConstraints;                               // 0x0060(0x01D8)(Edit, NativeAccessSpecifierPublic)
-	struct FHairStrandsParameters                 StrandsParameters;                                 // 0x0238(0x0098)(Edit, NativeAccessSpecifierPublic)
+	struct FHairSolverSettings                    SolverSettings;                                    // 0x0000(0x0038)(Edit, NativeAccessSpecifierPublic)
+	struct FHairExternalForces                    ExternalForces;                                    // 0x0038(0x001C)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FHairMaterialConstraints               MaterialConstraints;                               // 0x0058(0x01D8)(Edit, NativeAccessSpecifierPublic)
+	struct FHairStrandsParameters                 StrandsParameters;                                 // 0x0230(0x0098)(Edit, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupsPhysics) == 0x000008, "Wrong alignment on FHairGroupsPhysics");
-static_assert(sizeof(FHairGroupsPhysics) == 0x0002D0, "Wrong size on FHairGroupsPhysics");
-static_assert(offsetof(FHairGroupsPhysics, SolverSettings) == 0x000000, "Member 'FHairGroupsPhysics::SolverSettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsPhysics, ExternalForces) == 0x000040, "Member 'FHairGroupsPhysics::ExternalForces' has a wrong offset!");
-static_assert(offsetof(FHairGroupsPhysics, MaterialConstraints) == 0x000060, "Member 'FHairGroupsPhysics::MaterialConstraints' has a wrong offset!");
-static_assert(offsetof(FHairGroupsPhysics, StrandsParameters) == 0x000238, "Member 'FHairGroupsPhysics::StrandsParameters' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsPhysics;
 
 // ScriptStruct HairStrandsCore.HairGeometrySettings
 // 0x0010 (0x0010 - 0x0000)
@@ -669,12 +532,7 @@ public:
 	float                                         HairTipScale;                                      // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         HairClipScale;                                     // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGeometrySettings) == 0x000004, "Wrong alignment on FHairGeometrySettings");
-static_assert(sizeof(FHairGeometrySettings) == 0x000010, "Wrong size on FHairGeometrySettings");
-static_assert(offsetof(FHairGeometrySettings, HairWidth) == 0x000000, "Member 'FHairGeometrySettings::HairWidth' has a wrong offset!");
-static_assert(offsetof(FHairGeometrySettings, HairRootScale) == 0x000004, "Member 'FHairGeometrySettings::HairRootScale' has a wrong offset!");
-static_assert(offsetof(FHairGeometrySettings, HairTipScale) == 0x000008, "Member 'FHairGeometrySettings::HairTipScale' has a wrong offset!");
-static_assert(offsetof(FHairGeometrySettings, HairClipScale) == 0x00000C, "Member 'FHairGeometrySettings::HairClipScale' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGeometrySettings;
 
 // ScriptStruct HairStrandsCore.HairShadowSettings
 // 0x000C (0x000C - 0x0000)
@@ -687,12 +545,7 @@ public:
 	bool                                          bVoxelize;                                         // 0x0009(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FHairShadowSettings) == 0x000004, "Wrong alignment on FHairShadowSettings");
-static_assert(sizeof(FHairShadowSettings) == 0x00000C, "Wrong size on FHairShadowSettings");
-static_assert(offsetof(FHairShadowSettings, HairShadowDensity) == 0x000000, "Member 'FHairShadowSettings::HairShadowDensity' has a wrong offset!");
-static_assert(offsetof(FHairShadowSettings, HairRaytracingRadiusScale) == 0x000004, "Member 'FHairShadowSettings::HairRaytracingRadiusScale' has a wrong offset!");
-static_assert(offsetof(FHairShadowSettings, bUseHairRaytracingGeometry) == 0x000008, "Member 'FHairShadowSettings::bUseHairRaytracingGeometry' has a wrong offset!");
-static_assert(offsetof(FHairShadowSettings, bVoxelize) == 0x000009, "Member 'FHairShadowSettings::bVoxelize' has a wrong offset!");
+DUMPER7_ASSERTS_FHairShadowSettings;
 
 // ScriptStruct HairStrandsCore.HairAdvancedRenderingSettings
 // 0x0002 (0x0002 - 0x0000)
@@ -702,31 +555,21 @@ public:
 	bool                                          bUseStableRasterization;                           // 0x0000(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bScatterSceneLighting;                             // 0x0001(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairAdvancedRenderingSettings) == 0x000001, "Wrong alignment on FHairAdvancedRenderingSettings");
-static_assert(sizeof(FHairAdvancedRenderingSettings) == 0x000002, "Wrong size on FHairAdvancedRenderingSettings");
-static_assert(offsetof(FHairAdvancedRenderingSettings, bUseStableRasterization) == 0x000000, "Member 'FHairAdvancedRenderingSettings::bUseStableRasterization' has a wrong offset!");
-static_assert(offsetof(FHairAdvancedRenderingSettings, bScatterSceneLighting) == 0x000001, "Member 'FHairAdvancedRenderingSettings::bScatterSceneLighting' has a wrong offset!");
+DUMPER7_ASSERTS_FHairAdvancedRenderingSettings;
 
 // ScriptStruct HairStrandsCore.HairGroupsRendering
-// 0x0038 (0x0038 - 0x0000)
+// 0x0030 (0x0030 - 0x0000)
 struct FHairGroupsRendering final
 {
 public:
-	class FName                                   MaterialSlotName;                                  // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UMaterialInterface*                     Material;                                          // 0x0010(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FHairGeometrySettings                  GeometrySettings;                                  // 0x0018(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	struct FHairShadowSettings                    ShadowSettings;                                    // 0x0028(0x000C)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	struct FHairAdvancedRenderingSettings         AdvancedSettings;                                  // 0x0034(0x0002)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_36[0x2];                                       // 0x0036(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class FName                                   MaterialSlotName;                                  // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMaterialInterface*                     Material;                                          // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FHairGeometrySettings                  GeometrySettings;                                  // 0x0010(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	struct FHairShadowSettings                    ShadowSettings;                                    // 0x0020(0x000C)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	struct FHairAdvancedRenderingSettings         AdvancedSettings;                                  // 0x002C(0x0002)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2E[0x2];                                       // 0x002E(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FHairGroupsRendering) == 0x000008, "Wrong alignment on FHairGroupsRendering");
-static_assert(sizeof(FHairGroupsRendering) == 0x000038, "Wrong size on FHairGroupsRendering");
-static_assert(offsetof(FHairGroupsRendering, MaterialSlotName) == 0x000000, "Member 'FHairGroupsRendering::MaterialSlotName' has a wrong offset!");
-static_assert(offsetof(FHairGroupsRendering, Material) == 0x000010, "Member 'FHairGroupsRendering::Material' has a wrong offset!");
-static_assert(offsetof(FHairGroupsRendering, GeometrySettings) == 0x000018, "Member 'FHairGroupsRendering::GeometrySettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsRendering, ShadowSettings) == 0x000028, "Member 'FHairGroupsRendering::ShadowSettings' has a wrong offset!");
-static_assert(offsetof(FHairGroupsRendering, AdvancedSettings) == 0x000034, "Member 'FHairGroupsRendering::AdvancedSettings' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupsRendering;
 
 // ScriptStruct HairStrandsCore.GoomBindingGroupInfo
 // 0x0010 (0x0010 - 0x0000)
@@ -738,12 +581,7 @@ public:
 	int32                                         SimRootCount;                                      // 0x0008(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         SimLODCount;                                       // 0x000C(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FGoomBindingGroupInfo) == 0x000004, "Wrong alignment on FGoomBindingGroupInfo");
-static_assert(sizeof(FGoomBindingGroupInfo) == 0x000010, "Wrong size on FGoomBindingGroupInfo");
-static_assert(offsetof(FGoomBindingGroupInfo, RenRootCount) == 0x000000, "Member 'FGoomBindingGroupInfo::RenRootCount' has a wrong offset!");
-static_assert(offsetof(FGoomBindingGroupInfo, RenLODCount) == 0x000004, "Member 'FGoomBindingGroupInfo::RenLODCount' has a wrong offset!");
-static_assert(offsetof(FGoomBindingGroupInfo, SimRootCount) == 0x000008, "Member 'FGoomBindingGroupInfo::SimRootCount' has a wrong offset!");
-static_assert(offsetof(FGoomBindingGroupInfo, SimLODCount) == 0x00000C, "Member 'FGoomBindingGroupInfo::SimLODCount' has a wrong offset!");
+DUMPER7_ASSERTS_FGoomBindingGroupInfo;
 
 // ScriptStruct HairStrandsCore.GroomAnimationInfo
 // 0x0020 (0x0020 - 0x0000)
@@ -760,16 +598,7 @@ public:
 	EGroomCacheAttributes                         Attributes;                                        // 0x001C(0x0001)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_1D[0x3];                                       // 0x001D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FGroomAnimationInfo) == 0x000004, "Wrong alignment on FGroomAnimationInfo");
-static_assert(sizeof(FGroomAnimationInfo) == 0x000020, "Wrong size on FGroomAnimationInfo");
-static_assert(offsetof(FGroomAnimationInfo, NumFrames) == 0x000000, "Member 'FGroomAnimationInfo::NumFrames' has a wrong offset!");
-static_assert(offsetof(FGroomAnimationInfo, SecondsPerFrame) == 0x000004, "Member 'FGroomAnimationInfo::SecondsPerFrame' has a wrong offset!");
-static_assert(offsetof(FGroomAnimationInfo, Duration) == 0x000008, "Member 'FGroomAnimationInfo::Duration' has a wrong offset!");
-static_assert(offsetof(FGroomAnimationInfo, StartTime) == 0x00000C, "Member 'FGroomAnimationInfo::StartTime' has a wrong offset!");
-static_assert(offsetof(FGroomAnimationInfo, EndTime) == 0x000010, "Member 'FGroomAnimationInfo::EndTime' has a wrong offset!");
-static_assert(offsetof(FGroomAnimationInfo, StartFrame) == 0x000014, "Member 'FGroomAnimationInfo::StartFrame' has a wrong offset!");
-static_assert(offsetof(FGroomAnimationInfo, EndFrame) == 0x000018, "Member 'FGroomAnimationInfo::EndFrame' has a wrong offset!");
-static_assert(offsetof(FGroomAnimationInfo, Attributes) == 0x00001C, "Member 'FGroomAnimationInfo::Attributes' has a wrong offset!");
+DUMPER7_ASSERTS_FGroomAnimationInfo;
 
 // ScriptStruct HairStrandsCore.GroomCacheInfo
 // 0x0028 (0x0028 - 0x0000)
@@ -781,27 +610,19 @@ public:
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FGroomAnimationInfo                    AnimationInfo;                                     // 0x0008(0x0020)(Edit, EditConst, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FGroomCacheInfo) == 0x000004, "Wrong alignment on FGroomCacheInfo");
-static_assert(sizeof(FGroomCacheInfo) == 0x000028, "Wrong size on FGroomCacheInfo");
-static_assert(offsetof(FGroomCacheInfo, Version) == 0x000000, "Member 'FGroomCacheInfo::Version' has a wrong offset!");
-static_assert(offsetof(FGroomCacheInfo, Type) == 0x000004, "Member 'FGroomCacheInfo::Type' has a wrong offset!");
-static_assert(offsetof(FGroomCacheInfo, AnimationInfo) == 0x000008, "Member 'FGroomCacheInfo::AnimationInfo' has a wrong offset!");
+DUMPER7_ASSERTS_FGroomCacheInfo;
 
 // ScriptStruct HairStrandsCore.GroomCacheImportSettings
-// 0x0028 (0x0028 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct FGroomCacheImportSettings final
 {
 public:
 	bool                                          bImportGroomCache;                                 // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bImportGroomAsset;                                 // 0x0001(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_2[0x6];                                        // 0x0002(0x0006)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSoftObjectPath                        GroomAsset;                                        // 0x0008(0x0020)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FSoftObjectPath                        GroomAsset;                                        // 0x0008(0x0018)(Edit, BlueprintVisible, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FGroomCacheImportSettings) == 0x000008, "Wrong alignment on FGroomCacheImportSettings");
-static_assert(sizeof(FGroomCacheImportSettings) == 0x000028, "Wrong size on FGroomCacheImportSettings");
-static_assert(offsetof(FGroomCacheImportSettings, bImportGroomCache) == 0x000000, "Member 'FGroomCacheImportSettings::bImportGroomCache' has a wrong offset!");
-static_assert(offsetof(FGroomCacheImportSettings, bImportGroomAsset) == 0x000001, "Member 'FGroomCacheImportSettings::bImportGroomAsset' has a wrong offset!");
-static_assert(offsetof(FGroomCacheImportSettings, GroomAsset) == 0x000008, "Member 'FGroomCacheImportSettings::GroomAsset' has a wrong offset!");
+DUMPER7_ASSERTS_FGroomCacheImportSettings;
 
 // ScriptStruct HairStrandsCore.FollicleMaskOptions
 // 0x0010 (0x0010 - 0x0000)
@@ -812,10 +633,7 @@ public:
 	EFollicleMaskChannel                          Channel;                                           // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_9[0x7];                                        // 0x0009(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FFollicleMaskOptions) == 0x000008, "Wrong alignment on FFollicleMaskOptions");
-static_assert(sizeof(FFollicleMaskOptions) == 0x000010, "Wrong size on FFollicleMaskOptions");
-static_assert(offsetof(FFollicleMaskOptions, Groom) == 0x000000, "Member 'FFollicleMaskOptions::Groom' has a wrong offset!");
-static_assert(offsetof(FFollicleMaskOptions, Channel) == 0x000008, "Member 'FFollicleMaskOptions::Channel' has a wrong offset!");
+DUMPER7_ASSERTS_FFollicleMaskOptions;
 
 // ScriptStruct HairStrandsCore.HairGroupDesc
 // 0x0044 (0x0044 - 0x0000)
@@ -853,31 +671,7 @@ public:
 	uint8                                         Pad_3E[0x2];                                       // 0x003E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	int32                                         LODForcedIndex;                                    // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FHairGroupDesc) == 0x000004, "Wrong alignment on FHairGroupDesc");
-static_assert(sizeof(FHairGroupDesc) == 0x000044, "Wrong size on FHairGroupDesc");
-static_assert(offsetof(FHairGroupDesc, HairLength) == 0x000000, "Member 'FHairGroupDesc::HairLength' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairWidth) == 0x000004, "Member 'FHairGroupDesc::HairWidth' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairWidth_Override) == 0x000008, "Member 'FHairGroupDesc::HairWidth_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairRootScale) == 0x00000C, "Member 'FHairGroupDesc::HairRootScale' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairRootScale_Override) == 0x000010, "Member 'FHairGroupDesc::HairRootScale_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairTipScale) == 0x000014, "Member 'FHairGroupDesc::HairTipScale' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairTipScale_Override) == 0x000018, "Member 'FHairGroupDesc::HairTipScale_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairClipScale) == 0x00001C, "Member 'FHairGroupDesc::HairClipScale' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairClipScale_Override) == 0x000020, "Member 'FHairGroupDesc::HairClipScale_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairShadowDensity) == 0x000024, "Member 'FHairGroupDesc::HairShadowDensity' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairShadowDensity_Override) == 0x000028, "Member 'FHairGroupDesc::HairShadowDensity_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairRaytracingRadiusScale) == 0x00002C, "Member 'FHairGroupDesc::HairRaytracingRadiusScale' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, HairRaytracingRadiusScale_Override) == 0x000030, "Member 'FHairGroupDesc::HairRaytracingRadiusScale_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bUseHairRaytracingGeometry) == 0x000031, "Member 'FHairGroupDesc::bUseHairRaytracingGeometry' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bUseHairRaytracingGeometry_Override) == 0x000032, "Member 'FHairGroupDesc::bUseHairRaytracingGeometry_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, LODBias) == 0x000034, "Member 'FHairGroupDesc::LODBias' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bUseStableRasterization) == 0x000038, "Member 'FHairGroupDesc::bUseStableRasterization' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bUseStableRasterization_Override) == 0x000039, "Member 'FHairGroupDesc::bUseStableRasterization_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bScatterSceneLighting) == 0x00003A, "Member 'FHairGroupDesc::bScatterSceneLighting' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bScatterSceneLighting_Override) == 0x00003B, "Member 'FHairGroupDesc::bScatterSceneLighting_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bSupportVoxelization) == 0x00003C, "Member 'FHairGroupDesc::bSupportVoxelization' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, bSupportVoxelization_Override) == 0x00003D, "Member 'FHairGroupDesc::bSupportVoxelization_Override' has a wrong offset!");
-static_assert(offsetof(FHairGroupDesc, LODForcedIndex) == 0x000040, "Member 'FHairGroupDesc::LODForcedIndex' has a wrong offset!");
+DUMPER7_ASSERTS_FHairGroupDesc;
 
 // ScriptStruct HairStrandsCore.GroomHairGroupPreview
 // 0x0020 (0x0020 - 0x0000)
@@ -889,12 +683,7 @@ public:
 	int32                                         GuideCount;                                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FHairGroupsInterpolation               InterpolationSettings;                             // 0x000C(0x0014)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FGroomHairGroupPreview) == 0x000004, "Wrong alignment on FGroomHairGroupPreview");
-static_assert(sizeof(FGroomHairGroupPreview) == 0x000020, "Wrong size on FGroomHairGroupPreview");
-static_assert(offsetof(FGroomHairGroupPreview, GroupID) == 0x000000, "Member 'FGroomHairGroupPreview::GroupID' has a wrong offset!");
-static_assert(offsetof(FGroomHairGroupPreview, CurveCount) == 0x000004, "Member 'FGroomHairGroupPreview::CurveCount' has a wrong offset!");
-static_assert(offsetof(FGroomHairGroupPreview, GuideCount) == 0x000008, "Member 'FGroomHairGroupPreview::GuideCount' has a wrong offset!");
-static_assert(offsetof(FGroomHairGroupPreview, InterpolationSettings) == 0x00000C, "Member 'FGroomHairGroupPreview::InterpolationSettings' has a wrong offset!");
+DUMPER7_ASSERTS_FGroomHairGroupPreview;
 
 // ScriptStruct HairStrandsCore.GroomBuildSettings
 // 0x000C (0x000C - 0x0000)
@@ -909,14 +698,7 @@ public:
 	bool                                          bRandomizeGuide;                                   // 0x000A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          bUseUniqueGuide;                                   // 0x000B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FGroomBuildSettings) == 0x000004, "Wrong alignment on FGroomBuildSettings");
-static_assert(sizeof(FGroomBuildSettings) == 0x00000C, "Wrong size on FGroomBuildSettings");
-static_assert(offsetof(FGroomBuildSettings, bOverrideGuides) == 0x000000, "Member 'FGroomBuildSettings::bOverrideGuides' has a wrong offset!");
-static_assert(offsetof(FGroomBuildSettings, HairToGuideDensity) == 0x000004, "Member 'FGroomBuildSettings::HairToGuideDensity' has a wrong offset!");
-static_assert(offsetof(FGroomBuildSettings, InterpolationQuality) == 0x000008, "Member 'FGroomBuildSettings::InterpolationQuality' has a wrong offset!");
-static_assert(offsetof(FGroomBuildSettings, InterpolationDistance) == 0x000009, "Member 'FGroomBuildSettings::InterpolationDistance' has a wrong offset!");
-static_assert(offsetof(FGroomBuildSettings, bRandomizeGuide) == 0x00000A, "Member 'FGroomBuildSettings::bRandomizeGuide' has a wrong offset!");
-static_assert(offsetof(FGroomBuildSettings, bUseUniqueGuide) == 0x00000B, "Member 'FGroomBuildSettings::bUseUniqueGuide' has a wrong offset!");
+DUMPER7_ASSERTS_FGroomBuildSettings;
 
 // ScriptStruct HairStrandsCore.GroomConversionSettings
 // 0x0018 (0x0018 - 0x0000)
@@ -926,10 +708,7 @@ public:
 	struct FVector                                Rotation;                                          // 0x0000(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVector                                Scale;                                             // 0x000C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FGroomConversionSettings) == 0x000004, "Wrong alignment on FGroomConversionSettings");
-static_assert(sizeof(FGroomConversionSettings) == 0x000018, "Wrong size on FGroomConversionSettings");
-static_assert(offsetof(FGroomConversionSettings, Rotation) == 0x000000, "Member 'FGroomConversionSettings::Rotation' has a wrong offset!");
-static_assert(offsetof(FGroomConversionSettings, Scale) == 0x00000C, "Member 'FGroomConversionSettings::Scale' has a wrong offset!");
+DUMPER7_ASSERTS_FGroomConversionSettings;
 
 // ScriptStruct HairStrandsCore.MovieSceneGroomCacheParams
 // 0x0020 (0x0020 - 0x0000)
@@ -944,13 +723,7 @@ public:
 	uint8                                         bReverse : 1;                                      // 0x0018(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
 	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FMovieSceneGroomCacheParams) == 0x000008, "Wrong alignment on FMovieSceneGroomCacheParams");
-static_assert(sizeof(FMovieSceneGroomCacheParams) == 0x000020, "Wrong size on FMovieSceneGroomCacheParams");
-static_assert(offsetof(FMovieSceneGroomCacheParams, GroomCache) == 0x000000, "Member 'FMovieSceneGroomCacheParams::GroomCache' has a wrong offset!");
-static_assert(offsetof(FMovieSceneGroomCacheParams, FirstLoopStartFrameOffset) == 0x000008, "Member 'FMovieSceneGroomCacheParams::FirstLoopStartFrameOffset' has a wrong offset!");
-static_assert(offsetof(FMovieSceneGroomCacheParams, StartFrameOffset) == 0x00000C, "Member 'FMovieSceneGroomCacheParams::StartFrameOffset' has a wrong offset!");
-static_assert(offsetof(FMovieSceneGroomCacheParams, EndFrameOffset) == 0x000010, "Member 'FMovieSceneGroomCacheParams::EndFrameOffset' has a wrong offset!");
-static_assert(offsetof(FMovieSceneGroomCacheParams, PlayRate) == 0x000014, "Member 'FMovieSceneGroomCacheParams::PlayRate' has a wrong offset!");
+DUMPER7_ASSERTS_FMovieSceneGroomCacheParams;
 
 // ScriptStruct HairStrandsCore.MovieSceneGroomCacheSectionTemplateParameters
 // 0x0008 (0x0028 - 0x0020)
@@ -960,10 +733,7 @@ public:
 	struct FFrameNumber                           SectionStartTime;                                  // 0x0020(0x0004)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FFrameNumber                           SectionEndTime;                                    // 0x0024(0x0004)(NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMovieSceneGroomCacheSectionTemplateParameters) == 0x000008, "Wrong alignment on FMovieSceneGroomCacheSectionTemplateParameters");
-static_assert(sizeof(FMovieSceneGroomCacheSectionTemplateParameters) == 0x000028, "Wrong size on FMovieSceneGroomCacheSectionTemplateParameters");
-static_assert(offsetof(FMovieSceneGroomCacheSectionTemplateParameters, SectionStartTime) == 0x000020, "Member 'FMovieSceneGroomCacheSectionTemplateParameters::SectionStartTime' has a wrong offset!");
-static_assert(offsetof(FMovieSceneGroomCacheSectionTemplateParameters, SectionEndTime) == 0x000024, "Member 'FMovieSceneGroomCacheSectionTemplateParameters::SectionEndTime' has a wrong offset!");
+DUMPER7_ASSERTS_FMovieSceneGroomCacheSectionTemplateParameters;
 
 // ScriptStruct HairStrandsCore.MovieSceneGroomCacheSectionTemplate
 // 0x0028 (0x0048 - 0x0020)
@@ -972,9 +742,7 @@ struct FMovieSceneGroomCacheSectionTemplate final : public FMovieSceneEvalTempla
 public:
 	struct FMovieSceneGroomCacheSectionTemplateParameters Params;                                    // 0x0020(0x0028)(NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FMovieSceneGroomCacheSectionTemplate) == 0x000008, "Wrong alignment on FMovieSceneGroomCacheSectionTemplate");
-static_assert(sizeof(FMovieSceneGroomCacheSectionTemplate) == 0x000048, "Wrong size on FMovieSceneGroomCacheSectionTemplate");
-static_assert(offsetof(FMovieSceneGroomCacheSectionTemplate, Params) == 0x000020, "Member 'FMovieSceneGroomCacheSectionTemplate::Params' has a wrong offset!");
+DUMPER7_ASSERTS_FMovieSceneGroomCacheSectionTemplate;
 
 }
 

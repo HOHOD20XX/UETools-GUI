@@ -15,7 +15,7 @@ namespace SDK
 {
 
 // Enum AudioSynesthesia.EConstantQFFTSizeEnum
-// NumValues: 0x000A
+// NumValues: 0x0009
 enum class EConstantQFFTSizeEnum : uint8
 {
 	Min                                      = 0,
@@ -27,7 +27,6 @@ enum class EConstantQFFTSizeEnum : uint8
 	XLarge                                   = 6,
 	XXLarge                                  = 7,
 	Max                                      = 8,
-	EConstantQFFTSizeEnum_MAX                = 9,
 };
 
 // Enum AudioSynesthesia.EConstantQNormalizationEnum

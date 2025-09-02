@@ -17,28 +17,31 @@ namespace SDK
 {
 
 // Class MeshDescription.MeshDescription
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UMeshDescription final : public UObject
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MeshDescription">();
+		STATIC_CLASS_IMPL("MeshDescription")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MeshDescription")
 	}
 	static class UMeshDescription* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UMeshDescription>();
 	}
 };
-static_assert(alignof(UMeshDescription) == 0x000008, "Wrong alignment on UMeshDescription");
-static_assert(sizeof(UMeshDescription) == 0x000030, "Wrong size on UMeshDescription");
+DUMPER7_ASSERTS_UMeshDescription;
 
 // Class MeshDescription.MeshDescriptionBase
-// 0x0368 (0x0398 - 0x0030)
+// 0x0368 (0x0390 - 0x0028)
 class UMeshDescriptionBase : public UObject
 {
 public:
-	uint8                                         Pad_30[0x368];                                     // 0x0030(0x0368)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x368];                                     // 0x0028(0x0368)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void ComputePolygonTriangulation(const struct FPolygonID& PolygonID);
@@ -70,7 +73,7 @@ public:
 	void ReversePolygonFacing(const struct FPolygonID& PolygonID);
 	void SetPolygonPolygonGroup(const struct FPolygonID& PolygonID, const struct FPolygonGroupID& PolygonGroupID);
 	void SetPolygonVertexInstance(const struct FPolygonID& PolygonID, int32 PerimeterIndex, const struct FVertexInstanceID& VertexInstanceID);
-	void SetVertexPosition(const struct FVertexID& VertexID, const struct FVector& Position);
+	void SetVertexPosition(const struct FVertexID& VertexID, const struct FVector& position);
 
 	void GetEdgeConnectedPolygons(const struct FEdgeID& EdgeID, TArray<struct FPolygonID>* OutConnectedPolygonIDs) const;
 	void GetEdgeConnectedTriangles(const struct FEdgeID& EdgeID, TArray<struct FTriangleID>* OutConnectedTriangleIDs) const;
@@ -131,15 +134,18 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MeshDescriptionBase">();
+		STATIC_CLASS_IMPL("MeshDescriptionBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MeshDescriptionBase")
 	}
 	static class UMeshDescriptionBase* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UMeshDescriptionBase>();
 	}
 };
-static_assert(alignof(UMeshDescriptionBase) == 0x000008, "Wrong alignment on UMeshDescriptionBase");
-static_assert(sizeof(UMeshDescriptionBase) == 0x000398, "Wrong size on UMeshDescriptionBase");
+DUMPER7_ASSERTS_UMeshDescriptionBase;
 
 }
 

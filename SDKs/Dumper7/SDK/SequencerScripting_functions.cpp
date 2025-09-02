@@ -4637,10 +4637,10 @@ void UMovieSceneSequenceExtensions::DeleteMarkedFrames(class UMovieSceneSequence
 // (Final, Native, Static, Public, HasDefaults, BlueprintCallable)
 // Parameters:
 // class UMovieSceneSequence*              Sequence                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FGuid&                     BindingId                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FGuid&                     BindingID                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FSequencerBindingProxy           ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, NativeAccessSpecifierPublic)
 
-struct FSequencerBindingProxy UMovieSceneSequenceExtensions::FindBindingById(class UMovieSceneSequence* Sequence, const struct FGuid& BindingId)
+struct FSequencerBindingProxy UMovieSceneSequenceExtensions::FindBindingById(class UMovieSceneSequence* Sequence, const struct FGuid& BindingID)
 {
 	static class UFunction* Func = nullptr;
 
@@ -4650,7 +4650,7 @@ struct FSequencerBindingProxy UMovieSceneSequenceExtensions::FindBindingById(cla
 	Params::MovieSceneSequenceExtensions_FindBindingById Parms{};
 
 	Parms.Sequence = Sequence;
-	Parms.BindingId = std::move(BindingId);
+	Parms.BindingID = std::move(BindingID);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

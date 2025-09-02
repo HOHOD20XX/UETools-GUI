@@ -97,17 +97,12 @@ enum class EUVLayoutPreviewSide : uint32
 struct FRenderableTriangleVertex final
 {
 public:
-	struct FVector                                Position;                                          // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                position;                                          // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVector2D                              UV;                                                // 0x000C(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FVector                                Normal;                                            // 0x0014(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FColor                                 Color;                                             // 0x0020(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FRenderableTriangleVertex) == 0x000004, "Wrong alignment on FRenderableTriangleVertex");
-static_assert(sizeof(FRenderableTriangleVertex) == 0x000024, "Wrong size on FRenderableTriangleVertex");
-static_assert(offsetof(FRenderableTriangleVertex, Position) == 0x000000, "Member 'FRenderableTriangleVertex::Position' has a wrong offset!");
-static_assert(offsetof(FRenderableTriangleVertex, UV) == 0x00000C, "Member 'FRenderableTriangleVertex::UV' has a wrong offset!");
-static_assert(offsetof(FRenderableTriangleVertex, Normal) == 0x000014, "Member 'FRenderableTriangleVertex::Normal' has a wrong offset!");
-static_assert(offsetof(FRenderableTriangleVertex, Color) == 0x000020, "Member 'FRenderableTriangleVertex::Color' has a wrong offset!");
+DUMPER7_ASSERTS_FRenderableTriangleVertex;
 
 // ScriptStruct ModelingComponents.RenderableTriangle
 // 0x0078 (0x0078 - 0x0000)
@@ -120,12 +115,7 @@ public:
 	struct FRenderableTriangleVertex              Vertex2;                                           // 0x0050(0x0024)(NoDestructor, NativeAccessSpecifierPublic)
 	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FRenderableTriangle) == 0x000008, "Wrong alignment on FRenderableTriangle");
-static_assert(sizeof(FRenderableTriangle) == 0x000078, "Wrong size on FRenderableTriangle");
-static_assert(offsetof(FRenderableTriangle, Material) == 0x000000, "Member 'FRenderableTriangle::Material' has a wrong offset!");
-static_assert(offsetof(FRenderableTriangle, Vertex0) == 0x000008, "Member 'FRenderableTriangle::Vertex0' has a wrong offset!");
-static_assert(offsetof(FRenderableTriangle, Vertex1) == 0x00002C, "Member 'FRenderableTriangle::Vertex1' has a wrong offset!");
-static_assert(offsetof(FRenderableTriangle, Vertex2) == 0x000050, "Member 'FRenderableTriangle::Vertex2' has a wrong offset!");
+DUMPER7_ASSERTS_FRenderableTriangle;
 
 }
 

@@ -8,8 +8,3 @@
 
 // FORWARD DECLARATIONS
 
-
-namespace BP_DBDGameInstance { class UBP_DBDGameInstance_C; }
-
-namespace BP_DBDGameInstance_0 { class UBP_DBDGameInstance_C; }
-

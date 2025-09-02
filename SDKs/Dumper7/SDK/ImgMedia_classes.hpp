@@ -19,17 +19,17 @@ namespace SDK
 {
 
 // Class ImgMedia.ImgMediaSource
-// 0x0040 (0x00D8 - 0x0098)
+// 0x0040 (0x00C8 - 0x0088)
 class UImgMediaSource final : public UBaseMediaSource
 {
 public:
-	bool                                          IsPathRelativeToProjectRoot;                       // 0x0098(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_99[0x3];                                       // 0x0099(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FFrameRate                             FrameRateOverride;                                 // 0x009C(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A4[0x4];                                       // 0x00A4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class FString                                 ProxyOverride;                                     // 0x00A8(0x0010)(Edit, BlueprintVisible, ZeroConstructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FDirectoryPath                         SequencePath;                                      // 0x00B8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
-	uint8                                         Pad_C8[0x10];                                      // 0x00C8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          IsPathRelativeToProjectRoot;                       // 0x0088(0x0001)(Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_89[0x3];                                       // 0x0089(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FFrameRate                             FrameRateOverride;                                 // 0x008C(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_94[0x4];                                       // 0x0094(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class FString                                 ProxyOverride;                                     // 0x0098(0x0010)(Edit, BlueprintVisible, ZeroConstructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FDirectoryPath                         SequencePath;                                      // 0x00A8(0x0010)(Edit, BlueprintVisible, BlueprintReadOnly, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_B8[0x10];                                      // 0x00B8(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void AddGlobalCamera(class AActor* InActor);
@@ -45,19 +45,18 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ImgMediaSource">();
+		STATIC_CLASS_IMPL("ImgMediaSource")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ImgMediaSource")
 	}
 	static class UImgMediaSource* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UImgMediaSource>();
 	}
 };
-static_assert(alignof(UImgMediaSource) == 0x000008, "Wrong alignment on UImgMediaSource");
-static_assert(sizeof(UImgMediaSource) == 0x0000D8, "Wrong size on UImgMediaSource");
-static_assert(offsetof(UImgMediaSource, IsPathRelativeToProjectRoot) == 0x000098, "Member 'UImgMediaSource::IsPathRelativeToProjectRoot' has a wrong offset!");
-static_assert(offsetof(UImgMediaSource, FrameRateOverride) == 0x00009C, "Member 'UImgMediaSource::FrameRateOverride' has a wrong offset!");
-static_assert(offsetof(UImgMediaSource, ProxyOverride) == 0x0000A8, "Member 'UImgMediaSource::ProxyOverride' has a wrong offset!");
-static_assert(offsetof(UImgMediaSource, SequencePath) == 0x0000B8, "Member 'UImgMediaSource::SequencePath' has a wrong offset!");
+DUMPER7_ASSERTS_UImgMediaSource;
 
 }
 

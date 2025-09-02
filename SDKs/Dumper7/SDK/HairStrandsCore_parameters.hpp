@@ -28,14 +28,7 @@ public:
 	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UGroomBindingAsset*                     ReturnValue;                                       // 0x0028(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset) == 0x000008, "Wrong alignment on GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset");
-static_assert(sizeof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset) == 0x000030, "Wrong size on GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset, GroomAsset) == 0x000000, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset::GroomAsset' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset, GeometryCache) == 0x000008, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset::GeometryCache' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset, NumInterpolationPoints) == 0x000010, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset::NumInterpolationPoints' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset, SourceGeometryCacheForTransfer) == 0x000018, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset::SourceGeometryCacheForTransfer' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset, MatchingSection) == 0x000020, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset::MatchingSection' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset, ReturnValue) == 0x000028, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAsset;
 
 // Function HairStrandsCore.GroomBlueprintLibrary.CreateNewGeometryCacheGroomBindingAssetWithPath
 // 0x0040 (0x0040 - 0x0000)
@@ -52,15 +45,7 @@ public:
 	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UGroomBindingAsset*                     ReturnValue;                                       // 0x0038(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath) == 0x000008, "Wrong alignment on GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath");
-static_assert(sizeof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath) == 0x000040, "Wrong size on GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath, DesiredPackagePath) == 0x000000, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath::DesiredPackagePath' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath, GroomAsset) == 0x000010, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath::GroomAsset' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath, GeometryCache) == 0x000018, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath::GeometryCache' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath, NumInterpolationPoints) == 0x000020, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath::NumInterpolationPoints' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath, SourceGeometryCacheForTransfer) == 0x000028, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath::SourceGeometryCacheForTransfer' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath, MatchingSection) == 0x000030, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath::MatchingSection' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath, ReturnValue) == 0x000038, "Member 'GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_GroomBlueprintLibrary_CreateNewGeometryCacheGroomBindingAssetWithPath;
 
 // Function HairStrandsCore.GroomBlueprintLibrary.CreateNewGroomBindingAsset
 // 0x0030 (0x0030 - 0x0000)
@@ -76,14 +61,7 @@ public:
 	uint8                                         Pad_24[0x4];                                       // 0x0024(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UGroomBindingAsset*                     ReturnValue;                                       // 0x0028(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GroomBlueprintLibrary_CreateNewGroomBindingAsset) == 0x000008, "Wrong alignment on GroomBlueprintLibrary_CreateNewGroomBindingAsset");
-static_assert(sizeof(GroomBlueprintLibrary_CreateNewGroomBindingAsset) == 0x000030, "Wrong size on GroomBlueprintLibrary_CreateNewGroomBindingAsset");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAsset, InGroomAsset) == 0x000000, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAsset::InGroomAsset' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAsset, InSkeletalMesh) == 0x000008, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAsset::InSkeletalMesh' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAsset, InNumInterpolationPoints) == 0x000010, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAsset::InNumInterpolationPoints' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAsset, InSourceSkeletalMeshForTransfer) == 0x000018, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAsset::InSourceSkeletalMeshForTransfer' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAsset, InMatchingSection) == 0x000020, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAsset::InMatchingSection' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAsset, ReturnValue) == 0x000028, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAsset::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_GroomBlueprintLibrary_CreateNewGroomBindingAsset;
 
 // Function HairStrandsCore.GroomBlueprintLibrary.CreateNewGroomBindingAssetWithPath
 // 0x0040 (0x0040 - 0x0000)
@@ -100,15 +78,7 @@ public:
 	uint8                                         Pad_34[0x4];                                       // 0x0034(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class UGroomBindingAsset*                     ReturnValue;                                       // 0x0038(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath) == 0x000008, "Wrong alignment on GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath");
-static_assert(sizeof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath) == 0x000040, "Wrong size on GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath, InDesiredPackagePath) == 0x000000, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath::InDesiredPackagePath' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath, InGroomAsset) == 0x000010, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath::InGroomAsset' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath, InSkeletalMesh) == 0x000018, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath::InSkeletalMesh' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath, InNumInterpolationPoints) == 0x000020, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath::InNumInterpolationPoints' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath, InSourceSkeletalMeshForTransfer) == 0x000028, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath::InSourceSkeletalMeshForTransfer' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath, InMatchingSection) == 0x000030, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath::InMatchingSection' has a wrong offset!");
-static_assert(offsetof(GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath, ReturnValue) == 0x000038, "Member 'GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_GroomBlueprintLibrary_CreateNewGroomBindingAssetWithPath;
 
 // Function HairStrandsCore.GroomComponent.SetBindingAsset
 // 0x0008 (0x0008 - 0x0000)
@@ -117,9 +87,7 @@ struct GroomComponent_SetBindingAsset final
 public:
 	class UGroomBindingAsset*                     InBinding;                                         // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GroomComponent_SetBindingAsset) == 0x000008, "Wrong alignment on GroomComponent_SetBindingAsset");
-static_assert(sizeof(GroomComponent_SetBindingAsset) == 0x000008, "Wrong size on GroomComponent_SetBindingAsset");
-static_assert(offsetof(GroomComponent_SetBindingAsset, InBinding) == 0x000000, "Member 'GroomComponent_SetBindingAsset::InBinding' has a wrong offset!");
+DUMPER7_ASSERTS_GroomComponent_SetBindingAsset;
 
 // Function HairStrandsCore.GroomComponent.SetGroomAsset
 // 0x0008 (0x0008 - 0x0000)
@@ -128,9 +96,7 @@ struct GroomComponent_SetGroomAsset final
 public:
 	class UGroomAsset*                            Asset;                                             // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(GroomComponent_SetGroomAsset) == 0x000008, "Wrong alignment on GroomComponent_SetGroomAsset");
-static_assert(sizeof(GroomComponent_SetGroomAsset) == 0x000008, "Wrong size on GroomComponent_SetGroomAsset");
-static_assert(offsetof(GroomComponent_SetGroomAsset, Asset) == 0x000000, "Member 'GroomComponent_SetGroomAsset::Asset' has a wrong offset!");
+DUMPER7_ASSERTS_GroomComponent_SetGroomAsset;
 
 }
 

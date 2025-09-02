@@ -24,10 +24,7 @@ public:
 	float                                         OutMinRPM;                                         // 0x0000(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         OutMaxRPM;                                         // 0x0004(0x0004)(Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(SynthComponentMoto_GetRPMRange) == 0x000004, "Wrong alignment on SynthComponentMoto_GetRPMRange");
-static_assert(sizeof(SynthComponentMoto_GetRPMRange) == 0x000008, "Wrong size on SynthComponentMoto_GetRPMRange");
-static_assert(offsetof(SynthComponentMoto_GetRPMRange, OutMinRPM) == 0x000000, "Member 'SynthComponentMoto_GetRPMRange::OutMinRPM' has a wrong offset!");
-static_assert(offsetof(SynthComponentMoto_GetRPMRange, OutMaxRPM) == 0x000004, "Member 'SynthComponentMoto_GetRPMRange::OutMaxRPM' has a wrong offset!");
+DUMPER7_ASSERTS_SynthComponentMoto_GetRPMRange;
 
 // Function MotoSynth.SynthComponentMoto.SetRPM
 // 0x0008 (0x0008 - 0x0000)
@@ -37,10 +34,7 @@ public:
 	float                                         InRPM;                                             // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         InTimeSec;                                         // 0x0004(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(SynthComponentMoto_SetRPM) == 0x000004, "Wrong alignment on SynthComponentMoto_SetRPM");
-static_assert(sizeof(SynthComponentMoto_SetRPM) == 0x000008, "Wrong size on SynthComponentMoto_SetRPM");
-static_assert(offsetof(SynthComponentMoto_SetRPM, InRPM) == 0x000000, "Member 'SynthComponentMoto_SetRPM::InRPM' has a wrong offset!");
-static_assert(offsetof(SynthComponentMoto_SetRPM, InTimeSec) == 0x000004, "Member 'SynthComponentMoto_SetRPM::InTimeSec' has a wrong offset!");
+DUMPER7_ASSERTS_SynthComponentMoto_SetRPM;
 
 // Function MotoSynth.SynthComponentMoto.SetSettings
 // 0x0068 (0x0068 - 0x0000)
@@ -49,9 +43,7 @@ struct SynthComponentMoto_SetSettings final
 public:
 	struct FMotoSynthRuntimeSettings              InSettings;                                        // 0x0000(0x0068)(ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(SynthComponentMoto_SetSettings) == 0x000008, "Wrong alignment on SynthComponentMoto_SetSettings");
-static_assert(sizeof(SynthComponentMoto_SetSettings) == 0x000068, "Wrong size on SynthComponentMoto_SetSettings");
-static_assert(offsetof(SynthComponentMoto_SetSettings, InSettings) == 0x000000, "Member 'SynthComponentMoto_SetSettings::InSettings' has a wrong offset!");
+DUMPER7_ASSERTS_SynthComponentMoto_SetSettings;
 
 // Function MotoSynth.SynthComponentMoto.IsEnabled
 // 0x0001 (0x0001 - 0x0000)
@@ -60,9 +52,7 @@ struct SynthComponentMoto_IsEnabled final
 public:
 	bool                                          ReturnValue;                                       // 0x0000(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(SynthComponentMoto_IsEnabled) == 0x000001, "Wrong alignment on SynthComponentMoto_IsEnabled");
-static_assert(sizeof(SynthComponentMoto_IsEnabled) == 0x000001, "Wrong size on SynthComponentMoto_IsEnabled");
-static_assert(offsetof(SynthComponentMoto_IsEnabled, ReturnValue) == 0x000000, "Member 'SynthComponentMoto_IsEnabled::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_SynthComponentMoto_IsEnabled;
 
 }
 

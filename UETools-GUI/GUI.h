@@ -210,6 +210,40 @@ public:
 			bool pauseOnLossOfFocus;
 		};
 
+		struct S_GameSession
+		{
+			SDK::AGameSession* gameSessionReference;
+			std::string gameSessionClass;
+			std::string gameSessionObject;
+
+			int32_t maxPlayers;
+			int32_t maxSpectators;
+			int32_t maxPartySize;
+			int8_t maxSplitScreensPerConnection;
+
+			std::string sessionName;
+		};
+
+		struct S_GameMode
+		{
+			SDK::AGameModeBase* gameModeReference;
+			std::string gameModeClass;
+			std::string gameModeObject;
+
+			S_GameSession gameSession;
+
+			int32_t playersCount;
+			int32_t spectatorsCount;
+
+			bool startPlayersAsSpectators;
+			std::string defaultPlayerName;
+
+			bool useSeamlessTravel;
+
+			std::string options;
+			bool isPausable;
+		};
+
 
 
 
@@ -266,9 +300,7 @@ public:
 			std::string gameInstanceClass;
 			std::string gameInstanceObject;
 
-			bool isGameModePresent;
-			std::string gameModeClass;
-			std::string gameModeObject;
+			S_GameMode gameMode;
 
 			bool isGameStatePresent;
 			std::string gameStateClass;

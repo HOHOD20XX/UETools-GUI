@@ -18,47 +18,51 @@ namespace SDK
 {
 
 // Class MaterialShaderQualitySettings.MaterialShaderQualitySettings
-// 0x0050 (0x0080 - 0x0030)
+// 0x0050 (0x0078 - 0x0028)
 class UMaterialShaderQualitySettings final : public UObject
 {
 public:
-	TMap<class FName, class UShaderPlatformQualitySettings*> ForwardSettingMap;                      // 0x0030(0x0050)(NativeAccessSpecifierPrivate)
+	TMap<class FName, class UShaderPlatformQualitySettings*> ForwardSettingMap;                      // 0x0028(0x0050)(NativeAccessSpecifierPrivate)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"MaterialShaderQualitySettings">();
+		STATIC_CLASS_IMPL("MaterialShaderQualitySettings")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MaterialShaderQualitySettings")
 	}
 	static class UMaterialShaderQualitySettings* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UMaterialShaderQualitySettings>();
 	}
 };
-static_assert(alignof(UMaterialShaderQualitySettings) == 0x000008, "Wrong alignment on UMaterialShaderQualitySettings");
-static_assert(sizeof(UMaterialShaderQualitySettings) == 0x000080, "Wrong size on UMaterialShaderQualitySettings");
-static_assert(offsetof(UMaterialShaderQualitySettings, ForwardSettingMap) == 0x000030, "Member 'UMaterialShaderQualitySettings::ForwardSettingMap' has a wrong offset!");
+DUMPER7_ASSERTS_UMaterialShaderQualitySettings;
 
 // Class MaterialShaderQualitySettings.ShaderPlatformQualitySettings
-// 0x0038 (0x0068 - 0x0030)
+// 0x0038 (0x0060 - 0x0028)
 class UShaderPlatformQualitySettings final : public UObject
 {
 public:
-	struct FMaterialQualityOverrides              QualityOverrides[0x4];                             // 0x0030(0x0009)(Edit, Config, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_54[0x14];                                      // 0x0054(0x0014)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FMaterialQualityOverrides              QualityOverrides[0x4];                             // 0x0028(0x0009)(Edit, Config, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_4C[0x14];                                      // 0x004C(0x0014)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ShaderPlatformQualitySettings">();
+		STATIC_CLASS_IMPL("ShaderPlatformQualitySettings")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ShaderPlatformQualitySettings")
 	}
 	static class UShaderPlatformQualitySettings* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UShaderPlatformQualitySettings>();
 	}
 };
-static_assert(alignof(UShaderPlatformQualitySettings) == 0x000008, "Wrong alignment on UShaderPlatformQualitySettings");
-static_assert(sizeof(UShaderPlatformQualitySettings) == 0x000068, "Wrong size on UShaderPlatformQualitySettings");
-static_assert(offsetof(UShaderPlatformQualitySettings, QualityOverrides) == 0x000030, "Member 'UShaderPlatformQualitySettings::QualityOverrides' has a wrong offset!");
+DUMPER7_ASSERTS_UShaderPlatformQualitySettings;
 
 }
 

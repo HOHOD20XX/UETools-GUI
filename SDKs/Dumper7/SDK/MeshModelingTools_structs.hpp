@@ -47,7 +47,7 @@ enum class EMakeMeshPlacementType : uint8
 };
 
 // Enum MeshModelingTools.EAlignObjectsBoxPoint
-// NumValues: 0x000A
+// NumValues: 0x0009
 enum class EAlignObjectsBoxPoint : uint32
 {
 	Center                                   = 0,
@@ -59,7 +59,6 @@ enum class EAlignObjectsBoxPoint : uint32
 	Back                                     = 6,
 	Min                                      = 7,
 	Max                                      = 8,
-	EAlignObjectsBoxPoint_MAX                = 9,
 };
 
 // Enum MeshModelingTools.EAlignObjectsAlignToOptions
@@ -102,14 +101,13 @@ enum class EBakedCurvatureColorMode : uint32
 };
 
 // Enum MeshModelingTools.EBakedCurvatureTypeMode
-// NumValues: 0x0005
+// NumValues: 0x0004
 enum class EBakedCurvatureTypeMode : uint32
 {
 	MeanAverage                              = 0,
 	Max                                      = 1,
 	Min                                      = 2,
 	Gaussian                                 = 3,
-	EBakedCurvatureTypeMode_MAX              = 4,
 };
 
 // Enum MeshModelingTools.EOcclusionMapPreview
@@ -832,11 +830,7 @@ public:
 	int32                                         NumFaces;                                          // 0x0004(0x0004)(Edit, ZeroConstructor, EditConst, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FKShapeElem                            Element;                                           // 0x0008(0x0030)(Edit, EditConst, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPhysicsConvexData) == 0x000008, "Wrong alignment on FPhysicsConvexData");
-static_assert(sizeof(FPhysicsConvexData) == 0x000038, "Wrong size on FPhysicsConvexData");
-static_assert(offsetof(FPhysicsConvexData, NumVertices) == 0x000000, "Member 'FPhysicsConvexData::NumVertices' has a wrong offset!");
-static_assert(offsetof(FPhysicsConvexData, NumFaces) == 0x000004, "Member 'FPhysicsConvexData::NumFaces' has a wrong offset!");
-static_assert(offsetof(FPhysicsConvexData, Element) == 0x000008, "Member 'FPhysicsConvexData::Element' has a wrong offset!");
+DUMPER7_ASSERTS_FPhysicsConvexData;
 
 // ScriptStruct MeshModelingTools.PhysicsCapsuleData
 // 0x0070 (0x0070 - 0x0000)
@@ -849,12 +843,7 @@ public:
 	struct FTransform                             Transform;                                         // 0x0010(0x0030)(Edit, EditConst, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 	struct FKShapeElem                            Element;                                           // 0x0040(0x0030)(Edit, EditConst, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPhysicsCapsuleData) == 0x000010, "Wrong alignment on FPhysicsCapsuleData");
-static_assert(sizeof(FPhysicsCapsuleData) == 0x000070, "Wrong size on FPhysicsCapsuleData");
-static_assert(offsetof(FPhysicsCapsuleData, Radius) == 0x000000, "Member 'FPhysicsCapsuleData::Radius' has a wrong offset!");
-static_assert(offsetof(FPhysicsCapsuleData, Length) == 0x000004, "Member 'FPhysicsCapsuleData::Length' has a wrong offset!");
-static_assert(offsetof(FPhysicsCapsuleData, Transform) == 0x000010, "Member 'FPhysicsCapsuleData::Transform' has a wrong offset!");
-static_assert(offsetof(FPhysicsCapsuleData, Element) == 0x000040, "Member 'FPhysicsCapsuleData::Element' has a wrong offset!");
+DUMPER7_ASSERTS_FPhysicsCapsuleData;
 
 // ScriptStruct MeshModelingTools.PhysicsBoxData
 // 0x0070 (0x0070 - 0x0000)
@@ -866,11 +855,7 @@ public:
 	struct FTransform                             Transform;                                         // 0x0010(0x0030)(Edit, EditConst, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 	struct FKShapeElem                            Element;                                           // 0x0040(0x0030)(Edit, EditConst, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPhysicsBoxData) == 0x000010, "Wrong alignment on FPhysicsBoxData");
-static_assert(sizeof(FPhysicsBoxData) == 0x000070, "Wrong size on FPhysicsBoxData");
-static_assert(offsetof(FPhysicsBoxData, Dimensions) == 0x000000, "Member 'FPhysicsBoxData::Dimensions' has a wrong offset!");
-static_assert(offsetof(FPhysicsBoxData, Transform) == 0x000010, "Member 'FPhysicsBoxData::Transform' has a wrong offset!");
-static_assert(offsetof(FPhysicsBoxData, Element) == 0x000040, "Member 'FPhysicsBoxData::Element' has a wrong offset!");
+DUMPER7_ASSERTS_FPhysicsBoxData;
 
 // ScriptStruct MeshModelingTools.PhysicsSphereData
 // 0x0070 (0x0070 - 0x0000)
@@ -882,11 +867,7 @@ public:
 	struct FTransform                             Transform;                                         // 0x0010(0x0030)(Edit, EditConst, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 	struct FKShapeElem                            Element;                                           // 0x0040(0x0030)(Edit, EditConst, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPhysicsSphereData) == 0x000010, "Wrong alignment on FPhysicsSphereData");
-static_assert(sizeof(FPhysicsSphereData) == 0x000070, "Wrong size on FPhysicsSphereData");
-static_assert(offsetof(FPhysicsSphereData, Radius) == 0x000000, "Member 'FPhysicsSphereData::Radius' has a wrong offset!");
-static_assert(offsetof(FPhysicsSphereData, Transform) == 0x000010, "Member 'FPhysicsSphereData::Transform' has a wrong offset!");
-static_assert(offsetof(FPhysicsSphereData, Element) == 0x000040, "Member 'FPhysicsSphereData::Element' has a wrong offset!");
+DUMPER7_ASSERTS_FPhysicsSphereData;
 
 // ScriptStruct MeshModelingTools.PerlinLayerProperties
 // 0x0008 (0x0008 - 0x0000)
@@ -896,10 +877,7 @@ public:
 	float                                         Frequency;                                         // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         Intensity;                                         // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPerlinLayerProperties) == 0x000004, "Wrong alignment on FPerlinLayerProperties");
-static_assert(sizeof(FPerlinLayerProperties) == 0x000008, "Wrong size on FPerlinLayerProperties");
-static_assert(offsetof(FPerlinLayerProperties, Frequency) == 0x000000, "Member 'FPerlinLayerProperties::Frequency' has a wrong offset!");
-static_assert(offsetof(FPerlinLayerProperties, Intensity) == 0x000004, "Member 'FPerlinLayerProperties::Intensity' has a wrong offset!");
+DUMPER7_ASSERTS_FPerlinLayerProperties;
 
 // ScriptStruct MeshModelingTools.EditPivotTarget
 // 0x0010 (0x0010 - 0x0000)
@@ -909,10 +887,7 @@ public:
 	class UTransformProxy*                        TransformProxy;                                    // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UTransformGizmo*                        TransformGizmo;                                    // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FEditPivotTarget) == 0x000008, "Wrong alignment on FEditPivotTarget");
-static_assert(sizeof(FEditPivotTarget) == 0x000010, "Wrong size on FEditPivotTarget");
-static_assert(offsetof(FEditPivotTarget, TransformProxy) == 0x000000, "Member 'FEditPivotTarget::TransformProxy' has a wrong offset!");
-static_assert(offsetof(FEditPivotTarget, TransformGizmo) == 0x000008, "Member 'FEditPivotTarget::TransformGizmo' has a wrong offset!");
+DUMPER7_ASSERTS_FEditPivotTarget;
 
 // ScriptStruct MeshModelingTools.TransformMeshesTarget
 // 0x0010 (0x0010 - 0x0000)
@@ -922,10 +897,7 @@ public:
 	class UTransformProxy*                        TransformProxy;                                    // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class UTransformGizmo*                        TransformGizmo;                                    // 0x0008(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FTransformMeshesTarget) == 0x000008, "Wrong alignment on FTransformMeshesTarget");
-static_assert(sizeof(FTransformMeshesTarget) == 0x000010, "Wrong size on FTransformMeshesTarget");
-static_assert(offsetof(FTransformMeshesTarget, TransformProxy) == 0x000000, "Member 'FTransformMeshesTarget::TransformProxy' has a wrong offset!");
-static_assert(offsetof(FTransformMeshesTarget, TransformGizmo) == 0x000008, "Member 'FTransformMeshesTarget::TransformGizmo' has a wrong offset!");
+DUMPER7_ASSERTS_FTransformMeshesTarget;
 
 }
 

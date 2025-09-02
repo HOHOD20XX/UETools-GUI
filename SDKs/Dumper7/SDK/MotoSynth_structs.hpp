@@ -48,30 +48,7 @@ public:
 	float                                         StereoWidenerFilterQ;                              // 0x0060(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FMotoSynthRuntimeSettings) == 0x000008, "Wrong alignment on FMotoSynthRuntimeSettings");
-static_assert(sizeof(FMotoSynthRuntimeSettings) == 0x000068, "Wrong size on FMotoSynthRuntimeSettings");
-static_assert(offsetof(FMotoSynthRuntimeSettings, bSynthToneEnabled) == 0x000000, "Member 'FMotoSynthRuntimeSettings::bSynthToneEnabled' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, SynthToneVolume) == 0x000004, "Member 'FMotoSynthRuntimeSettings::SynthToneVolume' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, SynthToneFilterFrequency) == 0x000008, "Member 'FMotoSynthRuntimeSettings::SynthToneFilterFrequency' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, SynthOctaveShift) == 0x00000C, "Member 'FMotoSynthRuntimeSettings::SynthOctaveShift' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, bGranularEngineEnabled) == 0x000010, "Member 'FMotoSynthRuntimeSettings::bGranularEngineEnabled' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, GranularEngineVolume) == 0x000014, "Member 'FMotoSynthRuntimeSettings::GranularEngineVolume' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, GranularEnginePitchScale) == 0x000018, "Member 'FMotoSynthRuntimeSettings::GranularEnginePitchScale' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, NumSamplesToCrossfadeBetweenGrains) == 0x00001C, "Member 'FMotoSynthRuntimeSettings::NumSamplesToCrossfadeBetweenGrains' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, NumGrainTableEntriesPerGrain) == 0x000020, "Member 'FMotoSynthRuntimeSettings::NumGrainTableEntriesPerGrain' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, GrainTableRandomOffsetForConstantRPMs) == 0x000024, "Member 'FMotoSynthRuntimeSettings::GrainTableRandomOffsetForConstantRPMs' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, GrainCrossfadeSamplesForConstantRPMs) == 0x000028, "Member 'FMotoSynthRuntimeSettings::GrainCrossfadeSamplesForConstantRPMs' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, AccelerationSource) == 0x000030, "Member 'FMotoSynthRuntimeSettings::AccelerationSource' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, DecelerationSource) == 0x000038, "Member 'FMotoSynthRuntimeSettings::DecelerationSource' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, bStereoWidenerEnabled) == 0x000040, "Member 'FMotoSynthRuntimeSettings::bStereoWidenerEnabled' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, StereoDelayMsec) == 0x000044, "Member 'FMotoSynthRuntimeSettings::StereoDelayMsec' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, StereoFeedback) == 0x000048, "Member 'FMotoSynthRuntimeSettings::StereoFeedback' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, StereoWidenerWetlevel) == 0x00004C, "Member 'FMotoSynthRuntimeSettings::StereoWidenerWetlevel' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, StereoWidenerDryLevel) == 0x000050, "Member 'FMotoSynthRuntimeSettings::StereoWidenerDryLevel' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, StereoWidenerDelayRatio) == 0x000054, "Member 'FMotoSynthRuntimeSettings::StereoWidenerDelayRatio' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, bStereoWidenerFilterEnabled) == 0x000058, "Member 'FMotoSynthRuntimeSettings::bStereoWidenerFilterEnabled' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, StereoWidenerFilterFrequency) == 0x00005C, "Member 'FMotoSynthRuntimeSettings::StereoWidenerFilterFrequency' has a wrong offset!");
-static_assert(offsetof(FMotoSynthRuntimeSettings, StereoWidenerFilterQ) == 0x000060, "Member 'FMotoSynthRuntimeSettings::StereoWidenerFilterQ' has a wrong offset!");
+DUMPER7_ASSERTS_FMotoSynthRuntimeSettings;
 
 // ScriptStruct MotoSynth.GrainTableEntry
 // 0x0008 (0x0008 - 0x0000)
@@ -81,10 +58,7 @@ public:
 	int32                                         SampleIndex;                                       // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         RPM;                                               // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FGrainTableEntry) == 0x000004, "Wrong alignment on FGrainTableEntry");
-static_assert(sizeof(FGrainTableEntry) == 0x000008, "Wrong size on FGrainTableEntry");
-static_assert(offsetof(FGrainTableEntry, SampleIndex) == 0x000000, "Member 'FGrainTableEntry::SampleIndex' has a wrong offset!");
-static_assert(offsetof(FGrainTableEntry, RPM) == 0x000004, "Member 'FGrainTableEntry::RPM' has a wrong offset!");
+DUMPER7_ASSERTS_FGrainTableEntry;
 
 }
 

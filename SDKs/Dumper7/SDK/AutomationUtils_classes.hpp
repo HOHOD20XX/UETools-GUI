@@ -17,7 +17,7 @@ namespace SDK
 {
 
 // Class AutomationUtils.AutomationUtilsBlueprintLibrary
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UAutomationUtilsBlueprintLibrary final : public UBlueprintFunctionLibrary
 {
 public:
@@ -26,15 +26,18 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"AutomationUtilsBlueprintLibrary">();
+		STATIC_CLASS_IMPL("AutomationUtilsBlueprintLibrary")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"AutomationUtilsBlueprintLibrary")
 	}
 	static class UAutomationUtilsBlueprintLibrary* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UAutomationUtilsBlueprintLibrary>();
 	}
 };
-static_assert(alignof(UAutomationUtilsBlueprintLibrary) == 0x000008, "Wrong alignment on UAutomationUtilsBlueprintLibrary");
-static_assert(sizeof(UAutomationUtilsBlueprintLibrary) == 0x000030, "Wrong size on UAutomationUtilsBlueprintLibrary");
+DUMPER7_ASSERTS_UAutomationUtilsBlueprintLibrary;
 
 }
 

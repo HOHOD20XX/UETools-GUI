@@ -17,21 +17,24 @@ namespace SDK
 {
 
 // Class JsonUtilities.JsonUtilitiesDummyObject
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UJsonUtilitiesDummyObject final : public UObject
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"JsonUtilitiesDummyObject">();
+		STATIC_CLASS_IMPL("JsonUtilitiesDummyObject")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"JsonUtilitiesDummyObject")
 	}
 	static class UJsonUtilitiesDummyObject* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UJsonUtilitiesDummyObject>();
 	}
 };
-static_assert(alignof(UJsonUtilitiesDummyObject) == 0x000008, "Wrong alignment on UJsonUtilitiesDummyObject");
-static_assert(sizeof(UJsonUtilitiesDummyObject) == 0x000030, "Wrong size on UJsonUtilitiesDummyObject");
+DUMPER7_ASSERTS_UJsonUtilitiesDummyObject;
 
 }
 

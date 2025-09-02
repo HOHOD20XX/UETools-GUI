@@ -52,12 +52,7 @@ public:
 	EOscillatorWaveform                           Waveform;                                          // 0x0009(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_A[0x2];                                        // 0x000A(0x0002)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FFOscillator) == 0x000004, "Wrong alignment on FFOscillator");
-static_assert(sizeof(FFOscillator) == 0x00000C, "Wrong size on FFOscillator");
-static_assert(offsetof(FFOscillator, Amplitude) == 0x000000, "Member 'FFOscillator::Amplitude' has a wrong offset!");
-static_assert(offsetof(FFOscillator, Frequency) == 0x000004, "Member 'FFOscillator::Frequency' has a wrong offset!");
-static_assert(offsetof(FFOscillator, InitialOffset) == 0x000008, "Member 'FFOscillator::InitialOffset' has a wrong offset!");
-static_assert(offsetof(FFOscillator, Waveform) == 0x000009, "Member 'FFOscillator::Waveform' has a wrong offset!");
+DUMPER7_ASSERTS_FFOscillator;
 
 // ScriptStruct GameplayCameras.VOscillator
 // 0x0024 (0x0024 - 0x0000)
@@ -68,11 +63,7 @@ public:
 	struct FFOscillator                           Y;                                                 // 0x000C(0x000C)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 	struct FFOscillator                           Z;                                                 // 0x0018(0x000C)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FVOscillator) == 0x000004, "Wrong alignment on FVOscillator");
-static_assert(sizeof(FVOscillator) == 0x000024, "Wrong size on FVOscillator");
-static_assert(offsetof(FVOscillator, X) == 0x000000, "Member 'FVOscillator::X' has a wrong offset!");
-static_assert(offsetof(FVOscillator, Y) == 0x00000C, "Member 'FVOscillator::Y' has a wrong offset!");
-static_assert(offsetof(FVOscillator, Z) == 0x000018, "Member 'FVOscillator::Z' has a wrong offset!");
+DUMPER7_ASSERTS_FVOscillator;
 
 // ScriptStruct GameplayCameras.ROscillator
 // 0x0024 (0x0024 - 0x0000)
@@ -83,11 +74,7 @@ public:
 	struct FFOscillator                           Yaw;                                               // 0x000C(0x000C)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 	struct FFOscillator                           Roll;                                              // 0x0018(0x000C)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FROscillator) == 0x000004, "Wrong alignment on FROscillator");
-static_assert(sizeof(FROscillator) == 0x000024, "Wrong size on FROscillator");
-static_assert(offsetof(FROscillator, Pitch) == 0x000000, "Member 'FROscillator::Pitch' has a wrong offset!");
-static_assert(offsetof(FROscillator, Yaw) == 0x00000C, "Member 'FROscillator::Yaw' has a wrong offset!");
-static_assert(offsetof(FROscillator, Roll) == 0x000018, "Member 'FROscillator::Roll' has a wrong offset!");
+DUMPER7_ASSERTS_FROscillator;
 
 // ScriptStruct GameplayCameras.PerlinNoiseShaker
 // 0x0008 (0x0008 - 0x0000)
@@ -97,10 +84,7 @@ public:
 	float                                         Amplitude;                                         // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         Frequency;                                         // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FPerlinNoiseShaker) == 0x000004, "Wrong alignment on FPerlinNoiseShaker");
-static_assert(sizeof(FPerlinNoiseShaker) == 0x000008, "Wrong size on FPerlinNoiseShaker");
-static_assert(offsetof(FPerlinNoiseShaker, Amplitude) == 0x000000, "Member 'FPerlinNoiseShaker::Amplitude' has a wrong offset!");
-static_assert(offsetof(FPerlinNoiseShaker, Frequency) == 0x000004, "Member 'FPerlinNoiseShaker::Frequency' has a wrong offset!");
+DUMPER7_ASSERTS_FPerlinNoiseShaker;
 
 // ScriptStruct GameplayCameras.WaveOscillator
 // 0x000C (0x000C - 0x0000)
@@ -112,11 +96,7 @@ public:
 	EInitialWaveOscillatorOffsetType              InitialOffsetType;                                 // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_9[0x3];                                        // 0x0009(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(FWaveOscillator) == 0x000004, "Wrong alignment on FWaveOscillator");
-static_assert(sizeof(FWaveOscillator) == 0x00000C, "Wrong size on FWaveOscillator");
-static_assert(offsetof(FWaveOscillator, Amplitude) == 0x000000, "Member 'FWaveOscillator::Amplitude' has a wrong offset!");
-static_assert(offsetof(FWaveOscillator, Frequency) == 0x000004, "Member 'FWaveOscillator::Frequency' has a wrong offset!");
-static_assert(offsetof(FWaveOscillator, InitialOffsetType) == 0x000008, "Member 'FWaveOscillator::InitialOffsetType' has a wrong offset!");
+DUMPER7_ASSERTS_FWaveOscillator;
 
 }
 

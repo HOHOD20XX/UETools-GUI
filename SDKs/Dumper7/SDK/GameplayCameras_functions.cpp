@@ -95,11 +95,11 @@ class UMatineeCameraShake* UMatineeCameraShake::StartMatineeCameraShakeFromSourc
 // (Event, Public, HasOutParams, BlueprintEvent)
 // Parameters:
 // float                                   DeltaTime                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   Alpha                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ALPHA                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FMinimalViewInfo&          POV                                                    (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 // struct FMinimalViewInfo*                ModifiedPOV                                            (Parm, OutParm, NativeAccessSpecifierPublic)
 
-void UMatineeCameraShake::BlueprintUpdateCameraShake(float DeltaTime, float Alpha, const struct FMinimalViewInfo& POV, struct FMinimalViewInfo* ModifiedPOV)
+void UMatineeCameraShake::BlueprintUpdateCameraShake(float DeltaTime, float ALPHA, const struct FMinimalViewInfo& POV, struct FMinimalViewInfo* ModifiedPOV)
 {
 	static class UFunction* Func = nullptr;
 
@@ -109,7 +109,7 @@ void UMatineeCameraShake::BlueprintUpdateCameraShake(float DeltaTime, float Alph
 	Params::MatineeCameraShake_BlueprintUpdateCameraShake Parms{};
 
 	Parms.DeltaTime = DeltaTime;
-	Parms.Alpha = Alpha;
+	Parms.ALPHA = ALPHA;
 	Parms.POV = std::move(POV);
 
 	UObject::ProcessEvent(Func, &Parms);

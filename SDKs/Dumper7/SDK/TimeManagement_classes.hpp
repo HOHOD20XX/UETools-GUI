@@ -10,94 +10,129 @@
 
 #include "Basic.hpp"
 
-#include "Engine_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "Engine_classes.hpp"
 
 
 namespace SDK
 {
 
+// Class TimeManagement.TimeSynchronizationSource
+// 0x0008 (0x0030 - 0x0028)
+class UTimeSynchronizationSource : public UObject
+{
+public:
+	bool                                          bUseForSynchronization;                            // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         FrameOffset;                                       // 0x002C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TimeSynchronizationSource")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TimeSynchronizationSource")
+	}
+	static class UTimeSynchronizationSource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTimeSynchronizationSource>();
+	}
+};
+DUMPER7_ASSERTS_UTimeSynchronizationSource;
+
 // Class TimeManagement.FixedFrameRateCustomTimeStep
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UFixedFrameRateCustomTimeStep : public UEngineCustomTimeStep
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"FixedFrameRateCustomTimeStep">();
+		STATIC_CLASS_IMPL("FixedFrameRateCustomTimeStep")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"FixedFrameRateCustomTimeStep")
 	}
 	static class UFixedFrameRateCustomTimeStep* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UFixedFrameRateCustomTimeStep>();
 	}
 };
-static_assert(alignof(UFixedFrameRateCustomTimeStep) == 0x000008, "Wrong alignment on UFixedFrameRateCustomTimeStep");
-static_assert(sizeof(UFixedFrameRateCustomTimeStep) == 0x000030, "Wrong size on UFixedFrameRateCustomTimeStep");
+DUMPER7_ASSERTS_UFixedFrameRateCustomTimeStep;
 
 // Class TimeManagement.GenlockedCustomTimeStep
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UGenlockedCustomTimeStep : public UFixedFrameRateCustomTimeStep
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"GenlockedCustomTimeStep">();
+		STATIC_CLASS_IMPL("GenlockedCustomTimeStep")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GenlockedCustomTimeStep")
 	}
 	static class UGenlockedCustomTimeStep* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UGenlockedCustomTimeStep>();
 	}
 };
-static_assert(alignof(UGenlockedCustomTimeStep) == 0x000008, "Wrong alignment on UGenlockedCustomTimeStep");
-static_assert(sizeof(UGenlockedCustomTimeStep) == 0x000030, "Wrong size on UGenlockedCustomTimeStep");
+DUMPER7_ASSERTS_UGenlockedCustomTimeStep;
 
 // Class TimeManagement.GenlockedFixedRateCustomTimeStep
-// 0x0020 (0x0050 - 0x0030)
+// 0x0020 (0x0048 - 0x0028)
 class UGenlockedFixedRateCustomTimeStep final : public UGenlockedCustomTimeStep
 {
 public:
-	struct FFrameRate                             FrameRate;                                         // 0x0030(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_38[0x18];                                      // 0x0038(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FFrameRate                             FrameRate;                                         // 0x0028(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_30[0x18];                                      // 0x0030(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"GenlockedFixedRateCustomTimeStep">();
+		STATIC_CLASS_IMPL("GenlockedFixedRateCustomTimeStep")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GenlockedFixedRateCustomTimeStep")
 	}
 	static class UGenlockedFixedRateCustomTimeStep* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UGenlockedFixedRateCustomTimeStep>();
 	}
 };
-static_assert(alignof(UGenlockedFixedRateCustomTimeStep) == 0x000008, "Wrong alignment on UGenlockedFixedRateCustomTimeStep");
-static_assert(sizeof(UGenlockedFixedRateCustomTimeStep) == 0x000050, "Wrong size on UGenlockedFixedRateCustomTimeStep");
-static_assert(offsetof(UGenlockedFixedRateCustomTimeStep, FrameRate) == 0x000030, "Member 'UGenlockedFixedRateCustomTimeStep::FrameRate' has a wrong offset!");
+DUMPER7_ASSERTS_UGenlockedFixedRateCustomTimeStep;
 
 // Class TimeManagement.GenlockedTimecodeProvider
-// 0x0028 (0x0060 - 0x0038)
+// 0x0028 (0x0058 - 0x0030)
 class UGenlockedTimecodeProvider final : public UTimecodeProvider
 {
 public:
-	bool                                          bUseGenlockToCount;                                // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_39[0x27];                                      // 0x0039(0x0027)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bUseGenlockToCount;                                // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, AdvancedDisplay, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_31[0x27];                                      // 0x0031(0x0027)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"GenlockedTimecodeProvider">();
+		STATIC_CLASS_IMPL("GenlockedTimecodeProvider")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"GenlockedTimecodeProvider")
 	}
 	static class UGenlockedTimecodeProvider* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UGenlockedTimecodeProvider>();
 	}
 };
-static_assert(alignof(UGenlockedTimecodeProvider) == 0x000008, "Wrong alignment on UGenlockedTimecodeProvider");
-static_assert(sizeof(UGenlockedTimecodeProvider) == 0x000060, "Wrong size on UGenlockedTimecodeProvider");
-static_assert(offsetof(UGenlockedTimecodeProvider, bUseGenlockToCount) == 0x000038, "Member 'UGenlockedTimecodeProvider::bUseGenlockToCount' has a wrong offset!");
+DUMPER7_ASSERTS_UGenlockedTimecodeProvider;
 
 // Class TimeManagement.TimeManagementBlueprintLibrary
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UTimeManagementBlueprintLibrary final : public UBlueprintFunctionLibrary
 {
 public:
@@ -122,39 +157,18 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"TimeManagementBlueprintLibrary">();
+		STATIC_CLASS_IMPL("TimeManagementBlueprintLibrary")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TimeManagementBlueprintLibrary")
 	}
 	static class UTimeManagementBlueprintLibrary* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UTimeManagementBlueprintLibrary>();
 	}
 };
-static_assert(alignof(UTimeManagementBlueprintLibrary) == 0x000008, "Wrong alignment on UTimeManagementBlueprintLibrary");
-static_assert(sizeof(UTimeManagementBlueprintLibrary) == 0x000030, "Wrong size on UTimeManagementBlueprintLibrary");
-
-// Class TimeManagement.TimeSynchronizationSource
-// 0x0008 (0x0038 - 0x0030)
-class UTimeSynchronizationSource final : public UObject
-{
-public:
-	bool                                          bUseForSynchronization;                            // 0x0030(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_31[0x3];                                       // 0x0031(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         FrameOffset;                                       // 0x0034(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"TimeSynchronizationSource">();
-	}
-	static class UTimeSynchronizationSource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UTimeSynchronizationSource>();
-	}
-};
-static_assert(alignof(UTimeSynchronizationSource) == 0x000008, "Wrong alignment on UTimeSynchronizationSource");
-static_assert(sizeof(UTimeSynchronizationSource) == 0x000038, "Wrong size on UTimeSynchronizationSource");
-static_assert(offsetof(UTimeSynchronizationSource, bUseForSynchronization) == 0x000030, "Member 'UTimeSynchronizationSource::bUseForSynchronization' has a wrong offset!");
-static_assert(offsetof(UTimeSynchronizationSource, FrameOffset) == 0x000034, "Member 'UTimeSynchronizationSource::FrameOffset' has a wrong offset!");
+DUMPER7_ASSERTS_UTimeManagementBlueprintLibrary;
 
 }
 

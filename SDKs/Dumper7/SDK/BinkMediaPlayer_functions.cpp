@@ -108,14 +108,14 @@ void UBinkMediaPlayer::CloseUrl()
 // Function BinkMediaPlayer.BinkMediaPlayer.Draw
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class UTexture*                         texture                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UTexture*                         Texture                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    tonemap                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   out_nits                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   alpha                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   ALPHA                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    srgb_decode                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    hdr                                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UBinkMediaPlayer::Draw(class UTexture* texture, bool tonemap, int32 out_nits, float alpha, bool srgb_decode, bool hdr)
+void UBinkMediaPlayer::Draw(class UTexture* Texture, bool tonemap, int32 out_nits, float ALPHA, bool srgb_decode, bool hdr)
 {
 	static class UFunction* Func = nullptr;
 
@@ -124,10 +124,10 @@ void UBinkMediaPlayer::Draw(class UTexture* texture, bool tonemap, int32 out_nit
 
 	Params::BinkMediaPlayer_Draw Parms{};
 
-	Parms.texture = texture;
+	Parms.Texture = Texture;
 	Parms.tonemap = tonemap;
 	Parms.out_nits = out_nits;
-	Parms.alpha = alpha;
+	Parms.ALPHA = ALPHA;
 	Parms.srgb_decode = srgb_decode;
 	Parms.hdr = hdr;
 

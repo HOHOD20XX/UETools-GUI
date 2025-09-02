@@ -17,39 +17,35 @@ namespace SDK
 {
 
 // Class OodleNetworkHandlerComponent.OodleNetworkTrainerCommandlet
-// 0x0020 (0x00A8 - 0x0088)
+// 0x0020 (0x00A0 - 0x0080)
 class UOodleNetworkTrainerCommandlet final : public UCommandlet
 {
 public:
-	bool                                          bCompressionTest;                                  // 0x0088(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_89[0x3];                                       // 0x0089(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         HashTableSize;                                     // 0x008C(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         DictionarySize;                                    // 0x0090(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         DictionaryTrials;                                  // 0x0094(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         TrialRandomness;                                   // 0x0098(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         TrialGenerations;                                  // 0x009C(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bNoTrials;                                         // 0x00A0(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A1[0x7];                                       // 0x00A1(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bCompressionTest;                                  // 0x0080(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_81[0x3];                                       // 0x0081(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         HashTableSize;                                     // 0x0084(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         DictionarySize;                                    // 0x0088(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         DictionaryTrials;                                  // 0x008C(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         TrialRandomness;                                   // 0x0090(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         TrialGenerations;                                  // 0x0094(0x0004)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bNoTrials;                                         // 0x0098(0x0001)(ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_99[0x7];                                       // 0x0099(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"OodleNetworkTrainerCommandlet">();
+		STATIC_CLASS_IMPL("OodleNetworkTrainerCommandlet")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"OodleNetworkTrainerCommandlet")
 	}
 	static class UOodleNetworkTrainerCommandlet* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOodleNetworkTrainerCommandlet>();
 	}
 };
-static_assert(alignof(UOodleNetworkTrainerCommandlet) == 0x000008, "Wrong alignment on UOodleNetworkTrainerCommandlet");
-static_assert(sizeof(UOodleNetworkTrainerCommandlet) == 0x0000A8, "Wrong size on UOodleNetworkTrainerCommandlet");
-static_assert(offsetof(UOodleNetworkTrainerCommandlet, bCompressionTest) == 0x000088, "Member 'UOodleNetworkTrainerCommandlet::bCompressionTest' has a wrong offset!");
-static_assert(offsetof(UOodleNetworkTrainerCommandlet, HashTableSize) == 0x00008C, "Member 'UOodleNetworkTrainerCommandlet::HashTableSize' has a wrong offset!");
-static_assert(offsetof(UOodleNetworkTrainerCommandlet, DictionarySize) == 0x000090, "Member 'UOodleNetworkTrainerCommandlet::DictionarySize' has a wrong offset!");
-static_assert(offsetof(UOodleNetworkTrainerCommandlet, DictionaryTrials) == 0x000094, "Member 'UOodleNetworkTrainerCommandlet::DictionaryTrials' has a wrong offset!");
-static_assert(offsetof(UOodleNetworkTrainerCommandlet, TrialRandomness) == 0x000098, "Member 'UOodleNetworkTrainerCommandlet::TrialRandomness' has a wrong offset!");
-static_assert(offsetof(UOodleNetworkTrainerCommandlet, TrialGenerations) == 0x00009C, "Member 'UOodleNetworkTrainerCommandlet::TrialGenerations' has a wrong offset!");
-static_assert(offsetof(UOodleNetworkTrainerCommandlet, bNoTrials) == 0x0000A0, "Member 'UOodleNetworkTrainerCommandlet::bNoTrials' has a wrong offset!");
+DUMPER7_ASSERTS_UOodleNetworkTrainerCommandlet;
 
 }
 

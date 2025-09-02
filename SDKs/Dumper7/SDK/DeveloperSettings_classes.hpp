@@ -17,24 +17,27 @@ namespace SDK
 {
 
 // Class DeveloperSettings.DeveloperSettings
-// 0x0018 (0x0048 - 0x0030)
+// 0x0010 (0x0038 - 0x0028)
 class UDeveloperSettings : public UObject
 {
 public:
-	uint8                                         Pad_30[0x18];                                      // 0x0030(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x10];                                      // 0x0028(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"DeveloperSettings">();
+		STATIC_CLASS_IMPL("DeveloperSettings")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"DeveloperSettings")
 	}
 	static class UDeveloperSettings* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UDeveloperSettings>();
 	}
 };
-static_assert(alignof(UDeveloperSettings) == 0x000008, "Wrong alignment on UDeveloperSettings");
-static_assert(sizeof(UDeveloperSettings) == 0x000048, "Wrong size on UDeveloperSettings");
+DUMPER7_ASSERTS_UDeveloperSettings;
 
 }
 

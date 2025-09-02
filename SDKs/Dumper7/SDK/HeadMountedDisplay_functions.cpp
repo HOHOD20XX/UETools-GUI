@@ -281,7 +281,7 @@ TArray<struct FXRDeviceId> UHeadMountedDisplayFunctionLibrary::EnumerateTrackedD
 // const struct FTimespan&                 Time                                                   (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool*                                   bTimeWasUsed                                           (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FRotator*                        Orientation                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
-// struct FVector*                         Position                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector*                         position                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool*                                   bProvidedLinearVelocity                                (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FVector*                         LinearVelocity                                         (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool*                                   bProvidedAngularVelocity                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -290,7 +290,7 @@ TArray<struct FXRDeviceId> UHeadMountedDisplayFunctionLibrary::EnumerateTrackedD
 // struct FVector*                         LinearAcceleration                                     (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-bool UHeadMountedDisplayFunctionLibrary::GetControllerTransformForTime(class UObject* WorldContext, const int32 ControllerIndex, const class FName MotionSource, const struct FTimespan& Time, bool* bTimeWasUsed, struct FRotator* Orientation, struct FVector* Position, bool* bProvidedLinearVelocity, struct FVector* LinearVelocity, bool* bProvidedAngularVelocity, struct FVector* AngularVelocityRadPerSec, bool* bProvidedLinearAcceleration, struct FVector* LinearAcceleration)
+bool UHeadMountedDisplayFunctionLibrary::GetControllerTransformForTime(class UObject* WorldContext, const int32 ControllerIndex, const class FName MotionSource, const struct FTimespan& Time, bool* bTimeWasUsed, struct FRotator* Orientation, struct FVector* position, bool* bProvidedLinearVelocity, struct FVector* LinearVelocity, bool* bProvidedAngularVelocity, struct FVector* AngularVelocityRadPerSec, bool* bProvidedLinearAcceleration, struct FVector* LinearAcceleration)
 {
 	static class UFunction* Func = nullptr;
 
@@ -317,8 +317,8 @@ bool UHeadMountedDisplayFunctionLibrary::GetControllerTransformForTime(class UOb
 	if (Orientation != nullptr)
 		*Orientation = std::move(Parms.Orientation);
 
-	if (Position != nullptr)
-		*Position = std::move(Parms.Position);
+	if (position != nullptr)
+		*position = std::move(Parms.position);
 
 	if (bProvidedLinearVelocity != nullptr)
 		*bProvidedLinearVelocity = Parms.bProvidedLinearVelocity;
@@ -349,9 +349,9 @@ bool UHeadMountedDisplayFunctionLibrary::GetControllerTransformForTime(class UOb
 // bool*                                   bIsTracked                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FRotator*                        Orientation                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 // bool*                                   bHasPositionalTracking                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector*                         Position                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector*                         position                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UHeadMountedDisplayFunctionLibrary::GetDevicePose(const struct FXRDeviceId& XRDeviceId, bool* bIsTracked, struct FRotator* Orientation, bool* bHasPositionalTracking, struct FVector* Position)
+void UHeadMountedDisplayFunctionLibrary::GetDevicePose(const struct FXRDeviceId& XRDeviceId, bool* bIsTracked, struct FRotator* Orientation, bool* bHasPositionalTracking, struct FVector* position)
 {
 	static class UFunction* Func = nullptr;
 
@@ -378,8 +378,8 @@ void UHeadMountedDisplayFunctionLibrary::GetDevicePose(const struct FXRDeviceId&
 	if (bHasPositionalTracking != nullptr)
 		*bHasPositionalTracking = Parms.bHasPositionalTracking;
 
-	if (Position != nullptr)
-		*Position = std::move(Parms.Position);
+	if (position != nullptr)
+		*position = std::move(Parms.position);
 }
 
 
@@ -391,9 +391,9 @@ void UHeadMountedDisplayFunctionLibrary::GetDevicePose(const struct FXRDeviceId&
 // bool*                                   bIsTracked                                             (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FRotator*                        Orientation                                            (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
 // bool*                                   bHasPositionalTracking                                 (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// struct FVector*                         Position                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// struct FVector*                         position                                               (Parm, OutParm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UHeadMountedDisplayFunctionLibrary::GetDeviceWorldPose(class UObject* WorldContext, const struct FXRDeviceId& XRDeviceId, bool* bIsTracked, struct FRotator* Orientation, bool* bHasPositionalTracking, struct FVector* Position)
+void UHeadMountedDisplayFunctionLibrary::GetDeviceWorldPose(class UObject* WorldContext, const struct FXRDeviceId& XRDeviceId, bool* bIsTracked, struct FRotator* Orientation, bool* bHasPositionalTracking, struct FVector* position)
 {
 	static class UFunction* Func = nullptr;
 
@@ -421,8 +421,8 @@ void UHeadMountedDisplayFunctionLibrary::GetDeviceWorldPose(class UObject* World
 	if (bHasPositionalTracking != nullptr)
 		*bHasPositionalTracking = Parms.bHasPositionalTracking;
 
-	if (Position != nullptr)
-		*Position = std::move(Parms.Position);
+	if (position != nullptr)
+		*position = std::move(Parms.position);
 }
 
 
@@ -1436,10 +1436,10 @@ void UHeadMountedDisplayFunctionLibrary::UpdateExternalTrackingHMDPosition(const
 // Function HeadMountedDisplay.HandKeypointConversion.Conv_HandKeypointToInt32
 // (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// EHandKeypoint                           input                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// EHandKeypoint                           Input                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-int32 UHandKeypointConversion::Conv_HandKeypointToInt32(EHandKeypoint input)
+int32 UHandKeypointConversion::Conv_HandKeypointToInt32(EHandKeypoint Input)
 {
 	static class UFunction* Func = nullptr;
 
@@ -1448,7 +1448,7 @@ int32 UHandKeypointConversion::Conv_HandKeypointToInt32(EHandKeypoint input)
 
 	Params::HandKeypointConversion_Conv_HandKeypointToInt32 Parms{};
 
-	Parms.input = input;
+	Parms.Input = Input;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

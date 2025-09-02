@@ -18,65 +18,71 @@ namespace SDK
 {
 
 // Class Overlay.Overlays
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UOverlays : public UObject
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"Overlays">();
+		STATIC_CLASS_IMPL("Overlays")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"Overlays")
 	}
 	static class UOverlays* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UOverlays>();
 	}
 };
-static_assert(alignof(UOverlays) == 0x000008, "Wrong alignment on UOverlays");
-static_assert(sizeof(UOverlays) == 0x000030, "Wrong size on UOverlays");
-
-// Class Overlay.LocalizedOverlays
-// 0x0058 (0x0088 - 0x0030)
-class ULocalizedOverlays final : public UOverlays
-{
-public:
-	class UBasicOverlays*                         DefaultOverlays;                                   // 0x0030(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TMap<class FString, class UBasicOverlays*>    LocaleToOverlaysMap;                               // 0x0038(0x0050)(Edit, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		return StaticClassImpl<"LocalizedOverlays">();
-	}
-	static class ULocalizedOverlays* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULocalizedOverlays>();
-	}
-};
-static_assert(alignof(ULocalizedOverlays) == 0x000008, "Wrong alignment on ULocalizedOverlays");
-static_assert(sizeof(ULocalizedOverlays) == 0x000088, "Wrong size on ULocalizedOverlays");
-static_assert(offsetof(ULocalizedOverlays, DefaultOverlays) == 0x000030, "Member 'ULocalizedOverlays::DefaultOverlays' has a wrong offset!");
-static_assert(offsetof(ULocalizedOverlays, LocaleToOverlaysMap) == 0x000038, "Member 'ULocalizedOverlays::LocaleToOverlaysMap' has a wrong offset!");
+DUMPER7_ASSERTS_UOverlays;
 
 // Class Overlay.BasicOverlays
-// 0x0010 (0x0040 - 0x0030)
+// 0x0010 (0x0038 - 0x0028)
 class UBasicOverlays final : public UOverlays
 {
 public:
-	TArray<struct FOverlayItem>                   Overlays;                                          // 0x0030(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FOverlayItem>                   Overlays;                                          // 0x0028(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"BasicOverlays">();
+		STATIC_CLASS_IMPL("BasicOverlays")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"BasicOverlays")
 	}
 	static class UBasicOverlays* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UBasicOverlays>();
 	}
 };
-static_assert(alignof(UBasicOverlays) == 0x000008, "Wrong alignment on UBasicOverlays");
-static_assert(sizeof(UBasicOverlays) == 0x000040, "Wrong size on UBasicOverlays");
-static_assert(offsetof(UBasicOverlays, Overlays) == 0x000030, "Member 'UBasicOverlays::Overlays' has a wrong offset!");
+DUMPER7_ASSERTS_UBasicOverlays;
+
+// Class Overlay.LocalizedOverlays
+// 0x0058 (0x0080 - 0x0028)
+class ULocalizedOverlays final : public UOverlays
+{
+public:
+	class UBasicOverlays*                         DefaultOverlays;                                   // 0x0028(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<class FString, class UBasicOverlays*>    LocaleToOverlaysMap;                               // 0x0030(0x0050)(Edit, NativeAccessSpecifierPublic)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("LocalizedOverlays")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"LocalizedOverlays")
+	}
+	static class ULocalizedOverlays* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<ULocalizedOverlays>();
+	}
+};
+DUMPER7_ASSERTS_ULocalizedOverlays;
 
 }
 

@@ -24,11 +24,7 @@ public:
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
 	class FString                                 FamilyName;                                        // 0x0018(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FOpenColorIOColorSpace) == 0x000008, "Wrong alignment on FOpenColorIOColorSpace");
-static_assert(sizeof(FOpenColorIOColorSpace) == 0x000028, "Wrong size on FOpenColorIOColorSpace");
-static_assert(offsetof(FOpenColorIOColorSpace, ColorSpaceName) == 0x000000, "Member 'FOpenColorIOColorSpace::ColorSpaceName' has a wrong offset!");
-static_assert(offsetof(FOpenColorIOColorSpace, ColorSpaceIndex) == 0x000010, "Member 'FOpenColorIOColorSpace::ColorSpaceIndex' has a wrong offset!");
-static_assert(offsetof(FOpenColorIOColorSpace, FamilyName) == 0x000018, "Member 'FOpenColorIOColorSpace::FamilyName' has a wrong offset!");
+DUMPER7_ASSERTS_FOpenColorIOColorSpace;
 
 // ScriptStruct OpenColorIO.OpenColorIOColorConversionSettings
 // 0x0058 (0x0058 - 0x0000)
@@ -39,11 +35,7 @@ public:
 	struct FOpenColorIOColorSpace                 SourceColorSpace;                                  // 0x0008(0x0028)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
 	struct FOpenColorIOColorSpace                 DestinationColorSpace;                             // 0x0030(0x0028)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FOpenColorIOColorConversionSettings) == 0x000008, "Wrong alignment on FOpenColorIOColorConversionSettings");
-static_assert(sizeof(FOpenColorIOColorConversionSettings) == 0x000058, "Wrong size on FOpenColorIOColorConversionSettings");
-static_assert(offsetof(FOpenColorIOColorConversionSettings, ConfigurationSource) == 0x000000, "Member 'FOpenColorIOColorConversionSettings::ConfigurationSource' has a wrong offset!");
-static_assert(offsetof(FOpenColorIOColorConversionSettings, SourceColorSpace) == 0x000008, "Member 'FOpenColorIOColorConversionSettings::SourceColorSpace' has a wrong offset!");
-static_assert(offsetof(FOpenColorIOColorConversionSettings, DestinationColorSpace) == 0x000030, "Member 'FOpenColorIOColorConversionSettings::DestinationColorSpace' has a wrong offset!");
+DUMPER7_ASSERTS_FOpenColorIOColorConversionSettings;
 
 // ScriptStruct OpenColorIO.OpenColorIODisplayConfiguration
 // 0x0060 (0x0060 - 0x0000)
@@ -54,10 +46,7 @@ public:
 	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
 	struct FOpenColorIOColorConversionSettings    ColorConfiguration;                                // 0x0008(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(FOpenColorIODisplayConfiguration) == 0x000008, "Wrong alignment on FOpenColorIODisplayConfiguration");
-static_assert(sizeof(FOpenColorIODisplayConfiguration) == 0x000060, "Wrong size on FOpenColorIODisplayConfiguration");
-static_assert(offsetof(FOpenColorIODisplayConfiguration, bIsEnabled) == 0x000000, "Member 'FOpenColorIODisplayConfiguration::bIsEnabled' has a wrong offset!");
-static_assert(offsetof(FOpenColorIODisplayConfiguration, ColorConfiguration) == 0x000008, "Member 'FOpenColorIODisplayConfiguration::ColorConfiguration' has a wrong offset!");
+DUMPER7_ASSERTS_FOpenColorIODisplayConfiguration;
 
 }
 

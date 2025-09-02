@@ -21,14 +21,14 @@ namespace SDK
 // (Final, Native, Static, Public, HasOutParams, HasDefaults, BlueprintCallable)
 // Parameters:
 // float                                   DeltaSeconds                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector&                   Position                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FVector&                   position                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FPositionHistory&                History                                                (Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 // int32                                   NumberOfSamples                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   VelocityMin                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   VelocityMax                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-float UKismetAnimationLibrary::K2_CalculateVelocityFromPositionHistory(float DeltaSeconds, const struct FVector& Position, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax)
+float UKismetAnimationLibrary::K2_CalculateVelocityFromPositionHistory(float DeltaSeconds, const struct FVector& position, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax)
 {
 	static class UFunction* Func = nullptr;
 
@@ -38,7 +38,7 @@ float UKismetAnimationLibrary::K2_CalculateVelocityFromPositionHistory(float Del
 	Params::KismetAnimationLibrary_K2_CalculateVelocityFromPositionHistory Parms{};
 
 	Parms.DeltaSeconds = DeltaSeconds;
-	Parms.Position = std::move(Position);
+	Parms.position = std::move(position);
 	Parms.History = std::move(History);
 	Parms.NumberOfSamples = NumberOfSamples;
 	Parms.VelocityMin = VelocityMin;
@@ -434,13 +434,12 @@ class UPlayMontageCallbackProxy* UPlayMontageCallbackProxy::CreateProxyObjectFor
 
 
 // Function AnimGraphRuntime.PlayMontageCallbackProxy.OnMontageBlendingOut
-// (Final, Native, Protected, HasDefaults)
+// (Final, Native, Protected)
 // Parameters:
-// const struct FGuid&                     MontageInstanceId                                      (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // class UAnimMontage*                     Montage                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    bInterrupted                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UPlayMontageCallbackProxy::OnMontageBlendingOut(const struct FGuid& MontageInstanceId, class UAnimMontage* Montage, bool bInterrupted)
+void UPlayMontageCallbackProxy::OnMontageBlendingOut(class UAnimMontage* Montage, bool bInterrupted)
 {
 	static class UFunction* Func = nullptr;
 
@@ -449,7 +448,6 @@ void UPlayMontageCallbackProxy::OnMontageBlendingOut(const struct FGuid& Montage
 
 	Params::PlayMontageCallbackProxy_OnMontageBlendingOut Parms{};
 
-	Parms.MontageInstanceId = std::move(MontageInstanceId);
 	Parms.Montage = Montage;
 	Parms.bInterrupted = bInterrupted;
 
@@ -463,13 +461,12 @@ void UPlayMontageCallbackProxy::OnMontageBlendingOut(const struct FGuid& Montage
 
 
 // Function AnimGraphRuntime.PlayMontageCallbackProxy.OnMontageEnded
-// (Final, Native, Protected, HasDefaults)
+// (Final, Native, Protected)
 // Parameters:
-// const struct FGuid&                     MontageInstanceId                                      (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // class UAnimMontage*                     Montage                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    bInterrupted                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UPlayMontageCallbackProxy::OnMontageEnded(const struct FGuid& MontageInstanceId, class UAnimMontage* Montage, bool bInterrupted)
+void UPlayMontageCallbackProxy::OnMontageEnded(class UAnimMontage* Montage, bool bInterrupted)
 {
 	static class UFunction* Func = nullptr;
 
@@ -478,7 +475,6 @@ void UPlayMontageCallbackProxy::OnMontageEnded(const struct FGuid& MontageInstan
 
 	Params::PlayMontageCallbackProxy_OnMontageEnded Parms{};
 
-	Parms.MontageInstanceId = std::move(MontageInstanceId);
 	Parms.Montage = Montage;
 	Parms.bInterrupted = bInterrupted;
 

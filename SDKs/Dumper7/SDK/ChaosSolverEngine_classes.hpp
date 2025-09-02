@@ -10,81 +10,88 @@
 
 #include "Basic.hpp"
 
-#include "ChaosSolverEngine_structs.hpp"
 #include "Engine_classes.hpp"
+#include "DeveloperSettings_classes.hpp"
+#include "ChaosSolverEngine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
 #include "Chaos_structs.hpp"
-#include "DeveloperSettings_classes.hpp"
 
 
 namespace SDK
 {
 
 // Class ChaosSolverEngine.ChaosDebugDrawComponent
-// 0x0008 (0x00C0 - 0x00B8)
+// 0x0008 (0x00B8 - 0x00B0)
 class UChaosDebugDrawComponent final : public UActorComponent
 {
 public:
-	uint8                                         Pad_B8[0x8];                                       // 0x00B8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_B0[0x8];                                       // 0x00B0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosDebugDrawComponent">();
+		STATIC_CLASS_IMPL("ChaosDebugDrawComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosDebugDrawComponent")
 	}
 	static class UChaosDebugDrawComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UChaosDebugDrawComponent>();
 	}
 };
-static_assert(alignof(UChaosDebugDrawComponent) == 0x000008, "Wrong alignment on UChaosDebugDrawComponent");
-static_assert(sizeof(UChaosDebugDrawComponent) == 0x0000C0, "Wrong size on UChaosDebugDrawComponent");
+DUMPER7_ASSERTS_UChaosDebugDrawComponent;
 
 // Class ChaosSolverEngine.ChaosEventListenerComponent
-// 0x0008 (0x00C0 - 0x00B8)
+// 0x0008 (0x00B8 - 0x00B0)
 class UChaosEventListenerComponent : public UActorComponent
 {
 public:
-	uint8                                         Pad_B8[0x8];                                       // 0x00B8(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_B0[0x8];                                       // 0x00B0(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosEventListenerComponent">();
+		STATIC_CLASS_IMPL("ChaosEventListenerComponent")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosEventListenerComponent")
 	}
 	static class UChaosEventListenerComponent* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UChaosEventListenerComponent>();
 	}
 };
-static_assert(alignof(UChaosEventListenerComponent) == 0x000008, "Wrong alignment on UChaosEventListenerComponent");
-static_assert(sizeof(UChaosEventListenerComponent) == 0x0000C0, "Wrong size on UChaosEventListenerComponent");
+DUMPER7_ASSERTS_UChaosEventListenerComponent;
 
 // Class ChaosSolverEngine.ChaosGameplayEventDispatcher
-// 0x01B8 (0x0278 - 0x00C0)
+// 0x01B8 (0x0270 - 0x00B8)
 class UChaosGameplayEventDispatcher final : public UChaosEventListenerComponent
 {
 public:
-	uint8                                         Pad_C0[0x110];                                     // 0x00C0(0x0110)(Fixing Size After Last Property [ Dumper-7 ])
-	TMap<class UPrimitiveComponent*, struct FChaosHandlerSet> CollisionEventRegistrations;           // 0x01D0(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	TMap<class UPrimitiveComponent*, struct FBreakEventCallbackWrapper> BreakEventRegistrations;     // 0x0220(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_270[0x8];                                      // 0x0270(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_B8[0x110];                                     // 0x00B8(0x0110)(Fixing Size After Last Property [ Dumper-7 ])
+	TMap<class UPrimitiveComponent*, struct FChaosHandlerSet> CollisionEventRegistrations;           // 0x01C8(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	TMap<class UPrimitiveComponent*, struct FBreakEventCallbackWrapper> BreakEventRegistrations;     // 0x0218(0x0050)(ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_268[0x8];                                      // 0x0268(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosGameplayEventDispatcher">();
+		STATIC_CLASS_IMPL("ChaosGameplayEventDispatcher")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosGameplayEventDispatcher")
 	}
 	static class UChaosGameplayEventDispatcher* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UChaosGameplayEventDispatcher>();
 	}
 };
-static_assert(alignof(UChaosGameplayEventDispatcher) == 0x000008, "Wrong alignment on UChaosGameplayEventDispatcher");
-static_assert(sizeof(UChaosGameplayEventDispatcher) == 0x000278, "Wrong size on UChaosGameplayEventDispatcher");
-static_assert(offsetof(UChaosGameplayEventDispatcher, CollisionEventRegistrations) == 0x0001D0, "Member 'UChaosGameplayEventDispatcher::CollisionEventRegistrations' has a wrong offset!");
-static_assert(offsetof(UChaosGameplayEventDispatcher, BreakEventRegistrations) == 0x000220, "Member 'UChaosGameplayEventDispatcher::BreakEventRegistrations' has a wrong offset!");
+DUMPER7_ASSERTS_UChaosGameplayEventDispatcher;
 
 // Class ChaosSolverEngine.ChaosNotifyHandlerInterface
 // 0x0000 (0x0000 - 0x0000)
@@ -93,7 +100,11 @@ class IChaosNotifyHandlerInterface final
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosNotifyHandlerInterface">();
+		STATIC_CLASS_IMPL("ChaosNotifyHandlerInterface")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosNotifyHandlerInterface")
 	}
 	static class IChaosNotifyHandlerInterface* GetDefaultObj()
 	{
@@ -109,11 +120,10 @@ public:
 		return reinterpret_cast<const UObject*>(this);
 	}
 };
-static_assert(alignof(IChaosNotifyHandlerInterface) == 0x000001, "Wrong alignment on IChaosNotifyHandlerInterface");
-static_assert(sizeof(IChaosNotifyHandlerInterface) == 0x000001, "Wrong size on IChaosNotifyHandlerInterface");
+DUMPER7_ASSERTS_IChaosNotifyHandlerInterface;
 
 // Class ChaosSolverEngine.ChaosSolverEngineBlueprintLibrary
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UChaosSolverEngineBlueprintLibrary final : public UBlueprintFunctionLibrary
 {
 public:
@@ -122,65 +132,71 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosSolverEngineBlueprintLibrary">();
+		STATIC_CLASS_IMPL("ChaosSolverEngineBlueprintLibrary")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosSolverEngineBlueprintLibrary")
 	}
 	static class UChaosSolverEngineBlueprintLibrary* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UChaosSolverEngineBlueprintLibrary>();
 	}
 };
-static_assert(alignof(UChaosSolverEngineBlueprintLibrary) == 0x000008, "Wrong alignment on UChaosSolverEngineBlueprintLibrary");
-static_assert(sizeof(UChaosSolverEngineBlueprintLibrary) == 0x000030, "Wrong size on UChaosSolverEngineBlueprintLibrary");
+DUMPER7_ASSERTS_UChaosSolverEngineBlueprintLibrary;
 
 // Class ChaosSolverEngine.ChaosSolver
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UChaosSolver final : public UObject
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosSolver">();
+		STATIC_CLASS_IMPL("ChaosSolver")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosSolver")
 	}
 	static class UChaosSolver* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UChaosSolver>();
 	}
 };
-static_assert(alignof(UChaosSolver) == 0x000008, "Wrong alignment on UChaosSolver");
-static_assert(sizeof(UChaosSolver) == 0x000030, "Wrong size on UChaosSolver");
+DUMPER7_ASSERTS_UChaosSolver;
 
 // Class ChaosSolverEngine.ChaosSolverActor
-// 0x00F8 (0x0328 - 0x0230)
+// 0x00F8 (0x0318 - 0x0220)
 class AChaosSolverActor final : public AActor
 {
 public:
-	struct FChaosSolverConfiguration              Properties;                                        // 0x0230(0x0068)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         TimeStepMultiplier;                                // 0x0298(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         CollisionIterations;                               // 0x029C(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         PushOutIterations;                                 // 0x02A0(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         PushOutPairIterations;                             // 0x02A4(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ClusterConnectionFactor;                           // 0x02A8(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EClusterConnectionTypeEnum                    ClusterUnionConnectionType;                        // 0x02AC(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          DoGenerateCollisionData;                           // 0x02AD(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2AE[0x2];                                      // 0x02AE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSolverCollisionFilterSettings         CollisionFilterSettings;                           // 0x02B0(0x0010)(Deprecated, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          DoGenerateBreakingData;                            // 0x02C0(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2C1[0x3];                                      // 0x02C1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSolverBreakingFilterSettings          BreakingFilterSettings;                            // 0x02C4(0x0010)(Deprecated, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          DoGenerateTrailingData;                            // 0x02D4(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2D5[0x3];                                      // 0x02D5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSolverTrailingFilterSettings          TrailingFilterSettings;                            // 0x02D8(0x0010)(Deprecated, NoDestructor, NativeAccessSpecifierPublic)
-	float                                         MassScale;                                         // 0x02E8(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bGenerateContactGraph;                             // 0x02EC(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bHasFloor;                                         // 0x02ED(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2EE[0x2];                                      // 0x02EE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         FloorHeight;                                       // 0x02F0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FChaosDebugSubstepControl              ChaosDebugSubstepControl;                          // 0x02F4(0x0003)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2F7[0x1];                                      // 0x02F7(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	class UBillboardComponent*                    SpriteComponent;                                   // 0x02F8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_300[0x18];                                     // 0x0300(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
-	class UChaosGameplayEventDispatcher*          GameplayEventDispatcherComponent;                  // 0x0318(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_320[0x8];                                      // 0x0320(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FChaosSolverConfiguration              Properties;                                        // 0x0220(0x0068)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         TimeStepMultiplier;                                // 0x0288(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         CollisionIterations;                               // 0x028C(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         PushOutIterations;                                 // 0x0290(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         PushOutPairIterations;                             // 0x0294(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ClusterConnectionFactor;                           // 0x0298(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EClusterConnectionTypeEnum                    ClusterUnionConnectionType;                        // 0x029C(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          DoGenerateCollisionData;                           // 0x029D(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29E[0x2];                                      // 0x029E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSolverCollisionFilterSettings         CollisionFilterSettings;                           // 0x02A0(0x0010)(Deprecated, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          DoGenerateBreakingData;                            // 0x02B0(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2B1[0x3];                                      // 0x02B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSolverBreakingFilterSettings          BreakingFilterSettings;                            // 0x02B4(0x0010)(Deprecated, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          DoGenerateTrailingData;                            // 0x02C4(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2C5[0x3];                                      // 0x02C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSolverTrailingFilterSettings          TrailingFilterSettings;                            // 0x02C8(0x0010)(Deprecated, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         MassScale;                                         // 0x02D8(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bGenerateContactGraph;                             // 0x02DC(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bHasFloor;                                         // 0x02DD(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2DE[0x2];                                      // 0x02DE(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         FloorHeight;                                       // 0x02E0(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FChaosDebugSubstepControl              ChaosDebugSubstepControl;                          // 0x02E4(0x0003)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2E7[0x1];                                      // 0x02E7(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	class UBillboardComponent*                    SpriteComponent;                                   // 0x02E8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2F0[0x18];                                     // 0x02F0(0x0018)(Fixing Size After Last Property [ Dumper-7 ])
+	class UChaosGameplayEventDispatcher*          GameplayEventDispatcherComponent;                  // 0x0308(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_310[0x8];                                      // 0x0310(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void SetAsCurrentWorldSolver();
@@ -189,57 +205,42 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosSolverActor">();
+		STATIC_CLASS_IMPL("ChaosSolverActor")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosSolverActor")
 	}
 	static class AChaosSolverActor* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<AChaosSolverActor>();
 	}
 };
-static_assert(alignof(AChaosSolverActor) == 0x000008, "Wrong alignment on AChaosSolverActor");
-static_assert(sizeof(AChaosSolverActor) == 0x000328, "Wrong size on AChaosSolverActor");
-static_assert(offsetof(AChaosSolverActor, Properties) == 0x000230, "Member 'AChaosSolverActor::Properties' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, TimeStepMultiplier) == 0x000298, "Member 'AChaosSolverActor::TimeStepMultiplier' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, CollisionIterations) == 0x00029C, "Member 'AChaosSolverActor::CollisionIterations' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, PushOutIterations) == 0x0002A0, "Member 'AChaosSolverActor::PushOutIterations' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, PushOutPairIterations) == 0x0002A4, "Member 'AChaosSolverActor::PushOutPairIterations' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, ClusterConnectionFactor) == 0x0002A8, "Member 'AChaosSolverActor::ClusterConnectionFactor' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, ClusterUnionConnectionType) == 0x0002AC, "Member 'AChaosSolverActor::ClusterUnionConnectionType' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, DoGenerateCollisionData) == 0x0002AD, "Member 'AChaosSolverActor::DoGenerateCollisionData' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, CollisionFilterSettings) == 0x0002B0, "Member 'AChaosSolverActor::CollisionFilterSettings' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, DoGenerateBreakingData) == 0x0002C0, "Member 'AChaosSolverActor::DoGenerateBreakingData' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, BreakingFilterSettings) == 0x0002C4, "Member 'AChaosSolverActor::BreakingFilterSettings' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, DoGenerateTrailingData) == 0x0002D4, "Member 'AChaosSolverActor::DoGenerateTrailingData' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, TrailingFilterSettings) == 0x0002D8, "Member 'AChaosSolverActor::TrailingFilterSettings' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, MassScale) == 0x0002E8, "Member 'AChaosSolverActor::MassScale' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, bGenerateContactGraph) == 0x0002EC, "Member 'AChaosSolverActor::bGenerateContactGraph' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, bHasFloor) == 0x0002ED, "Member 'AChaosSolverActor::bHasFloor' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, FloorHeight) == 0x0002F0, "Member 'AChaosSolverActor::FloorHeight' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, ChaosDebugSubstepControl) == 0x0002F4, "Member 'AChaosSolverActor::ChaosDebugSubstepControl' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, SpriteComponent) == 0x0002F8, "Member 'AChaosSolverActor::SpriteComponent' has a wrong offset!");
-static_assert(offsetof(AChaosSolverActor, GameplayEventDispatcherComponent) == 0x000318, "Member 'AChaosSolverActor::GameplayEventDispatcherComponent' has a wrong offset!");
+DUMPER7_ASSERTS_AChaosSolverActor;
 
 // Class ChaosSolverEngine.ChaosSolverSettings
-// 0x0028 (0x0070 - 0x0048)
+// 0x0020 (0x0058 - 0x0038)
 class UChaosSolverSettings final : public UDeveloperSettings
 {
 public:
-	uint8                                         Pad_48[0x8];                                       // 0x0048(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSoftClassPath                         DefaultChaosSolverActorClass;                      // 0x0050(0x0020)(Edit, ZeroConstructor, Config, NoClear, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_38[0x8];                                       // 0x0038(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSoftClassPath                         DefaultChaosSolverActorClass;                      // 0x0040(0x0018)(Edit, ZeroConstructor, Config, NoClear, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"ChaosSolverSettings">();
+		STATIC_CLASS_IMPL("ChaosSolverSettings")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ChaosSolverSettings")
 	}
 	static class UChaosSolverSettings* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UChaosSolverSettings>();
 	}
 };
-static_assert(alignof(UChaosSolverSettings) == 0x000008, "Wrong alignment on UChaosSolverSettings");
-static_assert(sizeof(UChaosSolverSettings) == 0x000070, "Wrong size on UChaosSolverSettings");
-static_assert(offsetof(UChaosSolverSettings, DefaultChaosSolverActorClass) == 0x000050, "Member 'UChaosSolverSettings::DefaultChaosSolverActorClass' has a wrong offset!");
+DUMPER7_ASSERTS_UChaosSolverSettings;
 
 }
 

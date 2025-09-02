@@ -417,9 +417,9 @@ bool AGeometryCollectionActor::RaycastSingle(const struct FVector& Start, const 
 // (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
 // float                                   Radius                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector&                   Position                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FVector&                   position                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UGeometryCollectionComponent::ApplyKinematicField(float Radius, const struct FVector& Position)
+void UGeometryCollectionComponent::ApplyKinematicField(float Radius, const struct FVector& position)
 {
 	static class UFunction* Func = nullptr;
 
@@ -429,7 +429,7 @@ void UGeometryCollectionComponent::ApplyKinematicField(float Radius, const struc
 	Params::GeometryCollectionComponent_ApplyKinematicField Parms{};
 
 	Parms.Radius = Radius;
-	Parms.Position = std::move(Position);
+	Parms.position = std::move(position);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

@@ -21,9 +21,7 @@ struct ImgMediaSource_AddGlobalCamera final
 public:
 	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ImgMediaSource_AddGlobalCamera) == 0x000008, "Wrong alignment on ImgMediaSource_AddGlobalCamera");
-static_assert(sizeof(ImgMediaSource_AddGlobalCamera) == 0x000008, "Wrong size on ImgMediaSource_AddGlobalCamera");
-static_assert(offsetof(ImgMediaSource_AddGlobalCamera, InActor) == 0x000000, "Member 'ImgMediaSource_AddGlobalCamera::InActor' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_AddGlobalCamera;
 
 // Function ImgMedia.ImgMediaSource.AddTargetObject
 // 0x0010 (0x0010 - 0x0000)
@@ -34,10 +32,7 @@ public:
 	float                                         Width;                                             // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
-static_assert(alignof(ImgMediaSource_AddTargetObject) == 0x000008, "Wrong alignment on ImgMediaSource_AddTargetObject");
-static_assert(sizeof(ImgMediaSource_AddTargetObject) == 0x000010, "Wrong size on ImgMediaSource_AddTargetObject");
-static_assert(offsetof(ImgMediaSource_AddTargetObject, InActor) == 0x000000, "Member 'ImgMediaSource_AddTargetObject::InActor' has a wrong offset!");
-static_assert(offsetof(ImgMediaSource_AddTargetObject, Width) == 0x000008, "Member 'ImgMediaSource_AddTargetObject::Width' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_AddTargetObject;
 
 // Function ImgMedia.ImgMediaSource.RemoveGlobalCamera
 // 0x0008 (0x0008 - 0x0000)
@@ -46,9 +41,7 @@ struct ImgMediaSource_RemoveGlobalCamera final
 public:
 	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ImgMediaSource_RemoveGlobalCamera) == 0x000008, "Wrong alignment on ImgMediaSource_RemoveGlobalCamera");
-static_assert(sizeof(ImgMediaSource_RemoveGlobalCamera) == 0x000008, "Wrong size on ImgMediaSource_RemoveGlobalCamera");
-static_assert(offsetof(ImgMediaSource_RemoveGlobalCamera, InActor) == 0x000000, "Member 'ImgMediaSource_RemoveGlobalCamera::InActor' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_RemoveGlobalCamera;
 
 // Function ImgMedia.ImgMediaSource.RemoveTargetObject
 // 0x0008 (0x0008 - 0x0000)
@@ -57,9 +50,7 @@ struct ImgMediaSource_RemoveTargetObject final
 public:
 	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ImgMediaSource_RemoveTargetObject) == 0x000008, "Wrong alignment on ImgMediaSource_RemoveTargetObject");
-static_assert(sizeof(ImgMediaSource_RemoveTargetObject) == 0x000008, "Wrong size on ImgMediaSource_RemoveTargetObject");
-static_assert(offsetof(ImgMediaSource_RemoveTargetObject, InActor) == 0x000000, "Member 'ImgMediaSource_RemoveTargetObject::InActor' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_RemoveTargetObject;
 
 // Function ImgMedia.ImgMediaSource.SetMipLevelDistance
 // 0x0004 (0x0004 - 0x0000)
@@ -68,9 +59,7 @@ struct ImgMediaSource_SetMipLevelDistance final
 public:
 	float                                         Distance;                                          // 0x0000(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ImgMediaSource_SetMipLevelDistance) == 0x000004, "Wrong alignment on ImgMediaSource_SetMipLevelDistance");
-static_assert(sizeof(ImgMediaSource_SetMipLevelDistance) == 0x000004, "Wrong size on ImgMediaSource_SetMipLevelDistance");
-static_assert(offsetof(ImgMediaSource_SetMipLevelDistance, Distance) == 0x000000, "Member 'ImgMediaSource_SetMipLevelDistance::Distance' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_SetMipLevelDistance;
 
 // Function ImgMedia.ImgMediaSource.SetSequencePath
 // 0x0010 (0x0010 - 0x0000)
@@ -79,9 +68,7 @@ struct ImgMediaSource_SetSequencePath final
 public:
 	class FString                                 Path;                                              // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ImgMediaSource_SetSequencePath) == 0x000008, "Wrong alignment on ImgMediaSource_SetSequencePath");
-static_assert(sizeof(ImgMediaSource_SetSequencePath) == 0x000010, "Wrong size on ImgMediaSource_SetSequencePath");
-static_assert(offsetof(ImgMediaSource_SetSequencePath, Path) == 0x000000, "Member 'ImgMediaSource_SetSequencePath::Path' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_SetSequencePath;
 
 // Function ImgMedia.ImgMediaSource.GetProxies
 // 0x0010 (0x0010 - 0x0000)
@@ -90,9 +77,7 @@ struct ImgMediaSource_GetProxies final
 public:
 	TArray<class FString>                         OutProxies;                                        // 0x0000(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ImgMediaSource_GetProxies) == 0x000008, "Wrong alignment on ImgMediaSource_GetProxies");
-static_assert(sizeof(ImgMediaSource_GetProxies) == 0x000010, "Wrong size on ImgMediaSource_GetProxies");
-static_assert(offsetof(ImgMediaSource_GetProxies, OutProxies) == 0x000000, "Member 'ImgMediaSource_GetProxies::OutProxies' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_GetProxies;
 
 // Function ImgMedia.ImgMediaSource.GetSequencePath
 // 0x0010 (0x0010 - 0x0000)
@@ -101,9 +86,7 @@ struct ImgMediaSource_GetSequencePath final
 public:
 	class FString                                 ReturnValue;                                       // 0x0000(0x0010)(ConstParm, Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-static_assert(alignof(ImgMediaSource_GetSequencePath) == 0x000008, "Wrong alignment on ImgMediaSource_GetSequencePath");
-static_assert(sizeof(ImgMediaSource_GetSequencePath) == 0x000010, "Wrong size on ImgMediaSource_GetSequencePath");
-static_assert(offsetof(ImgMediaSource_GetSequencePath, ReturnValue) == 0x000000, "Member 'ImgMediaSource_GetSequencePath::ReturnValue' has a wrong offset!");
+DUMPER7_ASSERTS_ImgMediaSource_GetSequencePath;
 
 }
 

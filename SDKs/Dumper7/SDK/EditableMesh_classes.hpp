@@ -18,61 +18,64 @@ namespace SDK
 {
 
 // Class EditableMesh.EditableMeshAdapter
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UEditableMeshAdapter : public UObject
 {
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"EditableMeshAdapter">();
+		STATIC_CLASS_IMPL("EditableMeshAdapter")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"EditableMeshAdapter")
 	}
 	static class UEditableMeshAdapter* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UEditableMeshAdapter>();
 	}
 };
-static_assert(alignof(UEditableMeshAdapter) == 0x000008, "Wrong alignment on UEditableMeshAdapter");
-static_assert(sizeof(UEditableMeshAdapter) == 0x000030, "Wrong size on UEditableMeshAdapter");
+DUMPER7_ASSERTS_UEditableMeshAdapter;
 
 // Class EditableMesh.EditableGeometryCollectionAdapter
-// 0x00B0 (0x00E0 - 0x0030)
+// 0x00B0 (0x00D8 - 0x0028)
 class UEditableGeometryCollectionAdapter final : public UEditableMeshAdapter
 {
 public:
-	class UGeometryCollection*                    GeometryCollection;                                // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UGeometryCollection*                    OriginalGeometryCollection;                        // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         GeometryCollectionLODIndex;                        // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_44[0x9C];                                      // 0x0044(0x009C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UGeometryCollection*                    GeometryCollection;                                // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UGeometryCollection*                    OriginalGeometryCollection;                        // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         GeometryCollectionLODIndex;                        // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_3C[0x9C];                                      // 0x003C(0x009C)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"EditableGeometryCollectionAdapter">();
+		STATIC_CLASS_IMPL("EditableGeometryCollectionAdapter")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"EditableGeometryCollectionAdapter")
 	}
 	static class UEditableGeometryCollectionAdapter* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UEditableGeometryCollectionAdapter>();
 	}
 };
-static_assert(alignof(UEditableGeometryCollectionAdapter) == 0x000008, "Wrong alignment on UEditableGeometryCollectionAdapter");
-static_assert(sizeof(UEditableGeometryCollectionAdapter) == 0x0000E0, "Wrong size on UEditableGeometryCollectionAdapter");
-static_assert(offsetof(UEditableGeometryCollectionAdapter, GeometryCollection) == 0x000030, "Member 'UEditableGeometryCollectionAdapter::GeometryCollection' has a wrong offset!");
-static_assert(offsetof(UEditableGeometryCollectionAdapter, OriginalGeometryCollection) == 0x000038, "Member 'UEditableGeometryCollectionAdapter::OriginalGeometryCollection' has a wrong offset!");
-static_assert(offsetof(UEditableGeometryCollectionAdapter, GeometryCollectionLODIndex) == 0x000040, "Member 'UEditableGeometryCollectionAdapter::GeometryCollectionLODIndex' has a wrong offset!");
+DUMPER7_ASSERTS_UEditableGeometryCollectionAdapter;
 
 // Class EditableMesh.EditableMesh
-// 0x06E0 (0x0710 - 0x0030)
+// 0x06E0 (0x0708 - 0x0028)
 class UEditableMesh final : public UObject
 {
 public:
-	uint8                                         Pad_30[0x390];                                     // 0x0030(0x0390)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<class UEditableMeshAdapter*>           Adapters;                                          // 0x03C0(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3D0[0x8];                                      // 0x03D0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         TextureCoordinateCount;                            // 0x03D8(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3DC[0x148];                                    // 0x03DC(0x0148)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         PendingCompactCounter;                             // 0x0524(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         SubdivisionCount;                                  // 0x0528(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_52C[0x1E4];                                    // 0x052C(0x01E4)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x390];                                     // 0x0028(0x0390)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class UEditableMeshAdapter*>           Adapters;                                          // 0x03B8(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3C8[0x8];                                      // 0x03C8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         TextureCoordinateCount;                            // 0x03D0(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3D4[0x148];                                    // 0x03D4(0x0148)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         PendingCompactCounter;                             // 0x051C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         SubdivisionCount;                                  // 0x0520(0x0004)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_524[0x1E4];                                    // 0x0524(0x01E4)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static struct FEdgeID InvalidEdgeID();
@@ -210,22 +213,21 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"EditableMesh">();
+		STATIC_CLASS_IMPL("EditableMesh")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"EditableMesh")
 	}
 	static class UEditableMesh* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UEditableMesh>();
 	}
 };
-static_assert(alignof(UEditableMesh) == 0x000008, "Wrong alignment on UEditableMesh");
-static_assert(sizeof(UEditableMesh) == 0x000710, "Wrong size on UEditableMesh");
-static_assert(offsetof(UEditableMesh, Adapters) == 0x0003C0, "Member 'UEditableMesh::Adapters' has a wrong offset!");
-static_assert(offsetof(UEditableMesh, TextureCoordinateCount) == 0x0003D8, "Member 'UEditableMesh::TextureCoordinateCount' has a wrong offset!");
-static_assert(offsetof(UEditableMesh, PendingCompactCounter) == 0x000524, "Member 'UEditableMesh::PendingCompactCounter' has a wrong offset!");
-static_assert(offsetof(UEditableMesh, SubdivisionCount) == 0x000528, "Member 'UEditableMesh::SubdivisionCount' has a wrong offset!");
+DUMPER7_ASSERTS_UEditableMesh;
 
 // Class EditableMesh.EditableMeshFactory
-// 0x0000 (0x0030 - 0x0030)
+// 0x0000 (0x0028 - 0x0028)
 class UEditableMeshFactory final : public UObject
 {
 public:
@@ -234,41 +236,44 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"EditableMeshFactory">();
+		STATIC_CLASS_IMPL("EditableMeshFactory")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"EditableMeshFactory")
 	}
 	static class UEditableMeshFactory* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UEditableMeshFactory>();
 	}
 };
-static_assert(alignof(UEditableMeshFactory) == 0x000008, "Wrong alignment on UEditableMeshFactory");
-static_assert(sizeof(UEditableMeshFactory) == 0x000030, "Wrong size on UEditableMeshFactory");
+DUMPER7_ASSERTS_UEditableMeshFactory;
 
 // Class EditableMesh.EditableStaticMeshAdapter
-// 0x00B8 (0x00E8 - 0x0030)
+// 0x00B8 (0x00E0 - 0x0028)
 class UEditableStaticMeshAdapter final : public UEditableMeshAdapter
 {
 public:
-	class UStaticMesh*                            StaticMesh;                                        // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	class UStaticMesh*                            OriginalStaticMesh;                                // 0x0038(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         StaticMeshLODIndex;                                // 0x0040(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_44[0xA4];                                      // 0x0044(0x00A4)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	class UStaticMesh*                            StaticMesh;                                        // 0x0028(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class UStaticMesh*                            OriginalStaticMesh;                                // 0x0030(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         StaticMeshLODIndex;                                // 0x0038(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_3C[0xA4];                                      // 0x003C(0x00A4)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"EditableStaticMeshAdapter">();
+		STATIC_CLASS_IMPL("EditableStaticMeshAdapter")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"EditableStaticMeshAdapter")
 	}
 	static class UEditableStaticMeshAdapter* GetDefaultObj()
 	{
 		return GetDefaultObjImpl<UEditableStaticMeshAdapter>();
 	}
 };
-static_assert(alignof(UEditableStaticMeshAdapter) == 0x000008, "Wrong alignment on UEditableStaticMeshAdapter");
-static_assert(sizeof(UEditableStaticMeshAdapter) == 0x0000E8, "Wrong size on UEditableStaticMeshAdapter");
-static_assert(offsetof(UEditableStaticMeshAdapter, StaticMesh) == 0x000030, "Member 'UEditableStaticMeshAdapter::StaticMesh' has a wrong offset!");
-static_assert(offsetof(UEditableStaticMeshAdapter, OriginalStaticMesh) == 0x000038, "Member 'UEditableStaticMeshAdapter::OriginalStaticMesh' has a wrong offset!");
-static_assert(offsetof(UEditableStaticMeshAdapter, StaticMeshLODIndex) == 0x000040, "Member 'UEditableStaticMeshAdapter::StaticMeshLODIndex' has a wrong offset!");
+DUMPER7_ASSERTS_UEditableStaticMeshAdapter;
 
 }
 
