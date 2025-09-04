@@ -24,7 +24,9 @@ Build Configuration: Release
 # Dependencies
 ### [Dumper-7](https://github.com/Encryqed/Dumper-7) & [ImGui](https://github.com/ocornut/imgui) & [CranchyLib.CPP](https://github.com/Cranch-fur/CranchyLib.CPP)
 
-# Examples
+# Showcase
+https://github.com/user-attachments/assets/0ac43152-42a2-4352-9e07-7fcffe0a20e5
+
 ### Unreal Engine 4.22.3 — Samurai Jack: Battle Through Time
 `Lines of code modified: 2`
 
