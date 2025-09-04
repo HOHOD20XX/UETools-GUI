@@ -1,10 +1,13 @@
 # UETools-GUI
-Dumper-7 (SDK) based solution for quick & easy debugging of Unreal Engine powered games. So easy to start with that within 5 minutes you will get it running on any* game given.
-> \*Dumper-7 must generate a valid SDK in order for a game to be considered "supported".
+Dumper-7 (SDK) based solution for quick & easy debugging of Unreal Engine powered titles. So easy to start with that within 5 minutes you will get it running on any* game given.
+> \*Dumper-7 must generate a valid SDK in order for a title to be considered "supported".
 > 
 > \*UETools-GUI was developed with Unreal Engine 4.27 in mind, so the project can be relatively easily upgraded or downgraded. Certain parts of the code may need to be modified to account for the specifics of your Engine (such as not yet implemented or deprecated variables and functions).
 > 
 > **P.S:** When working with Unreal Engine 5 based games, consider uncommenting "#define UE5" within the "GUI.h" file.
+
+# Disclaimer
+Solution was developed for use in [Unreal Engine](https://www.unrealengine.com/en-US) powered titles. The author does not condone cheating, modding, or the manipulation of [online competitive games](https://en.wikipedia.org/wiki/List_of_esports_games). The author bears no responsibility for the specific games or contexts in which the solution is used.
 
 # Getting Started
 1. Download and unpack OR Git Clone the repository;
