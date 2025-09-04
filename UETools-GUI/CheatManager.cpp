@@ -12,7 +12,7 @@ bool CheatManager::IsCheatManagerPresent()
 
 SDK::UCheatManager* CheatManager::GetCheatManager()
 {
-	SDK::APlayerController* Controller = Controller::GetController();
+	SDK::APlayerController* Controller = PlayerController::GetPlayerController();
 	if (Controller == nullptr || Controller->CheatManager == nullptr)
 		return nullptr;
 
@@ -21,7 +21,7 @@ SDK::UCheatManager* CheatManager::GetCheatManager()
 
 bool CheatManager::SetCheatManager(SDK::UCheatManager* newCheatManager)
 {
-	SDK::APlayerController* Controller = Controller::GetController();
+	SDK::APlayerController* Controller = PlayerController::GetPlayerController();
 	if (Controller == nullptr)
 		return false;
 
@@ -31,7 +31,7 @@ bool CheatManager::SetCheatManager(SDK::UCheatManager* newCheatManager)
 
 bool CheatManager::ConstructCheatManager()
 {
-	SDK::APlayerController* Controller = Controller::GetController();
+	SDK::APlayerController* Controller = PlayerController::GetPlayerController();
 	if (Controller == nullptr)
 		return false;
 
@@ -56,7 +56,7 @@ bool CheatManager::ConstructCheatManager()
 
 SDK::TSubclassOf<SDK::UCheatManager> CheatManager::GetCheatManagerClass()
 {
-	SDK::APlayerController* Controller = Controller::GetController();
+	SDK::APlayerController* Controller = PlayerController::GetPlayerController();
 	if (Controller == nullptr || Controller->CheatClass == nullptr)
 		return nullptr;
 
@@ -65,7 +65,7 @@ SDK::TSubclassOf<SDK::UCheatManager> CheatManager::GetCheatManagerClass()
 
 bool CheatManager::SetCheatManagerClass(const SDK::TSubclassOf<SDK::UCheatManager>& newCheatManagerClass)
 {
-	SDK::APlayerController* Controller = Controller::GetController();
+	SDK::APlayerController* Controller = PlayerController::GetPlayerController();
 	if (Controller == nullptr)
 		return false;
 

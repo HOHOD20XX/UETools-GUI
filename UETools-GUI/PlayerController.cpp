@@ -1,11 +1,11 @@
-#include "Controller.h"
+#include "PlayerController.h"
 
 
 
 
 
 
-SDK::APlayerController* Controller::GetController(const int32_t& playerIndex)
+SDK::APlayerController* PlayerController::GetPlayerController(const int32_t& playerIndex)
 {
     SDK::UWorld* World = SDK::UWorld::GetWorld();
     if (World == nullptr)
@@ -18,27 +18,27 @@ SDK::APlayerController* Controller::GetController(const int32_t& playerIndex)
     return Controller;
 }
 
-SDK::APawn* Controller::GetPawn(const int32_t& playerIndex)
+SDK::APawn* PlayerController::GetPawn(const int32_t& playerIndex)
 {
-    SDK::APlayerController* Controller = GetController(playerIndex);
+    SDK::APlayerController* Controller = GetPlayerController(playerIndex);
     if (Controller == nullptr || Controller->AcknowledgedPawn == nullptr)
         return nullptr;
 
     return Controller->AcknowledgedPawn;
 }
 
-SDK::ACharacter* Controller::GetCharacter(const int32_t& playerIndex)
+SDK::ACharacter* PlayerController::GetCharacter(const int32_t& playerIndex)
 {
-    SDK::APlayerController* Controller = GetController(playerIndex);
+    SDK::APlayerController* Controller = GetPlayerController(playerIndex);
     if (Controller == nullptr || Controller->Character == nullptr)
         return nullptr;
 
     return Controller->Character;
 }
 
-SDK::UPlayer* Controller::GetPlayer(const int32_t& playerIndex)
+SDK::UPlayer* PlayerController::GetPlayer(const int32_t& playerIndex)
 {
-    SDK::APlayerController* Controller = GetController(playerIndex);
+    SDK::APlayerController* Controller = GetPlayerController(playerIndex);
     if (Controller == nullptr || Controller->Player == nullptr)
         return nullptr;
 

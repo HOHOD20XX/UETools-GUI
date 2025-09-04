@@ -33,13 +33,61 @@ namespace ImGui
 	};
 
 
+	void TextBool(const char* label, const bool& inBool, const char* text_true, const char* text_false, const bool& useColoring, const ImU32& color_true, const ImU32& color_false);
+	void TextBool(const char* label, const bool& inBool);
+	void TextBoolColored(const char* label, const bool& status);
+	void TextBoolPresence(const char* label, const bool& presence);
+	void TextBoolPresenceColored(const char* label, const bool& presence);
+	void TextBoolMultiplePresence(const char* label, const bool& presence);
+	void TextBoolMultiplePresenceColored(const char* label, const bool& presence);
+
+
+	void TextFloat(const char* label, const float& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative);
+	void TextFloat(const char* label, const float& value);
+	void TextFloatColored(const char* label, const float& value);
+
+
+	void TextInt(const char* label, const int32_t& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative);
+	void TextInt(const char* label, const int32_t& value);
+	void TextIntColored(const char* label, const int32_t& value);
+
+
+	void TextVector(const char* label, const SDK::FVector& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative);
+	void TextVector(const char* label, const SDK::FVector& value);
+	void TextVectorColored(const char* label, const SDK::FVector& value);
+
+
+	void TextRotator(const char* label, const SDK::FRotator& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative);
+	void TextRotator(const char* label, const SDK::FRotator& value);
+	void TextRotatorColored(const char* label, const SDK::FRotator& value);
+
+
+	void ReadOnlyInputText(const char* label, const char* text, const bool& showCopyButton);
+
+
 	static int ImGuiKey_ToWinAPI(const ImGuiKey& key);
-
-
 	bool KeyBindingInput(const char* label, S_KeyBinding* binding);
 	bool IsKeyBindingPressed(S_KeyBinding* binding, const bool& waitForRelease = true);
 	bool IsKeyBindingDown(S_KeyBinding* binding);
 	bool IsKeyBindingReleased(S_KeyBinding* binding);
+
+
+	static void SetFontScale(const float& fontScale)
+	{
+		SetWindowFontScale(fontScale);
+	}
+	static void SetFontSmall()
+	{
+		SetFontScale(0.5f);
+	}
+	static void SetFontRegular()
+	{
+		SetFontScale(1.0f);
+	}
+	static void SetFontTitle()
+	{
+		SetFontScale(1.5f);
+	}
 }
 
 
@@ -191,23 +239,56 @@ public:
 	class SharedData
 	{
 	public:
+		struct S_Console
+		{
+			SDK::UConsole* consoleReference;
+			std::string consoleClass;
+			std::string consoleObject;
+		};
+
+		struct S_ViewportClient
+		{
+			SDK::UGameViewportClient* viewportClientReference;
+			std::string viewportClientClass;
+			std::string viewportClientObject;
+
+			S_Console console;
+		};
+
 		struct S_Engine
 		{
 			SDK::UEngine* engineReference;
 			std::string engineClass;
 			std::string engineObject;
 
+			S_ViewportClient viewportClient;
+
 			bool fixedFrameRateEnabled;
 			double fixedFrameRate;
 
 			bool smoothFrameRateEnabled;
-			double smoothFrameRateLowerBound;
-			double smoothFrameRateUpperBound;
+			SDK::FFloatRange smoothFrameRateRange;
 
 			bool subtitlesEnabled;
 			bool subtitlesForcedOff;
 
 			bool pauseOnLossOfFocus;
+		};
+
+		struct S_OnlineSession
+		{
+			SDK::UOnlineSession* onlineSessionReference;
+			std::string onlineSessionClass;
+			std::string onlineSessionObject;
+		};
+
+		struct S_GameInstance
+		{
+			SDK::UGameInstance* gameInstanceReference;
+			std::string gameInstanceClass;
+			std::string gameInstanceObject;
+
+			S_OnlineSession onlineSession;
 		};
 
 		struct S_GameSession
@@ -244,10 +325,6 @@ public:
 			bool isPausable;
 		};
 
-
-
-
-	public:
 		struct S_WorldSettings
 		{
 			SDK::AWorldSettings* worldSettingsReference;
@@ -283,6 +360,107 @@ public:
 			S_Level level;
 		};
 
+		struct S_GameState
+		{
+			SDK::AGameStateBase* gameStateReference;
+			std::string gameStateClass;
+			std::string gameStateObject;
+		};
+
+		struct S_NetDriver
+		{
+			SDK::UNetDriver* netDriverReference;
+			std::string netDriverClass;
+			std::string netDriverObject;
+		};
+
+		struct S_DemoNetDriver
+		{
+			SDK::UNetDriver* demoNetDriverReference;
+			std::string demoNetDriverClass;
+			std::string demoNetDriverObject;
+		};
+
+		struct S_World
+		{
+			SDK::UWorld* worldReference;
+			std::string worldClass;
+			std::string worldObject;
+
+			S_GameState gameState;
+
+			S_NetDriver netDriver;
+			S_DemoNetDriver demoNetDriver;
+
+			S_Level persistentLevel;
+
+			std::vector<S_StreamingLevel> streamingLevels;
+
+			double gameTimeInSeconds;
+
+			bool isServer;
+			bool isDedicatedServer;
+			bool isSplitScreen;
+			bool isStandalone;
+		};
+
+		struct S_Player
+		{
+			SDK::UPlayer* playerReference;
+			std::string playerClass;
+			std::string playerObject;
+		};
+
+		struct S_Pawn
+		{
+			SDK::APawn* pawnReference;
+			std::string pawnClass;
+			std::string pawnObject;
+
+			SDK::FVector location;
+			SDK::FRotator rotation;
+			SDK::FVector scale;
+
+			bool isControlled;
+			bool isPawnControlled;
+			bool isPlayerControlled;
+			bool isLocallyControlled;
+			bool isBotControlled;
+		};
+
+		struct S_CameraManager
+		{
+			SDK::APlayerCameraManager* cameraManagerReference;
+			std::string cameraManagerClass;
+			std::string cameraManagerObject;
+
+			SDK::FVector location;
+			SDK::FRotator rotation;
+			SDK::FVector scale;
+		};
+
+		struct S_CheatManager
+		{
+			SDK::UCheatManager* cheatManagerReference;
+			std::string cheatManagerClass;
+			std::string cheatManagerObject;
+		};
+
+		struct S_PlayerController
+		{
+			SDK::APlayerController* playerControllerReference;
+			std::string playerControllerClass;
+			std::string playerControllerObject;
+
+			S_Player player;
+
+			S_Pawn pawn;
+
+			S_CameraManager cameraManager;
+
+			S_CheatManager cheatManager;
+		};
+
 
 
 
@@ -290,76 +468,21 @@ public:
 		struct S_DebugInformation
 		{
 			bool isActive;
-			bool autoUpdate;
 
 			double lastUpdateTime;
 
+			bool autoUpdate;
+			float autoUpdateDelay = 0.01f;
+
 			S_Engine engine;
 
-			bool isGameInstancePresent;
-			std::string gameInstanceClass;
-			std::string gameInstanceObject;
+			S_GameInstance gameInstance;
 
 			S_GameMode gameMode;
 
-			bool isGameStatePresent;
-			std::string gameStateClass;
-			std::string gameStateObject;
+			S_PlayerController playerController;
 
-			bool isConsolePresent;
-			std::string consoleClass;
-			std::string consoleObject;
-
-			bool isCheatManagerPresent;
-			std::string cheatManagerClass;
-			std::string cheatManagerObject;
-
-			bool isControllerPresent;
-			std::string controllerClass;
-			std::string controllerObject;
-
-				bool isPlayerPresent;
-				std::string playerClass;
-				std::string playerObject;
-
-				bool isPawnPresent;
-				std::string pawnClass;
-				std::string pawnObject;
-				std::string pawnLocation;
-				std::string pawnRotation;
-				std::string pawnScale;
-				bool isPawnControlled;
-				bool isPawnPawnControlled;
-				bool isPawnPlayerControlled;
-				bool isPawnLocallyControlled;
-				bool isPawnBotControlled;
-
-				bool isCameraManagerPresent;
-				std::string cameraManagerClass;
-				std::string cameraManagerObject;
-				std::string cameraManagerLocation;
-				std::string cameraManagerRotation;
-				std::string cameraManagerScale;
-
-			bool isViewportClientPresent;
-			std::string viewportClientClass;
-			std::string viewportClientObject;
-
-			bool isWorldPresent;
-			std::string worldClass;
-			std::string worldObject;
-
-				S_Level persistentLevel;
-
-				bool areStreamingLevelsPresent;
-				std::vector<S_StreamingLevel> streamingLevels;
-
-				double gameTimeInSeconds;
-
-				bool isServer;
-				bool isDedicatedServer;
-				bool isSplitScreen;
-				bool isStandalone;
+			S_World world;
 
 			bool wasProjectNameObtained;
 			std::string projectName;
@@ -394,11 +517,16 @@ public:
 
 
 	public:
+		struct S_DirectionalMovement
+		{
+			bool enabled;
+			double movementStep = 45.0;
+			double movementDelay = 0.05;
+		};
+
 		struct S_FeaturesInformation
 		{
-			bool isDirectionalMovementEnabled;
-			double directionalMovementStep = 45.0;
-			double directionalMovementDelay = 0.1;
+			S_DirectionalMovement directionalMovement;
 
 			float launchVelocity[3] = { 0.0f, 0.0f, 1325.0f };
 
@@ -412,7 +540,8 @@ public:
 	public:
 		struct S_KeybindingsInformation
 		{
-			ImGui::S_KeyBinding menuOpenClose;
+			ImGui::S_KeyBinding menuOpenCloseSub;
+			ImGui::S_KeyBinding menuOpenCloseMain;
 
 			ImGui::S_KeyBinding ghost;
 			ImGui::S_KeyBinding fly;
@@ -424,7 +553,8 @@ public:
 			ImGui::S_KeyBinding dash;
 
 			S_KeybindingsInformation()
-				: menuOpenClose{ ImGuiKey_Insert },
+				: menuOpenCloseSub { ImGuiKey_LeftShift },
+				  menuOpenCloseMain{ ImGuiKey_Insert },
 				  ghost{ ImGuiKey_Keypad7 },
 				  fly{ ImGuiKey_Keypad8 },
 				  walk{ ImGuiKey_Keypad9 }

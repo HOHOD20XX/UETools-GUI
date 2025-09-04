@@ -55,7 +55,7 @@ bool Console::Print(const std::wstring& wideString)
     const wchar_t* wCharString = wideString.c_str();
     wprintf(L"%ls\n", wCharString);
 
-	if (SDK::APlayerController* controller = Controller::GetController())
+	if (SDK::APlayerController* controller = PlayerController::GetPlayerController())
 	{
 		SDK::FString fString = SDK::FString(wCharString);
 		controller->ClientMessage(fString, SDK::UKismetStringLibrary::Conv_StringToName(L"None"), 0);

@@ -5,6 +5,341 @@
 
 
 
+// ========================================================
+// |             #IMGUI #CONTROLS #KEYBINDINGS            |
+// ========================================================
+void ImGui::TextBool(const char* label, const bool& inBool, const char* text_true, const char* text_false, const bool& useColoring, const ImU32& color_true, const ImU32& color_false)
+{
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
+
+		ImGui::SameLine();
+	}
+
+	if (useColoring)
+	{
+		ImGui::PushStyleColor(ImGuiCol_Text, inBool ? color_true : color_false);
+		ImGui::TextUnformatted(inBool
+									? (text_true ? text_true : "BOOL_TRUE")
+									: (text_false ? text_false : "BOOL_FALSE"));
+		ImGui::PopStyleColor();
+	}
+	else
+		ImGui::TextUnformatted(inBool
+									? (text_true ? text_true : "BOOL_TRUE")
+									: (text_false ? text_false : "BOOL_FALSE"));
+	
+}
+
+void ImGui::TextBool(const char* label, const bool& inBool)
+{
+	TextBool(label, inBool, "True", "False", false, ImU32(), ImU32());
+}
+
+void ImGui::TextBoolColored(const char* label, const bool& status)
+{
+	static const ImU32 color_true = IM_COL32(51, 204, 77, 255);
+	static const ImU32 color_false = IM_COL32(204, 77, 51, 255);
+
+	TextBool(label, status, "True", "False", true, color_true, color_false);
+}
+
+void ImGui::TextBoolPresence(const char* label, const bool& presence)
+{
+	TextBool(label, presence, "Is Present", "Doesn't Exist!", false, ImU32(), ImU32());
+}
+
+void ImGui::TextBoolPresenceColored(const char* label, const bool& presence)
+{
+	static const ImU32 color_true = IM_COL32(51, 204, 77, 255);
+	static const ImU32 color_false = IM_COL32(204, 77, 51, 255);
+
+	TextBool(label, presence, "Is Present", "Doesn't Exist!", true, color_true, color_false);
+}
+
+void ImGui::TextBoolMultiplePresence(const char* label, const bool& presence)
+{
+	TextBool(label, presence, "Are Present", "Are Non Existent!", false, ImU32(), ImU32());
+}
+
+void ImGui::TextBoolMultiplePresenceColored(const char* label, const bool& presence)
+{
+	static const ImU32 color_true = IM_COL32(51, 204, 77, 255);
+	static const ImU32 color_false = IM_COL32(204, 77, 51, 255);
+
+	TextBool(label, presence, "Are Present", "Are Non Existent!", true, color_true, color_false);
+}
+
+
+
+
+void ImGui::TextFloat(const char* label, const float& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative)
+{
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
+
+		ImGui::SameLine();
+	}
+
+	if (useColoring && value != 0.0f)
+	{
+		ImGui::PushStyleColor(ImGuiCol_Text, value > 0.0f ? color_positive : color_negative);
+		ImGui::Text("%f", value);
+		ImGui::PopStyleColor();;
+	}
+	else
+		ImGui::Text("%f", value);
+}
+
+void ImGui::TextFloat(const char* label, const float& value)
+{
+	TextFloat(label, value, false, ImU32(), ImU32());
+}
+
+void ImGui::TextFloatColored(const char* label, const float& value)
+{
+	static const ImU32 color_positive = IM_COL32(51, 204, 77, 255);
+	static const ImU32 color_negative = IM_COL32(204, 77, 51, 255);
+
+	TextFloat(label, value, true, color_positive, color_negative);
+}
+
+
+
+
+void ImGui::TextInt(const char* label, const int32_t& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative)
+{
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
+
+		ImGui::SameLine();
+	}
+
+	if (useColoring && value != 0)
+	{
+		ImGui::PushStyleColor(ImGuiCol_Text, value > 0.0f ? color_positive : color_negative);
+		ImGui::Text("%d", value);
+		ImGui::PopStyleColor();;
+	}
+	else
+		ImGui::Text("%d", value);
+}
+
+void ImGui::TextInt(const char* label, const int32_t& value)
+{
+	TextInt(label, value, false, ImU32(), ImU32());
+}
+
+void ImGui::TextIntColored(const char* label, const int32_t& value)
+{
+	static const ImU32 color_positive = IM_COL32(51, 204, 77, 255);
+	static const ImU32 color_negative = IM_COL32(204, 77, 51, 255);
+
+	TextInt(label, value, true, color_positive, color_negative);
+}
+
+
+
+
+void ImGui::TextVector(const char* label, const SDK::FVector& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative)
+{
+	constexpr ImU32 axis_colors[3]
+	{
+		IM_COL32(255, 0, 0, 255),
+		IM_COL32(0, 255, 0, 255),
+		IM_COL32(0, 0, 255, 255)
+	};
+
+	constexpr const char* axis_prefixes[3]
+	{
+		"X:",
+		"Y:",
+		"Z:"
+	};
+
+	const float coords[3]
+	{
+		value.X,
+		value.Y,
+		value.Z
+	};
+
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
+
+		ImGui::SameLine();
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (useColoring) ImGui::PushStyleColor(ImGuiCol_Text, axis_colors[i]);
+		ImGui::TextUnformatted(axis_prefixes[i]);
+		if (useColoring) ImGui::PopStyleColor();
+
+		ImGui::SameLine();
+
+		bool neutralValue = coords[i] > -0.0000001 && coords[i] < 0.0000001;
+		if (useColoring && !neutralValue) ImGui::PushStyleColor(ImGuiCol_Text, coords[i] > 0.0 ? color_positive : color_negative);
+		ImGui::Text("%f", neutralValue ? 0.0 : coords[i]);
+		if (useColoring && !neutralValue) ImGui::PopStyleColor();
+
+		if (i != 2)
+		{
+			ImGui::SameLine();
+			ImGui::Spacing();
+			ImGui::SameLine();
+		}
+	}
+}
+
+void ImGui::TextVector(const char* label, const SDK::FVector& value)
+{
+	TextVector(label, value, false, ImU32(), ImU32());
+}
+
+void ImGui::TextVectorColored(const char* label, const SDK::FVector& value)
+{
+	static const ImU32 color_positive = IM_COL32(51, 204, 77, 255);
+	static const ImU32 color_negative = IM_COL32(204, 77, 51, 255);
+
+	TextVector(label, value, true, color_positive, color_negative);
+}
+
+
+
+
+void ImGui::TextRotator(const char* label, const SDK::FRotator& value, const bool& useColoring, const ImU32& color_positive, const ImU32& color_negative)
+{
+	constexpr ImU32 axis_colors[3]
+	{
+		IM_COL32(255, 0, 0, 255),
+		IM_COL32(0, 255, 0, 255),
+		IM_COL32(0, 0, 255, 255)
+	};
+
+	constexpr const char* axis_prefixes[3]
+	{
+		"Pitch:",
+		"Yaw:",
+		"Roll:"
+	};
+
+	const float angles[3]
+	{
+		value.Pitch,
+		value.Yaw,
+		value.Roll
+	};
+
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
+
+		ImGui::SameLine();
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (useColoring) ImGui::PushStyleColor(ImGuiCol_Text, axis_colors[i]);
+		ImGui::TextUnformatted(axis_prefixes[i]);
+		if (useColoring) ImGui::PopStyleColor();
+
+		ImGui::SameLine();
+
+		bool neutralValue = angles[i] > -0.0000001 && angles[i] < 0.0000001;
+		if (useColoring && !neutralValue) ImGui::PushStyleColor(ImGuiCol_Text, angles[i] > 0.0 ? color_positive : color_negative);
+		ImGui::Text("%f (%.2fC)", neutralValue ? 0.0 : angles[i], neutralValue ? 0.0 : (-360.0 + (angles[i] + 1) * 360.0));
+		if (useColoring && !neutralValue) ImGui::PopStyleColor();
+
+		if (i != 2)
+		{
+			ImGui::SameLine();
+			ImGui::Spacing();
+			ImGui::SameLine();
+		}
+	}
+}
+
+void ImGui::TextRotator(const char* label, const SDK::FRotator& value)
+{
+	TextRotator(label, value, false, ImU32(), ImU32());
+}
+
+void ImGui::TextRotatorColored(const char* label, const SDK::FRotator& value)
+{
+	static const ImU32 color_positive = IM_COL32(51, 204, 77, 255);
+	static const ImU32 color_negative = IM_COL32(204, 77, 51, 255);
+
+	TextRotator(label, value, true, color_positive, color_negative);
+}
+
+
+
+
+void ImGui::ReadOnlyInputText(const char* label, const char* text, const bool& showCopyButton)
+{
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
+
+		ImGui::SameLine();
+	}
+
+	ImGui::PushID(label ? label : (text ? text : "##ReadOnlyInputText"));
+	const size_t length = text ? strlen(text) : 0;
+
+	static std::vector<char> buffer;
+	buffer.clear();
+
+	if (text && length)
+		buffer.insert(buffer.end(), text, text + length);
+	buffer.push_back('\0');
+
+	ImGui::InputText("##ReadOnlyInputText", buffer.data(), buffer.size(), ImGuiInputTextFlags_ReadOnly);
+	if (showCopyButton)
+	{
+		ImGui::SameLine();
+		if (ImGui::Button("Copy"))
+		{
+			WindowsUtilities::SetClipboard(buffer.data());
+			GUI::PlayActionSound(true);
+		}
+	}
+
+	ImGui::PopID();
+}
+
+
+
+
 int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 {
 	switch (key)
@@ -102,9 +437,6 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 		default: return 0;
 	}
 }
-
-
-
 
 bool ImGui::KeyBindingInput(const char* label, S_KeyBinding* binding)
 {
@@ -226,7 +558,9 @@ bool ImGui::IsKeyBindingReleased(S_KeyBinding* binding)
 
 
 
-
+// ========================================================
+// |                #GUI #UI #USERINTERFACE               |
+// ========================================================
 void GUI::Create(const HMODULE& applicationModule)
 {
 	DirectWindow::SetApplicationModule(applicationModule);
@@ -279,16 +613,52 @@ void GUI::Draw()
 
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.5) | ");
+			ImGui::Text("UETools GUI (v0.6) | ");
 			if (ImGui::BeginMenu("Debug"))
 			{
 				if (SharedData::debugInfo.isActive)
 				{
 					ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-					if (SharedData::SharedData::debugInfo.autoUpdate)
+
+					static const char* menuSpacer = "                                                                                               ";
+					ImGui::TextUnformatted(menuSpacer, menuSpacer + 96);
+
+					if (SharedData::debugInfo.autoUpdate)
 					{
-						ImGui::Text("Updates on every frame");
-						SharedCalls::UpdateDebugInformation();
+						float updatesPerSecond = 1.0f / SharedData::debugInfo.autoUpdateDelay;
+						if (updatesPerSecond > 1.0f)
+							ImGui::Text("Updates %d times per second", (int32_t)(updatesPerSecond));
+						else
+						{
+							float updatesPerMinute = 60.0f / SharedData::debugInfo.autoUpdateDelay;
+							if (updatesPerMinute > 1.0f)
+								ImGui::Text("Updates %d times per minute", (int32_t)(updatesPerMinute));
+							else
+							{
+								float updatesPerHour = 3600.0f / SharedData::debugInfo.autoUpdateDelay;
+								if (updatesPerHour > 1.0f)
+									ImGui::Text("Updates %d times per hour", (int32_t)(updatesPerHour));
+								else
+								{
+									float updatesPerDay = 86400.0f / SharedData::debugInfo.autoUpdateDelay;
+									if (updatesPerDay > 1.0f)
+										ImGui::Text("Updates %d times per day", (int32_t)(updatesPerDay));
+									else
+										ImGui::Text("Updates periodically", (int32_t)(updatesPerDay));
+								}
+							}
+						}
+						if (ImGui::InputFloat("Auto Update Delay", &SharedData::debugInfo.autoUpdateDelay, 0.01f, 0.1f))
+						{
+							if (SharedData::debugInfo.autoUpdateDelay < 0.01f)
+								SharedData::debugInfo.autoUpdateDelay = 0.01f;
+						}
+
+						const double now = ImGui::GetTime();
+						const double elapsed = now - SharedData::debugInfo.lastUpdateTime;
+
+						if (elapsed >= SharedData::debugInfo.autoUpdateDelay)
+							SharedCalls::UpdateDebugInformation();
 					}
 					else
 					{
@@ -336,420 +706,135 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					ImGui::Text("Engine: %s", SharedData::debugInfo.engine.engineReference ? "Is Present" : "Doesn't Exist!");
+					ImGui::SetFontTitle();
+					ImGui::TextBoolPresenceColored("Engine:", SharedData::debugInfo.engine.engineReference);
+					ImGui::SetFontRegular();
 					if (SharedData::debugInfo.engine.engineReference)
 					{
-						ImGui::Text("Engine Class: %s", SharedData::debugInfo.engine.engineClass.c_str());
-						ImGui::Text("Engine Object: %s", SharedData::debugInfo.engine.engineObject.c_str());
-
-						ImGui::NewLine();
-
-						ImGui::Text("Fixed FrameRate Enabled: %s", SharedData::debugInfo.engine.fixedFrameRateEnabled ? "True" : "False");
-						ImGui::SameLine();
-						ImGui::Spacing();
-						ImGui::SameLine();
-						if (ImGui::Button(SharedData::debugInfo.engine.fixedFrameRateEnabled ? "Disable##FixedFrameRate" : "Enable##FixedFrameRate"))
+						if (ImGui::CollapsingHeader("Details##Engine"))
 						{
-							if (SharedData::debugInfo.engine.engineReference)
+							ImGui::Text("Engine Class: %s", SharedData::debugInfo.engine.engineClass.c_str());
+							ImGui::Text("Engine Object: %s", SharedData::debugInfo.engine.engineObject.c_str());
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Viewport Client:", SharedData::debugInfo.engine.viewportClient.viewportClientReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.engine.viewportClient.viewportClientReference)
 							{
-								SharedData::debugInfo.engine.engineReference->bUseFixedFrameRate = !SharedData::debugInfo.engine.fixedFrameRateEnabled;
-								SharedCalls::UpdateDebugInformation();
-								PlayActionSound(true);
-							}
-							else
-								PlayActionSound(false);
-						}
-						ImGui::Text("Fixed FrameRate: %f", SharedData::debugInfo.engine.fixedFrameRate);
-
-						ImGui::NewLine();
-
-						ImGui::Text("Smooth FrameRate Enabled: %s", SharedData::debugInfo.engine.smoothFrameRateEnabled ? "True" : "False");
-						ImGui::SameLine();
-						ImGui::Spacing();
-						ImGui::SameLine();
-						if (ImGui::Button(SharedData::debugInfo.engine.smoothFrameRateEnabled ? "Disable##SmoothFrameRat" : "Enable##SmoothFrameRat"))
-						{
-							if (SharedData::debugInfo.engine.engineReference)
-							{
-								SharedData::debugInfo.engine.engineReference->bSmoothFrameRate = !SharedData::debugInfo.engine.smoothFrameRateEnabled;
-								SharedCalls::UpdateDebugInformation();
-								PlayActionSound(true);
-							}
-							else
-								PlayActionSound(false);
-						}
-						ImGui::Text("Smooth FrameRate Lower Bound: %f", SharedData::debugInfo.engine.smoothFrameRateLowerBound);
-						ImGui::Text("Smooth FrameRate Upper Bound: %f", SharedData::debugInfo.engine.smoothFrameRateUpperBound);
-
-						ImGui::NewLine();
-
-						ImGui::Text("Subtitles Enabled: %s", SharedData::debugInfo.engine.subtitlesEnabled ? "True" : "False");
-						ImGui::SameLine();
-						ImGui::Spacing();
-						ImGui::SameLine();
-						if (ImGui::Button(SharedData::debugInfo.engine.subtitlesEnabled ? "Disable##SubtitlesEnabled" : "Enable##SubtitlesEnabled"))
-						{
-							if (SharedData::debugInfo.engine.engineReference)
-							{
-								SharedData::debugInfo.engine.engineReference->bSubtitlesEnabled = !SharedData::debugInfo.engine.subtitlesEnabled;
-								SharedCalls::UpdateDebugInformation();
-								PlayActionSound(true);
-							}
-							else
-								PlayActionSound(false);
-						}
-						ImGui::Text("Subtitles Forced Off: %s", SharedData::debugInfo.engine.subtitlesForcedOff ? "True" : "False");
-						ImGui::SameLine();
-						ImGui::Spacing();
-						ImGui::SameLine();
-						if (ImGui::Button(SharedData::debugInfo.engine.subtitlesForcedOff ? "Disable##SubtitlesForcedOff" : "Enable##SubtitlesForcedOff"))
-						{
-							if (SharedData::debugInfo.engine.engineReference)
-							{
-								SharedData::debugInfo.engine.engineReference->bSubtitlesForcedOff = !SharedData::debugInfo.engine.subtitlesForcedOff;
-								SharedCalls::UpdateDebugInformation();
-								PlayActionSound(true);
-							}
-							else
-								PlayActionSound(false);
-						}
-
-						ImGui::NewLine();
-
-						ImGui::Text("Pause On Lost Focus: %s", SharedData::debugInfo.engine.pauseOnLossOfFocus ? "True" : "False");
-						ImGui::SameLine();
-						ImGui::Spacing();
-						ImGui::SameLine();
-						if (ImGui::Button(SharedData::debugInfo.engine.pauseOnLossOfFocus ? "Disable##PauseOnLostFocus" : "Enable##SmoothFrameRat##PauseOnLostFocus"))
-						{
-							if (SharedData::debugInfo.engine.engineReference)
-							{
-								SharedData::debugInfo.engine.engineReference->bPauseOnLossOfFocus = !SharedData::debugInfo.engine.pauseOnLossOfFocus;
-								SharedCalls::UpdateDebugInformation();
-								PlayActionSound(true);
-							}
-							else
-								PlayActionSound(false);
-						}
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Game Instance: %s", SharedData::debugInfo.isGameInstancePresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isGameInstancePresent)
-					{
-						ImGui::Text("Game Instance Class: %s", SharedData::debugInfo.gameInstanceClass.c_str());
-						ImGui::Text("Game Instance Object: %s", SharedData::debugInfo.gameInstanceObject.c_str());
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Game Mode: %s", SharedData::debugInfo.gameMode.gameModeReference ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.gameMode.gameModeReference)
-					{
-						ImGui::Text("Game Mode Class: %s", SharedData::debugInfo.gameMode.gameModeClass.c_str());
-						ImGui::Text("Game Mode Object: %s", SharedData::debugInfo.gameMode.gameModeObject.c_str());
-
-						ImGui::NewLine();
-
-						ImGui::Text("Game Session: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionReference ? "Is Present" : "Doesn't Exist!");
-						if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
-						{
-							if (ImGui::TreeNode("Game Session"))
-							{
-								ImGui::Text("Game Session Class: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionClass.c_str());
-								ImGui::Text("Game Session Object: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionObject.c_str());
-
-								ImGui::NewLine();
-
-								ImGui::Text("Max Players: %d", SharedData::debugInfo.gameMode.gameSession.maxPlayers);
-								ImGui::Text("Max Spectators: %d", SharedData::debugInfo.gameMode.gameSession.maxSpectators);
-								ImGui::Text("Max Party Size: %d", SharedData::debugInfo.gameMode.gameSession.maxPartySize);
-								ImGui::Text("Max Splitscreens Per Connection: %d", SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection);
-
-								ImGui::NewLine();
-
-								ImGui::Text("Session Name: %s", SharedData::debugInfo.gameMode.gameSession.sessionName);
-
-								ImGui::TreePop();
-							}
-						}
-
-						ImGui::NewLine();
-
-						ImGui::Text("Players Count: %d", SharedData::debugInfo.gameMode.playersCount);
-						ImGui::Text("Spectators Count: %d", SharedData::debugInfo.gameMode.spectatorsCount);
-
-						ImGui::NewLine();
-
-						ImGui::Text("Start Players As Spectator: %s", SharedData::debugInfo.gameMode.startPlayersAsSpectators ? "True" : "False");
-						ImGui::Text("Default Player Name: %s", SharedData::debugInfo.gameMode.defaultPlayerName);
-
-						ImGui::NewLine();
-
-						ImGui::Text("Use Seamless Travel: %s", SharedData::debugInfo.gameMode.useSeamlessTravel ? "True" : "False");
-
-						ImGui::NewLine();
-
-						ImGui::Text("Options: %s", SharedData::debugInfo.gameMode.options);
-						ImGui::Text("Is Pausable: %s", SharedData::debugInfo.gameMode.isPausable ? "True" : "False");
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Game State: %s", SharedData::debugInfo.isGameStatePresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isGameStatePresent)
-					{
-						ImGui::Text("Game State Class: %s", SharedData::debugInfo.gameStateClass.c_str());
-						ImGui::Text("Game State Object: %s", SharedData::debugInfo.gameStateObject.c_str());
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Console: %s", SharedData::debugInfo.isConsolePresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isConsolePresent)
-					{
-						ImGui::Text("Console Class: %s", SharedData::debugInfo.consoleClass.c_str());
-						ImGui::Text("Console Object: %s", SharedData::debugInfo.consoleObject.c_str());
-					}
-					else
-					{
-						if (ImGui::Button("Construct Console"))
-						{
-							bool wasConsoleConstructed = Console::ConstructConsole();
-							if (wasConsoleConstructed)
-								SharedCalls::UpdateDebugInformation();
-
-							PlayActionSound(wasConsoleConstructed);
-							Input::CreateConsoleBindings();
-						}
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Cheat Manager: %s", SharedData::debugInfo.isCheatManagerPresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isCheatManagerPresent)
-					{
-						ImGui::Text("Cheat Manager Class: %s", SharedData::debugInfo.cheatManagerClass.c_str());
-						ImGui::Text("Cheat Manager Object: %s", SharedData::debugInfo.cheatManagerObject.c_str());
-					}
-					else
-					{
-						if (ImGui::Button("Construct Cheat Manager"))
-						{
-							bool wasCheatManagerConstructed = CheatManager::ConstructCheatManager();
-							if (wasCheatManagerConstructed)
-								SharedCalls::UpdateDebugInformation();
-
-							PlayActionSound(wasCheatManagerConstructed);
-						}
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-					
-					ImGui::Text("Controller: %s", SharedData::debugInfo.isControllerPresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isControllerPresent)
-					{
-						ImGui::Text("Controller Class: %s", SharedData::debugInfo.controllerClass.c_str());
-						ImGui::Text("Controller Object: %s", SharedData::debugInfo.controllerObject.c_str());
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-					
-					ImGui::Text("Pawn: %s", SharedData::debugInfo.isPawnPresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isPawnPresent)
-					{
-						ImGui::Text("Pawn Class: %s", SharedData::debugInfo.pawnClass.c_str());
-						ImGui::Text("Pawn Object: %s", SharedData::debugInfo.pawnObject.c_str());
-						ImGui::Text("Location: %s", SharedData::debugInfo.pawnLocation.c_str());
-						ImGui::Text("Rotation: %s", SharedData::debugInfo.pawnRotation.c_str());
-						ImGui::Text("Scale: %s", SharedData::debugInfo.pawnScale.c_str());
-
-						ImGui::NewLine();
-
-						ImGui::Text("Is Controlled: %s", SharedData::debugInfo.isPawnControlled ? "True" : "False");
-						ImGui::Text("Is Pawn Controlled: %s", SharedData::debugInfo.isPawnPawnControlled ? "True" : "False");
-						ImGui::Text("Is Player Controlled: %s", SharedData::debugInfo.isPawnPlayerControlled ? "True" : "False");
-						ImGui::Text("Is Locally Controlled: %s", SharedData::debugInfo.isPawnLocallyControlled ? "True" : "False");
-						ImGui::Text("Is Bot Controlled: %s", SharedData::debugInfo.isPawnBotControlled ? "True" : "False");
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Camera Manager: %s", SharedData::debugInfo.isCameraManagerPresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isCameraManagerPresent)
-					{
-						ImGui::Text("Camera Manager Class: %s", SharedData::debugInfo.cameraManagerClass.c_str());
-						ImGui::Text("Camera Manager Object: %s", SharedData::debugInfo.cameraManagerObject.c_str());
-						ImGui::Text("Location: %s", SharedData::debugInfo.cameraManagerLocation.c_str());
-						ImGui::Text("Rotation: %s", SharedData::debugInfo.cameraManagerRotation.c_str());
-						ImGui::Text("Scale: %s", SharedData::debugInfo.cameraManagerScale.c_str());
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Viewport Client: %s", SharedData::debugInfo.isViewportClientPresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isViewportClientPresent)
-					{
-						ImGui::Text("Viewport Client Class: %s", SharedData::debugInfo.viewportClientClass.c_str());
-						ImGui::Text("Viewport Client Object: %s", SharedData::debugInfo.viewportClientObject.c_str());
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("World: %s", SharedData::debugInfo.isWorldPresent ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.isWorldPresent)
-					{
-						ImGui::Text("World Class: %s", SharedData::debugInfo.worldClass.c_str());
-						ImGui::Text("World Object: %s", SharedData::debugInfo.worldObject.c_str());
-					}
-
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
-
-					ImGui::Text("Persistent Level: %s", SharedData::debugInfo.persistentLevel.levelReference ? "Is Present" : "Doesn't Exist!");
-					if (SharedData::debugInfo.persistentLevel.levelReference)
-					{
-						ImGui::Text("Persistent Level Class: %s", SharedData::debugInfo.persistentLevel.levelClass.c_str());
-						ImGui::Text("Persistent Level Object: %s", SharedData::debugInfo.persistentLevel.levelObject.c_str());
-						ImGui::Text("Persistent Level Name: %s", SharedData::debugInfo.persistentLevel.levelName.c_str());
-						ImGui::Text("Is Visible: %s", SharedData::debugInfo.persistentLevel.isLevelVisible ? "True" : "False");
-
-						ImGui::NewLine();
-
-						bool worldSettingsPresent = SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsReference;
-						ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present" : "Doesn't Exist!");
-						if (worldSettingsPresent)
-						{
-							if (ImGui::TreeNode("World Settings"))
-							{
-								ImGui::Text("World Settings Class: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsClass.c_str());
-								ImGui::Text("World Settings Object: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsObject.c_str());
-
-								ImGui::NewLine();
-
-								ImGui::Text("High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldHighPriorityLoading ? "True" : "False");
-								ImGui::Text("Local High Priority Loading: %s", SharedData::debugInfo.persistentLevel.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
-
-								ImGui::NewLine();
-
-								ImGui::Text("Unreal Units = 1m: %f", SharedData::debugInfo.persistentLevel.worldSettings.worldToMeters);
-
-								ImGui::TreePop();
-							}
-						}
-
-						ImGui::NewLine();
-
-						ImGui::Text("Streaming Levels: %s", SharedData::debugInfo.areStreamingLevelsPresent ? "Are Present" : "Are Non Existent!");
-						if (SharedData::debugInfo.areStreamingLevelsPresent)
-						{
-							if (ImGui::CollapsingHeader("Streaming Levels"))
-							{
-								for (SharedData::S_StreamingLevel streamingLevel : SharedData::debugInfo.streamingLevels)
+								if (ImGui::TreeNode("Details##ViewportClient"))
 								{
-									ImU32 levelColor = IM_COL32(
-										static_cast<int>(streamingLevel.streamingLevelColor.R * 255.0),
-										static_cast<int>(streamingLevel.streamingLevelColor.G * 255.0),
-										static_cast<int>(streamingLevel.streamingLevelColor.B * 255.0),
-										static_cast<int>(streamingLevel.streamingLevelColor.A * 255.0)
-									);
+									ImGui::Text("Viewport Client Class: %s", SharedData::debugInfo.engine.viewportClient.viewportClientClass.c_str());
+									ImGui::Text("Viewport Client Object: %s", SharedData::debugInfo.engine.viewportClient.viewportClientObject.c_str());
 
-									ImGui::PushStyleColor(ImGuiCol_Text, levelColor);
-									bool isTreeNodeOpen = ImGui::TreeNode(streamingLevel.streamingLevelPath.c_str());
-									ImGui::PopStyleColor();
+									ImGui::NewLine();
 
-									if (isTreeNodeOpen)
+									ImGui::SetFontTitle();
+									ImGui::TextBoolPresenceColored("Console:", SharedData::debugInfo.engine.viewportClient.console.consoleReference);
+									ImGui::SetFontRegular();
+									if (SharedData::debugInfo.engine.viewportClient.console.consoleReference)
 									{
-										bool isLevelLoaded = streamingLevel.level.levelReference;
-
-										ImGui::Text("Is Loaded: %s", isLevelLoaded ? "True" : "False");
-										ImGui::SameLine();
-										ImGui::Spacing();
-										ImGui::SameLine();
-										if (ImGui::Button(isLevelLoaded ? "Unload" : "Load"))
+										if (ImGui::TreeNode("Details##Console"))
 										{
-											if (streamingLevel.streamingLevelReference != nullptr)
-											{
-												streamingLevel.streamingLevelReference->SetShouldBeLoaded(!isLevelLoaded);
+											ImGui::Text("Console Class: %s", SharedData::debugInfo.engine.viewportClient.console.consoleClass.c_str());
+											ImGui::Text("Console Object: %s", SharedData::debugInfo.engine.viewportClient.console.consoleObject.c_str());
 
-												if (SharedData::SharedData::debugInfo.autoUpdate == false)
-													StartWaitMode(3.25);
-
-												PlayActionSound(true);
-											}
-											else
-												PlayActionSound(false);
+											ImGui::TreePop();
 										}
-
-										ImGui::Text("Is Visible: %s", streamingLevel.level.isLevelVisible ? "True" : "False");
-										ImGui::SameLine();
-										ImGui::Spacing();
-										ImGui::SameLine();
-										ImGui::BeginDisabled(isLevelLoaded == false);
-										if (ImGui::Button(streamingLevel.level.isLevelVisible ? "Hide" : "Show"))
-										{
-											if (isLevelLoaded && streamingLevel.streamingLevelReference != nullptr)
-											{
-												streamingLevel.streamingLevelReference->SetShouldBeVisible(!streamingLevel.level.isLevelVisible);
-
-												if (SharedData::SharedData::debugInfo.autoUpdate == false)
-													StartWaitMode(3.25);
-
-												PlayActionSound(true);
-											}
-											else
-												PlayActionSound(false);
-										}
-										ImGui::EndDisabled();
-
-										ImGui::NewLine();
-
-										bool worldSettingsPresent = streamingLevel.level.worldSettings.worldSettingsReference;
-										ImGui::Text("World Settings: %s", worldSettingsPresent ? "Is Present" : "Doesn't Exist!");
-										if (worldSettingsPresent)
-										{
-											if (ImGui::TreeNode("World Settings"))
-											{
-												ImGui::Text("World Settings Class: %s", streamingLevel.level.worldSettings.worldSettingsClass.c_str());
-												ImGui::Text("World Settings Object: %s", streamingLevel.level.worldSettings.worldSettingsObject.c_str());
-
-												ImGui::NewLine();
-
-												ImGui::Text("High Priority Loading: %s", streamingLevel.level.worldSettings.worldHighPriorityLoading ? "True" : "False");
-												ImGui::Text("Local High Priority Loading: %s", streamingLevel.level.worldSettings.worldLocalHighPriorityLoading ? "True" : "False");
-
-												ImGui::NewLine();
-
-												ImGui::Text("Unreal Units = 1m: %f", streamingLevel.level.worldSettings.worldToMeters);
-
-												ImGui::TreePop();
-											}
-										}
-
-										ImGui::TreePop();
 									}
+									else
+									{
+										if (ImGui::Button("Construct Console"))
+										{
+											bool wasConsoleConstructed = Console::ConstructConsole() && Input::CreateConsoleBindings();
+											if (wasConsoleConstructed)
+												SharedCalls::UpdateDebugInformation();
+
+											PlayActionSound(wasConsoleConstructed);
+										}
+									}
+
+									ImGui::TreePop();
+								}
+							}
+
+							ImGui::NewLine();
+
+							bool fixedFrameRateEnabled = SharedData::debugInfo.engine.fixedFrameRateEnabled;
+							if (ImGui::Checkbox("Fixed FrameRate Enabled", &fixedFrameRateEnabled))
+							{
+								if (SharedData::debugInfo.engine.engineReference)
+								{
+									SharedData::debugInfo.engine.fixedFrameRateEnabled = fixedFrameRateEnabled;
+									SharedData::debugInfo.engine.engineReference->bUseFixedFrameRate = fixedFrameRateEnabled;
+								}
+							}
+							float fixedFrameRate = SharedData::debugInfo.engine.fixedFrameRate;
+							if (ImGui::InputFloat("Fixed FrameRate", &fixedFrameRate, 1.0f, 10.0f))
+							{
+								if (SharedData::debugInfo.engine.engineReference)
+								{
+									SharedData::debugInfo.engine.fixedFrameRate = fixedFrameRate;
+									SharedData::debugInfo.engine.engineReference->FixedFrameRate = fixedFrameRate;
+								}
+							}
+
+							ImGui::NewLine();
+
+							bool smoothFrameRateEnabled = SharedData::debugInfo.engine.smoothFrameRateEnabled;
+							if (ImGui::Checkbox("Smooth FrameRate Enabled", &smoothFrameRateEnabled))
+							{
+								if (SharedData::debugInfo.engine.engineReference)
+								{
+									SharedData::debugInfo.engine.smoothFrameRateEnabled = smoothFrameRateEnabled;
+									SharedData::debugInfo.engine.engineReference->bSmoothFrameRate = smoothFrameRateEnabled;
+								}
+							}
+							float smoothFrameRateRange[2] = { SharedData::debugInfo.engine.smoothFrameRateRange.LowerBound.Value, SharedData::debugInfo.engine.smoothFrameRateRange.UpperBound.Value };
+							if (ImGui::InputFloat2("Smooth FrameRate Range", smoothFrameRateRange))
+							{
+								if (SharedData::debugInfo.engine.engineReference)
+								{
+									SDK::FFloatRange floatRange = SharedData::debugInfo.engine.smoothFrameRateRange;
+									floatRange.LowerBound.Value = smoothFrameRateRange[0];
+									floatRange.UpperBound.Value = smoothFrameRateRange[1];
+
+									SharedData::debugInfo.engine.smoothFrameRateRange = floatRange;
+									SharedData::debugInfo.engine.engineReference->SmoothedFrameRateRange = floatRange;
+								}
+							}
+
+							ImGui::NewLine();
+
+							bool subtitlesEnabled = SharedData::debugInfo.engine.subtitlesEnabled;
+							if (ImGui::Checkbox("Subtitles Enabled", &subtitlesEnabled))
+							{
+								if (SharedData::debugInfo.engine.engineReference)
+								{
+									SharedData::debugInfo.engine.subtitlesEnabled = subtitlesEnabled;
+									SharedData::debugInfo.engine.engineReference->bSubtitlesEnabled = subtitlesEnabled;
+								}
+							}
+							bool subtitlesForcedOff = SharedData::debugInfo.engine.subtitlesForcedOff;
+							if (ImGui::Checkbox("Subtitles Forced Off", &subtitlesForcedOff))
+							{
+								if (SharedData::debugInfo.engine.engineReference)
+								{
+									SharedData::debugInfo.engine.subtitlesForcedOff = subtitlesForcedOff;
+									SharedData::debugInfo.engine.engineReference->bSubtitlesForcedOff = subtitlesForcedOff;
+								}
+							}
+
+							ImGui::NewLine();
+
+							bool pauseOnLossOfFocus = SharedData::debugInfo.engine.pauseOnLossOfFocus;
+							if (ImGui::Checkbox("Pause On Loss Of Focus", &pauseOnLossOfFocus))
+							{
+								if (SharedData::debugInfo.engine.engineReference)
+								{
+									SharedData::debugInfo.engine.pauseOnLossOfFocus = pauseOnLossOfFocus;
+									SharedData::debugInfo.engine.engineReference->bPauseOnLossOfFocus = pauseOnLossOfFocus;
 								}
 							}
 						}
@@ -759,13 +844,447 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
-					if (SharedData::debugInfo.gameTimeInSeconds > 0.0)
-						ImGui::Text("Game Time (In Seconds): %f", SharedData::debugInfo.gameTimeInSeconds);
+					ImGui::SetFontTitle();
+					ImGui::TextBoolPresenceColored("Game Instance:", SharedData::debugInfo.gameInstance.gameInstanceReference);
+					ImGui::SetFontRegular();
+					if (SharedData::debugInfo.gameInstance.gameInstanceReference)
+					{
+						if (ImGui::CollapsingHeader("Details##GameInstance"))
+						{
+							ImGui::Text("Game Instance Class: %s", SharedData::debugInfo.gameInstance.gameInstanceClass.c_str());
+							ImGui::Text("Game Instance Object: %s", SharedData::debugInfo.gameInstance.gameInstanceObject.c_str());
 
-					ImGui::Text("Is Server: %s", SharedData::debugInfo.isServer ? "True" : "False");
-					ImGui::Text("Is Dedicated Server: %s", SharedData::debugInfo.isDedicatedServer ? "True" : "False");
-					ImGui::Text("Is Split Screen: %s", SharedData::debugInfo.isSplitScreen ? "True" : "False");
-					ImGui::Text("Is Standalone: %s", SharedData::debugInfo.isStandalone ? "True" : "False");
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Online Session:", SharedData::debugInfo.gameInstance.onlineSession.onlineSessionReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.gameInstance.onlineSession.onlineSessionReference)
+							{
+								if (ImGui::TreeNode("Details##OnlineSession"))
+								{
+									ImGui::Text("Online Session Class: %s", SharedData::debugInfo.gameInstance.onlineSession.onlineSessionClass.c_str());
+									ImGui::Text("Online Session Object: %s", SharedData::debugInfo.gameInstance.onlineSession.onlineSessionObject.c_str());
+
+									ImGui::TreePop();
+								}
+							}
+						}
+					}
+
+					ImGui::NewLine();
+					ImGui::Separator();
+					ImGui::NewLine();
+
+					ImGui::SetFontTitle();
+					ImGui::TextBoolPresenceColored("Game Mode:", SharedData::debugInfo.gameMode.gameModeReference);
+					ImGui::SetFontRegular();
+					if (SharedData::debugInfo.gameMode.gameModeReference)
+					{
+						if (ImGui::CollapsingHeader("Details##GameMode"))
+						{
+							ImGui::Text("Game Mode Class: %s", SharedData::debugInfo.gameMode.gameModeClass.c_str());
+							ImGui::Text("Game Mode Object: %s", SharedData::debugInfo.gameMode.gameModeObject.c_str());
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Game Session:", SharedData::debugInfo.gameMode.gameSession.gameSessionReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+							{
+								if (ImGui::TreeNode("Details##GameSession"))
+								{
+									ImGui::Text("Game Session Class: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionClass.c_str());
+									ImGui::Text("Game Session Object: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionObject.c_str());
+
+									ImGui::NewLine();
+
+									int32_t maxPlayers = SharedData::debugInfo.gameMode.gameSession.maxPlayers;
+									if (ImGui::InputInt("Max Players", &maxPlayers, 1, 10))
+									{
+										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										{
+											SharedData::debugInfo.gameMode.gameSession.maxPlayers = maxPlayers;
+											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxPlayers = maxPlayers;
+										}
+									}
+									int32_t maxSpectators = SharedData::debugInfo.gameMode.gameSession.maxSpectators;
+									if (ImGui::InputInt("Max Spectators", &maxSpectators, 1, 10))
+									{
+										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										{
+											SharedData::debugInfo.gameMode.gameSession.maxSpectators = maxSpectators;
+											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxSpectators = maxSpectators;
+										}
+									}
+									int32_t maxPartySize = SharedData::debugInfo.gameMode.gameSession.maxPartySize;
+									if (ImGui::InputInt("Max Party Size", &maxPartySize, 1, 10))
+									{
+										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										{
+											SharedData::debugInfo.gameMode.gameSession.maxPartySize = maxPartySize;
+											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxPartySize = maxPartySize;
+										}
+									}
+									int32_t maxSplitScreensPerConnection = SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection;
+									if (ImGui::InputInt("Max Split Screens Per Connection", &maxSplitScreensPerConnection, 1, 10))
+									{
+										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										{
+											SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection = maxSplitScreensPerConnection;
+											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxSplitscreensPerConnection = maxSplitScreensPerConnection;
+										}
+									}
+
+									ImGui::NewLine();
+
+									ImGui::ReadOnlyInputText("Session Name:", SharedData::debugInfo.gameMode.gameSession.sessionName.c_str(), true);
+
+									ImGui::TreePop();
+								}
+							}
+
+							ImGui::NewLine();
+
+							ImGui::TextIntColored("Players Count:", SharedData::debugInfo.gameMode.playersCount);
+							ImGui::TextIntColored("Spectators Count:", SharedData::debugInfo.gameMode.spectatorsCount);
+
+							ImGui::NewLine();
+
+							ImGui::TextBoolColored("Start Players As Spectator:", SharedData::debugInfo.gameMode.startPlayersAsSpectators);
+							ImGui::ReadOnlyInputText("Default Player Name:", SharedData::debugInfo.gameMode.defaultPlayerName.c_str(), true);
+
+							ImGui::NewLine();
+
+							bool useSeamlessTravel = SharedData::debugInfo.gameMode.useSeamlessTravel;
+							if (ImGui::Checkbox("Use Seamless Travel", &useSeamlessTravel))
+							{
+								if (SharedData::debugInfo.gameMode.gameModeReference)
+								{
+									SharedData::debugInfo.gameMode.useSeamlessTravel = useSeamlessTravel;
+									SharedData::debugInfo.gameMode.gameModeReference->bUseSeamlessTravel = useSeamlessTravel;
+								}
+							}
+							bool isPausable = SharedData::debugInfo.gameMode.isPausable;
+							if (ImGui::Checkbox("Is Pausable", &isPausable))
+							{
+								if (SharedData::debugInfo.gameMode.gameModeReference)
+								{
+									SharedData::debugInfo.gameMode.isPausable = isPausable;
+									SharedData::debugInfo.gameMode.gameModeReference->bPauseable = isPausable;
+								}
+							}
+
+							ImGui::NewLine();
+
+							ImGui::ReadOnlyInputText("Options:", SharedData::debugInfo.gameMode.options.c_str(), true);
+						}
+					}
+
+					ImGui::NewLine();
+					ImGui::Separator();
+					ImGui::NewLine();
+					
+					ImGui::SetFontTitle();
+					ImGui::TextBoolPresenceColored("Player Controller:", SharedData::debugInfo.playerController.playerControllerReference);
+					ImGui::SetFontRegular();
+					if (SharedData::debugInfo.playerController.playerControllerReference)
+					{
+						if (ImGui::CollapsingHeader("Details##PlayerController"))
+						{
+							ImGui::Text("Player Controller Class: %s", SharedData::debugInfo.playerController.playerControllerClass.c_str());
+							ImGui::Text("Player Controller Object: %s", SharedData::debugInfo.playerController.playerControllerObject.c_str());
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Pawn:", SharedData::debugInfo.playerController.pawn.pawnReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.playerController.pawn.pawnReference)
+							{
+								if (ImGui::TreeNode("Details##Pawn"))
+								{
+									ImGui::Text("Pawn Class: %s", SharedData::debugInfo.playerController.pawn.pawnClass.c_str());
+									ImGui::Text("Pawn Object: %s", SharedData::debugInfo.playerController.pawn.pawnObject.c_str());
+									ImGui::TextVectorColored("Location:", SharedData::debugInfo.playerController.pawn.location);
+									ImGui::TextRotatorColored("Rotation:", SharedData::debugInfo.playerController.pawn.rotation);
+									ImGui::TextVectorColored("Scale:", SharedData::debugInfo.playerController.pawn.scale);
+
+									ImGui::NewLine();
+
+									ImGui::TextBoolColored("Is Controlled:", SharedData::debugInfo.playerController.pawn.isControlled);
+									ImGui::TextBoolColored("Is Pawn Controlled:", SharedData::debugInfo.playerController.pawn.isPawnControlled);
+									ImGui::TextBoolColored("Is Player Controlled:", SharedData::debugInfo.playerController.pawn.isPlayerControlled);
+									ImGui::TextBoolColored("Is Locally Controlled:", SharedData::debugInfo.playerController.pawn.isLocallyControlled);
+									ImGui::TextBoolColored("Is Bot Controlled:", SharedData::debugInfo.playerController.pawn.isBotControlled);
+
+									ImGui::TreePop();
+								}
+							}
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Camera Manager:", SharedData::debugInfo.playerController.cameraManager.cameraManagerReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.playerController.cameraManager.cameraManagerReference)
+							{
+								if (ImGui::TreeNode("Details##CameraManager"))
+								{
+									ImGui::Text("Camera Manager Class: %s", SharedData::debugInfo.playerController.cameraManager.cameraManagerClass.c_str());
+									ImGui::Text("Camera Manager Object: %s", SharedData::debugInfo.playerController.cameraManager.cameraManagerObject.c_str());
+									ImGui::TextVectorColored("Location:", SharedData::debugInfo.playerController.cameraManager.location);
+									ImGui::TextRotatorColored("Rotation:", SharedData::debugInfo.playerController.cameraManager.rotation);
+									ImGui::TextVectorColored("Scale:", SharedData::debugInfo.playerController.cameraManager.scale);
+
+									ImGui::TreePop();
+								}
+							}
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Cheat Manager:", SharedData::debugInfo.playerController.cheatManager.cheatManagerReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.playerController.cheatManager.cheatManagerReference)
+							{
+								if (ImGui::TreeNode("Details##CheatManager"))
+								{
+									ImGui::Text("Cheat Manager Class: %s", SharedData::debugInfo.playerController.cheatManager.cheatManagerClass.c_str());
+									ImGui::Text("Cheat Manager Object: %s", SharedData::debugInfo.playerController.cheatManager.cheatManagerObject.c_str());
+
+									ImGui::TreePop();
+								}
+							}
+							else
+							{
+								if (ImGui::Button("Construct Cheat Manager"))
+								{
+									bool wasCheatManagerConstructed = CheatManager::ConstructCheatManager();
+									if (wasCheatManagerConstructed)
+										SharedCalls::UpdateDebugInformation();
+
+									PlayActionSound(wasCheatManagerConstructed);
+								}
+							}
+						}
+					}
+
+					ImGui::NewLine();
+					ImGui::Separator();
+					ImGui::NewLine();
+
+					ImGui::SetFontTitle();
+					ImGui::TextBoolPresenceColored("World:", SharedData::debugInfo.world.worldReference);
+					ImGui::SetFontRegular();
+					if (SharedData::debugInfo.world.worldReference)
+					{
+						if (ImGui::CollapsingHeader("Details##World"))
+						{
+							ImGui::Text("World Class: %s", SharedData::debugInfo.world.worldClass.c_str());
+							ImGui::Text("World Object: %s", SharedData::debugInfo.world.worldObject.c_str());
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Game State:", SharedData::debugInfo.world.gameState.gameStateReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.world.gameState.gameStateReference)
+							{
+								if (ImGui::TreeNode("Details##GameState"))
+								{
+									ImGui::Text("Game State Class: %s", SharedData::debugInfo.world.gameState.gameStateClass.c_str());
+									ImGui::Text("Game State Object: %s", SharedData::debugInfo.world.gameState.gameStateObject.c_str());
+
+									ImGui::TreePop();
+								}
+							}
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Net Driver:", SharedData::debugInfo.world.netDriver.netDriverReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.world.netDriver.netDriverReference)
+							{
+								if (ImGui::TreeNode("Details##NetDriver"))
+								{
+									ImGui::Text("Net Driver Class: %s", SharedData::debugInfo.world.netDriver.netDriverClass.c_str());
+									ImGui::Text("Net Driver Object: %s", SharedData::debugInfo.world.netDriver.netDriverObject.c_str());
+
+									ImGui::TreePop();
+								}
+							}
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Demo Net Driver:", SharedData::debugInfo.world.demoNetDriver.demoNetDriverReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.world.demoNetDriver.demoNetDriverReference)
+							{
+								if (ImGui::TreeNode("Details##DemoNetDriver"))
+								{
+									ImGui::Text("Demo Net Driver Class: %s", SharedData::debugInfo.world.demoNetDriver.demoNetDriverClass.c_str());
+									ImGui::Text("Demo Net Driver Object: %s", SharedData::debugInfo.world.demoNetDriver.demoNetDriverObject.c_str());
+
+									ImGui::TreePop();
+								}
+							}
+
+							ImGui::NewLine();
+
+							ImGui::SetFontTitle();
+							ImGui::TextBoolPresenceColored("Persistent Level:", SharedData::debugInfo.world.persistentLevel.levelReference);
+							ImGui::SetFontRegular();
+							if (SharedData::debugInfo.world.persistentLevel.levelReference)
+							{
+								if (ImGui::TreeNode("Details##PersistentLevel"))
+								{
+									ImGui::Text("Persistent Level Class: %s", SharedData::debugInfo.world.persistentLevel.levelClass.c_str());
+									ImGui::Text("Persistent Level Object: %s", SharedData::debugInfo.world.persistentLevel.levelObject.c_str());
+									ImGui::Text("Persistent Level Name: %s", SharedData::debugInfo.world.persistentLevel.levelName.c_str());
+									ImGui::TextBoolColored("Is Visible:", SharedData::debugInfo.world.persistentLevel.isLevelVisible);
+
+									ImGui::NewLine();
+
+									bool worldSettingsPresent = SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsReference;
+									ImGui::TextBoolPresenceColored("World Settings:", worldSettingsPresent);
+									if (worldSettingsPresent)
+									{
+										if (ImGui::TreeNode("World Settings"))
+										{
+											ImGui::Text("World Settings Class: %s", SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsClass.c_str());
+											ImGui::Text("World Settings Object: %s", SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsObject.c_str());
+
+											ImGui::NewLine();
+
+											ImGui::TextBoolColored("High Priority Loading:", SharedData::debugInfo.world.persistentLevel.worldSettings.worldHighPriorityLoading);
+											ImGui::TextBoolColored("Local High Priority Loading:", SharedData::debugInfo.world.persistentLevel.worldSettings.worldLocalHighPriorityLoading);
+
+											ImGui::NewLine();
+
+											ImGui::TextFloat("Unreal Units = 1m:", SharedData::debugInfo.world.persistentLevel.worldSettings.worldToMeters);
+
+											ImGui::TreePop();
+										}
+									}
+
+									ImGui::NewLine();
+
+									bool areStreamingLevelsPresent = SharedData::debugInfo.world.streamingLevels.size() > 0;
+									ImGui::TextBoolMultiplePresenceColored("Streaming Levels:", areStreamingLevelsPresent);
+									if (areStreamingLevelsPresent)
+									{
+										if (ImGui::TreeNode("Streaming Levels"))
+										{
+											for (SharedData::S_StreamingLevel streamingLevel : SharedData::debugInfo.world.streamingLevels)
+											{
+												ImVec4 levelColor
+												{
+													streamingLevel.streamingLevelColor.R,
+													streamingLevel.streamingLevelColor.G,
+													streamingLevel.streamingLevelColor.B,
+													streamingLevel.streamingLevelColor.A
+												};
+
+												ImGui::PushStyleColor(ImGuiCol_Text, levelColor);
+												bool isTreeNodeOpen = ImGui::TreeNode(streamingLevel.streamingLevelPath.c_str());
+												ImGui::PopStyleColor();
+
+												if (isTreeNodeOpen)
+												{
+													bool isLevelLoaded = streamingLevel.level.levelReference;
+
+													ImGui::TextBoolColored("Is Loaded:", isLevelLoaded);
+													ImGui::SameLine();
+													ImGui::Spacing();
+													ImGui::SameLine();
+													if (ImGui::Button(isLevelLoaded ? "Unload" : "Load"))
+													{
+														if (streamingLevel.streamingLevelReference != nullptr)
+														{
+															streamingLevel.streamingLevelReference->SetShouldBeLoaded(!isLevelLoaded);
+
+															if (SharedData::SharedData::debugInfo.autoUpdate == false)
+																StartWaitMode(3.25);
+
+															PlayActionSound(true);
+														}
+														else
+															PlayActionSound(false);
+													}
+
+													ImGui::TextBoolColored("Is Visible:", streamingLevel.level.isLevelVisible);
+													ImGui::SameLine();
+													ImGui::Spacing();
+													ImGui::SameLine();
+													ImGui::BeginDisabled(isLevelLoaded == false);
+													if (ImGui::Button(streamingLevel.level.isLevelVisible ? "Hide" : "Show"))
+													{
+														if (isLevelLoaded && streamingLevel.streamingLevelReference != nullptr)
+														{
+															streamingLevel.streamingLevelReference->SetShouldBeVisible(!streamingLevel.level.isLevelVisible);
+
+															if (SharedData::SharedData::debugInfo.autoUpdate == false)
+																StartWaitMode(3.25);
+
+															PlayActionSound(true);
+														}
+														else
+															PlayActionSound(false);
+													}
+													ImGui::EndDisabled();
+
+													ImGui::NewLine();
+
+													bool worldSettingsPresent = streamingLevel.level.worldSettings.worldSettingsReference;
+													ImGui::TextBoolPresence("World Settings:", worldSettingsPresent);
+													if (worldSettingsPresent)
+													{
+														if (ImGui::TreeNode("World Settings"))
+														{
+															ImGui::Text("World Settings Class: %s", streamingLevel.level.worldSettings.worldSettingsClass.c_str());
+															ImGui::Text("World Settings Object: %s", streamingLevel.level.worldSettings.worldSettingsObject.c_str());
+
+															ImGui::NewLine();
+
+															ImGui::TextBoolColored("High Priority Loading:", streamingLevel.level.worldSettings.worldHighPriorityLoading);
+															ImGui::TextBoolColored("Local High Priority Loading:", streamingLevel.level.worldSettings.worldLocalHighPriorityLoading);
+
+															ImGui::NewLine();
+
+															ImGui::TextFloat("Unreal Units = 1m:", streamingLevel.level.worldSettings.worldToMeters);
+
+															ImGui::TreePop();
+														}
+													}
+
+													ImGui::TreePop();
+												}
+											}
+
+											ImGui::TreePop();
+										}
+									}
+
+									ImGui::NewLine();
+
+									ImGui::TextFloatColored("Game Time (In Seconds):", SharedData::debugInfo.world.gameTimeInSeconds);
+
+									ImGui::NewLine();
+
+									ImGui::TextBoolColored("Is Server:", SharedData::debugInfo.world.isServer);
+									ImGui::TextBoolColored("Is Dedicated Server:", SharedData::debugInfo.world.isDedicatedServer);
+									ImGui::TextBoolColored("Is Split Screen:", SharedData::debugInfo.world.isSplitScreen);
+									ImGui::TextBoolColored("Is Standalone:", SharedData::debugInfo.world.isStandalone);
+
+									ImGui::TreePop();
+								}
+							}
+						}
+					}
 
 					ImGui::NewLine();
 					ImGui::Separator();
@@ -782,21 +1301,7 @@ void GUI::Draw()
 
 					if (SharedData::debugInfo.wasCommandLineObtained)
 					{
-						std::vector<char> commandLineBuffer;
-						size_t commandLineLength = SharedData::debugInfo.commandLine.size();
-
-						commandLineBuffer.resize(commandLineLength + 1);
-						std::memcpy(commandLineBuffer.data(), SharedData::debugInfo.commandLine.data(), SharedData::debugInfo.commandLine.size());
-
-						ImGui::Text("Command Line:");
-						ImGui::SameLine();
-						ImGui::InputText("##commandLine", commandLineBuffer.data(), commandLineBuffer.size(), ImGuiInputTextFlags_ReadOnly);
-						ImGui::SameLine();
-						if (ImGui::Button("Copy"))
-						{
-							WindowsUtilities::SetClipboard(SharedData::debugInfo.commandLine);
-							PlayActionSound(true);
-						}
+						ImGui::ReadOnlyInputText("Command Line:", SharedData::debugInfo.commandLine.c_str(), true);
 					}
 				}
 				else
@@ -891,7 +1396,7 @@ void GUI::Draw()
 
 
 
-			SDK::APlayerController* controller = Controller::GetController();
+			SDK::APlayerController* controller = PlayerController::GetPlayerController();
 			SDK::ACharacter* character = controller ? controller->Character : nullptr;
 			SDK::UCharacterMovementComponent* movementComponent = (character && character->CharacterMovement) ? character->CharacterMovement : nullptr;
 			ImGui::BeginDisabled(controller == nullptr || character == nullptr || movementComponent == nullptr);
@@ -970,9 +1475,13 @@ void GUI::Draw()
 							ImGui::KeyBindingInput("Key:##Walk", &SharedData::keybindingsInfo.walk);
 
 							ImGui::BeginDisabled(movementComponent->bCheatFlying == false);
-							ImGui::Checkbox("Directional Movement", &SharedData::featuresInfo.isDirectionalMovementEnabled);
-							ImGui::InputDouble("Directional Movement Step", &SharedData::featuresInfo.directionalMovementStep, 0.1, 1.0);
-							ImGui::InputDouble("Directional Movement Delay", &SharedData::featuresInfo.directionalMovementDelay, 0.01, 0.1);
+							ImGui::Checkbox("Directional Movement", &SharedData::featuresInfo.directionalMovement.enabled);
+							ImGui::InputDouble("Directional Movement Step", &SharedData::featuresInfo.directionalMovement.movementStep, 0.1, 1.0);
+							if (ImGui::InputDouble("Directional Movement Delay", &SharedData::featuresInfo.directionalMovement.movementDelay, 0.01, 0.1))
+							{
+								if (SharedData::featuresInfo.directionalMovement.movementDelay < 0.001)
+									SharedData::featuresInfo.directionalMovement.movementDelay = 0.001;
+							}
 							ImGui::EndDisabled();
 
 							ImGui::NewLine();
@@ -1082,11 +1591,14 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 
 
 
+// ========================================================
+// |          #GUI #SHARED #WORKERS #SHAREDWORKERS        |
+// ========================================================
 void GUI::SharedWorkers::FeaturesWorker()
 {
 	while (GetFeaturesThread())
 	{
-		if (SharedData::featuresInfo.isDirectionalMovementEnabled)
+		if (SharedData::featuresInfo.directionalMovement.enabled)
 		{
 			if (SharedData::objectsInfo.controller && SharedData::objectsInfo.character && SharedData::objectsInfo.movementComponent
 				&& SharedData::objectsInfo.movementComponent->bCheatFlying)
@@ -1104,7 +1616,7 @@ void GUI::SharedWorkers::FeaturesWorker()
 						if (dotProduct > 0.5)
 						{
 							SDK::FVector currentLocation = SharedData::objectsInfo.character->K2_GetActorLocation();
-							SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * SharedData::featuresInfo.directionalMovementStep);
+							SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * SharedData::featuresInfo.directionalMovement.movementStep);
 
 							SharedData::objectsInfo.character->K2_TeleportTo(finalLocation, SharedData::objectsInfo.character->K2_GetActorRotation());
 						}
@@ -1113,7 +1625,7 @@ void GUI::SharedWorkers::FeaturesWorker()
 			}
 		}
 
-		Sleep(Math::Seconds_ToMilliseconds(SharedData::featuresInfo.directionalMovementDelay));
+		Sleep(Math::Seconds_ToMilliseconds(SharedData::featuresInfo.directionalMovement.movementDelay));
 	}
 }
 
@@ -1122,6 +1634,9 @@ void GUI::SharedWorkers::FeaturesWorker()
 
 
 
+// ========================================================
+// |            #GUI #SHARED #CALLS #SHAREDCALLS          |
+// ========================================================
 void GUI::SharedCalls::UpdateDebugInformation()
 {
 	SDK::UEngine* engine = Engine::GetEngine();
@@ -1130,25 +1645,45 @@ void GUI::SharedCalls::UpdateDebugInformation()
 		SharedData::debugInfo.engine.engineClass = engine->Class->GetFullName();
 		SharedData::debugInfo.engine.engineObject = engine->GetFullName();
 
-		SharedData::debugInfo.engine.fixedFrameRate = engine->bUseFixedFrameRate;
-		SharedData::debugInfo.engine.fixedFrameRateEnabled = engine->FixedFrameRate;
+		SharedData::debugInfo.engine.fixedFrameRateEnabled = engine->bUseFixedFrameRate;
+		SharedData::debugInfo.engine.fixedFrameRate = engine->FixedFrameRate;
 
 		SharedData::debugInfo.engine.smoothFrameRateEnabled = engine->bSmoothFrameRate;
-		SharedData::debugInfo.engine.smoothFrameRateLowerBound = engine->SmoothedFrameRateRange.LowerBound.Value;
-		SharedData::debugInfo.engine.smoothFrameRateUpperBound = engine->SmoothedFrameRateRange.UpperBound.Value;
+		SharedData::debugInfo.engine.smoothFrameRateRange = engine->SmoothedFrameRateRange;
 
 		SharedData::debugInfo.engine.subtitlesEnabled = engine->bSubtitlesEnabled;
 		SharedData::debugInfo.engine.subtitlesForcedOff = engine->bSubtitlesForcedOff;
 
 		SharedData::debugInfo.engine.pauseOnLossOfFocus = engine->bPauseOnLossOfFocus;
+
+		SDK::UGameViewportClient* viewportClient = engine->GameViewport;
+		if (SharedData::debugInfo.engine.viewportClient.viewportClientReference = viewportClient)
+		{
+			SharedData::debugInfo.engine.viewportClient.viewportClientClass = viewportClient->Class->GetFullName();
+			SharedData::debugInfo.engine.viewportClient.viewportClientObject = viewportClient->GetFullName();
+
+			SDK::UConsole* console = viewportClient->ViewportConsole;
+			if (SharedData::debugInfo.engine.viewportClient.console.consoleReference = console)
+			{
+				SharedData::debugInfo.engine.viewportClient.console.consoleClass = console->Class->GetFullName();
+				SharedData::debugInfo.engine.viewportClient.console.consoleObject = console->GetFullName();
+			}
+		}
 	}
 
 
 	SDK::UGameInstance* gameInstance = GameInstance::GetGameInstance();
-	if (SharedData::debugInfo.isGameInstancePresent = gameInstance)
+	if (SharedData::debugInfo.gameInstance.gameInstanceReference = gameInstance)
 	{
-		SharedData::debugInfo.gameInstanceClass = gameInstance->Class->GetFullName();
-		SharedData::debugInfo.gameInstanceObject = gameInstance->GetFullName();
+		SharedData::debugInfo.gameInstance.gameInstanceClass = gameInstance->Class->GetFullName();
+		SharedData::debugInfo.gameInstance.gameInstanceObject = gameInstance->GetFullName();
+
+		SDK::UOnlineSession* onlineSession = gameInstance->OnlineSession;
+		if (SharedData::debugInfo.gameInstance.onlineSession.onlineSessionReference = onlineSession)
+		{
+			SharedData::debugInfo.gameInstance.onlineSession.onlineSessionClass = gameInstance->Class->GetFullName();
+			SharedData::debugInfo.gameInstance.onlineSession.onlineSessionObject = gameInstance->GetFullName();
+		}
 	}
 
 
@@ -1185,119 +1720,119 @@ void GUI::SharedCalls::UpdateDebugInformation()
 	}
 
 
-	SDK::AGameStateBase* gameState = GameState::GetGameState();
-	if (SharedData::debugInfo.isGameStatePresent = gameState)
+	SDK::APlayerController* playerController = PlayerController::GetPlayerController();
+	if (SharedData::debugInfo.playerController.playerControllerReference = playerController)
 	{
-		SharedData::debugInfo.gameStateClass = gameState->Class->GetFullName();
-		SharedData::debugInfo.gameStateObject = gameState->GetFullName();
-	}
+		SharedData::debugInfo.playerController.playerControllerClass = playerController->Class->GetFullName();
+		SharedData::debugInfo.playerController.playerControllerObject = playerController->GetFullName();
 
 
-	SDK::UConsole* console = Console::GetConsole();
-	if (SharedData::debugInfo.isConsolePresent = console)
-	{
-		SharedData::debugInfo.consoleClass = console->Class->GetFullName();
-		SharedData::debugInfo.consoleObject = console->GetFullName();
-	}
-
-
-	SDK::UCheatManager* cheatManager = CheatManager::GetCheatManager();
-	if (SharedData::debugInfo.isCheatManagerPresent = cheatManager)
-	{
-		SharedData::debugInfo.cheatManagerClass = cheatManager->Class->GetFullName();
-		SharedData::debugInfo.cheatManagerObject = cheatManager->GetFullName();
-	}
-
-
-	SDK::APlayerController* controller = Controller::GetController();
-	if (SharedData::debugInfo.isControllerPresent = controller)
-	{
-		SharedData::debugInfo.controllerClass = controller->Class->GetFullName();
-		SharedData::debugInfo.controllerObject = controller->GetFullName();
-
-
-		SDK::UPlayer* player = controller->Player;
-		if (SharedData::debugInfo.isPlayerPresent = player)
+		SDK::UPlayer* player = playerController->Player;
+		if (SharedData::debugInfo.playerController.player.playerReference = player)
 		{
-			SharedData::debugInfo.playerClass = player->Class->GetFullName();
-			SharedData::debugInfo.playerObject = player->GetFullName();
+			SharedData::debugInfo.playerController.player.playerClass = player->Class->GetFullName();
+			SharedData::debugInfo.playerController.player.playerObject = player->GetFullName();
 		}
 
 
-		SDK::APawn* pawn = controller->AcknowledgedPawn;
-		if (SharedData::debugInfo.isPawnPresent = pawn)
+		SDK::APawn* pawn = playerController->AcknowledgedPawn;
+		if (SharedData::debugInfo.playerController.pawn.pawnReference = pawn)
 		{
-			SharedData::debugInfo.pawnClass = pawn->Class->GetFullName();
-			SharedData::debugInfo.pawnObject = pawn->GetFullName();
+			SharedData::debugInfo.playerController.pawn.pawnClass = pawn->Class->GetFullName();
+			SharedData::debugInfo.playerController.pawn.pawnObject = pawn->GetFullName();
 
 			SDK::FTransform pawnTransform = pawn->GetTransform();
-			SharedData::debugInfo.pawnLocation = SDK::UKismetStringLibrary::Conv_VectorToString(pawnTransform.Translation).ToString();
-			SharedData::debugInfo.pawnRotation = SDK::UKismetStringLibrary::Conv_RotatorToString(SDK::FRotator(pawnTransform.Rotation.X, pawnTransform.Rotation.Y, pawnTransform.Rotation.Z)).ToString();
-			SharedData::debugInfo.pawnScale = SDK::UKismetStringLibrary::Conv_VectorToString(pawnTransform.Scale3D).ToString();
+			SharedData::debugInfo.playerController.pawn.location = pawnTransform.Translation;
+			SharedData::debugInfo.playerController.pawn.rotation = SDK::FRotator(pawnTransform.Rotation.X, pawnTransform.Rotation.Y, pawnTransform.Rotation.Z);
+			SharedData::debugInfo.playerController.pawn.scale = pawnTransform.Scale3D;
 
-			SharedData::debugInfo.isPawnControlled = pawn->IsControlled();
-			SharedData::debugInfo.isPawnPawnControlled = pawn->IsPawnControlled();
-			SharedData::debugInfo.isPawnPlayerControlled = pawn->IsPlayerControlled();
-			SharedData::debugInfo.isPawnLocallyControlled = pawn->IsLocallyControlled();
-			SharedData::debugInfo.isPawnBotControlled = pawn->IsBotControlled();
+			SharedData::debugInfo.playerController.pawn.isControlled = pawn->IsControlled();
+			SharedData::debugInfo.playerController.pawn.isPawnControlled = pawn->IsPawnControlled();
+			SharedData::debugInfo.playerController.pawn.isPlayerControlled = pawn->IsPlayerControlled();
+			SharedData::debugInfo.playerController.pawn.isLocallyControlled = pawn->IsLocallyControlled();
+			SharedData::debugInfo.playerController.pawn.isBotControlled = pawn->IsBotControlled();
 		}
 
 
-		SDK::APlayerCameraManager* cameraManager = controller->PlayerCameraManager;
-		if (SharedData::debugInfo.isCameraManagerPresent = cameraManager)
+		SDK::APlayerCameraManager* cameraManager = playerController->PlayerCameraManager;
+		if (SharedData::debugInfo.playerController.cameraManager.cameraManagerReference = cameraManager)
 		{
-			SharedData::debugInfo.cameraManagerClass = cameraManager->Class->GetFullName();
-			SharedData::debugInfo.cameraManagerObject = cameraManager->GetFullName();
+			SharedData::debugInfo.playerController.cameraManager.cameraManagerClass = cameraManager->Class->GetFullName();
+			SharedData::debugInfo.playerController.cameraManager.cameraManagerObject = cameraManager->GetFullName();
 
 			SDK::FTransform cameraManagerTransform = cameraManager->GetTransform();
-			SharedData::debugInfo.cameraManagerLocation = SDK::UKismetStringLibrary::Conv_VectorToString(cameraManagerTransform.Translation).ToString();
-			SharedData::debugInfo.cameraManagerRotation = SDK::UKismetStringLibrary::Conv_RotatorToString(SDK::FRotator(cameraManagerTransform.Rotation.X, cameraManagerTransform.Rotation.Y, cameraManagerTransform.Rotation.Z)).ToString();
-			SharedData::debugInfo.cameraManagerScale = SDK::UKismetStringLibrary::Conv_VectorToString(cameraManagerTransform.Scale3D).ToString();
+			SharedData::debugInfo.playerController.cameraManager.location = cameraManagerTransform.Translation;
+			SharedData::debugInfo.playerController.cameraManager.rotation = SDK::FRotator(cameraManagerTransform.Rotation.X, cameraManagerTransform.Rotation.Y, cameraManagerTransform.Rotation.Z);
+			SharedData::debugInfo.playerController.cameraManager.scale = cameraManagerTransform.Scale3D;
 		}
-	}
 
 
-	SDK::UGameViewportClient* viewportClient = Engine::GetGameViewport();
-	if (SharedData::debugInfo.isViewportClientPresent = viewportClient)
-	{
-		SharedData::debugInfo.viewportClientClass = viewportClient->Class->GetFullName();
-		SharedData::debugInfo.viewportClientObject = viewportClient->GetFullName();
+		SDK::UCheatManager* cheatManager = playerController->CheatManager;
+		if (SharedData::debugInfo.playerController.cheatManager.cheatManagerReference = cheatManager)
+		{
+			SharedData::debugInfo.playerController.cheatManager.cheatManagerClass = cheatManager->Class->GetFullName();
+			SharedData::debugInfo.playerController.cheatManager.cheatManagerObject = cheatManager->GetFullName();
+		}
 	}
 
 
 	SDK::UWorld* world = SDK::UWorld::GetWorld();
-	if (SharedData::debugInfo.isWorldPresent = world)
+	if (SharedData::debugInfo.world.worldReference = world)
 	{
-		SharedData::debugInfo.worldClass = world->Class->GetFullName();
-		SharedData::debugInfo.worldObject = world->GetFullName();
+		SharedData::debugInfo.world.worldClass = world->Class->GetFullName();
+		SharedData::debugInfo.world.worldObject = world->GetFullName();
+
+		if (SDK::AGameStateBase* gameState = world->GameState)
+		{
+			SharedData::debugInfo.world.gameState.gameStateReference = gameState;
+
+			SharedData::debugInfo.world.gameState.gameStateClass = gameState->Class->GetFullName();
+			SharedData::debugInfo.world.gameState.gameStateObject = gameState->GetFullName();
+		}
+
+		if (SDK::UNetDriver* netDriver = world->NetDriver)
+		{
+			SharedData::debugInfo.world.netDriver.netDriverReference = netDriver;
+
+			SharedData::debugInfo.world.netDriver.netDriverClass = netDriver->Class->GetFullName();
+			SharedData::debugInfo.world.netDriver.netDriverObject = netDriver->GetFullName();
+		}
+
+		if (SDK::UNetDriver* demoNetDriver = world->NetDriver)
+		{
+			SharedData::debugInfo.world.demoNetDriver.demoNetDriverReference = demoNetDriver;
+
+			SharedData::debugInfo.world.demoNetDriver.demoNetDriverClass = demoNetDriver->Class->GetFullName();
+			SharedData::debugInfo.world.demoNetDriver.demoNetDriverObject = demoNetDriver->GetFullName();
+		}
 
 		if (SDK::ULevel* persistentLevel = world->PersistentLevel)
 		{
-			SharedData::debugInfo.persistentLevel.levelReference = persistentLevel;
+			SharedData::debugInfo.world.persistentLevel.levelReference = persistentLevel;
 
-			SharedData::debugInfo.persistentLevel.levelClass = persistentLevel->Class->GetFullName();
-			SharedData::debugInfo.persistentLevel.levelObject = persistentLevel->GetFullName();
-			SharedData::debugInfo.persistentLevel.levelName = SDK::UGameplayStatics::GetCurrentLevelName(world, false).ToString();
+			SharedData::debugInfo.world.persistentLevel.levelClass = persistentLevel->Class->GetFullName();
+			SharedData::debugInfo.world.persistentLevel.levelObject = persistentLevel->GetFullName();
+			SharedData::debugInfo.world.persistentLevel.levelName = SDK::UGameplayStatics::GetCurrentLevelName(world, false).ToString();
 
-			SharedData::debugInfo.persistentLevel.isLevelVisible = persistentLevel->bIsVisible;
+			SharedData::debugInfo.world.persistentLevel.isLevelVisible = persistentLevel->bIsVisible;
 
 			if (SDK::AWorldSettings* worldSettings = persistentLevel->WorldSettings)
 			{
-				SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsReference = worldSettings;
-				SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsClass = worldSettings->Class->GetFullName();
-				SharedData::debugInfo.persistentLevel.worldSettings.worldSettingsObject = worldSettings->GetFullName();
+				SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsReference = worldSettings;
+				SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsClass = worldSettings->Class->GetFullName();
+				SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsObject = worldSettings->GetFullName();
 
-				SharedData::debugInfo.persistentLevel.worldSettings.worldHighPriorityLoading = worldSettings->bHighPriorityLoading;
-				SharedData::debugInfo.persistentLevel.worldSettings.worldLocalHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
+				SharedData::debugInfo.world.persistentLevel.worldSettings.worldHighPriorityLoading = worldSettings->bHighPriorityLoading;
+				SharedData::debugInfo.world.persistentLevel.worldSettings.worldLocalHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
 
-				SharedData::debugInfo.persistentLevel.worldSettings.worldToMeters = worldSettings->WorldToMeters;
+				SharedData::debugInfo.world.persistentLevel.worldSettings.worldToMeters = worldSettings->WorldToMeters;
 			}
 		}
 
 		SDK::TArray<SDK::ULevelStreaming*> streamingLevels = world->StreamingLevels;
-		if (SharedData::debugInfo.areStreamingLevelsPresent = streamingLevels.Num() > 0)
+		if (streamingLevels.Num() > 0)
 		{
-			SharedData::debugInfo.streamingLevels.clear();
+			SharedData::debugInfo.world.streamingLevels.clear();
 
 			for (SDK::ULevelStreaming* level : streamingLevels)
 			{
@@ -1339,16 +1874,16 @@ void GUI::SharedCalls::UpdateDebugInformation()
 					}
 				}
 
-				SharedData::debugInfo.streamingLevels.push_back(streamingLevel);
+				SharedData::debugInfo.world.streamingLevels.push_back(streamingLevel);
 			}
 		}
 
-		SharedData::debugInfo.gameTimeInSeconds = SDK::UKismetSystemLibrary::GetGameTimeInSeconds(world);
+		SharedData::debugInfo.world.gameTimeInSeconds = SDK::UKismetSystemLibrary::GetGameTimeInSeconds(world);
 
-		SharedData::debugInfo.isServer = SDK::UKismetSystemLibrary::IsServer(world);
-		SharedData::debugInfo.isDedicatedServer = SDK::UKismetSystemLibrary::IsDedicatedServer(world);
-		SharedData::debugInfo.isSplitScreen = SDK::UKismetSystemLibrary::IsSplitScreen(world);
-		SharedData::debugInfo.isStandalone = SDK::UKismetSystemLibrary::IsStandalone(world);
+		SharedData::debugInfo.world.isServer = SDK::UKismetSystemLibrary::IsServer(world);
+		SharedData::debugInfo.world.isDedicatedServer = SDK::UKismetSystemLibrary::IsDedicatedServer(world);
+		SharedData::debugInfo.world.isSplitScreen = SDK::UKismetSystemLibrary::IsSplitScreen(world);
+		SharedData::debugInfo.world.isStandalone = SDK::UKismetSystemLibrary::IsStandalone(world);
 	}
 
 
@@ -1415,7 +1950,7 @@ void GUI::SharedCalls::UpdateDebugInformation()
 
 void GUI::SharedCalls::ProcessKeybindings()
 {
-	if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.menuOpenClose))
+	if (ImGui::IsKeyBindingDown(&SharedData::keybindingsInfo.menuOpenCloseSub) && ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.menuOpenCloseMain))
 	{
 		ToggleIsActive();
 	}
@@ -1465,6 +2000,9 @@ void GUI::SharedCalls::ProcessKeybindings()
 
 
 
+// ========================================================
+// |       #GUI #SHARED #FUNCTIONS #SHAREDFUNCTIONS       |
+// ========================================================
 void GUI::SharedFunctions::Ghost()
 {
 	GUI::PlayActionSound(Character::Ghost());

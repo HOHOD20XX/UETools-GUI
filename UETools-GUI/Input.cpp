@@ -57,6 +57,8 @@ bool Input::CreateConsoleBindings()
 		InputSettings->ConsoleKeys[1].KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"F10");
 	if (bindingsNum > 2)
 		InputSettings->ConsoleKeys[2].KeyName = SDK::UKismetStringLibrary::Conv_StringToName(L"¸");
+
+	return true;
 }
 
 
@@ -66,7 +68,7 @@ bool Input::SetIsInputDisabled(const bool& newInputDisabled)
 {
 	if (newInputDisabled)
 	{
-		SDK::APlayerController* Controller = Controller::GetController();
+		SDK::APlayerController* Controller = PlayerController::GetPlayerController();
 		if (Controller == nullptr)
 			return false;
 
