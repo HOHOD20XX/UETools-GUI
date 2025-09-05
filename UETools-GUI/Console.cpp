@@ -68,7 +68,7 @@ bool Console::Print(const std::wstring& wideString)
 
 bool Console::Print(const std::string& string)
 {
-    return Print(StringUtilities::String_ToWString(string));
+    return Print(std::wstring(string.begin(), string.end()));
 }
 
 

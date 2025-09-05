@@ -333,7 +333,7 @@ void ImGui::ReadOnlyInputText(const char* label, const char* text, const bool& s
 		ImGui::SameLine();
 		if (ImGui::Button("Copy"))
 		{
-			WindowsUtilities::SetClipboard(buffer.data());
+			Clipboard::SetClipboard(buffer.data());
 			GUI::PlayActionSound(true);
 		}
 	}
