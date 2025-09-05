@@ -5,7 +5,7 @@
 
 
 
-SDK::FVector Math::Normalize(const SDK::FVector& vector)
+SDK::FVector Math::NormalizeVector(const SDK::FVector& vector)
 {
     float vectorLengthSquared = (vector.X * vector.X) + (vector.Y * vector.Y) + (vector.Z * vector.Z);
     if (vectorLengthSquared < 0.01f)
@@ -13,6 +13,19 @@ SDK::FVector Math::Normalize(const SDK::FVector& vector)
 
     float vectorLengthInverted = 1.0f / sqrt(vectorLengthSquared);
     return vector * vectorLengthInverted;
+}
+
+double Math::NormalizeAngle(const double& angle)
+{
+    return angle / 360.0;
+}
+
+
+
+
+double Math::InverseNormalizeAngle(const double& normalizedAngle)
+{
+    return (-360.0 + (normalizedAngle + 1) * 360.0);
 }
 
 

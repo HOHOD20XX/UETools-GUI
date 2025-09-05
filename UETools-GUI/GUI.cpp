@@ -172,7 +172,7 @@ void ImGui::TextVector(const char* label, const SDK::FVector& value, const bool&
 		"Z:"
 	};
 
-	const float coords[3]
+	const double coords[3]
 	{
 		value.X,
 		value.Y,
@@ -193,7 +193,9 @@ void ImGui::TextVector(const char* label, const SDK::FVector& value, const bool&
 	for (int i = 0; i < 3; i++)
 	{
 		if (useColoring) ImGui::PushStyleColor(ImGuiCol_Text, axis_colors[i]);
+		ImGui::SetFontBig();
 		ImGui::TextUnformatted(axis_prefixes[i]);
+		ImGui::SetFontRegular();
 		if (useColoring) ImGui::PopStyleColor();
 
 		ImGui::SameLine();
@@ -244,7 +246,7 @@ void ImGui::TextRotator(const char* label, const SDK::FRotator& value, const boo
 		"Roll:"
 	};
 
-	const float angles[3]
+	const double angles[3]
 	{
 		value.Pitch,
 		value.Yaw,
@@ -265,14 +267,16 @@ void ImGui::TextRotator(const char* label, const SDK::FRotator& value, const boo
 	for (int i = 0; i < 3; i++)
 	{
 		if (useColoring) ImGui::PushStyleColor(ImGuiCol_Text, axis_colors[i]);
+		ImGui::SetFontBig();
 		ImGui::TextUnformatted(axis_prefixes[i]);
+		ImGui::SetFontRegular();
 		if (useColoring) ImGui::PopStyleColor();
 
 		ImGui::SameLine();
 
 		bool neutralValue = angles[i] > -0.0000001 && angles[i] < 0.0000001;
 		if (useColoring && !neutralValue) ImGui::PushStyleColor(ImGuiCol_Text, angles[i] > 0.0 ? color_positive : color_negative);
-		ImGui::Text("%f (%.2fC)", neutralValue ? 0.0 : angles[i], neutralValue ? 0.0 : (-360.0 + (angles[i] + 1) * 360.0));
+		ImGui::Text("%f", neutralValue ? 0.0 : angles[i]);
 		if (useColoring && !neutralValue) ImGui::PopStyleColor();
 
 		if (i != 2)
@@ -582,7 +586,7 @@ void GUI::Draw()
 			if (waitModeTimeLeft < 0.0)
 			{
 				if (SharedData::debugInfo.isActive)
-					SharedCalls::UpdateDebugInformation();
+					SharedCalls::GatherDebugInformation();
 
 				SetIsInWaitMode(false);
 			}
@@ -613,7 +617,7 @@ void GUI::Draw()
 
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.6) | ");
+			ImGui::Text("UETools GUI (v0.7) | ");
 			if (ImGui::BeginMenu("Debug"))
 			{
 				if (SharedData::debugInfo.isActive)
@@ -658,7 +662,7 @@ void GUI::Draw()
 						const double elapsed = now - SharedData::debugInfo.lastUpdateTime;
 
 						if (elapsed >= SharedData::debugInfo.autoUpdateDelay)
-							SharedCalls::UpdateDebugInformation();
+							SharedCalls::GatherDebugInformation();
 					}
 					else
 					{
@@ -688,9 +692,9 @@ void GUI::Draw()
 					
 
 					ImGui::BeginDisabled(SharedData::debugInfo.autoUpdate);
-					if (ImGui::Button("Update"))
+					if (ImGui::Button("Update##DebugInformation"))
 					{
-						SharedCalls::UpdateDebugInformation();
+						SharedCalls::GatherDebugInformation();
 						PlayActionSound(true);
 					}
 					ImGui::EndDisabled();
@@ -749,7 +753,7 @@ void GUI::Draw()
 										{
 											bool wasConsoleConstructed = Console::ConstructConsole() && Input::CreateConsoleBindings();
 											if (wasConsoleConstructed)
-												SharedCalls::UpdateDebugInformation();
+												SharedCalls::GatherDebugInformation();
 
 											PlayActionSound(wasConsoleConstructed);
 										}
@@ -1063,7 +1067,7 @@ void GUI::Draw()
 								{
 									bool wasCheatManagerConstructed = CheatManager::ConstructCheatManager();
 									if (wasCheatManagerConstructed)
-										SharedCalls::UpdateDebugInformation();
+										SharedCalls::GatherDebugInformation();
 
 									PlayActionSound(wasCheatManagerConstructed);
 								}
@@ -1290,6 +1294,284 @@ void GUI::Draw()
 					ImGui::Separator();
 					ImGui::NewLine();
 
+					ImGui::SetFontTitle();
+					ImGui::Text("Actors");
+					ImGui::SetFontRegular();
+					if (ImGui::CollapsingHeader("Details##Actors"))
+					{
+						if (ImGui::Button("Update##Actors"))
+						{
+							SharedCalls::GatherActors();
+							PlayActionSound(true);
+						}
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						ImGui::InputText("Search Filter", SharedData::debugInfo.gatherActorsFeature.filterBuffer, SharedData::debugInfo.gatherActorsFeature.filterBufferSize);
+						size_t filterLength = strlen(SharedData::debugInfo.gatherActorsFeature.filterBuffer);
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						ImGui::Checkbox("Case Sensitive", &SharedData::debugInfo.gatherActorsFeature.filterCaseSensitive);
+
+						ImGui::NewLine();
+
+						for (SharedData::S_Actor& actor : SharedData::debugInfo.gatherActorsFeature.actors) // <-- Reference!
+						{
+							bool outputToUserInterface = filterLength == 0;
+
+							if (outputToUserInterface == false)
+							{
+								if (SharedData::debugInfo.gatherActorsFeature.filterCaseSensitive)
+									outputToUserInterface = actor.actorObject.find(SharedData::debugInfo.gatherActorsFeature.filterBuffer) != std::string::npos;
+								else
+								{
+									std::string actorObjectLower = actor.actorObject;
+									std::string filterLower = SharedData::debugInfo.gatherActorsFeature.filterBuffer;
+
+									std::transform(actorObjectLower.begin(), actorObjectLower.end(), actorObjectLower.begin(),
+										[](unsigned char c) { return std::tolower(c); });
+									std::transform(filterLower.begin(), filterLower.end(), filterLower.begin(),
+										[](unsigned char c) { return std::tolower(c); });
+
+									outputToUserInterface = actorObjectLower.find(filterLower) != std::string::npos;
+								}
+							}
+
+							if (outputToUserInterface)
+							{
+								if (ImGui::TreeNode(actor.actorObject.c_str()))
+								{
+									ImGui::PushID(actor.actorObject.c_str());
+
+									ImGui::Text("Actor Class: %s", actor.actorClass.c_str());
+									ImGui::Text("Actor Object: %s", actor.actorObject.c_str());
+
+									float actorLocation[3] = { actor.location.X, actor.location.Y, actor.location.Z };
+									ImGui::Text("Location:");
+									ImGui::SameLine();
+									if (ImGui::InputFloat3("##Location", actorLocation))
+										actor.location = SDK::FVector(actorLocation[0], actorLocation[1], actorLocation[2]);
+									ImGui::SameLine();
+									if (ImGui::Button("Set##Location"))
+									{
+										if (actor.actorReference)
+										{
+											actor.actorReference->K2_TeleportTo(actor.location, actor.actorReference->K2_GetActorRotation());
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+
+									float actorRotation[3] = { actor.rotation.Pitch, actor.rotation.Yaw, actor.rotation.Roll };
+									ImGui::Text("Rotation:");
+									ImGui::SameLine();
+									if (ImGui::InputFloat3("##Rotation", actorRotation))
+										actor.rotation = SDK::FRotator(actorRotation[0], actorRotation[1], actorRotation[2]);
+									ImGui::SameLine();
+									if (ImGui::Button("Set##Rotation"))
+									{
+										if (actor.actorReference)
+										{
+											actor.actorReference->K2_TeleportTo(actor.actorReference->K2_GetActorLocation(), actor.rotation);
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+
+									float actorScale[3] = { actor.scale.X, actor.scale.Y, actor.scale.Z };
+									ImGui::Text("Scale:   ");
+									ImGui::SameLine();
+									if (ImGui::InputFloat3("##Scale", actorScale))
+										actor.scale = SDK::FVector(actorScale[0], actorScale[1], actorScale[2]);
+									ImGui::SameLine();
+									if (ImGui::Button("Set##Scale"))
+									{
+										if (actor.actorReference)
+										{
+											actor.actorReference->SetActorScale3D(actor.scale);
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+
+									ImGui::Text("         ");
+									ImGui::SameLine();
+									if (ImGui::Button("Static"))
+									{
+										if (actor.actorReference && actor.actorReference->RootComponent)
+										{
+											actor.actorReference->RootComponent->Mobility = SDK::EComponentMobility::Static;
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+									ImGui::SameLine();
+									if (ImGui::Button("Stationary"))
+									{
+										if (actor.actorReference && actor.actorReference->RootComponent)
+										{
+											actor.actorReference->RootComponent->Mobility = SDK::EComponentMobility::Stationary;
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+									ImGui::SameLine();
+									if (ImGui::Button("Movable"))
+									{
+										if (actor.actorReference && actor.actorReference->RootComponent)
+										{
+											actor.actorReference->RootComponent->Mobility = SDK::EComponentMobility::Movable;
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+
+									ImGui::Text("         ");
+									ImGui::SameLine();
+									if (ImGui::Button("Set Visible"))
+									{
+										if (actor.actorReference)
+										{
+											actor.actorReference->SetActorHiddenInGame(false);
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+									ImGui::SameLine();
+									if (ImGui::Button("Set Hidden"))
+									{
+										if (actor.actorReference)
+										{
+											actor.actorReference->SetActorHiddenInGame(true);
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
+
+									ImGui::NewLine();
+
+									ImGui::SetFontTitle();
+									ImGui::Text("Components");
+									ImGui::SetFontRegular();
+									if (ImGui::TreeNode("Details##Components"))
+									{
+										
+										ImGui::InputText("Search Filter", SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer, SharedData::debugInfo.gatherActorsFeature.componentsFilterBufferSize);
+										size_t componentsFilterLength = strlen(SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer);
+										ImGui::SameLine();
+										ImGui::Spacing();
+										ImGui::SameLine();
+										ImGui::Checkbox("Case Sensitive", &SharedData::debugInfo.gatherActorsFeature.componentsFilterCaseSensitive);
+
+										ImGui::NewLine();
+
+										for (SharedData::S_ActorComponent& component : actor.components) // <-- Reference!
+										{
+											bool componentOutputToUserInterface = componentsFilterLength == 0;
+
+											if (componentOutputToUserInterface == false)
+											{
+												if (SharedData::debugInfo.gatherActorsFeature.componentsFilterCaseSensitive)
+													componentOutputToUserInterface = component.actorComponentObject.find(SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer) != std::string::npos;
+												else
+												{
+													std::string componentObjectLower = component.actorComponentObject;
+													std::string componentFilterLower = SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer;
+
+													std::transform(componentObjectLower.begin(), componentObjectLower.end(), componentObjectLower.begin(),
+														[](unsigned char c) { return std::tolower(c); });
+													std::transform(componentFilterLower.begin(), componentFilterLower.end(), componentFilterLower.begin(),
+														[](unsigned char c) { return std::tolower(c); });
+
+													componentOutputToUserInterface = componentObjectLower.find(componentFilterLower) != std::string::npos;
+												}
+											}
+
+											if (componentOutputToUserInterface)
+											{
+												if (ImGui::TreeNode(component.actorComponentObject.c_str()))
+												{
+													ImGui::Text("Component Class: %s", component.actorComponentClass.c_str());
+													ImGui::Text("Component Object: %s", component.actorComponentObject.c_str());
+
+													ImGui::NewLine();
+
+													ImGui::TextBoolColored("Is Active:", component.isActive);
+													ImGui::TextBoolColored("Auto Activate:", component.autoActivate);
+													ImGui::TextBoolColored("Editor Only:", component.editorOnly);
+													if (ImGui::Button("Activate"))
+													{
+														if (component.actorComponentReference)
+														{
+															component.actorComponentReference->Activate(false);
+															component.isActive = true;
+															PlayActionSound(true);
+														}
+														else
+															PlayActionSound(false);
+													}
+													ImGui::SameLine();
+													if (ImGui::Button("Reset"))
+													{
+														if (component.actorComponentReference)
+														{
+															component.actorComponentReference->Activate(true);
+															component.isActive = true;
+															PlayActionSound(true);
+														}
+														else
+															PlayActionSound(false);
+													}
+													ImGui::SameLine();
+													if (ImGui::Button("Deactivate"))
+													{
+														if (component.actorComponentReference)
+														{
+															component.actorComponentReference->Deactivate();
+															component.isActive = false;
+															PlayActionSound(true);
+														}
+														else
+															PlayActionSound(false);
+													}
+
+													ImGui::NewLine();
+
+													ImGui::TextBoolColored("Net Addressible:", component.netAddressible);
+													ImGui::TextBoolColored("Replicates:", component.replicates);
+
+													ImGui::NewLine();
+
+													ImGui::Text("Creation Method: %d", component.creationMethod);
+
+													ImGui::TreePop();
+												}
+											}
+										}
+
+										ImGui::TreePop();
+									}
+
+									ImGui::PopID();
+									ImGui::TreePop();
+								}
+							}
+						}
+					}
+
+					ImGui::NewLine();
+					ImGui::Separator();
+					ImGui::NewLine();
+
 					if (SharedData::debugInfo.wasProjectNameObtained)
 						ImGui::Text("Project Name: %s", SharedData::debugInfo.projectName.c_str());
 
@@ -1309,7 +1591,7 @@ void GUI::Draw()
 					if (ImGui::Button("Start"))
 					{
 						if (SharedData::debugInfo.autoUpdate == false)
-							SharedCalls::UpdateDebugInformation();
+							SharedCalls::GatherDebugInformation();
 
 						SharedData::debugInfo.isActive = true;
 						PlayActionSound(true);
@@ -1609,7 +1891,7 @@ void GUI::SharedWorkers::FeaturesWorker()
 					SDK::APlayerCameraManager* cameraManager = SharedData::objectsInfo.controller->PlayerCameraManager;
 					if (cameraManager)
 					{
-						SDK::FVector characterVelocityNormalized = Math::Normalize(characterVelocity);
+						SDK::FVector characterVelocityNormalized = Math::NormalizeVector(characterVelocity);
 						SDK::FVector cameraForwardVector = cameraManager->GetActorForwardVector();
 						double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
 
@@ -1637,7 +1919,7 @@ void GUI::SharedWorkers::FeaturesWorker()
 // ========================================================
 // |            #GUI #SHARED #CALLS #SHAREDCALLS          |
 // ========================================================
-void GUI::SharedCalls::UpdateDebugInformation()
+void GUI::SharedCalls::GatherDebugInformation()
 {
 	SDK::UEngine* engine = Engine::GetEngine();
 	if (SharedData::debugInfo.engine.engineReference = engine)
@@ -1743,7 +2025,7 @@ void GUI::SharedCalls::UpdateDebugInformation()
 
 			SDK::FTransform pawnTransform = pawn->GetTransform();
 			SharedData::debugInfo.playerController.pawn.location = pawnTransform.Translation;
-			SharedData::debugInfo.playerController.pawn.rotation = SDK::FRotator(pawnTransform.Rotation.X, pawnTransform.Rotation.Y, pawnTransform.Rotation.Z);
+			SharedData::debugInfo.playerController.pawn.rotation = SDK::FRotator(Math::InverseNormalizeAngle(pawnTransform.Rotation.X), Math::InverseNormalizeAngle(pawnTransform.Rotation.Y), Math::InverseNormalizeAngle(pawnTransform.Rotation.Z));
 			SharedData::debugInfo.playerController.pawn.scale = pawnTransform.Scale3D;
 
 			SharedData::debugInfo.playerController.pawn.isControlled = pawn->IsControlled();
@@ -1762,7 +2044,7 @@ void GUI::SharedCalls::UpdateDebugInformation()
 
 			SDK::FTransform cameraManagerTransform = cameraManager->GetTransform();
 			SharedData::debugInfo.playerController.cameraManager.location = cameraManagerTransform.Translation;
-			SharedData::debugInfo.playerController.cameraManager.rotation = SDK::FRotator(cameraManagerTransform.Rotation.X, cameraManagerTransform.Rotation.Y, cameraManagerTransform.Rotation.Z);
+			SharedData::debugInfo.playerController.cameraManager.rotation = SDK::FRotator(Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.X), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Y), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Z));
 			SharedData::debugInfo.playerController.cameraManager.scale = cameraManagerTransform.Scale3D;
 		}
 
@@ -1834,47 +2116,47 @@ void GUI::SharedCalls::UpdateDebugInformation()
 		{
 			SharedData::debugInfo.world.streamingLevels.clear();
 
-			for (SDK::ULevelStreaming* level : streamingLevels)
+			for (SDK::ULevelStreaming* streamingLevel : streamingLevels)
 			{
-				if (level == nullptr)
+				if (streamingLevel == nullptr)
 					continue;
 
 #ifdef UE5
 				std::string streamingLevelPath = level->WorldAsset.ObjectID.AssetPath.AssetName.GetRawString();
 #else
-				std::string streamingLevelPath = level->WorldAsset.ObjectID.AssetPathName.GetRawString();
+				std::string streamingLevelPath = streamingLevel->WorldAsset.ObjectID.AssetPathName.GetRawString();
 #endif
 				if (streamingLevelPath.empty())
 					continue;
 
-				SharedData::S_StreamingLevel streamingLevel = {};
-				streamingLevel.streamingLevelReference = level;
-				streamingLevel.streamingLevelPath = streamingLevelPath;
-				streamingLevel.streamingLevelColor = level->LevelColor;
+				SharedData::S_StreamingLevel streamingLevelData = {};
+				streamingLevelData.streamingLevelReference = streamingLevel;
+				streamingLevelData.streamingLevelPath = streamingLevelPath;
+				streamingLevelData.streamingLevelColor = streamingLevel->LevelColor;
 
-				SDK::ULevel* loadedLevel = level->LoadedLevel;
-				if (streamingLevel.level.levelReference = loadedLevel)
+				SDK::ULevel* loadedLevel = streamingLevel->LoadedLevel;
+				if (streamingLevelData.level.levelReference = loadedLevel)
 				{
-					streamingLevel.level.levelClass = level->Class->GetFullName();
-					streamingLevel.level.levelObject = level->GetFullName();
-					streamingLevel.level.levelName = SDK::UGameplayStatics::GetCurrentLevelName(world, false).ToString();
+					streamingLevelData.level.levelClass = streamingLevel->Class->GetFullName();
+					streamingLevelData.level.levelObject = streamingLevel->GetFullName();
+					streamingLevelData.level.levelName = SDK::UGameplayStatics::GetCurrentLevelName(world, false).ToString();
 
-					streamingLevel.level.isLevelVisible = loadedLevel->bIsVisible;
+					streamingLevelData.level.isLevelVisible = loadedLevel->bIsVisible;
 					
 					SDK::AWorldSettings* worldSettings = loadedLevel->WorldSettings;
-					if (streamingLevel.level.worldSettings.worldSettingsReference = worldSettings)
+					if (streamingLevelData.level.worldSettings.worldSettingsReference = worldSettings)
 					{
-						streamingLevel.level.worldSettings.worldSettingsClass = worldSettings->Class->GetFullName();
-						streamingLevel.level.worldSettings.worldSettingsObject = worldSettings->GetFullName();
+						streamingLevelData.level.worldSettings.worldSettingsClass = worldSettings->Class->GetFullName();
+						streamingLevelData.level.worldSettings.worldSettingsObject = worldSettings->GetFullName();
 
-						streamingLevel.level.worldSettings.worldHighPriorityLoading = worldSettings->bHighPriorityLoading;
-						streamingLevel.level.worldSettings.worldLocalHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
+						streamingLevelData.level.worldSettings.worldHighPriorityLoading = worldSettings->bHighPriorityLoading;
+						streamingLevelData.level.worldSettings.worldLocalHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
 
-						streamingLevel.level.worldSettings.worldToMeters = worldSettings->WorldToMeters;
+						streamingLevelData.level.worldSettings.worldToMeters = worldSettings->WorldToMeters;
 					}
 				}
 
-				SharedData::debugInfo.world.streamingLevels.push_back(streamingLevel);
+				SharedData::debugInfo.world.streamingLevels.push_back(streamingLevelData);
 			}
 		}
 
@@ -1943,6 +2225,61 @@ void GUI::SharedCalls::UpdateDebugInformation()
 
 
 	SharedData::debugInfo.lastUpdateTime = ImGui::GetTime();
+}
+
+
+
+
+void GUI::SharedCalls::GatherActors()
+{
+	SharedData::debugInfo.gatherActorsFeature.actors.clear();
+
+	int32_t objectsNum = SDK::UObject::GObjects->Num();
+	for (int i = 0; i < objectsNum; i++)
+	{
+		SDK::UObject* objectReference = SDK::UObject::GObjects->GetByIndex(i);
+
+		if (objectReference == nullptr || objectReference->IsDefaultObject())
+			continue;
+
+		if (objectReference->IsA(SDK::AActor::StaticClass()))
+		{
+			SharedData::S_Actor actorData = {};
+
+			SDK::AActor* actor = static_cast<SDK::AActor*>(objectReference);
+			actorData.actorReference = actor;
+			actorData.actorClass = actor->Class->GetFullName();
+			actorData.actorObject = actor->GetFullName();
+
+			SDK::FTransform actorTransform = actor->GetTransform();
+			actorData.location = actorTransform.Translation;
+			actorData.rotation = SDK::FRotator(Math::InverseNormalizeAngle(actorTransform.Rotation.X), Math::InverseNormalizeAngle(actorTransform.Rotation.Y), Math::InverseNormalizeAngle(actorTransform.Rotation.Z));
+			actorData.scale = actorTransform.Scale3D;
+
+			SDK::TArray<SDK::UActorComponent*> actorComponents = actor->K2_GetComponentsByClass(SDK::UActorComponent::StaticClass());
+			for (SDK::UActorComponent* component : actorComponents)
+			{
+				SharedData::S_ActorComponent componentData = {};
+
+				componentData.actorComponentReference = component;
+				componentData.actorComponentClass = component->Class->GetFullName();
+				componentData.actorComponentObject = component->GetFullName();
+
+				componentData.isActive = component->bIsActive;
+				componentData.autoActivate = component->bAutoActivate;
+				componentData.editorOnly = component->bIsEditorOnly;
+
+				componentData.netAddressible = component->bNetAddressable;
+				componentData.replicates = component->bReplicates;
+
+				componentData.creationMethod = component->CreationMethod;
+
+				actorData.components.push_back(componentData);
+			}
+
+			SharedData::debugInfo.gatherActorsFeature.actors.push_back(actorData);
+		}
+	}
 }
 
 

@@ -9,7 +9,14 @@
 class Math
 {
 public:
-	static SDK::FVector Normalize(const SDK::FVector& vector);
+	static SDK::FVector NormalizeVector(const SDK::FVector& vector);
+	static double NormalizeAngle(const double& angle);
+
+
+
+
+public:
+	static double InverseNormalizeAngle(const double& normalizedAngle);
 
 
 

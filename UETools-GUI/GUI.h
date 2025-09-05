@@ -84,6 +84,14 @@ namespace ImGui
 	{
 		SetFontScale(1.0f);
 	}
+	static void SetFontBig()
+	{
+		SetFontScale(1.1f);
+	}
+	static void SetFontLarge()
+	{
+		SetFontScale(1.25f);
+	}
 	static void SetFontTitle()
 	{
 		SetFontScale(1.5f);
@@ -225,7 +233,12 @@ public:
 	class SharedCalls
 	{
 	public:
-		static void UpdateDebugInformation();
+		static void GatherDebugInformation();
+
+
+	public:
+		static void GatherActors();
+
 
 	public:
 		static void ProcessKeybindings();
@@ -461,6 +474,54 @@ public:
 			S_CheatManager cheatManager;
 		};
 
+		struct S_ActorComponent
+		{
+			SDK::UActorComponent* actorComponentReference;
+			std::string actorComponentClass;
+			std::string actorComponentObject;
+
+			bool isActive;
+			bool autoActivate;
+			bool editorOnly;
+
+			bool netAddressible;
+			bool replicates;
+
+			SDK::EComponentCreationMethod creationMethod;
+		};
+
+		struct S_Actor
+		{
+			SDK::AActor* actorReference;
+			std::string actorClass;
+			std::string actorObject;
+
+			SDK::FVector location;
+			SDK::FRotator rotation;
+			SDK::FVector scale;
+
+			std::vector<S_ActorComponent> components;
+		};
+
+
+
+
+	public:
+		struct S_GatherActorsFeature
+		{
+			bool enabled;
+
+			char filterBuffer[255];
+			size_t filterBufferSize = 255;
+			bool filterCaseSensitive = true;
+
+			char componentsFilterBuffer[255];
+			size_t componentsFilterBufferSize = 255;
+			bool componentsFilterCaseSensitive = true;
+
+			std::vector<S_Actor> actors;
+		};
+
 
 
 
@@ -483,6 +544,8 @@ public:
 			S_PlayerController playerController;
 
 			S_World world;
+
+			S_GatherActorsFeature gatherActorsFeature;
 
 			bool wasProjectNameObtained;
 			std::string projectName;
