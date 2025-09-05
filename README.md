@@ -14,7 +14,7 @@ Dumper-7 (SDK) based solution for rapid debugging of Unreal Engine powered title
 > **Disclaimer:** Solution was developed for general use in Unreal Engine powered titles. The author does not condone cheating, modding, or the manipulation of [online competitive games](https://en.wikipedia.org/wiki/List_of_esports_games). The author bears no responsibility for the specific games or contexts in which the solution is used.
 
 # Dependencies
-### [Dumper-7](https://github.com/Encryqed/Dumper-7) & [ImGui](https://github.com/ocornut/imgui) & [CranchyLib.CPP](https://github.com/Cranch-fur/CranchyLib.CPP)
+### [Dumper-7](https://github.com/Encryqed/Dumper-7) & [ImGui](https://github.com/ocornut/imgui)
 
 # Baseline & Environment
 ```
