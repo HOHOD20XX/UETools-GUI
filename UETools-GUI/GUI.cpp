@@ -2287,7 +2287,7 @@ void GUI::SharedCalls::GatherActors()
 
 void GUI::SharedCalls::ProcessKeybindings()
 {
-	if (ImGui::IsKeyBindingDown(&SharedData::keybindingsInfo.menuOpenCloseSub) && ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.menuOpenCloseMain))
+	if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.menuOpenClose))
 	{
 		ToggleIsActive();
 	}

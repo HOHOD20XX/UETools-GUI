@@ -603,8 +603,7 @@ public:
 	public:
 		struct S_KeybindingsInformation
 		{
-			ImGui::S_KeyBinding menuOpenCloseSub;
-			ImGui::S_KeyBinding menuOpenCloseMain;
+			ImGui::S_KeyBinding menuOpenClose;
 
 			ImGui::S_KeyBinding ghost;
 			ImGui::S_KeyBinding fly;
@@ -616,8 +615,7 @@ public:
 			ImGui::S_KeyBinding dash;
 
 			S_KeybindingsInformation()
-				: menuOpenCloseSub { ImGuiKey_LeftShift },
-				  menuOpenCloseMain{ ImGuiKey_Insert },
+				: menuOpenClose { ImGuiKey_Insert },
 				  ghost{ ImGuiKey_Keypad7 },
 				  fly{ ImGuiKey_Keypad8 },
 				  walk{ ImGuiKey_Keypad9 }
