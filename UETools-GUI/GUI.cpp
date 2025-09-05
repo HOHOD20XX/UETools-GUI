@@ -2122,7 +2122,7 @@ void GUI::SharedCalls::GatherDebugInformation()
 					continue;
 
 #ifdef UE5
-				std::string streamingLevelPath = level->WorldAsset.ObjectID.AssetPath.AssetName.GetRawString();
+				std::string streamingLevelPath = streamingLevel->WorldAsset.ObjectID.AssetPath.AssetName.GetRawString();
 #else
 				std::string streamingLevelPath = streamingLevel->WorldAsset.ObjectID.AssetPathName.GetRawString();
 #endif
