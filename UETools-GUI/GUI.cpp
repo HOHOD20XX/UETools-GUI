@@ -317,7 +317,7 @@ void ImGui::ReadOnlyInputText(const char* label, const char* text, const bool& s
 		ImGui::SameLine();
 	}
 
-	ImGui::PushID(label ? label : (text ? text : "##ReadOnlyInputText"));
+	ImGui::PushID(label ? label : (text ? text : "ReadOnlyInputText"));
 	const size_t length = text ? strlen(text) : 0;
 
 	static std::vector<char> buffer;
@@ -447,40 +447,48 @@ bool ImGui::KeyBindingInput(const char* label, KeyBinding* binding)
 	if (!binding)
 		return false;
 
-	bool hasChanged = false;
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
 
-	const char* elementId = strstr(label, "##");
-	if (elementId)
-		TextUnformatted(label, elementId);
-	else
-		TextUnformatted(label);
+		ImGui::SameLine();
+	}
+
+	ImGui::PushID(label ? label : "KeyBindingInput");
 
 	SameLine();
 
+	bool hasBindingChanged = false;
 	if (binding->isDetermined)
 	{
-		const char* inputName = binding->key == ImGuiKey_None ? "Unbound" : GetKeyName(binding->key);
-		std::string buttonName = std::string(inputName) + "##" + label;
+		const char* bindingName = binding->key == ImGuiKey_None ? "Unbound" : GetKeyName(binding->key);
+		ImVec2 bindingSize = ImVec2{ 64.0f, 0.0f };
 
-		if (Button(buttonName.c_str()))
+		if (Button(bindingName, bindingSize))
 			binding->isDetermined = false;
 	}
 	else
 	{
-		Button("Press any key...");
+		Button("...");
 		for (int keyCode = ImGuiKey_NamedKey_BEGIN; keyCode < ImGuiKey_NamedKey_END; keyCode++)
 		{
 			if (IsKeyPressed((ImGuiKey)keyCode))
 			{
 				binding->key = (ImGuiKey)keyCode;
 				binding->isDetermined = true;
-				hasChanged = true;
+				hasBindingChanged = true;
 				break;
 			}
 		}
 	}
 
-	return hasChanged;
+	ImGui::PopID();
+
+	return hasBindingChanged;
 }
 
 bool ImGui::IsKeyBindingPressed(KeyBinding* binding, const bool& waitForRelease)
@@ -578,49 +586,35 @@ void GUI::Init(const HMODULE& applicationModule)
 
 void GUI::Draw()
 {
+	ImGuiViewport* iViewPort = ImGui::GetMainViewport();
+	ImVec2 iViewPortPosition = { iViewPort->Pos.x, iViewPort->Pos.y };
+	ImVec2 iViewPortSize = { iViewPort->Size.x, iViewPort->Size.y };
+
+	ImDrawList* iDrawList = ImGui::GetBackgroundDrawList();
+
+
 	if (GetIsMenuActive())
 	{
-		if (GetIsInWaitMode())
-		{
-			double waitModeTimeLeft = GetWaitModeEndTime() - ImGui::GetTime();
-			if (waitModeTimeLeft < 0.0)
-			{
-				if (Features::Debug::isActive)
-					Features::Debug::Update();
-
-				SetIsInWaitMode(false);
-			}
-
-
-			ImGuiIO& io = ImGui::GetIO();
-			ImDrawList* drawList = ImGui::GetBackgroundDrawList();
-
-			ImVec2 screenSize = io.DisplaySize;
-
-			drawList->AddRectFilled(ImVec2(0, 0), screenSize, IM_COL32(0, 0, 0, 128));
-
-			std::string labelString = std::to_string(waitModeTimeLeft);
-			const char* labelText = labelString.c_str();
-
-			double labelFontSize = 48.0;
-			ImGui::PushFont(ImGui::GetFont());
-
-			ImVec2 labelSize = ImGui::CalcTextSize(labelText);
-			ImVec2 labelPosition = ImVec2((screenSize.x - labelSize.x) * 0.5, (screenSize.y - labelSize.y) * 0.5);
-
-			drawList->AddText(ImGui::GetFont(), labelFontSize, labelPosition, IM_COL32(255, 255, 255, 255), labelText);
-
-			ImGui::PopFont();
-			return;
-		}
+		iDrawList->AddRectFilled(ImVec2(0, 0), iViewPortSize, IM_COL32(0, 0, 0, 128));
 
 
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.7) | ");
+			ImGui::Text("UETools GUI (v0.8) | ");
 			if (ImGui::BeginMenu("Debug"))
 			{
-				if (Features::Debug::isActive)
+				if (Features::Debug::enabled == false)
+				{
+					if (ImGui::Button("Start"))
+					{
+						if (Features::Debug::autoUpdate == false)
+							Features::Debug::Update();
+
+						Features::Debug::enabled = true;
+						PlayActionSound(true);
+					}
+				}
+				else
 				{
 					ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
@@ -702,7 +696,7 @@ void GUI::Draw()
 					ImGui::Checkbox("Auto", &Features::Debug::autoUpdate);
 					if (ImGui::Button("Stop"))
 					{
-						Features::Debug::isActive = false;
+						Features::Debug::enabled = false;
 						PlayActionSound(true);
 					}
 
@@ -1209,10 +1203,6 @@ void GUI::Draw()
 														if (streamingLevel.reference != nullptr)
 														{
 															streamingLevel.reference->SetShouldBeLoaded(!isLevelLoaded);
-
-															if (Features::Debug::autoUpdate == false)
-																StartWaitMode(3.25);
-
 															PlayActionSound(true);
 														}
 														else
@@ -1229,10 +1219,6 @@ void GUI::Draw()
 														if (isLevelLoaded && streamingLevel.reference != nullptr)
 														{
 															streamingLevel.reference->SetShouldBeVisible(!streamingLevel.level.isVisible);
-
-															if (Features::Debug::autoUpdate == false)
-																StartWaitMode(3.25);
-
 															PlayActionSound(true);
 														}
 														else
@@ -1298,6 +1284,32 @@ void GUI::Draw()
 					ImGui::SetFontRegular();
 					if (ImGui::CollapsingHeader("Details##Actors"))
 					{
+						ImGui::SetFontTitle();
+						ImGui::Text("Actor Trace");
+						ImGui::SetFontSmall();
+						ImGui::Text("Performs a trace starting at the camera's position and outputs the name of the Actor hit by the trace.");
+						ImGui::SetFontRegular();
+						ImGui::Checkbox("Enable##ActorTrace", &Features::ActorTrace::enabled);
+						ImGui::BeginDisabled(Features::ActorTrace::enabled == false);
+						ImGui::Checkbox("Show On Screen##ActorTrace", &Features::ActorTrace::showOnScreen);
+						ImGui::Checkbox("Show Line Trace##ActorTrace", &Features::ActorTrace::showLineTrace);
+						if (Features::ActorTrace::showLineTrace)
+						{
+							if (ImGui::TreeNode("Details##ActorTrace##LineTrace"))
+							{
+								ImGui::ColorPicker4("Color", Features::ActorTrace::traceColor);
+								ImGui::InputFloat("Thickness", &Features::ActorTrace::traceThickness, 0.1f, 1.0f);
+
+								ImGui::TreePop();
+							}
+							
+						}
+						ImGui::EndDisabled();
+						ImGui::SetFontRegular();
+						ImGui::KeyBindingInput("Trace Key:", &Keybindings::actorTrace);
+
+						ImGui::NewLine();
+
 						if (ImGui::Button("Update##Actors"))
 						{
 							Features::ActorsList::Update();
@@ -1585,17 +1597,6 @@ void GUI::Draw()
 						ImGui::ReadOnlyInputText("Command Line:", Features::Debug::commandLine.c_str(), true);
 					}
 				}
-				else
-				{
-					if (ImGui::Button("Start"))
-					{
-						if (Features::Debug::autoUpdate == false)
-							Features::Debug::Update();
-
-						Features::Debug::isActive = true;
-						PlayActionSound(true);
-					}
-				}
 				
 				ImGui::EndMenu();
 			}
@@ -1824,6 +1825,38 @@ void GUI::Draw()
 
 
 			ImGui::EndMainMenuBar();
+		}
+	}
+
+
+	if (Features::ActorTrace::enabled && Features::ActorTrace::showOnScreen && Features::ActorTrace::actor.reference)
+	{
+		const char* labelText = Features::ActorTrace::actor.objectName.c_str();
+		ImVec2 labelSize = ImGui::CalcTextSize(labelText);
+
+		ImVec2 labelPosition = ImVec2
+		(
+			floorf(iViewPortPosition.x + (iViewPortSize.x - labelSize.x) * 0.5f),
+			floorf(iViewPortSize.y - labelSize.y - 12.0f)
+		);
+
+		iDrawList->AddText(labelPosition, ImGui::GetColorU32(ImGuiCol_Text), labelText);
+
+		if (Features::ActorTrace::showLineTrace)
+		{
+			SDK::FVector2D screenStartPosition;
+			SDK::FVector2D screenEndPosition;
+
+			SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+			if (SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceStartLocation, &screenStartPosition, false)
+				&& SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceEndLocation, &screenEndPosition, false))
+			{
+				ImVec2 startPosition = { screenStartPosition.X, screenStartPosition.Y };
+				ImVec2 endPosition = { screenEndPosition.X, screenEndPosition.Y };
+				ImU32 color = ImGui::ColorConvertFloat4ToU32(ImVec4(Features::ActorTrace::traceColor[0], Features::ActorTrace::traceColor[1], Features::ActorTrace::traceColor[2], Features::ActorTrace::traceColor[3]));
+
+				iDrawList->AddLine(startPosition, endPosition, color, Features::ActorTrace::traceThickness);
+			}
 		}
 	}
 }
@@ -2376,5 +2409,59 @@ void Keybindings::Process()
 		{
 			GUI::SharedFunctions::Dash();
 		}
+
+
+
+
+		if (Features::ActorTrace::enabled)
+		{
+			if (ImGui::IsKeyBindingPressed(&Keybindings::actorTrace))
+			{
+				GUI::PlayActionSound(Features::ActorTrace::Trace());
+			}
+		}
 	}
+}
+
+
+
+
+bool Features::ActorTrace::Trace()
+{
+	SDK::UWorld* world = Unreal::World::Get();
+	if (world == nullptr)
+		return false;
+
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+		return false;
+
+	SDK::FVector cameraLocation = playerController->PlayerCameraManager->K2_GetActorLocation();
+	SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
+	SDK::FVector traceEndLocation = cameraLocation + (cameraForwardVector * 10000.0f);
+
+	SDK::TArray<SDK::AActor*> actorsToIgnore;
+	if (SDK::ACharacter* character = Unreal::Character::Get())
+		actorsToIgnore.Add(character);
+
+	SDK::FHitResult hitResult;
+	bool hit = SDK::UKismetSystemLibrary::LineTraceSingle(world, cameraLocation, traceEndLocation, SDK::ETraceTypeQuery::TraceTypeQuery1, false, actorsToIgnore, SDK::EDrawDebugTrace::ForDuration, &hitResult, true, SDK::FLinearColor(), SDK::FLinearColor(), 5.0f);
+
+	if (hit == false)
+		return false;
+
+	SDK::AActor* hitActor = hitResult.Actor.Get();
+	if (hitActor == nullptr)
+		return false;
+
+	Features::ActorTrace::actor.reference = hitActor;
+	Features::ActorTrace::actor.className = hitActor->Class->GetFullName();
+	Features::ActorTrace::actor.objectName = hitActor->GetFullName();
+
+	Features::ActorTrace::traceStartLocation = cameraLocation;
+	Features::ActorTrace::traceEndLocation = hitResult.Location;
+
+	Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
+
+	return true;
 }

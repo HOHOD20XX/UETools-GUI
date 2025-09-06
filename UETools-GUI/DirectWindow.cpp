@@ -137,8 +137,8 @@ void DirectWindow::MoveWindow(const HWND hCurrentProcessWindow)
     int lWindowWidth = rect.right - rect.left; 
     int lWindowHeight = rect.bottom - rect.top;
 
-    lWindowWidth -= 5; // Heuristic border compensation.
-    lWindowHeight -= 29; // Heuristic title bar compensation.
+    // lWindowWidth -= 5; // Heuristic border compensation.
+    // lWindowHeight -= 29; // Heuristic title bar compensation.
 
     SetWindowPos(hCurrentProcessWindow, nullptr, rect.left, rect.top, lWindowWidth, lWindowHeight, SWP_SHOWWINDOW);
 }
@@ -349,9 +349,14 @@ void DirectWindow::Create()
         else
             continue;
 
+        bool isMenuActive = GUI::GetIsMenuActive();
+        static bool lastIsMenuActive = !isMenuActive; // Small trick to encourage initial SetWindowLong(). W/o it game wouldn't receive any inputs.
+
         /* Clear overlay when the targeted window is not focus. */
         if (!IsWindowFocus(hwnd) && bTargetSet)
         {
+            lastIsMenuActive = !isMenuActive; // Small trick to make sure ImGui wouldn't loose focus after ALT + TAB'ing. W/o it menu woudn't receive any inputs.
+
             /* Clear to fully transparent so overlay is invisible when target is not focused. */
             const float clear_color_with_alpha[4] = { clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w };
             GetDeviceContext()->OMSetRenderTargets(1, &renderTargetView, nullptr);
@@ -371,54 +376,60 @@ void DirectWindow::Create()
         }
         ImGui::EndFrame();
 
-        // Overlay handle inputs when menu is showed.
-        if (GUI::GetIsMenuActive())
+        
+        if (isMenuActive != lastIsMenuActive)
         {
-            /* Remove TRANSPARENT and NOACTIVATE. */
-            LONG ex = GetWindowLong(hwnd, GWL_EXSTYLE);
-            ex &= ~WS_EX_TRANSPARENT;
-            ex &= ~WS_EX_NOACTIVATE;
-            ex |= (WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW);
-            SetWindowLong(hwnd, GWL_EXSTYLE, ex);
-            SetWindowPos(hwnd, nullptr, 0, 0, 0, 0,
-                SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+            if (isMenuActive)
+            {
+                /* Remove TRANSPARENT and NOACTIVATE. */
+                LONG ex = GetWindowLong(hwnd, GWL_EXSTYLE);
+                ex &= ~WS_EX_TRANSPARENT;
+                ex &= ~WS_EX_NOACTIVATE;
+                ex |= (WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW);
+                SetWindowLong(hwnd, GWL_EXSTYLE, ex);
+                SetWindowPos(hwnd, nullptr, 0, 0, 0, 0,
+                    SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
 
-            /* Activate the overlay so the game stops receiving input. */
-            DWORD gameTid = GetWindowThreadProcessId(hTargetWindow, nullptr);
-            DWORD myTid = GetCurrentThreadId();
-            AttachThreadInput(myTid, gameTid, TRUE);
-            SetForegroundWindow(hwnd);
-            SetActiveWindow(hwnd);
-            SetFocus(hwnd);
-            AttachThreadInput(myTid, gameTid, FALSE);
+                /* Activate the overlay so the game stops receiving input. */
+                DWORD gameTid = GetWindowThreadProcessId(hTargetWindow, nullptr);
+                DWORD myTid = GetCurrentThreadId();
+                AttachThreadInput(myTid, gameTid, TRUE);
+                SetForegroundWindow(hwnd);
+                SetActiveWindow(hwnd);
+                SetFocus(hwnd);
+                AttachThreadInput(myTid, gameTid, FALSE);
 
-            /* Capture the mouse (all WM_MOUSE messages go to us). */
-            if (GetCapture() != hwnd)
-                SetCapture(hwnd);
+                /* Capture the mouse (all WM_MOUSE messages go to us). */
+                if (GetCapture() != hwnd)
+                    SetCapture(hwnd);
 
-            /* If the game hides the cursor, draw the ImGui cursor. */
-            ImGui::GetIO().MouseDrawCursor = true;
+                /* If the game hides the cursor, draw the ImGui cursor. */
+                ImGui::GetIO().MouseDrawCursor = true;
+            }
+            else
+            {
+                /* Restore click-through behavior for the overlay. */
+                LONG ex = GetWindowLong(hwnd, GWL_EXSTYLE);
+                ex |= WS_EX_TRANSPARENT;
+                ex &= ~WS_EX_NOACTIVATE; // keep without NOACTIVATE so clicking can activate
+                ex |= (WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW);
+                SetWindowLong(hwnd, GWL_EXSTYLE, ex);
+                SetWindowPos(hwnd, nullptr, 0, 0, 0, 0,
+                    SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+
+                if (GetCapture() == hwnd)
+                    ReleaseCapture();
+
+                ImGui::GetIO().MouseDrawCursor = false;
+
+                /* Return focus to the game. */
+                if (IsWindow(hTargetWindow))
+                    SetForegroundWindow(hTargetWindow);
+            }
+
+            lastIsMenuActive = isMenuActive;
         }
-        else
-        {
-            /* Restore click-through behavior for the overlay. */
-            LONG ex = GetWindowLong(hwnd, GWL_EXSTYLE);
-            ex |= WS_EX_TRANSPARENT;
-            ex &= ~WS_EX_NOACTIVATE; // keep without NOACTIVATE so clicking can activate
-            ex |= (WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW);
-            SetWindowLong(hwnd, GWL_EXSTYLE, ex);
-            SetWindowPos(hwnd, nullptr, 0, 0, 0, 0,
-                SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
-
-            if (GetCapture() == hwnd)
-                ReleaseCapture();
-
-            ImGui::GetIO().MouseDrawCursor = false;
-
-            /* Return focus to the game. */
-            if (IsWindow(hTargetWindow))
-                SetForegroundWindow(hTargetWindow);
-        }
+        
 
         /* External: Keybindings processing lives here. */
         Keybindings::Process();

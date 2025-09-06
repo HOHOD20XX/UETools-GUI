@@ -69,9 +69,13 @@ namespace ImGui
 	{
 		SetWindowFontScale(fontScale);
 	}
+	static void SetFontLittle()
+	{
+		SetFontScale(0.75f);
+	}
 	static void SetFontSmall()
 	{
-		SetFontScale(0.5f);
+		SetFontScale(0.9f);
 	}
 	static void SetFontRegular()
 	{
@@ -99,7 +103,7 @@ namespace ImGui
 class GUI
 {
 private:
-	static inline bool isMenuActive = true;
+	static inline bool isMenuActive = false;
 public:
 	static bool GetIsMenuActive()
 	{
@@ -114,36 +118,6 @@ public:
 		isMenuActive = !isMenuActive;
 	}
 
-
-
-
-private:
-	static inline bool isInWaitMode = false;
-	static inline double waitModeEndTime = 0.0;
-public:
-	static bool GetIsInWaitMode()
-	{
-		return isInWaitMode;
-	}
-	static void SetIsInWaitMode(const bool& newIsInWaitMode)
-	{
-		isInWaitMode = newIsInWaitMode;
-	}
-
-	static double GetWaitModeEndTime()
-	{
-		return waitModeEndTime;
-	}
-	static void SetWaitModeEndTime(const double& newWaitModeEndTime)
-	{
-		waitModeEndTime = newWaitModeEndTime;
-	}
-
-	static void StartWaitMode(const double& duration)
-	{
-		waitModeEndTime = ImGui::GetTime() + duration;
-		isInWaitMode = true;
-	}
 
 
 
@@ -261,7 +235,7 @@ namespace Features
 	class Debug
 	{
 	public:
-		static inline bool isActive;
+		static inline bool enabled;
 
 		static inline double lastUpdateTime;
 
@@ -347,6 +321,27 @@ namespace Features
 	public:
 		static inline double strength = 3375.0;
 	};
+
+
+
+
+	class ActorTrace
+	{
+	public:
+		static inline bool enabled = false;
+		static inline bool showOnScreen = false;
+		static inline bool showLineTrace = false;
+
+		static inline SDK::FVector traceStartLocation;
+		static inline SDK::FVector traceEndLocation;
+		static inline float traceColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
+		static inline float traceThickness = 5.0f;
+
+		static inline Unreal::Actor::DataStructure actor;
+
+
+		static bool Trace();
+	};
 };
 
 
@@ -367,6 +362,8 @@ public:
 
 	static inline ImGui::KeyBinding launch;
 	static inline ImGui::KeyBinding dash;
+
+	static inline ImGui::KeyBinding actorTrace = ImGui::KeyBinding(ImGuiKey_K);
 
 
 	static void Process();
