@@ -9,6 +9,6 @@
 class Pawn
 {
 public:
-	static SDK::APawn* GetPawn(const int32_t& playerIndex = 0);
+	
 };
 
