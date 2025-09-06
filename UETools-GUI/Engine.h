@@ -9,7 +9,7 @@
 class Engine
 {
 public:
-	static SDK::UEngine* GetEngine();
+	
 
 
 

@@ -163,6 +163,7 @@
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="Unreal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Pawn.h" />
+    <ClInclude Include="Unreal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
