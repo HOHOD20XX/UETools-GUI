@@ -2,6 +2,7 @@
 #include "DirectWindow.h"
 #include "imgui.h"
 
+#include "Unreal.h"
 #include "Clipboard.h"
 #include "Math.h"
 
@@ -17,7 +18,7 @@
 
 namespace ImGui
 {
-	struct S_KeyBinding
+	struct KeyBinding
 	{
 		ImGuiKey key = ImGuiKey_None;
 		bool isDetermined = true;
@@ -58,10 +59,10 @@ namespace ImGui
 
 
 	static int ImGuiKey_ToWinAPI(const ImGuiKey& key);
-	bool KeyBindingInput(const char* label, S_KeyBinding* binding);
-	bool IsKeyBindingPressed(S_KeyBinding* binding, const bool& waitForRelease = true);
-	bool IsKeyBindingDown(S_KeyBinding* binding);
-	bool IsKeyBindingReleased(S_KeyBinding* binding);
+	bool KeyBindingInput(const char* label, KeyBinding* binding);
+	bool IsKeyBindingPressed(KeyBinding* binding, const bool& waitForRelease = true);
+	bool IsKeyBindingDown(KeyBinding* binding);
+	bool IsKeyBindingReleased(KeyBinding* binding);
 
 
 	static void SetFontScale(const float& fontScale)
@@ -88,7 +89,7 @@ namespace ImGui
 	{
 		SetFontScale(1.5f);
 	}
-}
+};
 
 
 
@@ -98,19 +99,19 @@ namespace ImGui
 class GUI
 {
 private:
-	static inline bool isActive = true;
+	static inline bool isMenuActive = true;
 public:
-	static bool GetIsActive()
+	static bool GetIsMenuActive()
 	{
-		return isActive;
+		return isMenuActive;
 	}
-	static void SetIsActive(const bool& newIsActive)
+	static void SetIsMenuActive(const bool& isActive)
 	{
-		isActive = newIsActive;
+		isMenuActive = isActive;
 	}
-	static void ToggleIsActive()
+	static void ToggleIsMenuActive()
 	{
-		isActive = !isActive;
+		isMenuActive = !isMenuActive;
 	}
 
 
@@ -146,25 +147,23 @@ public:
 
 
 
-
-private:
-	static inline bool isForeground = true;
 public:
-	static bool GetIsForeground()
+	struct S_ObjectsInformation
 	{
-		return isForeground;
-	}
-	static void SetIsForeground(const bool& newIsForeground)
-	{
-		isForeground = newIsForeground;
-	}
-
+		SDK::APlayerController* controller;
+		SDK::ACharacter* character;
+		SDK::UCharacterMovementComponent* movementComponent;
+	};
+	static inline S_ObjectsInformation objectsInfo = {};
 
 
 
 public:
-	static void Create(const HMODULE& applicationModule);
+	static void Init(const HMODULE& applicationModule);
 	static void Draw();
+
+
+	
 
 
 
@@ -182,10 +181,6 @@ public:
 	{
 		PlaySound(wasSuccessfull ? E_Sound::ACTION_SUCCESS : E_Sound::ACTION_ERROR);
 	}
-
-
-
-
 
 
 	class SharedWorkers
@@ -221,89 +216,8 @@ public:
 
 
 
-
-	class SharedCalls
-	{
-	public:
-		static void GatherDebugInformation();
-
-
-	public:
-		static void GatherActors();
-
-
-	public:
-		static void ProcessKeybindings();
-	};
-
-
-
-
-
-
 	class SharedData
 	{
-	public:
-		struct S_GatherActorsFeature
-		{
-			bool enabled;
-
-			char filterBuffer[255];
-			size_t filterBufferSize = 255;
-			bool filterCaseSensitive = true;
-
-			char componentsFilterBuffer[255];
-			size_t componentsFilterBufferSize = 255;
-			bool componentsFilterCaseSensitive = true;
-
-			std::vector<S_Actor> actors;
-		};
-
-
-
-
-	public:
-		struct S_DebugInformation
-		{
-			bool isActive;
-
-			double lastUpdateTime;
-
-			bool autoUpdate;
-			float autoUpdateDelay = 0.01f;
-
-			S_Engine engine;
-
-			S_GameInstance gameInstance;
-
-			S_GameMode gameMode;
-
-			S_PlayerController playerController;
-
-			S_World world;
-
-			S_GatherActorsFeature gatherActorsFeature;
-
-			bool wasProjectNameObtained;
-			std::string projectName;
-
-			bool wasProjectPlatformObtained;
-			std::string projectPlatform;
-
-			bool wasProjectEngineVersionObtained;
-			std::string projectEngineVersion;
-
-			bool wasUsernameObtained;
-			std::string username;
-
-			bool wasCommandLineObtained;
-			std::string commandLine;
-		};
-		static inline S_DebugInformation debugInfo = {};
-
-
-
-
 	public:
 		struct S_ObjectsInformation
 		{
@@ -312,54 +226,6 @@ public:
 			SDK::UCharacterMovementComponent* movementComponent;
 		};
 		static inline S_ObjectsInformation objectsInfo = {};
-
-
-
-
-	public:
-		struct S_DirectionalMovement
-		{
-			bool enabled;
-			double movementStep = 45.0;
-			double movementDelay = 0.05;
-		};
-
-		struct S_FeaturesInformation
-		{
-			S_DirectionalMovement directionalMovement;
-
-			float launchVelocity[3] = { 0.0f, 0.0f, 1325.0f };
-
-			double dashStrength = 3375.0;
-		};
-		static inline S_FeaturesInformation featuresInfo = {};
-
-
-
-
-	public:
-		struct S_KeybindingsInformation
-		{
-			ImGui::S_KeyBinding menuOpenClose;
-
-			ImGui::S_KeyBinding ghost;
-			ImGui::S_KeyBinding fly;
-			ImGui::S_KeyBinding walk;
-
-			ImGui::S_KeyBinding jump;
-
-			ImGui::S_KeyBinding launch;
-			ImGui::S_KeyBinding dash;
-
-			S_KeybindingsInformation()
-				: menuOpenClose { ImGuiKey_Insert },
-				  ghost{ ImGuiKey_Keypad7 },
-				  fly{ ImGuiKey_Keypad8 },
-				  walk{ ImGuiKey_Keypad9 }
-			{
-			}
-		};
-		static inline S_KeybindingsInformation keybindingsInfo = {};
 	};
 
 
@@ -383,4 +249,125 @@ public:
 		static void Launch();
 		static void Dash();
 	};
+};
+
+
+
+
+
+
+namespace Features
+{
+	class Debug
+	{
+	public:
+		static inline bool isActive;
+
+		static inline double lastUpdateTime;
+
+		static inline bool autoUpdate;
+		static inline float autoUpdateDelay = 0.01f;
+
+		static inline Unreal::Engine::DataStructure engine;
+
+		static inline Unreal::GameInstance::DataStructure gameInstance;
+
+		static inline Unreal::GameMode::DataStructure gameMode;
+
+		static inline Unreal::PlayerController::DataStructure playerController;
+
+		static inline Unreal::World::DataStructure world;
+
+		static inline bool wasProjectNameObtained;
+		static inline std::string projectName;
+
+		static inline bool wasProjectPlatformObtained;
+		static inline std::string projectPlatform;
+
+		static inline bool wasProjectEngineVersionObtained;
+		static inline std::string projectEngineVersion;
+
+		static inline bool wasUsernameObtained;
+		static inline std::string username;
+
+		static inline bool wasCommandLineObtained;
+		static inline std::string commandLine;
+
+
+		static void Update();
+	};
+
+
+
+	class ActorsList
+	{
+	public:
+		static inline bool enabled;
+
+		static inline char filterBuffer[255];
+		static inline size_t filterBufferSize = 255;
+		static inline bool filterCaseSensitive = true;
+
+		static inline char componentsFilterBuffer[255];
+		static inline size_t componentsFilterBufferSize = 255;
+		static inline bool componentsFilterCaseSensitive = true;
+
+		static inline std::vector<Unreal::Actor::DataStructure> actors;
+
+
+		static void Update();
+	};
+
+
+
+
+	class DirectionalMovement
+	{
+	public:
+		static inline bool enabled;
+
+		static inline double step = 45.0;
+		static inline double delay = 0.05;
+	};
+
+
+
+
+	class Launch
+	{
+	public:
+		static inline float velocity[3] = { 0.0f, 0.0f, 1325.0f };
+	};
+
+
+
+
+	class Dash
+	{
+	public:
+		static inline double strength = 3375.0;
+	};
+};
+
+
+
+
+
+
+class Keybindings
+{
+public:
+	static inline ImGui::KeyBinding menuOpenClose = ImGui::KeyBinding(ImGuiKey_Insert);
+
+	static inline ImGui::KeyBinding ghost;
+	static inline ImGui::KeyBinding fly;
+	static inline ImGui::KeyBinding walk;
+
+	static inline ImGui::KeyBinding jump;
+
+	static inline ImGui::KeyBinding launch;
+	static inline ImGui::KeyBinding dash;
+
+
+	static void Process();
 };

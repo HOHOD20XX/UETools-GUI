@@ -5,24 +5,92 @@
 
 
 
-SDK::UEngine* Unreal::Engine::Get()
+SDK::UConsole* Unreal::Console::Get()
 {
-	SDK::UEngine* Engine = SDK::UEngine::GetEngine();
-	return Engine ? Engine : nullptr;
+	SDK::UGameViewportClient* GameViewportClient = GameViewportClient::Get();
+	if (GameViewportClient == nullptr || GameViewportClient->ViewportConsole == nullptr)
+		return nullptr;
+
+	return GameViewportClient->ViewportConsole;
+}
+
+bool Unreal::Console::Construct(const bool& ignorePresence)
+{
+	SDK::UGameViewportClient* GameViewportClient = GameViewportClient::Get();
+	if (GameViewportClient == nullptr)
+		return false;
+
+	if (ignorePresence == false && GameViewportClient->ViewportConsole) // If presence shouldn't be ignored, we're looking up if Console already exist.
+		return false;
+
+	/*
+		If Engine is present, the Console Class defined in it will be used.
+		Otherwise, the default Console Class will serve as a fallback.
+
+		Before assigning Console to the Game Viewport Client, ensure that SpawnObject() returned a valid pointer.
+	*/
+	SDK::UEngine* Engine = Engine::Get();
+	if (SDK::UObject* objectReference = SDK::UGameplayStatics::SpawnObject(Engine ? Engine->ConsoleClass : SDK::TSubclassOf<SDK::UConsole>(SDK::UConsole::StaticClass()), GameViewportClient))
+	{
+		GameViewportClient->ViewportConsole = static_cast<SDK::UConsole*>(objectReference); // Clarify that newly spawned Object is of class Console.
+		return true;
+	}
+	else
+		return false;
 }
 
 
-
-
-
-
-SDK::UGameViewportClient* Unreal::GameViewportClient::Get()
+bool Unreal::Console::Print(const std::wstring& wideString)
 {
-	SDK::UEngine* Engine = Engine::Get();
-	if (Engine == nullptr || Engine->GameViewport == nullptr)
-		return nullptr;
+	const wchar_t* wCharString = wideString.c_str();
+	wprintf(L"%ls\n", wCharString); // Print to std::cout (if present).
 
-	return Engine->GameViewport;
+	if (SDK::APlayerController* playerController = PlayerController::Get())
+	{
+		playerController->ClientMessage(SDK::FString(wCharString), SDK::UKismetStringLibrary::Conv_StringToName(L"None"), 0);
+		return true;
+	}
+	else
+		return false;
+}
+bool Unreal::Console::Print(const std::string& string)
+{
+	return Print(std::wstring(string.begin(), string.end()));
+}
+
+bool Unreal::Console::Print(const int32_t& integer)
+{
+	return Print(std::to_wstring(integer));
+}
+bool Unreal::Console::Print(const uint32_t& unsignedInteger)
+{
+	return Print(std::to_wstring(unsignedInteger));
+}
+
+bool Unreal::Console::Print(const SDK::FVector& vector)
+{
+	return Print(SDK::UKismetStringLibrary::Conv_VectorToString(vector).ToWString());
+}
+bool Unreal::Console::Print(const SDK::FRotator& rotator)
+{
+	return Print(SDK::UKismetStringLibrary::Conv_RotatorToString(rotator).ToWString());
+}
+
+bool Unreal::Console::Print(SDK::UObject* objectReference)
+{
+	return Print(SDK::UKismetStringLibrary::Conv_ObjectToString(objectReference).ToWString());
+}
+
+bool Unreal::Console::Print()
+{
+	return Print(L" ");
+}
+
+
+bool Unreal::Console::Clear()
+{
+	static const std::wstring emptyLines = L" \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ";
+	return Print(emptyLines);
 }
 
 
@@ -59,38 +127,13 @@ bool Unreal::InputSettings::AssignConsoleBindings()
 
 
 
-SDK::UConsole* Unreal::Console::Get()
+SDK::UGameViewportClient* Unreal::GameViewportClient::Get()
 {
-	SDK::UGameViewportClient* GameViewportClient = GameViewportClient::Get();
-	if (GameViewportClient == nullptr || GameViewportClient->ViewportConsole == nullptr)
+	SDK::UEngine* Engine = Engine::Get();
+	if (Engine == nullptr || Engine->GameViewport == nullptr)
 		return nullptr;
 
-	return GameViewportClient->ViewportConsole;
-}
-
-bool Unreal::Console::Construct(const bool& ignorePresence)
-{
-	SDK::UGameViewportClient* GameViewportClient = GameViewportClient::Get();
-	if (GameViewportClient == nullptr)
-		return false;
-
-	if (ignorePresence == false && GameViewportClient->ViewportConsole) // If presence shouldn't be ignored, we're looking up if Console already exist.
-		return false;
-
-	/*
-		If Engine is present, the Console Class defined in it will be used. 
-		Otherwise, the default Console Class will serve as a fallback.
-
-		Before assigning Console to the Game Viewport Client, ensure that SpawnObject() returned a valid pointer.
-	*/
-	SDK::UEngine* Engine = Engine::Get();
-	if (SDK::UObject* objectReference = SDK::UGameplayStatics::SpawnObject(Engine ? Engine->ConsoleClass : SDK::TSubclassOf<SDK::UConsole>(SDK::UConsole::StaticClass()), GameViewportClient))
-	{
-		GameViewportClient->ViewportConsole = static_cast<SDK::UConsole*>(objectReference);
-		return true;
-	}
-	else
-		return false;
+	return Engine->GameViewport;
 }
 
 
@@ -98,63 +141,10 @@ bool Unreal::Console::Construct(const bool& ignorePresence)
 
 
 
-bool Unreal::Console::Print(const std::wstring& wideString)
+SDK::UEngine* Unreal::Engine::Get()
 {
-	const wchar_t* wCharString = wideString.c_str();
-	wprintf(L"%ls\n", wCharString); // Print to std::cout (if present).
-
-	if (SDK::APlayerController* playerController = PlayerController::Get())
-	{
-		playerController->ClientMessage(SDK::FString(wCharString), SDK::UKismetStringLibrary::Conv_StringToName(L"None"), 0);
-		return true;
-	}
-	else
-		return false;
-}
-bool Unreal::Console::Print(const std::string& string)
-{
-	return Print(std::wstring(string.begin(), string.end()));
-}
-
-
-bool Unreal::Console::Print(const int32_t& integer)
-{
-	return Print(std::to_wstring(integer));
-}
-bool Unreal::Console::Print(const uint32_t& unsignedInteger)
-{
-	return Print(std::to_wstring(unsignedInteger));
-}
-
-
-bool Unreal::Console::Print(const SDK::FVector& vector)
-{
-	return Print(SDK::UKismetStringLibrary::Conv_VectorToString(vector).ToWString());
-}
-bool Unreal::Console::Print(const SDK::FRotator& rotator)
-{
-	return Print(SDK::UKismetStringLibrary::Conv_RotatorToString(rotator).ToWString());
-}
-
-
-bool Unreal::Console::Print(SDK::UObject* objectReference)
-{
-	return Print(SDK::UKismetStringLibrary::Conv_ObjectToString(objectReference).ToWString());
-}
-
-
-bool Unreal::Console::Print()
-{
-	return Print(L" ");
-}
-
-
-
-
-bool Unreal::Console::Clear()
-{
-	static const std::wstring emptyLines = L" \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ";
-	return Print(emptyLines);
+	SDK::UEngine* Engine = SDK::UEngine::GetEngine();
+	return Engine ? Engine : nullptr;
 }
 
 
@@ -198,6 +188,7 @@ SDK::AGameModeBase* Unreal::GameMode::Get()
 
 
 
+
 SDK::AGameStateBase* Unreal::GameState::Get()
 {
 	SDK::UWorld* World = World::Get();
@@ -227,24 +218,6 @@ SDK::UWorld* Unreal::World::Get()
 
 
 
-SDK::APlayerController* Unreal::PlayerController::Get(const int32_t& playerIndex)
-{
-	SDK::UWorld* World = World::Get();
-	if (World == nullptr)
-		return nullptr;
-
-	SDK::APlayerController* PlayerController = SDK::UGameplayStatics::GetPlayerController(World, playerIndex);
-	if (PlayerController == nullptr)
-		return nullptr;
-
-	return PlayerController;
-}
-
-
-
-
-
-
 SDK::APawn* Unreal::Pawn::Get(const int32_t& playerIndex)
 {
 	SDK::UWorld* World = World::Get();
@@ -256,6 +229,51 @@ SDK::APawn* Unreal::Pawn::Get(const int32_t& playerIndex)
 		return nullptr;
 
 	return Pawn;
+}
+
+
+
+
+
+
+bool Unreal::CheatManager::Construct(const bool& ignorePresence)
+{
+	SDK::APlayerController* PlayerController = PlayerController::Get();
+	if (PlayerController == nullptr)
+		return false;
+
+	if (ignorePresence == false && PlayerController->CheatManager) // If presence shouldn't be ignored, we're looking up if Cheat Manager already exist.
+		return false;
+
+	if (PlayerController->CheatClass == nullptr) // If Player Controller has no cheating class specified, fallback to default Cheat Manager class.
+		PlayerController->CheatClass = SDK::UCheatManager::StaticClass();
+
+	/* Before assigning Cheat Manager to the Player Controller, ensure that SpawnObject() returned a valid pointer. */
+	if (SDK::UObject* objectReference = SDK::UGameplayStatics::SpawnObject(PlayerController->CheatClass, PlayerController))
+	{
+		PlayerController->CheatManager = static_cast<SDK::UCheatManager*>(objectReference); // Clarify that newly spawned Object is of class Cheat Manager.
+		return true;
+	}
+	else
+		return false;
+}
+
+
+
+
+
+
+SDK::APlayerController* Unreal::PlayerController::Get(const int32_t& playerIndex)
+{
+	SDK::UWorld* World = World::Get();
+	if (World == nullptr)
+		return nullptr;
+
+	SDK::APlayerController* PlayerController = SDK::UGameplayStatics::GetPlayerController(World, playerIndex);
+	if (PlayerController == nullptr)
+		return nullptr;
+
+	return PlayerController;
 }
 
 
@@ -275,8 +293,6 @@ SDK::ACharacter* Unreal::Character::Get(const int32_t& playerIndex)
 
 	return Character;
 }
-
-
 
 
 int32_t Unreal::Character::GetJumpMaxCount(SDK::ACharacter* characterReference)
@@ -305,8 +321,6 @@ bool Unreal::Character::SetJumpMaxCount(const int32_t& playerIndex, const int32_
 }
 
 
-
-
 float Unreal::Character::GetJumpVelocity(SDK::ACharacter* characterReference)
 {
 	if (characterReference == nullptr || characterReference->CharacterMovement == nullptr)
@@ -319,7 +333,6 @@ float Unreal::Character::GetJumpVelocity(const int32_t& playerIndex)
 	return GetJumpVelocity(Character::Get(playerIndex));
 }
 
-
 bool Unreal::Character::SetJumpVelocity(SDK::ACharacter* characterReference, const float& value)
 {
 	if (characterReference == nullptr || characterReference->CharacterMovement == nullptr)
@@ -331,8 +344,6 @@ bool Unreal::Character::SetJumpVelocity(const int32_t& playerIndex, const float&
 {
 	return SetJumpVelocity(Character::Get(playerIndex), value);
 }
-
-
 
 
 bool Unreal::Character::Jump(SDK::ACharacter* characterReference)
@@ -359,8 +370,6 @@ bool Unreal::Character::Jump(const int32_t& playerIndex)
 
 	return canJump;
 }
-
-
 
 
 bool Unreal::Character::Launch(SDK::ACharacter* characterReference, const SDK::FVector& launchVelocity, const bool& overrideHorizontalVelocity, const bool& overrideVerticalVelocity)
@@ -403,8 +412,6 @@ bool Unreal::Character::Launch(const int32_t& playerIndex, const SDK::FVector& l
 }
 
 
-
-
 bool Unreal::Character::Walk(SDK::ACharacter* characterReference)
 {
 	if (characterReference == nullptr || characterReference->CharacterMovement == nullptr)
@@ -422,7 +429,6 @@ bool Unreal::Character::Walk(const int32_t& playerIndex)
 	return Walk(Character::Get(playerIndex));
 }
 
-
 bool Unreal::Character::Fly(SDK::ACharacter* characterReference)
 {
 	if (characterReference == nullptr || characterReference->CharacterMovement == nullptr)
@@ -439,7 +445,6 @@ bool Unreal::Character::Fly(const int32_t& playerIndex)
 {
 	return Fly(Character::Get(playerIndex));
 }
-
 
 bool Unreal::Character::Ghost(SDK::ACharacter* characterReference)
 {
@@ -476,7 +481,7 @@ std::vector<SDK::AActor*> Unreal::Actor::GetAllDefaultOfClass(const SDK::TSubcla
 			continue;
 
 		if (objectReference->IsA(actorClass))
-			outCollection.push_back(static_cast<SDK::AActor*>(objectReference));
+			outCollection.push_back(static_cast<SDK::AActor*>(objectReference)); // Clarify that found Object is of class Actor.
 	}
 
 	return outCollection;
@@ -494,7 +499,7 @@ std::vector<SDK::AActor*> Unreal::Actor::GetAllOfClass(const SDK::TSubclassOf<SD
 			continue;
 
 		if (objectReference->IsA(actorClass))
-			outCollection.push_back(static_cast<SDK::AActor*>(objectReference));
+			outCollection.push_back(static_cast<SDK::AActor*>(objectReference)); // Clarify that found Object is of class Actor.
 	}
 
 	return outCollection;

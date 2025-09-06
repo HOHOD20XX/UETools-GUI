@@ -8,91 +8,6 @@
 
 namespace Unreal
 {
-	class Engine
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::UEngine* reference;
-			std::string className;
-			std::string objectName;
-
-			GameViewportClient::DataStructure gameViewportClient;
-
-			bool fixedFrameRateEnabled;
-			double fixedFrameRate;
-
-			bool smoothFrameRateEnabled;
-			SDK::FFloatRange smoothFrameRateRange;
-
-			bool subtitlesEnabled;
-			bool subtitlesForcedOff;
-
-			bool pauseOnLossOfFocus;
-		};
-
-
-		/*
-		* @brief Retrieves the current instance of the Unreal Engine, if one is available.
-		* @return A valid pointer to the existing instance; 
-		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
-		*/
-		static SDK::UEngine* Get();
-	};
-
-
-
-
-	class GameViewportClient
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::UGameViewportClient* reference;
-			std::string className;
-			std::string objectName;
-		};
-
-
-		/*
-		* @brief Retrieves the current instance of the Game Viewport Client, if one is available.
-		* @return A valid pointer to the existing instance; 
-		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
-		*/
-		static SDK::UGameViewportClient* Get();
-	};
-
-
-
-
-	class InputSettings
-	{
-		struct DataStructure
-		{
-			SDK::UGameViewportClient* reference;
-			std::string className;
-			std::string objectName;
-		};
-
-
-		/*
-		* @brief Retrieves the current instance of the Input Settings, if one is available.
-		* @return A valid pointer to the existing instance;
-		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
-		*/
-		static SDK::UInputSettings* Get();
-
-
-		/*
-		* @brief Assigns a set of pre-determined key bindings for toggling the Console (open, expand, or close).
-		* @return 'True' if the keys were successfully assigned; otherwise 'False'.
-		*/
-		static bool AssignConsoleBindings();
-	};
-
-
-
-
 	class Console
 	{
 	public:
@@ -114,7 +29,7 @@ namespace Unreal
 		/*
 		* @brief Constructs a Console and assigns it to the active Game Viewport Client.
 		* @param ignorePresence - If set to 'True', a new Console will always be created, even if one already exist.
-		* @return 'True' if the console was successfully created and assigned to Game Viewport Client.
+		* @return 'True' if the Console was successfully created and assigned; 'False' otherwise.
 		*/
 		static bool Construct(const bool& ignorePresence = false);
 
@@ -153,20 +68,102 @@ namespace Unreal
 	};
 
 
-
-
-	class CheatManager
+	class InputSettings
 	{
 	public:
 		struct DataStructure
 		{
-			SDK::UCheatManager* reference;
+			SDK::UGameViewportClient* reference;
+			std::string className;
+			std::string objectName;
+		};
+
+
+		/*
+		* @brief Retrieves the current instance of the Input Settings, if one is available.
+		* @return A valid pointer to the existing instance;
+		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
+		*/
+		static SDK::UInputSettings* Get();
+
+
+		/*
+		* @brief Assigns a set of pre-determined key bindings for toggling the Console (open, expand, or close).
+		* @return 'True' if the keys were successfully assigned; otherwise 'False'.
+		*/
+		static bool AssignConsoleBindings();
+	};
+
+
+	class GameViewportClient
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::UGameViewportClient* reference;
+			std::string className;
+			std::string objectName;
+
+			Console::DataStructure console;
+		};
+
+
+		/*
+		* @brief Retrieves the current instance of the Game Viewport Client, if one is available.
+		* @return A valid pointer to the existing instance;
+		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
+		*/
+		static SDK::UGameViewportClient* Get();
+	};
+
+
+	class Engine
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::UEngine* reference;
+			std::string className;
+			std::string objectName;
+
+			GameViewportClient::DataStructure gameViewportClient;
+
+			bool fixedFrameRateEnabled;
+			double fixedFrameRate;
+
+			bool smoothFrameRateEnabled;
+			SDK::FFloatRange smoothFrameRateRange;
+
+			bool subtitlesEnabled;
+			bool subtitlesForcedOff;
+
+			bool pauseOnLossOfFocus;
+		};
+
+
+		/*
+		* @brief Retrieves the current instance of the Unreal Engine, if one is available.
+		* @return A valid pointer to the existing instance; 
+		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
+		*/
+		static SDK::UEngine* Get();
+	};
+
+
+
+
+
+
+	class OnlineSession
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::UOnlineSession* reference;
 			std::string className;
 			std::string objectName;
 		};
 	};
-
-
 
 
 	class GameInstance
@@ -193,18 +190,25 @@ namespace Unreal
 
 
 
-	class OnlineSession
+
+
+	class GameSession
 	{
 	public:
 		struct DataStructure
 		{
-			SDK::UOnlineSession* reference;
+			SDK::AGameSession* reference;
 			std::string className;
 			std::string objectName;
+
+			int32_t maxPlayers;
+			int32_t maxSpectators;
+			int32_t maxPartySize;
+			int8_t maxSplitScreensPerConnection;
+
+			std::string sessionName;
 		};
 	};
-
-
 
 
 	class GameMode
@@ -242,25 +246,6 @@ namespace Unreal
 
 
 
-	class GameSession
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::AGameSession* reference;
-			std::string className;
-			std::string objectName;
-
-			int32_t maxPlayers;
-			int32_t maxSpectators;
-			int32_t maxPartySize;
-			int8_t maxSplitScreensPerConnection;
-
-			std::string sessionName;
-		};
-	};
-
-
 
 
 	class GameState
@@ -283,8 +268,6 @@ namespace Unreal
 	};
 
 
-
-
 	class NetDriver
 	{
 	public:
@@ -295,8 +278,6 @@ namespace Unreal
 			std::string objectName;
 		};
 	};
-
-
 
 
 	class DemoNetDriver
@@ -311,6 +292,58 @@ namespace Unreal
 	};
 
 
+
+
+
+
+	class WorldSettings
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::AWorldSettings* reference;
+			std::string className;
+			std::string objectName;
+
+			bool highPriorityLoading;
+			bool localHighPriorityLoading;
+
+			double unitsToMeters;
+		};
+	};
+
+
+	class Level
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::ULevel* reference;
+			std::string className;
+			std::string objectName;
+
+			bool isVisible;
+
+			WorldSettings::DataStructure worldSettings;
+		};
+	};
+
+
+	class LevelStreaming
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::ULevelStreaming* reference;
+			std::string className;
+			std::string objectName;
+
+			std::string levelPath;
+			SDK::FLinearColor levelColor;
+
+			Level::DataStructure level;
+		};
+	};
 
 
 	class World
@@ -351,92 +384,6 @@ namespace Unreal
 
 
 
-	class Level
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::ULevel* reference;
-			std::string className;
-			std::string objectName;
-
-			bool isVisible;
-
-			WorldSettings::DataStructure worldSettings;
-		};
-	};
-
-
-
-
-	class WorldSettings
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::AWorldSettings* reference;
-			std::string className;
-			std::string objectName;
-
-			bool worldHighPriorityLoading;
-			bool worldLocalHighPriorityLoading;
-
-			double worldToMeters;
-		};
-	};
-
-
-
-
-	class LevelStreaming
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::ULevelStreaming* reference;
-			std::string className;
-			std::string objectName;
-
-			std::string levelPath;
-			SDK::FLinearColor levelColor;
-
-			Level::DataStructure level;
-		};
-	};
-
-
-
-
-	class PlayerController
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::APlayerController* reference;
-			std::string className;
-			std::string objectName;
-
-			Player::DataStructure player;
-
-			Pawn::DataStructure pawn;
-
-			CameraManager::DataStructure cameraManager;
-
-			CheatManager::DataStructure cheatManager;
-		};
-
-
-	public:
-		/*
-		* @brief Retrieves the current instance of the Player Controller, if one is available.
-		* @param playerIndex - index of the local player to query.
-		* @return A valid pointer to the existing instance;
-		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
-		*/
-		static SDK::APlayerController* Get(const int32_t& playerIndex = 0);
-	};
-
-
 
 
 	class Player
@@ -449,8 +396,6 @@ namespace Unreal
 			std::string objectName;
 		};
 	};
-
-
 
 
 	class Pawn
@@ -485,8 +430,6 @@ namespace Unreal
 	};
 
 
-
-
 	class CameraManager
 	{
 	public:
@@ -503,6 +446,54 @@ namespace Unreal
 	};
 
 
+	class CheatManager
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::UCheatManager* reference;
+			std::string className;
+			std::string objectName;
+		};
+
+
+		/*
+		* @brief Constructs a Cheat Manager and assigns it to the active Player Controller.
+		* @param ignorePresence - If set to 'True', a new Cheat Manager will always be created, even if one already exist.
+		* @return 'True' if the Cheat Manager was successfully created and assigned; 'False' otherwise.
+		*/
+		static bool Construct(const bool& ignorePresence = false);
+	};
+
+
+	class PlayerController
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::APlayerController* reference;
+			std::string className;
+			std::string objectName;
+
+			Player::DataStructure player;
+
+			Pawn::DataStructure pawn;
+
+			CameraManager::DataStructure cameraManager;
+
+			CheatManager::DataStructure cheatManager;
+		};
+
+
+	public:
+		/*
+		* @brief Retrieves the current instance of the Player Controller, if one is available.
+		* @param playerIndex - index of the local player to query.
+		* @return A valid pointer to the existing instance;
+		*		  otherwise returns 'nullptr' to indicate that no instance is currently accessible.
+		*/
+		static SDK::APlayerController* Get(const int32_t& playerIndex = 0);
+	};
 
 
 	class Character
@@ -552,6 +543,29 @@ namespace Unreal
 
 
 
+
+
+	class ActorComponent
+	{
+	public:
+		struct DataStructure
+		{
+			SDK::UActorComponent* reference;
+			std::string className;
+			std::string objectName;
+
+			bool isActive;
+			bool autoActivate;
+			bool editorOnly;
+
+			bool netAddressible;
+			bool replicates;
+
+			SDK::EComponentCreationMethod creationMethod;
+		};
+	};
+
+
 	class Actor
 	{
 	public:
@@ -584,29 +598,8 @@ namespace Unreal
 		*/
 		static std::vector<SDK::AActor*> GetAllOfClass(const SDK::TSubclassOf<SDK::AActor>& actorClass);
 	};
+	
 
-
-
-
-	class ActorComponent
-	{
-	public:
-		struct DataStructure
-		{
-			SDK::UActorComponent* reference;
-			std::string className;
-			std::string objectName;
-
-			bool isActive;
-			bool autoActivate;
-			bool editorOnly;
-
-			bool netAddressible;
-			bool replicates;
-
-			SDK::EComponentCreationMethod creationMethod;
-		};
-	};
 
 
 
