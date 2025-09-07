@@ -25,14 +25,14 @@ void ImGui::TextBool(const char* label, const bool& inBool, const char* text_tru
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, inBool ? color_true : color_false);
 		ImGui::TextUnformatted(inBool
-									? (text_true ? text_true : "BOOL_TRUE")
-									: (text_false ? text_false : "BOOL_FALSE"));
+									? (text_true ? text_true : "True")
+									: (text_false ? text_false : "False"));
 		ImGui::PopStyleColor();
 	}
 	else
 		ImGui::TextUnformatted(inBool
-									? (text_true ? text_true : "BOOL_TRUE")
-									: (text_false ? text_false : "BOOL_FALSE"));
+									? (text_true ? text_true : "True")
+									: (text_false ? text_false : "False"));
 	
 }
 
@@ -575,10 +575,11 @@ bool ImGui::IsKeyBindingReleased(KeyBinding* binding)
 // ========================================================
 void GUI::Init(const HMODULE& applicationModule)
 {
+	/* Before creating a DirectWindow, we need to make it aware of our DLL HMODULE. */
 	DirectWindow::SetApplicationModule(applicationModule);
-
 	SharedWorkers::SetUserInterfaceThread(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)DirectWindow::Create, 0, 0, 0));
-	SharedWorkers::SetFeaturesThread(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)SharedWorkers::FeaturesWorker, 0, 0, 0));
+
+	Features::DirectionalMovement::StartThread();
 }
 
 
@@ -1284,31 +1285,38 @@ void GUI::Draw()
 					ImGui::SetFontRegular();
 					if (ImGui::CollapsingHeader("Details##Actors"))
 					{
+#ifdef ACTOR_TRACE
 						ImGui::SetFontTitle();
 						ImGui::Text("Actor Trace");
 						ImGui::SetFontSmall();
 						ImGui::Text("Performs a trace starting at the camera's position and outputs the name of the Actor hit by the trace.");
+						ImGui::Text("X - Location at where trace has hit an Actor.");
+						ImGui::Text("@ - Location at where trace has ended without a hit.");
+						ImGui::Text("O - Location at where trace has started.");
 						ImGui::SetFontRegular();
 						ImGui::Checkbox("Enable##ActorTrace", &Features::ActorTrace::enabled);
 						ImGui::BeginDisabled(Features::ActorTrace::enabled == false);
-						ImGui::Checkbox("Show On Screen##ActorTrace", &Features::ActorTrace::showOnScreen);
-						ImGui::Checkbox("Show Line Trace##ActorTrace", &Features::ActorTrace::showLineTrace);
-						if (Features::ActorTrace::showLineTrace)
+						if (ImGui::TreeNode("Settings##ActorTrace"))
 						{
-							if (ImGui::TreeNode("Details##ActorTrace##LineTrace"))
-							{
-								ImGui::ColorPicker4("Color", Features::ActorTrace::traceColor);
-								ImGui::InputFloat("Thickness", &Features::ActorTrace::traceThickness, 0.1f, 1.0f);
+							ImGui::KeyBindingInput("Key Binding:", &Keybindings::actorTrace);
 
-								ImGui::TreePop();
-							}
-							
+							ImGui::NewLine();
+
+							ImGui::Checkbox("Show On Screen##ActorTrace", &Features::ActorTrace::showOnScreen);
+							ImGui::Checkbox("Show Line Trace##ActorTrace", &Features::ActorTrace::showLineTrace);
+
+							ImGui::NewLine();
+
+							ImGui::ColorPicker4("Trace Color", Features::ActorTrace::traceColor);
+							ImGui::InputFloat("Trace Thickness", &Features::ActorTrace::traceThickness, 0.1f, 1.0f);
+							ImGui::InputFloat("Trace Length", &Features::ActorTrace::traceLength, 1.0f, 10.0f);
+
+							ImGui::TreePop();
 						}
 						ImGui::EndDisabled();
-						ImGui::SetFontRegular();
-						ImGui::KeyBindingInput("Trace Key:", &Keybindings::actorTrace);
 
 						ImGui::NewLine();
+#endif
 
 						if (ImGui::Button("Update##Actors"))
 						{
@@ -1829,36 +1837,101 @@ void GUI::Draw()
 	}
 
 
-	if (Features::ActorTrace::enabled && Features::ActorTrace::showOnScreen && Features::ActorTrace::actor.reference)
+#ifdef ACTOR_TRACE
+	if (Features::ActorTrace::enabled)
 	{
-		const char* labelText = Features::ActorTrace::actor.objectName.c_str();
-		ImVec2 labelSize = ImGui::CalcTextSize(labelText);
+		if (Features::ActorTrace::showOnScreen)
+		{
+			const char* labelText = Features::ActorTrace::traceHit ? Features::ActorTrace::actor.objectName.c_str() : "No Actor Traced";
+			ImVec2 labelSize = ImGui::CalcTextSize(labelText);
 
-		ImVec2 labelPosition = ImVec2
-		(
-			floorf(iViewPortPosition.x + (iViewPortSize.x - labelSize.x) * 0.5f),
-			floorf(iViewPortSize.y - labelSize.y - 12.0f)
-		);
+			ImVec2 labelPosition = ImVec2
+			(
+				/*
+					Horizontal: ImGui Viewport center;
+					Vertical: ImGui Viewport bottom - 12 pixels.
 
-		iDrawList->AddText(labelPosition, ImGui::GetColorU32(ImGuiCol_Text), labelText);
+					Flooring the values allows to avoid potential subpixel conflicts.
+				*/
+				floorf(iViewPortPosition.x + (iViewPortSize.x - labelSize.x) * 0.5f),
+				floorf(iViewPortSize.y - labelSize.y - 12.0f)
+			);
 
+			iDrawList->AddText(labelPosition, ImGui::GetColorU32(ImGuiCol_Text), labelText);
+		}
+		
 		if (Features::ActorTrace::showLineTrace)
 		{
 			SDK::FVector2D screenStartPosition;
 			SDK::FVector2D screenEndPosition;
 
+			/* UGameplayStatics::ProjectWorldToScreen() verify Player Controller reference within its code. */
 			SDK::APlayerController* playerController = Unreal::PlayerController::Get();
-			if (SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceStartLocation, &screenStartPosition, false)
-				&& SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceEndLocation, &screenEndPosition, false))
+			bool startPositionProjected = SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceStartLocation, &screenStartPosition, false);
+			bool endPositionProjected = SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceEndLocation, &screenEndPosition, false);
+
+			/* Inverse Normalize RGBA values set by color picker. */
+			ImU32 color = ImGui::ColorConvertFloat4ToU32(ImVec4(Features::ActorTrace::traceColor[0], Features::ActorTrace::traceColor[1], Features::ActorTrace::traceColor[2], Features::ActorTrace::traceColor[3]));
+
+			static float traceStartCircleRadius;
+			if (startPositionProjected)
+				traceStartCircleRadius = Features::ActorTrace::traceThickness * 1.5f;
+
+			static float traceEndCircleRadius;
+			static float traceCrossSize;
+			if (endPositionProjected)
+			{
+				traceEndCircleRadius = Features::ActorTrace::traceThickness * 1.75f;
+				traceCrossSize = 8.0f + (Features::ActorTrace::traceThickness * 0.5f);
+			}
+
+			/* Both start and end position are within player view. */
+			if (startPositionProjected && endPositionProjected)
 			{
 				ImVec2 startPosition = { screenStartPosition.X, screenStartPosition.Y };
 				ImVec2 endPosition = { screenEndPosition.X, screenEndPosition.Y };
-				ImU32 color = ImGui::ColorConvertFloat4ToU32(ImVec4(Features::ActorTrace::traceColor[0], Features::ActorTrace::traceColor[1], Features::ActorTrace::traceColor[2], Features::ActorTrace::traceColor[3]));
 
+				/* Draw the trace. */
 				iDrawList->AddLine(startPosition, endPosition, color, Features::ActorTrace::traceThickness);
+
+				/* Draw a hollow circle to mark position where trace was sent from. */
+				iDrawList->AddCircle(startPosition, traceStartCircleRadius, color);
+
+				/*
+					If trace has hit something, draw a cross to mark position where the trace hit;
+					Otherwise draw a filled circle to mark position where the trace ends.
+				*/
+				if (Features::ActorTrace::traceHit)
+				{
+					iDrawList->AddLine({ endPosition.x - traceCrossSize, endPosition.y - traceCrossSize }, { endPosition.x + traceCrossSize, endPosition.y + traceCrossSize }, color, Features::ActorTrace::traceThickness);
+					iDrawList->AddLine({ endPosition.x - traceCrossSize, endPosition.y + traceCrossSize }, { endPosition.x + traceCrossSize, endPosition.y - traceCrossSize }, color, Features::ActorTrace::traceThickness);
+				}
+				else
+					iDrawList->AddCircleFilled(endPosition, traceEndCircleRadius, color);
+			}
+			/* Only start position is within player view. */
+			else if (startPositionProjected)
+			{
+				ImVec2 position = { screenStartPosition.X, screenStartPosition.Y };
+
+				iDrawList->AddCircle(position, traceStartCircleRadius, color);
+			}
+			/* Only end position is within player view. */
+			else if (endPositionProjected)
+			{
+				ImVec2 position = { screenEndPosition.X, screenEndPosition.Y };
+
+				if (Features::ActorTrace::traceHit)
+				{
+					iDrawList->AddLine({ position.x - traceCrossSize, position.y - traceCrossSize }, { position.x + traceCrossSize, position.y + traceCrossSize }, color, Features::ActorTrace::traceThickness);
+					iDrawList->AddLine({ position.x - traceCrossSize, position.y + traceCrossSize }, { position.x + traceCrossSize, position.y - traceCrossSize }, color, Features::ActorTrace::traceThickness);
+				}
+				else
+					iDrawList->AddCircleFilled(position, traceEndCircleRadius, color);
 			}
 		}
 	}
+#endif
 }
 
 
@@ -1898,49 +1971,6 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 	}
 
 	Beep(soundFrequency, soundDuration);
-}
-
-
-
-
-
-
-// ========================================================
-// |          #GUI #SHARED #WORKERS #SHAREDWORKERS        |
-// ========================================================
-void GUI::SharedWorkers::FeaturesWorker()
-{
-	while (GetFeaturesThread())
-	{
-		if (Features::DirectionalMovement::enabled)
-		{
-			if (SharedData::objectsInfo.controller && SharedData::objectsInfo.character && SharedData::objectsInfo.movementComponent
-				&& SharedData::objectsInfo.movementComponent->bCheatFlying)
-			{
-				SDK::FVector characterVelocity = SharedData::objectsInfo.movementComponent->Velocity;
-				if (characterVelocity.X != 0.0 || characterVelocity.Y != 0.0)
-				{
-					SDK::APlayerCameraManager* cameraManager = SharedData::objectsInfo.controller->PlayerCameraManager;
-					if (cameraManager)
-					{
-						SDK::FVector characterVelocityNormalized = Math::NormalizeVector(characterVelocity);
-						SDK::FVector cameraForwardVector = cameraManager->GetActorForwardVector();
-						double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
-
-						if (dotProduct > 0.5)
-						{
-							SDK::FVector currentLocation = SharedData::objectsInfo.character->K2_GetActorLocation();
-							SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * Features::DirectionalMovement::step);
-
-							SharedData::objectsInfo.character->K2_TeleportTo(finalLocation, SharedData::objectsInfo.character->K2_GetActorRotation());
-						}
-					}
-				}
-			}
-		}
-
-		Sleep(Math::Seconds_ToMilliseconds(Features::DirectionalMovement::delay));
-	}
 }
 
 
@@ -2364,6 +2394,111 @@ void GUI::SharedFunctions::Dash()
 
 
 
+void Features::DirectionalMovement::Worker()
+{
+	while (GetThread())
+	{
+		if (Features::DirectionalMovement::enabled)
+		{
+			/* See if we have a Character under control (character == nullptr), and verify that Character is cheat flying. */
+			SDK::ACharacter* character = Unreal::Character::Get();
+			if (character == nullptr || character->CharacterMovement == nullptr || character->CharacterMovement->bCheatFlying != true)
+				continue;
+
+			/* Get Character velocity and see if we have any horizontal movement. */
+			SDK::FVector characterVelocity = character->CharacterMovement->Velocity;
+			if (characterVelocity.X == 0.0 && characterVelocity.Y == 0.0)
+				continue;
+
+			/* See if we have a Player Controller alongside the Camera Manager. */
+			SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+			if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+				continue;
+
+			/* Normalize Character velocity (-1.0 to 1.0) and get Camera forward vector. */
+			SDK::FVector characterVelocityNormalized = Math::NormalizeVector(characterVelocity);
+			SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
+
+			/* 
+				Compute the dot product of the normalized character velocity and the camera's forward vector.
+				Result interpretation:
+				  +1.0 -> character moves exactly forward,
+				  -1.0 -> character moves exactly backward,
+				   0.0 -> movement is perpendicular to the camera.
+			*/
+			double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
+			if (dotProduct > 0.5) // Character is mostly targeting forward direction.
+			{
+				SDK::FVector currentLocation = character->K2_GetActorLocation();
+				SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * Features::DirectionalMovement::step);
+
+				character->K2_TeleportTo(finalLocation, character->K2_GetActorRotation());
+			}
+		}
+
+		Sleep(Math::Seconds_ToMilliseconds(Features::DirectionalMovement::delay));
+	}
+}
+
+
+
+
+#ifdef ACTOR_TRACE
+bool Features::ActorTrace::Trace()
+{
+	SDK::UWorld* world = Unreal::World::Get();
+	if (world == nullptr)
+		return false;
+
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+		return false;
+
+	SDK::FVector cameraLocation = playerController->PlayerCameraManager->K2_GetActorLocation();
+	SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
+	SDK::FVector traceEndLocation = cameraLocation + (cameraForwardVector * Features::ActorTrace::traceLength);
+
+	SDK::TArray<SDK::AActor*> actorsToIgnore;
+	if (SDK::ACharacter* character = Unreal::Character::Get())
+		actorsToIgnore.Add(character);
+
+	SDK::FHitResult hitResult;
+	if (SDK::UKismetSystemLibrary::LineTraceSingle(world, cameraLocation, traceEndLocation, SDK::ETraceTypeQuery::TraceTypeQuery1, false, actorsToIgnore, SDK::EDrawDebugTrace::ForDuration, &hitResult, true, SDK::FLinearColor(), SDK::FLinearColor(), 5.0f))
+	{
+		SDK::AActor* hitActor = hitResult.Actor.Get();
+		if (hitActor == nullptr)
+			return false;
+
+		Features::ActorTrace::traceHit = true;
+
+		Features::ActorTrace::traceStartLocation = cameraLocation;
+		Features::ActorTrace::traceEndLocation = hitResult.Location;
+
+		Features::ActorTrace::actor.reference = hitActor;
+		Features::ActorTrace::actor.className = hitActor->Class->GetFullName();
+		Features::ActorTrace::actor.objectName = hitActor->GetFullName();
+
+		Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
+	}
+	else
+	{
+		Features::ActorTrace::traceHit = false;
+
+		Features::ActorTrace::traceStartLocation = cameraLocation;
+		Features::ActorTrace::traceEndLocation = traceEndLocation;
+
+		Features::ActorTrace::actor.reference = nullptr;
+
+		Unreal::Console::Print("[Actor Trace] Didn't hit any actor.");
+	}
+
+	return true;
+}
+#endif
+
+
+
+
 
 
 void Keybindings::Process()
@@ -2413,6 +2548,7 @@ void Keybindings::Process()
 
 
 
+#ifdef ACTOR_TRACE
 		if (Features::ActorTrace::enabled)
 		{
 			if (ImGui::IsKeyBindingPressed(&Keybindings::actorTrace))
@@ -2420,48 +2556,6 @@ void Keybindings::Process()
 				GUI::PlayActionSound(Features::ActorTrace::Trace());
 			}
 		}
+#endif
 	}
-}
-
-
-
-
-bool Features::ActorTrace::Trace()
-{
-	SDK::UWorld* world = Unreal::World::Get();
-	if (world == nullptr)
-		return false;
-
-	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
-	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
-		return false;
-
-	SDK::FVector cameraLocation = playerController->PlayerCameraManager->K2_GetActorLocation();
-	SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
-	SDK::FVector traceEndLocation = cameraLocation + (cameraForwardVector * 10000.0f);
-
-	SDK::TArray<SDK::AActor*> actorsToIgnore;
-	if (SDK::ACharacter* character = Unreal::Character::Get())
-		actorsToIgnore.Add(character);
-
-	SDK::FHitResult hitResult;
-	bool hit = SDK::UKismetSystemLibrary::LineTraceSingle(world, cameraLocation, traceEndLocation, SDK::ETraceTypeQuery::TraceTypeQuery1, false, actorsToIgnore, SDK::EDrawDebugTrace::ForDuration, &hitResult, true, SDK::FLinearColor(), SDK::FLinearColor(), 5.0f);
-
-	if (hit == false)
-		return false;
-
-	SDK::AActor* hitActor = hitResult.Actor.Get();
-	if (hitActor == nullptr)
-		return false;
-
-	Features::ActorTrace::actor.reference = hitActor;
-	Features::ActorTrace::actor.className = hitActor->Class->GetFullName();
-	Features::ActorTrace::actor.objectName = hitActor->GetFullName();
-
-	Features::ActorTrace::traceStartLocation = cameraLocation;
-	Features::ActorTrace::traceEndLocation = hitResult.Location;
-
-	Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
-
-	return true;
 }

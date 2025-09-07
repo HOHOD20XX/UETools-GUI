@@ -9,8 +9,20 @@
 #include <Windows.h>
 #include <algorithm>
 
-// #define UE5
+/*
+	#define UE5
 
+	When targeting Unreal Engine 5 based titles, it's recommended to uncomment that define;
+	In many cases that action alone would be enough to adapt entirity of solution for newer engine.
+*/
+
+/* 
+	#define ACTOR_TRACE 
+
+	The way Line Tracing work often differ from Engine to Engine (e.g. 4.25 -> 4.27),
+	it's disabled by default in order to avoid a potential set of compilation errors. 
+*/
+#define ACTOR_TRACE 
 
 
 
@@ -69,6 +81,10 @@ namespace ImGui
 	{
 		SetWindowFontScale(fontScale);
 	}
+	static void SetFontTiny()
+	{
+		SetFontScale(0.5f);
+	}
 	static void SetFontLittle()
 	{
 		SetFontScale(0.75f);
@@ -122,22 +138,8 @@ public:
 
 
 public:
-	struct S_ObjectsInformation
-	{
-		SDK::APlayerController* controller;
-		SDK::ACharacter* character;
-		SDK::UCharacterMovementComponent* movementComponent;
-	};
-	static inline S_ObjectsInformation objectsInfo = {};
-
-
-
-public:
 	static void Init(const HMODULE& applicationModule);
 	static void Draw();
-
-
-	
 
 
 
@@ -170,20 +172,6 @@ public:
 		{
 			userInterfaceThread = newUserInterfaceThread;
 		}
-
-
-	private:
-		static inline HANDLE featuresThread = nullptr;
-	public:
-		static HANDLE GetFeaturesThread()
-		{
-			return featuresThread;
-		}
-		static void SetFeaturesThread(const HANDLE& newFeaturesThread)
-		{
-			featuresThread = newFeaturesThread;
-		}
-		static void FeaturesWorker();
 	};
 
 
@@ -302,6 +290,24 @@ namespace Features
 
 		static inline double step = 45.0;
 		static inline double delay = 0.05;
+
+
+	private:
+		static inline HANDLE thread = nullptr;
+		static void Worker();
+	public:
+		static HANDLE GetThread()
+		{
+			return thread;
+		}
+		static bool StartThread()
+		{
+			if (thread)
+				return false;
+
+			thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Features::DirectionalMovement::Worker, 0, 0, 0);
+			return thread;
+		}
 	};
 
 
@@ -325,23 +331,27 @@ namespace Features
 
 
 
+#ifdef ACTOR_TRACE
 	class ActorTrace
 	{
 	public:
 		static inline bool enabled = false;
 		static inline bool showOnScreen = false;
-		static inline bool showLineTrace = false;
+		static inline bool showLineTrace = true;
 
 		static inline SDK::FVector traceStartLocation;
 		static inline SDK::FVector traceEndLocation;
-		static inline float traceColor[4] = { 1.0f, 0.0f, 0.0f, 1.0f };
-		static inline float traceThickness = 5.0f;
+		static inline float traceColor[4] = { 0.118f, 1.0f, 0.0f, 0.5f };
+		static inline float traceThickness = 3.5f;
+		static inline float traceLength = 2048.0f;
 
+		static inline bool traceHit;
 		static inline Unreal::Actor::DataStructure actor;
 
 
 		static bool Trace();
 	};
+#endif
 };
 
 
@@ -363,7 +373,7 @@ public:
 	static inline ImGui::KeyBinding launch;
 	static inline ImGui::KeyBinding dash;
 
-	static inline ImGui::KeyBinding actorTrace = ImGui::KeyBinding(ImGuiKey_K);
+	static inline ImGui::KeyBinding actorTrace = ImGui::KeyBinding(ImGuiKey_T);
 
 
 	static void Process();
