@@ -22,7 +22,7 @@
 	The way Line Tracing work often differ from Engine to Engine (e.g. 4.25 -> 4.27),
 	it's disabled by default in order to avoid a potential set of compilation errors. 
 */
-#define ACTOR_TRACE 
+
 
 
 
