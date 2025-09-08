@@ -25,15 +25,15 @@ void ImGui::TextBool(const char* label, const bool& inBool, const char* text_tru
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, inBool ? color_true : color_false);
 		ImGui::TextUnformatted(inBool
-									? (text_true ? text_true : "True")
-									: (text_false ? text_false : "False"));
+			? (text_true ? text_true : "True")
+			: (text_false ? text_false : "False"));
 		ImGui::PopStyleColor();
 	}
 	else
 		ImGui::TextUnformatted(inBool
-									? (text_true ? text_true : "True")
-									: (text_false ? text_false : "False"));
-	
+			? (text_true ? text_true : "True")
+			: (text_false ? text_false : "False"));
+
 }
 
 void ImGui::TextBool(const char* label, const bool& inBool)
@@ -348,75 +348,75 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 {
 	switch (key)
 	{
-		case ImGuiKey_Tab: return VK_TAB;
-		case ImGuiKey_LeftArrow: return VK_LEFT;
-		case ImGuiKey_RightArrow: return VK_RIGHT;
-		case ImGuiKey_UpArrow: return VK_UP;
-		case ImGuiKey_DownArrow: return VK_DOWN;
-		case ImGuiKey_PageUp: return VK_PRIOR;
-		case ImGuiKey_PageDown: return VK_NEXT;
-		case ImGuiKey_Home: return VK_HOME;
-		case ImGuiKey_End: return VK_END;
-		case ImGuiKey_Insert: return VK_INSERT;
-		case ImGuiKey_Delete: return VK_DELETE;
-		case ImGuiKey_Backspace: return VK_BACK;
-		case ImGuiKey_Space: return VK_SPACE;
-		case ImGuiKey_Enter: return VK_RETURN;
-		case ImGuiKey_Escape: return VK_ESCAPE;
+	case ImGuiKey_Tab: return VK_TAB;
+	case ImGuiKey_LeftArrow: return VK_LEFT;
+	case ImGuiKey_RightArrow: return VK_RIGHT;
+	case ImGuiKey_UpArrow: return VK_UP;
+	case ImGuiKey_DownArrow: return VK_DOWN;
+	case ImGuiKey_PageUp: return VK_PRIOR;
+	case ImGuiKey_PageDown: return VK_NEXT;
+	case ImGuiKey_Home: return VK_HOME;
+	case ImGuiKey_End: return VK_END;
+	case ImGuiKey_Insert: return VK_INSERT;
+	case ImGuiKey_Delete: return VK_DELETE;
+	case ImGuiKey_Backspace: return VK_BACK;
+	case ImGuiKey_Space: return VK_SPACE;
+	case ImGuiKey_Enter: return VK_RETURN;
+	case ImGuiKey_Escape: return VK_ESCAPE;
 
-		case ImGuiKey_A: return 'A'; case ImGuiKey_B: return 'B';
-		case ImGuiKey_C: return 'C'; case ImGuiKey_D: return 'D';
-		case ImGuiKey_E: return 'E'; case ImGuiKey_F: return 'F';
-		case ImGuiKey_G: return 'G'; case ImGuiKey_H: return 'H';
-		case ImGuiKey_I: return 'I'; case ImGuiKey_J: return 'J';
-		case ImGuiKey_K: return 'K'; case ImGuiKey_L: return 'L';
-		case ImGuiKey_M: return 'M'; case ImGuiKey_N: return 'N';
-		case ImGuiKey_O: return 'O'; case ImGuiKey_P: return 'P';
-		case ImGuiKey_Q: return 'Q'; case ImGuiKey_R: return 'R';
-		case ImGuiKey_S: return 'S'; case ImGuiKey_T: return 'T';
-		case ImGuiKey_U: return 'U'; case ImGuiKey_V: return 'V';
-		case ImGuiKey_W: return 'W'; case ImGuiKey_X: return 'X';
-		case ImGuiKey_Y: return 'Y'; case ImGuiKey_Z: return 'Z';
+	case ImGuiKey_A: return 'A'; case ImGuiKey_B: return 'B';
+	case ImGuiKey_C: return 'C'; case ImGuiKey_D: return 'D';
+	case ImGuiKey_E: return 'E'; case ImGuiKey_F: return 'F';
+	case ImGuiKey_G: return 'G'; case ImGuiKey_H: return 'H';
+	case ImGuiKey_I: return 'I'; case ImGuiKey_J: return 'J';
+	case ImGuiKey_K: return 'K'; case ImGuiKey_L: return 'L';
+	case ImGuiKey_M: return 'M'; case ImGuiKey_N: return 'N';
+	case ImGuiKey_O: return 'O'; case ImGuiKey_P: return 'P';
+	case ImGuiKey_Q: return 'Q'; case ImGuiKey_R: return 'R';
+	case ImGuiKey_S: return 'S'; case ImGuiKey_T: return 'T';
+	case ImGuiKey_U: return 'U'; case ImGuiKey_V: return 'V';
+	case ImGuiKey_W: return 'W'; case ImGuiKey_X: return 'X';
+	case ImGuiKey_Y: return 'Y'; case ImGuiKey_Z: return 'Z';
 
-		case ImGuiKey_0: return '0'; case ImGuiKey_1: return '1';
-		case ImGuiKey_2: return '2'; case ImGuiKey_3: return '3';
-		case ImGuiKey_4: return '4'; case ImGuiKey_5: return '5';
-		case ImGuiKey_6: return '6'; case ImGuiKey_7: return '7';
-		case ImGuiKey_8: return '8'; case ImGuiKey_9: return '9';
+	case ImGuiKey_0: return '0'; case ImGuiKey_1: return '1';
+	case ImGuiKey_2: return '2'; case ImGuiKey_3: return '3';
+	case ImGuiKey_4: return '4'; case ImGuiKey_5: return '5';
+	case ImGuiKey_6: return '6'; case ImGuiKey_7: return '7';
+	case ImGuiKey_8: return '8'; case ImGuiKey_9: return '9';
 
-		case ImGuiKey_Keypad0: return VK_NUMPAD0;
-		case ImGuiKey_Keypad1: return VK_NUMPAD1;
-		case ImGuiKey_Keypad2: return VK_NUMPAD2;
-		case ImGuiKey_Keypad3: return VK_NUMPAD3;
-		case ImGuiKey_Keypad4: return VK_NUMPAD4;
-		case ImGuiKey_Keypad5: return VK_NUMPAD5;
-		case ImGuiKey_Keypad6: return VK_NUMPAD6;
-		case ImGuiKey_Keypad7: return VK_NUMPAD7;
-		case ImGuiKey_Keypad8: return VK_NUMPAD8;
-		case ImGuiKey_Keypad9: return VK_NUMPAD9;
-		case ImGuiKey_KeypadMultiply: return VK_MULTIPLY;
-		case ImGuiKey_KeypadAdd: return VK_ADD;
-		case ImGuiKey_KeypadSubtract: return VK_SUBTRACT;
-		case ImGuiKey_KeypadDecimal: return VK_DECIMAL;
-		case ImGuiKey_KeypadDivide: return VK_DIVIDE;
+	case ImGuiKey_Keypad0: return VK_NUMPAD0;
+	case ImGuiKey_Keypad1: return VK_NUMPAD1;
+	case ImGuiKey_Keypad2: return VK_NUMPAD2;
+	case ImGuiKey_Keypad3: return VK_NUMPAD3;
+	case ImGuiKey_Keypad4: return VK_NUMPAD4;
+	case ImGuiKey_Keypad5: return VK_NUMPAD5;
+	case ImGuiKey_Keypad6: return VK_NUMPAD6;
+	case ImGuiKey_Keypad7: return VK_NUMPAD7;
+	case ImGuiKey_Keypad8: return VK_NUMPAD8;
+	case ImGuiKey_Keypad9: return VK_NUMPAD9;
+	case ImGuiKey_KeypadMultiply: return VK_MULTIPLY;
+	case ImGuiKey_KeypadAdd: return VK_ADD;
+	case ImGuiKey_KeypadSubtract: return VK_SUBTRACT;
+	case ImGuiKey_KeypadDecimal: return VK_DECIMAL;
+	case ImGuiKey_KeypadDivide: return VK_DIVIDE;
 
-		case ImGuiKey_F1: return VK_F1; case ImGuiKey_F2: return VK_F2;
-		case ImGuiKey_F3: return VK_F3; case ImGuiKey_F4: return VK_F4;
-		case ImGuiKey_F5: return VK_F5; case ImGuiKey_F6: return VK_F6;
-		case ImGuiKey_F7: return VK_F7; case ImGuiKey_F8: return VK_F8;
-		case ImGuiKey_F9: return VK_F9; case ImGuiKey_F10: return VK_F10;
-		case ImGuiKey_F11: return VK_F11; case ImGuiKey_F12: return VK_F12;
+	case ImGuiKey_F1: return VK_F1; case ImGuiKey_F2: return VK_F2;
+	case ImGuiKey_F3: return VK_F3; case ImGuiKey_F4: return VK_F4;
+	case ImGuiKey_F5: return VK_F5; case ImGuiKey_F6: return VK_F6;
+	case ImGuiKey_F7: return VK_F7; case ImGuiKey_F8: return VK_F8;
+	case ImGuiKey_F9: return VK_F9; case ImGuiKey_F10: return VK_F10;
+	case ImGuiKey_F11: return VK_F11; case ImGuiKey_F12: return VK_F12;
 
-		case ImGuiKey_LeftCtrl: return VK_LCONTROL;
-		case ImGuiKey_RightCtrl: return VK_RCONTROL;
-		case ImGuiKey_LeftShift: return VK_LSHIFT;
-		case ImGuiKey_RightShift: return VK_RSHIFT;
-		case ImGuiKey_LeftAlt: return VK_LMENU;
-		case ImGuiKey_RightAlt: return VK_RMENU;
-		case ImGuiKey_LeftSuper: return VK_LWIN;
-		case ImGuiKey_RightSuper: return VK_RWIN;
+	case ImGuiKey_LeftCtrl: return VK_LCONTROL;
+	case ImGuiKey_RightCtrl: return VK_RCONTROL;
+	case ImGuiKey_LeftShift: return VK_LSHIFT;
+	case ImGuiKey_RightShift: return VK_RSHIFT;
+	case ImGuiKey_LeftAlt: return VK_LMENU;
+	case ImGuiKey_RightAlt: return VK_RMENU;
+	case ImGuiKey_LeftSuper: return VK_LWIN;
+	case ImGuiKey_RightSuper: return VK_RWIN;
 
-		default: return 0;
+	default: return 0;
 	}
 }
 
@@ -424,75 +424,75 @@ const char* ImGui::ImGuiKey_GetName(const ImGuiKey& key)
 {
 	switch (key)
 	{
-		case ImGuiKey_Tab:            return "Tab";
-		case ImGuiKey_LeftArrow:      return "Left";
-		case ImGuiKey_RightArrow:     return "Right";
-		case ImGuiKey_UpArrow:        return "Up";
-		case ImGuiKey_DownArrow:      return "Down";
-		case ImGuiKey_PageUp:         return "PgUp";
-		case ImGuiKey_PageDown:       return "PgDn";
-		case ImGuiKey_Home:           return "Home";
-		case ImGuiKey_End:            return "End";
-		case ImGuiKey_Insert:         return "Ins";
-		case ImGuiKey_Delete:         return "Del";
-		case ImGuiKey_Backspace:      return "Bspace";
-		case ImGuiKey_Space:          return "Space";
-		case ImGuiKey_Enter:          return "Enter";
-		case ImGuiKey_Escape:         return "Esc";
+	case ImGuiKey_Tab:            return "Tab";
+	case ImGuiKey_LeftArrow:      return "Left";
+	case ImGuiKey_RightArrow:     return "Right";
+	case ImGuiKey_UpArrow:        return "Up";
+	case ImGuiKey_DownArrow:      return "Down";
+	case ImGuiKey_PageUp:         return "PgUp";
+	case ImGuiKey_PageDown:       return "PgDn";
+	case ImGuiKey_Home:           return "Home";
+	case ImGuiKey_End:            return "End";
+	case ImGuiKey_Insert:         return "Ins";
+	case ImGuiKey_Delete:         return "Del";
+	case ImGuiKey_Backspace:      return "Bspace";
+	case ImGuiKey_Space:          return "Space";
+	case ImGuiKey_Enter:          return "Enter";
+	case ImGuiKey_Escape:         return "Esc";
 
-		case ImGuiKey_A: return "A";  case ImGuiKey_B: return "B";
-		case ImGuiKey_C: return "C";  case ImGuiKey_D: return "D";
-		case ImGuiKey_E: return "E";  case ImGuiKey_F: return "F";
-		case ImGuiKey_G: return "G";  case ImGuiKey_H: return "H";
-		case ImGuiKey_I: return "I";  case ImGuiKey_J: return "J";
-		case ImGuiKey_K: return "K";  case ImGuiKey_L: return "L";
-		case ImGuiKey_M: return "M";  case ImGuiKey_N: return "N";
-		case ImGuiKey_O: return "O";  case ImGuiKey_P: return "P";
-		case ImGuiKey_Q: return "Q";  case ImGuiKey_R: return "R";
-		case ImGuiKey_S: return "S";  case ImGuiKey_T: return "T";
-		case ImGuiKey_U: return "U";  case ImGuiKey_V: return "V";
-		case ImGuiKey_W: return "W";  case ImGuiKey_X: return "X";
-		case ImGuiKey_Y: return "Y";  case ImGuiKey_Z: return "Z";
+	case ImGuiKey_A: return "A";  case ImGuiKey_B: return "B";
+	case ImGuiKey_C: return "C";  case ImGuiKey_D: return "D";
+	case ImGuiKey_E: return "E";  case ImGuiKey_F: return "F";
+	case ImGuiKey_G: return "G";  case ImGuiKey_H: return "H";
+	case ImGuiKey_I: return "I";  case ImGuiKey_J: return "J";
+	case ImGuiKey_K: return "K";  case ImGuiKey_L: return "L";
+	case ImGuiKey_M: return "M";  case ImGuiKey_N: return "N";
+	case ImGuiKey_O: return "O";  case ImGuiKey_P: return "P";
+	case ImGuiKey_Q: return "Q";  case ImGuiKey_R: return "R";
+	case ImGuiKey_S: return "S";  case ImGuiKey_T: return "T";
+	case ImGuiKey_U: return "U";  case ImGuiKey_V: return "V";
+	case ImGuiKey_W: return "W";  case ImGuiKey_X: return "X";
+	case ImGuiKey_Y: return "Y";  case ImGuiKey_Z: return "Z";
 
-		case ImGuiKey_0: return "0";  case ImGuiKey_1: return "1";
-		case ImGuiKey_2: return "2";  case ImGuiKey_3: return "3";
-		case ImGuiKey_4: return "4";  case ImGuiKey_5: return "5";
-		case ImGuiKey_6: return "6";  case ImGuiKey_7: return "7";
-		case ImGuiKey_8: return "8";  case ImGuiKey_9: return "9";
+	case ImGuiKey_0: return "0";  case ImGuiKey_1: return "1";
+	case ImGuiKey_2: return "2";  case ImGuiKey_3: return "3";
+	case ImGuiKey_4: return "4";  case ImGuiKey_5: return "5";
+	case ImGuiKey_6: return "6";  case ImGuiKey_7: return "7";
+	case ImGuiKey_8: return "8";  case ImGuiKey_9: return "9";
 
-		case ImGuiKey_Keypad0:        return "Num0";
-		case ImGuiKey_Keypad1:        return "Num1";
-		case ImGuiKey_Keypad2:        return "Num2";
-		case ImGuiKey_Keypad3:        return "Num3";
-		case ImGuiKey_Keypad4:        return "Num4";
-		case ImGuiKey_Keypad5:        return "Num5";
-		case ImGuiKey_Keypad6:        return "Num6";
-		case ImGuiKey_Keypad7:        return "Num7";
-		case ImGuiKey_Keypad8:        return "Num8";
-		case ImGuiKey_Keypad9:        return "Num9";
-		case ImGuiKey_KeypadMultiply: return "Num*";
-		case ImGuiKey_KeypadAdd:      return "Num+";
-		case ImGuiKey_KeypadSubtract: return "Num-";
-		case ImGuiKey_KeypadDecimal:  return "Num.";
-		case ImGuiKey_KeypadDivide:   return "Num/";
+	case ImGuiKey_Keypad0:        return "Num0";
+	case ImGuiKey_Keypad1:        return "Num1";
+	case ImGuiKey_Keypad2:        return "Num2";
+	case ImGuiKey_Keypad3:        return "Num3";
+	case ImGuiKey_Keypad4:        return "Num4";
+	case ImGuiKey_Keypad5:        return "Num5";
+	case ImGuiKey_Keypad6:        return "Num6";
+	case ImGuiKey_Keypad7:        return "Num7";
+	case ImGuiKey_Keypad8:        return "Num8";
+	case ImGuiKey_Keypad9:        return "Num9";
+	case ImGuiKey_KeypadMultiply: return "Num*";
+	case ImGuiKey_KeypadAdd:      return "Num+";
+	case ImGuiKey_KeypadSubtract: return "Num-";
+	case ImGuiKey_KeypadDecimal:  return "Num.";
+	case ImGuiKey_KeypadDivide:   return "Num/";
 
-		case ImGuiKey_F1:  return "F1";   case ImGuiKey_F2:  return "F2";
-		case ImGuiKey_F3:  return "F3";   case ImGuiKey_F4:  return "F4";
-		case ImGuiKey_F5:  return "F5";   case ImGuiKey_F6:  return "F6";
-		case ImGuiKey_F7:  return "F7";   case ImGuiKey_F8:  return "F8";
-		case ImGuiKey_F9:  return "F9";   case ImGuiKey_F10: return "F10";
-		case ImGuiKey_F11: return "F11";  case ImGuiKey_F12: return "F12";
+	case ImGuiKey_F1:  return "F1";   case ImGuiKey_F2:  return "F2";
+	case ImGuiKey_F3:  return "F3";   case ImGuiKey_F4:  return "F4";
+	case ImGuiKey_F5:  return "F5";   case ImGuiKey_F6:  return "F6";
+	case ImGuiKey_F7:  return "F7";   case ImGuiKey_F8:  return "F8";
+	case ImGuiKey_F9:  return "F9";   case ImGuiKey_F10: return "F10";
+	case ImGuiKey_F11: return "F11";  case ImGuiKey_F12: return "F12";
 
-		case ImGuiKey_LeftCtrl:   return "LCtrl";
-		case ImGuiKey_RightCtrl:  return "RCtrl";
-		case ImGuiKey_LeftShift:  return "LShift";
-		case ImGuiKey_RightShift: return "RShift";
-		case ImGuiKey_LeftAlt:    return "LAlt";
-		case ImGuiKey_RightAlt:   return "RAlt";
-		case ImGuiKey_LeftSuper:  return "LWin";
-		case ImGuiKey_RightSuper: return "RWin";
+	case ImGuiKey_LeftCtrl:   return "LCtrl";
+	case ImGuiKey_RightCtrl:  return "RCtrl";
+	case ImGuiKey_LeftShift:  return "LShift";
+	case ImGuiKey_RightShift: return "RShift";
+	case ImGuiKey_LeftAlt:    return "LAlt";
+	case ImGuiKey_RightAlt:   return "RAlt";
+	case ImGuiKey_LeftSuper:  return "LWin";
+	case ImGuiKey_RightSuper: return "RWin";
 
-		default: return "???";
+	default: return "???";
 	}
 }
 
@@ -608,7 +608,7 @@ bool ImGui::IsKeyBindingPressed(KeyBinding* binding, const bool& waitForRelease)
 	}
 	else
 		return (GetAsyncKeyState(keyCode) & 1);
-	
+
 	return false;
 }
 
@@ -695,11 +695,11 @@ void GUI::Draw()
 		if (ImGui::BeginMainMenuBar())
 		{
 			ImGui::Text("UETools GUI (v0.9)");
-			if (ImGui::IsItemHovered()) 
+			if (ImGui::IsItemHovered())
 			{
 				ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
 			}
-			if (ImGui::IsItemClicked()) 
+			if (ImGui::IsItemClicked())
 			{
 				ShellExecuteA(NULL, "open", "https://github.com/Cranch-fur/UETools-GUI", NULL, NULL, SW_SHOWNORMAL);
 			}
@@ -794,7 +794,7 @@ void GUI::Draw()
 							ImGui::Text("Last Update: %d %s ago", days, (days == 1 ? "day" : "days"));
 						}
 					}
-					
+
 
 					ImGui::BeginDisabled(Features::Debug::autoUpdate);
 					if (ImGui::Button("Update##DebugInformation"))
@@ -1086,7 +1086,7 @@ void GUI::Draw()
 					}
 
 					ImGui::CategorySeparator();
-					
+
 					ImGui::SetFontTitle();
 					ImGui::TextBoolPresenceColored("Player Controller:", Features::Debug::playerController.reference);
 					ImGui::SetFontRegular();
@@ -1581,7 +1581,7 @@ void GUI::Draw()
 									ImGui::SetFontRegular();
 									if (ImGui::TreeNode("Details##Components"))
 									{
-										
+
 										ImGui::InputText("Search Filter", Features::ActorsList::componentsFilterBuffer, Features::ActorsList::componentsFilterBufferSize);
 										size_t componentsFilterLength = strlen(Features::ActorsList::componentsFilterBuffer);
 										ImGui::SameLine();
@@ -1703,7 +1703,7 @@ void GUI::Draw()
 
 					ImGui::MenuSpacer();
 				}
-				
+
 				ImGui::EndMenu();
 			}
 
@@ -1855,7 +1855,7 @@ void GUI::Draw()
 							}
 						}
 						ImGui::Text("Custom Movement Mode: %d", movementComponent->CustomMovementMode);
-						
+
 						ImGui::NewLine();
 
 						/* 0 corresponds for default vertical size. */
@@ -2090,7 +2090,7 @@ void GUI::Draw()
 					GUI::PlayActionSound(false);
 			}
 			ImGui::PopItemWidth();
-			
+
 
 			ImGui::EndMainMenuBar();
 		}
@@ -2102,7 +2102,11 @@ void GUI::Draw()
 	{
 		if (Features::ActorTrace::showOnScreen)
 		{
+#ifdef UE5
+			const char* labelText = Features::ActorTrace::traceHit ? Features::ActorTrace::object.objectName.c_str() : "No Object Traced";
+#else
 			const char* labelText = Features::ActorTrace::traceHit ? Features::ActorTrace::actor.objectName.c_str() : "No Actor Traced";
+#endif
 			ImVec2 labelSize = ImGui::CalcTextSize(labelText);
 
 			ImVec2 labelPosition = ImVec2
@@ -2119,8 +2123,8 @@ void GUI::Draw()
 
 			iDrawList->AddText(labelPosition, ImGui::GetColorU32(ImGuiCol_Text), labelText);
 		}
-		
-		if (Features::ActorTrace::showLineTrace)
+
+		if (Features::ActorTrace::showLineTrace && Features::ActorTrace::traceCast)
 		{
 			SDK::FVector2D screenStartPosition;
 			SDK::FVector2D screenEndPosition;
@@ -2148,8 +2152,8 @@ void GUI::Draw()
 			/* Both start and end position are within player view. */
 			if (startPositionProjected && endPositionProjected)
 			{
-				ImVec2 startPosition = { screenStartPosition.X, screenStartPosition.Y };
-				ImVec2 endPosition = { screenEndPosition.X, screenEndPosition.Y };
+				ImVec2 startPosition = { (float)screenStartPosition.X, (float)screenStartPosition.Y };
+				ImVec2 endPosition = { (float)screenEndPosition.X, (float)screenEndPosition.Y };
 
 				/* Draw the trace. */
 				iDrawList->AddLine(startPosition, endPosition, color, Features::ActorTrace::traceThickness);
@@ -2172,14 +2176,14 @@ void GUI::Draw()
 			/* Only start position is within player view. */
 			else if (startPositionProjected)
 			{
-				ImVec2 position = { screenStartPosition.X, screenStartPosition.Y };
+				ImVec2 position = { (float)screenStartPosition.X, (float)screenStartPosition.Y };
 
 				iDrawList->AddCircle(position, traceStartCircleRadius, color);
 			}
 			/* Only end position is within player view. */
 			else if (endPositionProjected)
 			{
-				ImVec2 position = { screenEndPosition.X, screenEndPosition.Y };
+				ImVec2 position = { (float)screenEndPosition.X, (float)screenEndPosition.Y };
 
 				if (Features::ActorTrace::traceHit)
 				{
@@ -2207,30 +2211,30 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 
 	switch (soundToPlay)
 	{
-		case E_Sound::BUTTON_PRESS:
-			soundFrequency = 245;
-			soundDuration = 50;
-			break;
+	case E_Sound::BUTTON_PRESS:
+		soundFrequency = 245;
+		soundDuration = 50;
+		break;
 
-		case E_Sound::BUTTON_CANCEL:
-			soundFrequency = 100;
-			soundDuration = 150;
-			break;
+	case E_Sound::BUTTON_CANCEL:
+		soundFrequency = 100;
+		soundDuration = 150;
+		break;
 
-		case E_Sound::ACTION_SUCCESS:
-			soundFrequency = 350;
-			soundDuration = 300;
-			break;
+	case E_Sound::ACTION_SUCCESS:
+		soundFrequency = 350;
+		soundDuration = 300;
+		break;
 
-		case E_Sound::ACTION_ERROR:
-			soundFrequency = 175;
-			soundDuration = 300;
-			break;
+	case E_Sound::ACTION_ERROR:
+		soundFrequency = 175;
+		soundDuration = 300;
+		break;
 
-		default:
-			soundFrequency = 500;
-			soundDuration = 1000;
-			break;
+	default:
+		soundFrequency = 500;
+		soundDuration = 1000;
+		break;
 	}
 
 	/*
@@ -2238,9 +2242,9 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 		This prevents the main thread from blocking while Beep() is playing the sound.
 	*/
 	std::thread([=]()
-	{
-		Beep(soundFrequency, soundDuration);
-	}).detach();
+		{
+			Beep(soundFrequency, soundDuration);
+		}).detach();
 }
 
 
@@ -2329,7 +2333,7 @@ void Features::Debug::Update()
 
 		Features::Debug::gameMode.useSeamlessTravel = gameMode->bUseSeamlessTravel;
 		Features::Debug::gameMode.options = gameMode->OptionsString.ToString();
-		
+
 		Features::Debug::gameMode.isPausable = gameMode->bPauseable;
 	}
 
@@ -2472,7 +2476,7 @@ void Features::Debug::Update()
 					levelStreamingData.level.objectName = loadedLevel->GetFullName();
 
 					levelStreamingData.level.isVisible = loadedLevel->bIsVisible;
-					
+
 					SDK::AWorldSettings* worldSettings = loadedLevel->WorldSettings;
 					if (levelStreamingData.level.worldSettings.reference = worldSettings)
 					{
@@ -2816,37 +2820,56 @@ bool Features::ActorTrace::Trace()
 		actorsToIgnore.Add(character);
 
 	SDK::FHitResult hitResult;
-	if (SDK::UKismetSystemLibrary::LineTraceSingle(world, cameraLocation, traceEndLocation, SDK::ETraceTypeQuery::TraceTypeQuery1, false, actorsToIgnore, SDK::EDrawDebugTrace::ForDuration, &hitResult, true, SDK::FLinearColor(), SDK::FLinearColor(), 5.0f))
+	Features::ActorTrace::traceHit = SDK::UKismetSystemLibrary::LineTraceSingle(world, cameraLocation, traceEndLocation, SDK::ETraceTypeQuery::TraceTypeQuery1, false, actorsToIgnore, SDK::EDrawDebugTrace::ForDuration, &hitResult, true, SDK::FLinearColor(), SDK::FLinearColor(), 5.0f);
+	if (traceHit)
 	{
-		SDK::AActor* hitActor = hitResult.Actor.Get();
-		if (hitActor == nullptr)
-			return false;
-
-		Features::ActorTrace::traceHit = true;
-
 		Features::ActorTrace::traceStartLocation = cameraLocation;
 		Features::ActorTrace::traceEndLocation = hitResult.Location;
 
-		Features::ActorTrace::actor.reference = hitActor;
-		Features::ActorTrace::actor.className = hitActor->Class->GetFullName();
-		Features::ActorTrace::actor.objectName = hitActor->GetFullName();
+#ifdef UE5
+		/* UE 5.3.2 and older: hitResult.HitObjectHandle.Actor.Get() */
+		SDK::UObject* hitObject = hitResult.HitObjectHandle.ReferenceObject.Get();
+		if (hitObject)
+		{
 
-		if (Features::Menu::enableConsoleOutput)
-			Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
+			Features::ActorTrace::object.reference = hitObject;
+			Features::ActorTrace::object.className = hitObject->Class->GetFullName();
+			Features::ActorTrace::object.objectName = hitObject->GetFullName();
+
+			if (Features::Menu::enableConsoleOutput)
+				Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::object.objectName);
+		}
+		else
+		{
+			if (Features::Menu::enableConsoleOutput)
+				Unreal::Console::Print("[Actor Trace] Didn't hit any object.");
+		}
+#else
+		SDK::AActor* hitActor = hitResult.Actor.Get();
+		if (hitActor)
+		{
+
+			Features::ActorTrace::actor.reference = hitActor;
+			Features::ActorTrace::actor.className = hitActor->Class->GetFullName();
+			Features::ActorTrace::actor.objectName = hitActor->GetFullName();
+
+			if (Features::Menu::enableConsoleOutput)
+				Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
+		}
+		else
+		{
+			if (Features::Menu::enableConsoleOutput)
+				Unreal::Console::Print("[Actor Trace] Didn't hit any actor.");
+		}
+#endif
 	}
 	else
 	{
-		Features::ActorTrace::traceHit = false;
-
 		Features::ActorTrace::traceStartLocation = cameraLocation;
 		Features::ActorTrace::traceEndLocation = traceEndLocation;
-
-		Features::ActorTrace::actor.reference = nullptr;
-
-		if (Features::Menu::enableConsoleOutput)
-			Unreal::Console::Print("[Actor Trace] Didn't hit any actor.");
 	}
 
+	Features::ActorTrace::traceCast = true;
 	return true;
 }
 #endif

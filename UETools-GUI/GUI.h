@@ -421,7 +421,7 @@ namespace Features
 	{
 	public:
 		static inline bool enabled = false;
-		static inline bool showOnScreen = false;
+		static inline bool showOnScreen = true;
 		static inline bool showLineTrace = true;
 
 		static inline SDK::FVector traceStartLocation;
@@ -430,8 +430,14 @@ namespace Features
 		static inline float traceThickness = 3.5f;
 		static inline float traceLength = 2048.0f;
 
+		static inline bool traceCast; // When set to 'True', indicates that user have casted a ray; would render a dummy { 0.0, 0.0 } - { 0.0, 0.0 } line otherwise.
 		static inline bool traceHit;
+
+#ifdef UE5
+		static inline Unreal::Object::DataStructure object;
+#else
 		static inline Unreal::Actor::DataStructure actor;
+#endif
 
 
 		static bool Trace();
