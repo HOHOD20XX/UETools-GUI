@@ -279,6 +279,15 @@ public:
 
 namespace Features
 {
+	class Menu
+	{
+	public:
+		static inline bool enableSound = true;
+	};
+
+
+
+
 	class Debug
 	{
 	public:

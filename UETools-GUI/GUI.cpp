@@ -694,7 +694,25 @@ void GUI::Draw()
 	{
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.8) | ");
+			ImGui::Text("UETools GUI (v0.9)");
+			if (ImGui::IsItemHovered()) 
+			{
+				ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
+			}
+			if (ImGui::IsItemClicked()) 
+			{
+				ShellExecuteA(NULL, "open", "https://github.com/Cranch-fur/UETools-GUI", NULL, NULL, SW_SHOWNORMAL);
+			}
+
+
+
+
+
+			ImGui::Text(" | ");
+
+
+
+
 			if (ImGui::BeginMenu("Debug"))
 			{
 				if (Features::Debug::enabled == false)
@@ -1693,67 +1711,86 @@ void GUI::Draw()
 
 
 			SDK::UWorld* world = SDK::UWorld::GetWorld();
-			ImGui::BeginDisabled(world == nullptr);
+			SDK::ULevel* persistentLevel = world ? world->PersistentLevel : nullptr;
+			SDK::AWorldSettings* worldSettings = persistentLevel ? persistentLevel->WorldSettings : nullptr;
+
+			bool worldObtained = world && persistentLevel && worldSettings;
+			ImGui::BeginDisabled(worldObtained == false);
 			if (ImGui::BeginMenu("World"))
 			{
-				if (world)
+				if (worldObtained)
 				{
-					if (SDK::ULevel* persistentLevel = world->PersistentLevel)
+					ImGui::SetFontTitle();
+					ImGui::Text("Gravity");
+					ImGui::SetFontRegular();
+					if (ImGui::TreeNode("Details##WorldGravity"))
 					{
-						if (SDK::AWorldSettings* worldSettings = persistentLevel->WorldSettings)
-						{
-							bool globalGravitySet = worldSettings->bGlobalGravitySet == 1;
-							ImGui::Checkbox("Global Gravity Set", &globalGravitySet);
-							worldSettings->bGlobalGravitySet = globalGravitySet ? 1 : 0;
+						bool globalGravitySet = worldSettings->bGlobalGravitySet == 1;
+						ImGui::Checkbox("Global Gravity Set", &globalGravitySet);
+						worldSettings->bGlobalGravitySet = globalGravitySet ? 1 : 0;
 
-							ImGui::BeginDisabled(globalGravitySet == false);
-							ImGui::InputFloat("Global Gravity", &worldSettings->GlobalGravityZ, 0.1, 1.0);
-							ImGui::EndDisabled();
+						ImGui::BeginDisabled(globalGravitySet == false);
+						ImGui::InputFloat("Global Gravity", &worldSettings->GlobalGravityZ, 0.1, 1.0);
+						ImGui::EndDisabled();
 
-							bool worldGravitySet = worldSettings->bWorldGravitySet == 1;
-							ImGui::Checkbox("World Gravity Set", &worldGravitySet);
-							worldSettings->bWorldGravitySet = worldGravitySet ? 1 : 0;
+						bool worldGravitySet = worldSettings->bWorldGravitySet == 1;
+						ImGui::Checkbox("World Gravity Set", &worldGravitySet);
+						worldSettings->bWorldGravitySet = worldGravitySet ? 1 : 0;
 
-							ImGui::BeginDisabled(worldGravitySet == false);
-							ImGui::InputFloat("World Gravity", &worldSettings->WorldGravityZ, 0.1, 1.0);
-							ImGui::EndDisabled();
+						ImGui::BeginDisabled(worldGravitySet == false);
+						ImGui::InputFloat("World Gravity", &worldSettings->WorldGravityZ, 0.1, 1.0);
+						ImGui::EndDisabled();
 
-							ImGui::CategorySeparator();
-
-							ImGui::InputFloat("Minimum Time Dilation", &worldSettings->MinGlobalTimeDilation, 0.1, 1.0);
-							ImGui::InputFloat("Maximum Time Dilation", &worldSettings->MaxGlobalTimeDilation, 0.1, 1.0);
-							double timeDilation = worldSettings->TimeDilation;
-							ImGui::InputDouble("Time Dilation", &timeDilation, 0.1, 1.0);
-							worldSettings->TimeDilation = std::clamp(timeDilation, (double)worldSettings->MinGlobalTimeDilation, (double)worldSettings->MaxGlobalTimeDilation);
-
-							ImGui::NewLine();
-
-							ImGui::InputFloat("Demo Time Dilation", &worldSettings->DemoPlayTimeDilation, 0.1, 1.0);
-
-							ImGui::CategorySeparator();
-
-							bool enableAISystem = worldSettings->bEnableAISystem == 1;
-							ImGui::Checkbox("Enable AI System", &enableAISystem);
-							worldSettings->bEnableAISystem = enableAISystem ? 1 : 0;
-
-							bool enableNavigationSystem = worldSettings->bEnableNavigationSystem == 1;
-							ImGui::Checkbox("Enable Navigation System", &enableNavigationSystem);
-							worldSettings->bEnableNavigationSystem = enableNavigationSystem ? 1 : 0;
-
-							ImGui::CategorySeparator();
-
-							ImGui::InputFloat("KillZ", &worldSettings->KillZ, 0.1, 1.0);
-
-							ImGui::MenuSpacer();
-						}
-						else
-							ImGui::Text("World Settings Doesn't Exist!");
+						ImGui::TreePop();
 					}
-					else
-						ImGui::Text("Persistent Level Doesn't Exist!");
+
+					ImGui::CategorySeparator();
+
+					ImGui::SetFontTitle();
+					ImGui::Text("Time");
+					ImGui::SetFontRegular();
+					if (ImGui::TreeNode("Details##WorldTime"))
+					{
+						ImGui::InputFloat("Minimum Time Dilation", &worldSettings->MinGlobalTimeDilation, 0.1, 1.0);
+						ImGui::InputFloat("Maximum Time Dilation", &worldSettings->MaxGlobalTimeDilation, 0.1, 1.0);
+						double timeDilation = worldSettings->TimeDilation;
+						ImGui::InputDouble("Time Dilation", &timeDilation, 0.1, 1.0);
+						worldSettings->TimeDilation = std::clamp(timeDilation, (double)worldSettings->MinGlobalTimeDilation, (double)worldSettings->MaxGlobalTimeDilation);
+
+						ImGui::NewLine();
+
+						ImGui::InputFloat("Demo Time Dilation", &worldSettings->DemoPlayTimeDilation, 0.1, 1.0);
+
+						ImGui::TreePop();
+					}
+
+					ImGui::CategorySeparator();
+
+					bool enableAISystem = worldSettings->bEnableAISystem == 1;
+					ImGui::Checkbox("Enable AI System", &enableAISystem);
+					worldSettings->bEnableAISystem = enableAISystem ? 1 : 0;
+
+					bool enableNavigationSystem = worldSettings->bEnableNavigationSystem == 1;
+					ImGui::Checkbox("Enable Navigation System", &enableNavigationSystem);
+					worldSettings->bEnableNavigationSystem = enableNavigationSystem ? 1 : 0;
+
+					ImGui::NewLine();
+
+					ImGui::InputFloat("Kill Volume Z", &worldSettings->KillZ, 0.1, 1.0);
 				}
 				else
-					ImGui::Text("World Doesn't Exist!");
+				{
+					if (world == nullptr)
+						ImGui::Text("World Doesn't Exist!");
+					else if (persistentLevel == nullptr)
+						ImGui::Text("Persistent Level Doesn't Exist!");
+					else if (worldSettings == nullptr)
+						ImGui::Text("World Settings Doesn't Exist!");
+					else
+						ImGui::Text("Something Went Wrong.");
+				}
+
+				ImGui::MenuSpacer();
 
 				ImGui::EndMenu();
 			}
@@ -2010,6 +2047,50 @@ void GUI::Draw()
 
 
 
+			if (ImGui::BeginMenu("Settings"))
+			{
+				ImGui::Checkbox("Enable Sound", &Features::Menu::enableSound);
+
+				ImGui::EndMenu();
+			}
+
+
+
+
+			ImGui::Text(" | ");
+
+
+
+
+			ImGui::Text("Console:");
+			ImGui::SameLine();
+			ImGui::PushItemWidth(320);
+			/* Allocate large buffer to account for combined console commands (e.g: "stat fps | stat unit") */
+			static char consoleBuffer[2048];
+			ImGui::InputText("##Console", consoleBuffer, 2048);
+			ImGui::SameLine();
+			if (ImGui::Button("Execute"))
+			{
+				if (world)
+				{
+					std::string consoleCommand = std::string(consoleBuffer);
+					if (consoleCommand.empty() == false)
+					{
+						std::wstring wConsoleCommand = std::wstring(consoleCommand.begin(), consoleCommand.end());
+						SDK::FString fConsoleCommand = SDK::FString(wConsoleCommand.c_str());
+
+						SDK::UKismetSystemLibrary::ExecuteConsoleCommand(world ? world : nullptr, fConsoleCommand, nullptr);
+						GUI::PlayActionSound(true);
+					}
+					else
+						GUI::PlayActionSound(false);
+				}
+				else
+					GUI::PlayActionSound(false);
+			}
+			ImGui::PopItemWidth();
+			
+
 			ImGui::EndMainMenuBar();
 		}
 	}
@@ -2117,6 +2198,9 @@ void GUI::Draw()
 
 void GUI::PlaySound(const E_Sound& soundToPlay)
 {
+	if (Features::Menu::enableSound == false)
+		return;
+
 	uint16_t soundFrequency;
 	uint16_t soundDuration;
 
@@ -2148,11 +2232,11 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 			break;
 	}
 
-	/* 
+	/*
 		Dedicate sound playback in to separate thread.
 		This prevents the main thread from blocking while Beep() is playing the sound.
 	*/
-	std::thread([=]() 
+	std::thread([=]()
 	{
 		Beep(soundFrequency, soundDuration);
 	}).detach();
