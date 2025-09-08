@@ -283,6 +283,7 @@ namespace Features
 	{
 	public:
 		static inline bool enableSound = true;
+		static inline bool enableConsoleOutput = true;
 	};
 
 

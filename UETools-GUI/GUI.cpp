@@ -2050,6 +2050,7 @@ void GUI::Draw()
 			if (ImGui::BeginMenu("Settings"))
 			{
 				ImGui::Checkbox("Enable Sound", &Features::Menu::enableSound);
+				ImGui::Checkbox("Enable Console Output", &Features::Menu::enableConsoleOutput);
 
 				ImGui::EndMenu();
 			}
@@ -2621,17 +2622,32 @@ void Features::ActorsList::Update()
 // ========================================================
 void Features::CharacterMovement::Ghost()
 {
-	GUI::PlayActionSound(Unreal::Character::Ghost(0));
+	bool success = Unreal::Character::Ghost(0);
+
+	if (Features::Menu::enableConsoleOutput)
+		Unreal::Console::Print(success ? "[Character Movement] Ghost" : "[Character Movement] Switch to Ghost failed");
+
+	GUI::PlayActionSound(success);
 }
 
 void Features::CharacterMovement::Fly()
 {
-	GUI::PlayActionSound(Unreal::Character::Fly(0));
+	bool success = Unreal::Character::Fly(0);
+
+	if (Features::Menu::enableConsoleOutput)
+		Unreal::Console::Print(success ? "[Character Movement] Fly" : "[Character Movement] Switch to Fly failed");
+
+	GUI::PlayActionSound(success);
 }
 
 void Features::CharacterMovement::Walk()
 {
-	GUI::PlayActionSound(Unreal::Character::Walk(0));
+	bool success = Unreal::Character::Walk(0);
+
+	if (Features::Menu::enableConsoleOutput)
+		Unreal::Console::Print(success ? "[Character Movement] Walk" : "[Character Movement] Switch to Walk failed");
+
+	GUI::PlayActionSound(success);
 }
 
 
@@ -2815,7 +2831,8 @@ bool Features::ActorTrace::Trace()
 		Features::ActorTrace::actor.className = hitActor->Class->GetFullName();
 		Features::ActorTrace::actor.objectName = hitActor->GetFullName();
 
-		Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
+		if (Features::Menu::enableConsoleOutput)
+			Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
 	}
 	else
 	{
@@ -2826,7 +2843,8 @@ bool Features::ActorTrace::Trace()
 
 		Features::ActorTrace::actor.reference = nullptr;
 
-		Unreal::Console::Print("[Actor Trace] Didn't hit any actor.");
+		if (Features::Menu::enableConsoleOutput)
+			Unreal::Console::Print("[Actor Trace] Didn't hit any actor.");
 	}
 
 	return true;
