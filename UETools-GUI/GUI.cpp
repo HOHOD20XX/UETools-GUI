@@ -363,42 +363,26 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 		case ImGuiKey_Space: return VK_SPACE;
 		case ImGuiKey_Enter: return VK_RETURN;
 		case ImGuiKey_Escape: return VK_ESCAPE;
-		case ImGuiKey_A: return 'A';
-		case ImGuiKey_B: return 'B';
-		case ImGuiKey_C: return 'C';
-		case ImGuiKey_D: return 'D';
-		case ImGuiKey_E: return 'E';
-		case ImGuiKey_F: return 'F';
-		case ImGuiKey_G: return 'G';
-		case ImGuiKey_H: return 'H';
-		case ImGuiKey_I: return 'I';
-		case ImGuiKey_J: return 'J';
-		case ImGuiKey_K: return 'K';
-		case ImGuiKey_L: return 'L';
-		case ImGuiKey_M: return 'M';
-		case ImGuiKey_N: return 'N';
-		case ImGuiKey_O: return 'O';
-		case ImGuiKey_P: return 'P';
-		case ImGuiKey_Q: return 'Q';
-		case ImGuiKey_R: return 'R';
-		case ImGuiKey_S: return 'S';
-		case ImGuiKey_T: return 'T';
-		case ImGuiKey_U: return 'U';
-		case ImGuiKey_V: return 'V';
-		case ImGuiKey_W: return 'W';
-		case ImGuiKey_X: return 'X';
-		case ImGuiKey_Y: return 'Y';
-		case ImGuiKey_Z: return 'Z';
-		case ImGuiKey_0: return '0';
-		case ImGuiKey_1: return '1';
-		case ImGuiKey_2: return '2';
-		case ImGuiKey_3: return '3';
-		case ImGuiKey_4: return '4';
-		case ImGuiKey_5: return '5';
-		case ImGuiKey_6: return '6';
-		case ImGuiKey_7: return '7';
-		case ImGuiKey_8: return '8';
-		case ImGuiKey_9: return '9';
+
+		case ImGuiKey_A: return 'A'; case ImGuiKey_B: return 'B';
+		case ImGuiKey_C: return 'C'; case ImGuiKey_D: return 'D';
+		case ImGuiKey_E: return 'E'; case ImGuiKey_F: return 'F';
+		case ImGuiKey_G: return 'G'; case ImGuiKey_H: return 'H';
+		case ImGuiKey_I: return 'I'; case ImGuiKey_J: return 'J';
+		case ImGuiKey_K: return 'K'; case ImGuiKey_L: return 'L';
+		case ImGuiKey_M: return 'M'; case ImGuiKey_N: return 'N';
+		case ImGuiKey_O: return 'O'; case ImGuiKey_P: return 'P';
+		case ImGuiKey_Q: return 'Q'; case ImGuiKey_R: return 'R';
+		case ImGuiKey_S: return 'S'; case ImGuiKey_T: return 'T';
+		case ImGuiKey_U: return 'U'; case ImGuiKey_V: return 'V';
+		case ImGuiKey_W: return 'W'; case ImGuiKey_X: return 'X';
+		case ImGuiKey_Y: return 'Y'; case ImGuiKey_Z: return 'Z';
+
+		case ImGuiKey_0: return '0'; case ImGuiKey_1: return '1';
+		case ImGuiKey_2: return '2'; case ImGuiKey_3: return '3';
+		case ImGuiKey_4: return '4'; case ImGuiKey_5: return '5';
+		case ImGuiKey_6: return '6'; case ImGuiKey_7: return '7';
+		case ImGuiKey_8: return '8'; case ImGuiKey_9: return '9';
 
 		case ImGuiKey_Keypad0: return VK_NUMPAD0;
 		case ImGuiKey_Keypad1: return VK_NUMPAD1;
@@ -416,18 +400,12 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 		case ImGuiKey_KeypadDecimal: return VK_DECIMAL;
 		case ImGuiKey_KeypadDivide: return VK_DIVIDE;
 
-		case ImGuiKey_F1: return VK_F1;
-		case ImGuiKey_F2: return VK_F2;
-		case ImGuiKey_F3: return VK_F3;
-		case ImGuiKey_F4: return VK_F4;
-		case ImGuiKey_F5: return VK_F5;
-		case ImGuiKey_F6: return VK_F6;
-		case ImGuiKey_F7: return VK_F7;
-		case ImGuiKey_F8: return VK_F8;
-		case ImGuiKey_F9: return VK_F9;
-		case ImGuiKey_F10: return VK_F10;
-		case ImGuiKey_F11: return VK_F11;
-		case ImGuiKey_F12: return VK_F12;
+		case ImGuiKey_F1: return VK_F1; case ImGuiKey_F2: return VK_F2;
+		case ImGuiKey_F3: return VK_F3; case ImGuiKey_F4: return VK_F4;
+		case ImGuiKey_F5: return VK_F5; case ImGuiKey_F6: return VK_F6;
+		case ImGuiKey_F7: return VK_F7; case ImGuiKey_F8: return VK_F8;
+		case ImGuiKey_F9: return VK_F9; case ImGuiKey_F10: return VK_F10;
+		case ImGuiKey_F11: return VK_F11; case ImGuiKey_F12: return VK_F12;
 
 		case ImGuiKey_LeftCtrl: return VK_LCONTROL;
 		case ImGuiKey_RightCtrl: return VK_RCONTROL;
@@ -441,6 +419,85 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 		default: return 0;
 	}
 }
+
+const char* ImGui::ImGuiKey_GetName(const ImGuiKey& key)
+{
+	switch (key)
+	{
+		case ImGuiKey_Tab:            return "Tab";
+		case ImGuiKey_LeftArrow:      return "Left";
+		case ImGuiKey_RightArrow:     return "Right";
+		case ImGuiKey_UpArrow:        return "Up";
+		case ImGuiKey_DownArrow:      return "Down";
+		case ImGuiKey_PageUp:         return "PgUp";
+		case ImGuiKey_PageDown:       return "PgDn";
+		case ImGuiKey_Home:           return "Home";
+		case ImGuiKey_End:            return "End";
+		case ImGuiKey_Insert:         return "Ins";
+		case ImGuiKey_Delete:         return "Del";
+		case ImGuiKey_Backspace:      return "Bspace";
+		case ImGuiKey_Space:          return "Space";
+		case ImGuiKey_Enter:          return "Enter";
+		case ImGuiKey_Escape:         return "Esc";
+
+		case ImGuiKey_A: return "A";  case ImGuiKey_B: return "B";
+		case ImGuiKey_C: return "C";  case ImGuiKey_D: return "D";
+		case ImGuiKey_E: return "E";  case ImGuiKey_F: return "F";
+		case ImGuiKey_G: return "G";  case ImGuiKey_H: return "H";
+		case ImGuiKey_I: return "I";  case ImGuiKey_J: return "J";
+		case ImGuiKey_K: return "K";  case ImGuiKey_L: return "L";
+		case ImGuiKey_M: return "M";  case ImGuiKey_N: return "N";
+		case ImGuiKey_O: return "O";  case ImGuiKey_P: return "P";
+		case ImGuiKey_Q: return "Q";  case ImGuiKey_R: return "R";
+		case ImGuiKey_S: return "S";  case ImGuiKey_T: return "T";
+		case ImGuiKey_U: return "U";  case ImGuiKey_V: return "V";
+		case ImGuiKey_W: return "W";  case ImGuiKey_X: return "X";
+		case ImGuiKey_Y: return "Y";  case ImGuiKey_Z: return "Z";
+
+		case ImGuiKey_0: return "0";  case ImGuiKey_1: return "1";
+		case ImGuiKey_2: return "2";  case ImGuiKey_3: return "3";
+		case ImGuiKey_4: return "4";  case ImGuiKey_5: return "5";
+		case ImGuiKey_6: return "6";  case ImGuiKey_7: return "7";
+		case ImGuiKey_8: return "8";  case ImGuiKey_9: return "9";
+
+		case ImGuiKey_Keypad0:        return "Num0";
+		case ImGuiKey_Keypad1:        return "Num1";
+		case ImGuiKey_Keypad2:        return "Num2";
+		case ImGuiKey_Keypad3:        return "Num3";
+		case ImGuiKey_Keypad4:        return "Num4";
+		case ImGuiKey_Keypad5:        return "Num5";
+		case ImGuiKey_Keypad6:        return "Num6";
+		case ImGuiKey_Keypad7:        return "Num7";
+		case ImGuiKey_Keypad8:        return "Num8";
+		case ImGuiKey_Keypad9:        return "Num9";
+		case ImGuiKey_KeypadMultiply: return "Num*";
+		case ImGuiKey_KeypadAdd:      return "Num+";
+		case ImGuiKey_KeypadSubtract: return "Num-";
+		case ImGuiKey_KeypadDecimal:  return "Num.";
+		case ImGuiKey_KeypadDivide:   return "Num/";
+
+		case ImGuiKey_F1:  return "F1";   case ImGuiKey_F2:  return "F2";
+		case ImGuiKey_F3:  return "F3";   case ImGuiKey_F4:  return "F4";
+		case ImGuiKey_F5:  return "F5";   case ImGuiKey_F6:  return "F6";
+		case ImGuiKey_F7:  return "F7";   case ImGuiKey_F8:  return "F8";
+		case ImGuiKey_F9:  return "F9";   case ImGuiKey_F10: return "F10";
+		case ImGuiKey_F11: return "F11";  case ImGuiKey_F12: return "F12";
+
+		case ImGuiKey_LeftCtrl:   return "LCtrl";
+		case ImGuiKey_RightCtrl:  return "RCtrl";
+		case ImGuiKey_LeftShift:  return "LShift";
+		case ImGuiKey_RightShift: return "RShift";
+		case ImGuiKey_LeftAlt:    return "LAlt";
+		case ImGuiKey_RightAlt:   return "RAlt";
+		case ImGuiKey_LeftSuper:  return "LWin";
+		case ImGuiKey_RightSuper: return "RWin";
+
+		default: return "???";
+	}
+}
+
+
+
 
 bool ImGui::KeyBindingInput(const char* label, KeyBinding* binding)
 {
@@ -462,23 +519,51 @@ bool ImGui::KeyBindingInput(const char* label, KeyBinding* binding)
 
 	SameLine();
 
+	/* 0 corresponds for default vertical size. */
+	static const ImVec2 buttonSize = { 96.0f, 0.0f };
+
+	static const ImVec4 buttonColor = { 0.20f, 0.50f, 0.20f, 1.00f };
+	static const ImVec4 buttonColor_unbound = { 0.50f, 0.20f, 0.20f, 1.00f };
+	static const ImVec4 buttonColor_capturing = { 0.25f, 0.25f, 0.25f, 1.00f };
+
 	bool hasBindingChanged = false;
 	if (binding->isDetermined)
 	{
-		const char* bindingName = binding->key == ImGuiKey_None ? "Unbound" : GetKeyName(binding->key);
-		ImVec2 bindingSize = ImVec2{ 64.0f, 0.0f };
+		const char* bindingName;
 
-		if (Button(bindingName, bindingSize))
+		if (binding->key == ImGuiKey_None)
+		{
+			ImGui::PushStyleColor(ImGuiCol_Button, buttonColor_unbound);
+			bindingName = "?";
+		}
+		else
+		{
+			ImGui::PushStyleColor(ImGuiCol_Button, buttonColor);
+			bindingName = ImGuiKey_GetName(binding->key);
+		}
+
+		if (Button(bindingName, buttonSize))
 			binding->isDetermined = false;
 	}
 	else
 	{
-		Button("...");
+		ImGui::PushStyleColor(ImGuiCol_Button, buttonColor_capturing);
+
+		Button("...", buttonSize);
 		for (int keyCode = ImGuiKey_NamedKey_BEGIN; keyCode < ImGuiKey_NamedKey_END; keyCode++)
 		{
 			if (IsKeyPressed((ImGuiKey)keyCode))
 			{
-				binding->key = (ImGuiKey)keyCode;
+				/* Verify that keyCode is within pre-determined list of keys. */
+				if (ImGuiKey_ToWinAPI((ImGuiKey)keyCode) == 0)
+					continue;
+
+				/* When user tries to assign same key that is already set, consider that as will to unbind. */
+				if (keyCode == binding->key)
+					binding->key = ImGuiKey_None;
+				else
+					binding->key = (ImGuiKey)keyCode;
+
 				binding->isDetermined = true;
 				hasBindingChanged = true;
 				break;
@@ -486,6 +571,7 @@ bool ImGui::KeyBindingInput(const char* label, KeyBinding* binding)
 		}
 	}
 
+	ImGui::PopStyleColor();
 	ImGui::PopID();
 
 	return hasBindingChanged;
@@ -573,13 +659,23 @@ bool ImGui::IsKeyBindingReleased(KeyBinding* binding)
 // ========================================================
 // |                #GUI #UI #USERINTERFACE               |
 // ========================================================
+bool GUI::StartDirectWindowThread()
+{
+	if (directWindowThread)
+		return false;
+
+	directWindowThread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)DirectWindow::Create, 0, 0, 0);
+	return directWindowThread;
+}
+
+
+
+
 void GUI::Init(const HMODULE& applicationModule)
 {
 	/* Before creating a DirectWindow, we need to make it aware of our DLL HMODULE. */
 	DirectWindow::SetApplicationModule(applicationModule);
-	SharedWorkers::SetUserInterfaceThread(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)DirectWindow::Create, 0, 0, 0));
-
-	Features::DirectionalMovement::StartThread();
+	StartDirectWindowThread();
 }
 
 
@@ -596,9 +692,6 @@ void GUI::Draw()
 
 	if (GetIsMenuActive())
 	{
-		iDrawList->AddRectFilled(ImVec2(0, 0), iViewPortSize, IM_COL32(0, 0, 0, 128));
-
-
 		if (ImGui::BeginMainMenuBar())
 		{
 			ImGui::Text("UETools GUI (v0.8) | ");
@@ -619,8 +712,7 @@ void GUI::Draw()
 				{
 					ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-					static const char* menuSpacer = "                                                                                               ";
-					ImGui::TextUnformatted(menuSpacer, menuSpacer + 96);
+					ImGui::NewLine();
 
 					if (Features::Debug::autoUpdate)
 					{
@@ -701,9 +793,7 @@ void GUI::Draw()
 						PlayActionSound(true);
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
 					ImGui::TextBoolPresenceColored("Engine:", Features::Debug::engine.reference);
@@ -839,9 +929,7 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
 					ImGui::TextBoolPresenceColored("Game Instance:", Features::Debug::gameInstance.reference);
@@ -871,9 +959,7 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
 					ImGui::TextBoolPresenceColored("Game Mode:", Features::Debug::gameMode.reference);
@@ -981,9 +1067,7 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 					
 					ImGui::SetFontTitle();
 					ImGui::TextBoolPresenceColored("Player Controller:", Features::Debug::playerController.reference);
@@ -1070,9 +1154,7 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
 					ImGui::TextBoolPresenceColored("World:", Features::Debug::world.reference);
@@ -1276,9 +1358,7 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
 					ImGui::Text("Actors");
@@ -1294,7 +1374,7 @@ void GUI::Draw()
 						ImGui::Text("@ - Location at where trace has ended without a hit.");
 						ImGui::Text("O - Location at where trace has started.");
 						ImGui::SetFontRegular();
-						ImGui::Checkbox("Enable##ActorTrace", &Features::ActorTrace::enabled);
+						ImGui::Checkbox("Enabled##ActorTrace", &Features::ActorTrace::enabled);
 						ImGui::BeginDisabled(Features::ActorTrace::enabled == false);
 						if (ImGui::TreeNode("Settings##ActorTrace"))
 						{
@@ -1587,9 +1667,7 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					if (Features::Debug::wasProjectNameObtained)
 						ImGui::Text("Project Name: %s", Features::Debug::projectName.c_str());
@@ -1604,6 +1682,8 @@ void GUI::Draw()
 					{
 						ImGui::ReadOnlyInputText("Command Line:", Features::Debug::commandLine.c_str(), true);
 					}
+
+					ImGui::MenuSpacer();
 				}
 				
 				ImGui::EndMenu();
@@ -1638,9 +1718,7 @@ void GUI::Draw()
 							ImGui::InputFloat("World Gravity", &worldSettings->WorldGravityZ, 0.1, 1.0);
 							ImGui::EndDisabled();
 
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
+							ImGui::CategorySeparator();
 
 							ImGui::InputFloat("Minimum Time Dilation", &worldSettings->MinGlobalTimeDilation, 0.1, 1.0);
 							ImGui::InputFloat("Maximum Time Dilation", &worldSettings->MaxGlobalTimeDilation, 0.1, 1.0);
@@ -1652,9 +1730,7 @@ void GUI::Draw()
 
 							ImGui::InputFloat("Demo Time Dilation", &worldSettings->DemoPlayTimeDilation, 0.1, 1.0);
 
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
+							ImGui::CategorySeparator();
 
 							bool enableAISystem = worldSettings->bEnableAISystem == 1;
 							ImGui::Checkbox("Enable AI System", &enableAISystem);
@@ -1664,11 +1740,11 @@ void GUI::Draw()
 							ImGui::Checkbox("Enable Navigation System", &enableNavigationSystem);
 							worldSettings->bEnableNavigationSystem = enableNavigationSystem ? 1 : 0;
 
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
+							ImGui::CategorySeparator();
 
 							ImGui::InputFloat("KillZ", &worldSettings->KillZ, 0.1, 1.0);
+
+							ImGui::MenuSpacer();
 						}
 						else
 							ImGui::Text("World Settings Doesn't Exist!");
@@ -1686,144 +1762,246 @@ void GUI::Draw()
 
 
 
-			SDK::APlayerController* controller = Unreal::PlayerController::Get();
-			SDK::ACharacter* character = controller ? controller->Character : nullptr;
+			SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+			SDK::ACharacter* character = playerController ? playerController->Character : nullptr;
 			SDK::UCharacterMovementComponent* movementComponent = (character && character->CharacterMovement) ? character->CharacterMovement : nullptr;
-			ImGui::BeginDisabled(controller == nullptr || character == nullptr || movementComponent == nullptr);
+
+			bool characterObtained = playerController && character && movementComponent;
+			ImGui::BeginDisabled(characterObtained == false);
 			if (ImGui::BeginMenu("Character"))
 			{
-				if (controller)
+				if (characterObtained)
 				{
-					SharedData::objectsInfo.controller = controller;
-					if (character)
+					ImGui::Text("Character: %s", character->GetFullName().c_str());
+					SDK::FVector characterLocation = character->K2_GetActorLocation();
+					ImGui::TextVectorColored("Location:", characterLocation);
+					SDK::FRotator characterRotation = character->K2_GetActorRotation();
+					ImGui::TextRotatorColored("Rotation:", characterRotation);
+
+					ImGui::NewLine();
+
+					ImGui::SetFontTitle();
+					ImGui::Text("Movement");
+					ImGui::SetFontRegular();
+					if (ImGui::TreeNode("Details##CharacterMovement"))
 					{
-						SharedData::objectsInfo.character = character;
-						if (movementComponent)
+						if (movementComponent->bCheatFlying)
+							ImGui::Text("Character Is In %s Mode", character->bActorEnableCollision ? "Fly" : "Ghost");
+						else
 						{
-							SharedData::objectsInfo.movementComponent = movementComponent;
-
-							bool hasCollision = character->bActorEnableCollision;
-							if (movementComponent->bCheatFlying)
-								ImGui::Text("Character Is In %s Mode", hasCollision ? "Fly" : "Ghost");
-							else
+							SDK::EMovementMode movementMode = movementComponent->MovementMode;
+							switch (movementMode)
 							{
-								SDK::EMovementMode movementMode = movementComponent->MovementMode;
-								switch (movementMode)
-								{
-									case SDK::EMovementMode::MOVE_Walking:
-										ImGui::Text("Character Is Walking");
-										break;
+							case SDK::EMovementMode::MOVE_Walking:
+								ImGui::Text("Character Is Walking");
+								break;
 
-									case SDK::EMovementMode::MOVE_NavWalking:
-										ImGui::Text("Character Is Nav Walking");
-										break;
+							case SDK::EMovementMode::MOVE_NavWalking:
+								ImGui::Text("Character Is Nav Walking");
+								break;
 
-									case SDK::EMovementMode::MOVE_Falling:
-										ImGui::Text("Character Is Falling");
-										break;
+							case SDK::EMovementMode::MOVE_Falling:
+								ImGui::Text("Character Is Falling");
+								break;
 
-									case SDK::EMovementMode::MOVE_Swimming:
-										ImGui::Text("Character Is Swimming");
-										break;
+							case SDK::EMovementMode::MOVE_Swimming:
+								ImGui::Text("Character Is Swimming");
+								break;
 
-									case SDK::EMovementMode::MOVE_Flying:
-										ImGui::Text("Character Is Flying");
-										break;
+							case SDK::EMovementMode::MOVE_Flying:
+								ImGui::Text("Character Is Flying");
+								break;
 
-									default:
-										ImGui::Text("Character Is In %d Mode", movementMode);
-										break;
-								}
+							default:
+								ImGui::Text("Character Is In %d Mode", movementMode);
+								break;
 							}
-							ImGui::Text("Custom Movement Mode: %d", movementComponent->CustomMovementMode);
+						}
+						ImGui::Text("Custom Movement Mode: %d", movementComponent->CustomMovementMode);
+						
+						ImGui::NewLine();
 
-							if (ImGui::Button("Ghost"))
+						/* 0 corresponds for default vertical size. */
+						static const ImVec2 buttonSize = { 128.0f, 0.0f };
+
+						if (ImGui::Button("Ghost", buttonSize))
+						{
+							Features::CharacterMovement::Ghost();
+						}
+						ImGui::SameLine();
+						if (ImGui::Button("Fly", buttonSize))
+						{
+							Features::CharacterMovement::Fly();
+						}
+						ImGui::SameLine();
+						if (ImGui::Button("Walk", buttonSize))
+						{
+							Features::CharacterMovement::Walk();
+						}
+
+						ImGui::NewLine();
+
+						ImGui::KeyBindingInput("Ghost Key Binding:##Ghost", &Keybindings::characterMovement_Ghost);
+						ImGui::KeyBindingInput("Fly Key Binding:  ##Fly", &Keybindings::characterMovement_Fly);
+						ImGui::KeyBindingInput("Walk Key Binding: ##Walk", &Keybindings::characterMovement_Walk);
+
+						ImGui::NewLine();
+
+						ImGui::SetFontTitle();
+						ImGui::Text("Directional Movement");
+						ImGui::SetFontSmall();
+						ImGui::Text("When the character is Flying or in Ghost mode, moving forward teleports them in the direction the camera is facing,");
+						ImGui::Text("allowing for quick and easy navigation through the world.");
+						ImGui::SetFontRegular();
+						ImGui::BeginDisabled(movementComponent->bCheatFlying == false);
+						if (ImGui::TreeNode("Settings##DirectionalMovement"))
+						{
+							if (ImGui::Checkbox("Enabled##DirectionalMovement", &Features::DirectionalMovement::enabled))
 							{
-								SharedFunctions::Ghost();
+								if (Features::DirectionalMovement::enabled)
+									Features::DirectionalMovement::StartThread();
+								else
+									Features::DirectionalMovement::InvalidateThread();
 							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Ghost", &Keybindings::ghost);
-
-							if (ImGui::Button("Fly"))
-							{
-								SharedFunctions::Fly();
-							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Fly", &Keybindings::fly);
-
-							if (ImGui::Button("Walk"))
-							{
-								SharedFunctions::Walk();
-							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Walk", &Keybindings::walk);
-
-							ImGui::BeginDisabled(movementComponent->bCheatFlying == false);
-							ImGui::Checkbox("Directional Movement", &Features::DirectionalMovement::enabled);
-							ImGui::InputDouble("Directional Movement Step", &Features::DirectionalMovement::step, 0.1, 1.0);
-							if (ImGui::InputDouble("Directional Movement Delay", &Features::DirectionalMovement::delay, 0.01, 0.1))
+							ImGui::InputDouble("Movement Step##DirectionalMovement", &Features::DirectionalMovement::step, 0.1, 1.0);
+							if (ImGui::InputDouble("Movement Delay##DirectionalMovement", &Features::DirectionalMovement::delay, 0.01, 0.1))
 							{
 								if (Features::DirectionalMovement::delay < 0.001)
 									Features::DirectionalMovement::delay = 0.001;
 							}
-							ImGui::EndDisabled();
 
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
+							ImGui::TreePop();
+						}
+						ImGui::EndDisabled();
 
-							if (ImGui::Button("Jump"))
+						ImGui::CategorySeparator();
+
+						ImGui::InputFloat("Gravity Scale:", &movementComponent->GravityScale, 0.1f, 1.0f);
+
+						ImGui::NewLine();
+
+						ImGui::InputFloat("Max Acceleration", &movementComponent->MaxAcceleration, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Step Height", &movementComponent->MaxStepHeight, 1.0f, 10.0f);
+						ImGui::InputFloat("Weight", &movementComponent->Mass, 1.0f, 10.0f);
+
+						ImGui::NewLine();
+
+						ImGui::InputFloat("Max Walk Speed", &movementComponent->MaxWalkSpeed, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Crouch Speed", &movementComponent->MaxWalkSpeedCrouched, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Swim Speed", &movementComponent->MaxSwimSpeed, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Fly Speed", &movementComponent->MaxFlySpeed, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Custom Movement Speed", &movementComponent->MaxCustomMovementSpeed, 1.0f, 10.0f);
+
+						ImGui::NewLine();
+
+						ImGui::TextFloatColored("Walkable Floor Z:", movementComponent->WalkableFloorZ);
+
+						ImGui::CategorySeparator();
+
+						if (ImGui::Button("Jump"))
+						{
+							Features::CharacterMovement::Jump();
+						}
+						ImGui::InputInt("Jump Limit", &character->JumpMaxCount, 1, 1);
+						ImGui::InputFloat("Jump Height", &movementComponent->JumpZVelocity, 0.1, 1.0);
+						ImGui::KeyBindingInput("Jump Key Binding:##Jump", &Keybindings::characterMovement_Jump);
+
+						ImGui::NewLine();
+
+						if (ImGui::Button("Launch"))
+						{
+							Features::CharacterMovement::Launch();
+						}
+						ImGui::InputFloat3("Launch Velocity", Features::CharacterMovement::launchVelocity);
+						ImGui::KeyBindingInput("Launch Key Binding:##Launch", &Keybindings::characterMovement_Launch);
+
+						ImGui::NewLine();
+
+						if (ImGui::Button("Dash"))
+						{
+							Features::CharacterMovement::Dash();
+						}
+						ImGui::InputDouble("Dash Strength", &Features::CharacterMovement::dashStrength, 0.1, 1.0);
+						ImGui::KeyBindingInput("Dash Key Binding:##Dash", &Keybindings::characterMovement_Dash);
+
+						ImGui::TreePop();
+					}
+
+					ImGui::CategorySeparator();
+
+					SDK::APlayerCameraManager* cameraManager = playerController->PlayerCameraManager;
+					ImGui::SetFontTitle();
+					ImGui::Text("Camera");
+					ImGui::SetFontRegular();
+					ImGui::BeginDisabled(cameraManager == nullptr);
+					if (ImGui::TreeNode("Details##Camera"))
+					{
+						if (cameraManager)
+						{
+							/* 0 corresponds for default vertical size. */
+							static const ImVec2 buttonSize = { 204.0f, 0.0f };
+
+							if (ImGui::Button("Start Fade", buttonSize))
 							{
-								SharedFunctions::Jump();
+								Features::Camera::StartFade();
 							}
 							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Jump", &Keybindings::jump);
-							ImGui::InputInt("Jump Limit", &character->JumpMaxCount, 1, 1);
-							ImGui::InputFloat("Jump Height", &movementComponent->JumpZVelocity, 0.1, 1.0);
-
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
-
-							if (ImGui::Button("Launch"))
+							if (ImGui::Button("Stop Fade", buttonSize))
 							{
-								SharedFunctions::Launch();
+								Features::Camera::StopFade();
 							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Launch", &Keybindings::launch);
-							ImGui::InputFloat3("Launch Velocity", Features::Launch::velocity);
+
+							if (ImGui::InputFloat("Fade From Alpha", &Features::Camera::fadeFromAlpha, 0.01f, 0.1f))
+							{
+								if (Features::Camera::fadeFromAlpha < 0.0f)
+									Features::Camera::fadeFromAlpha = 0.0f;
+
+								if (Features::Camera::fadeFromAlpha > 1.0f)
+									Features::Camera::fadeFromAlpha = 1.0f;
+							}
+
+							if (ImGui::InputFloat("Fade To Alpha", &Features::Camera::fadeToAlpha, 0.01f, 0.1f))
+							{
+								if (Features::Camera::fadeToAlpha < 0.0f)
+									Features::Camera::fadeToAlpha = 0.0f;
+
+								if (Features::Camera::fadeToAlpha > 1.0f)
+									Features::Camera::fadeToAlpha = 1.0f;
+							}
+
+							ImGui::InputFloat("Fade Duration", &Features::Camera::fadeDuration, 0.1f, 1.0f);
+							ImGui::ColorPicker4("Fade Color", Features::Camera::fadeColor);
 
 							ImGui::NewLine();
 
-							if (ImGui::Button("Dash"))
-							{
-								SharedFunctions::Dash();
-							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Dash", &Keybindings::dash);
-							ImGui::InputDouble("Dash Strength", &Features::Dash::strength, 0.1, 1.0);
+							ImGui::Checkbox("Fade Audio", &Features::Camera::fadeAudio);
+							ImGui::Checkbox("Fade Persistent", &Features::Camera::fadePersistent);
+
+							ImGui::NewLine();
+
+							ImGui::KeyBindingInput("Start Fade Key Binding:", &Keybindings::characterCamera_StartFade);
+							ImGui::KeyBindingInput("Stop Fade Key Binding:", &Keybindings::characterCamera_StopFade);
 						}
 						else
-							ImGui::Text("Movement Component Doesn't Exist!");
+							ImGui::Text("Camera Manager Doesn't Exist!");
+
+						ImGui::TreePop();
 					}
-					else
-						ImGui::Text("Character Doesn't Exist!");
+					ImGui::EndDisabled();
+
+					ImGui::MenuSpacer();
 				}
 				else
-					ImGui::Text("Controller Doesn't Exist!");
-
+				{
+					if (playerController == nullptr)
+						ImGui::Text("Player Controller Doesn't Exist!");
+					else if (character == nullptr)
+						ImGui::Text("Character Doesn't Exist!");
+					else if (movementComponent == nullptr)
+						ImGui::Text("Movement Component Doesn't Exist!");
+					else
+						ImGui::Text("Something Went Wrong.");
+				}
 
 				ImGui::EndMenu();
 			}
@@ -1970,7 +2148,14 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 			break;
 	}
 
-	Beep(soundFrequency, soundDuration);
+	/* 
+		Dedicate sound playback in to separate thread.
+		This prevents the main thread from blocking while Beep() is playing the sound.
+	*/
+	std::thread([=]() 
+	{
+		Beep(soundFrequency, soundDuration);
+	}).detach();
 }
 
 
@@ -2350,17 +2535,17 @@ void Features::ActorsList::Update()
 // ========================================================
 // |       #GUI #SHARED #FUNCTIONS #SHAREDFUNCTIONS       |
 // ========================================================
-void GUI::SharedFunctions::Ghost()
+void Features::CharacterMovement::Ghost()
 {
 	GUI::PlayActionSound(Unreal::Character::Ghost(0));
 }
 
-void GUI::SharedFunctions::Fly()
+void Features::CharacterMovement::Fly()
 {
 	GUI::PlayActionSound(Unreal::Character::Fly(0));
 }
 
-void GUI::SharedFunctions::Walk()
+void Features::CharacterMovement::Walk()
 {
 	GUI::PlayActionSound(Unreal::Character::Walk(0));
 }
@@ -2368,7 +2553,7 @@ void GUI::SharedFunctions::Walk()
 
 
 
-void GUI::SharedFunctions::Jump()
+void Features::CharacterMovement::Jump()
 {
 	GUI::PlayActionSound(Unreal::Character::Jump(0));
 }
@@ -2376,19 +2561,28 @@ void GUI::SharedFunctions::Jump()
 
 
 
-void GUI::SharedFunctions::Launch()
+void Features::CharacterMovement::Launch()
 {
-	GUI::PlayActionSound(Unreal::Character::Launch(0, { Features::Launch::velocity[0], Features::Launch::velocity[1], Features::Launch::velocity[2] }));
+	GUI::PlayActionSound(Unreal::Character::Launch(0, { Features::CharacterMovement::launchVelocity[0], Features::CharacterMovement::launchVelocity[1], Features::CharacterMovement::launchVelocity[2] }));
 }
 
-void GUI::SharedFunctions::Dash()
+void Features::CharacterMovement::Dash()
 {
-	SDK::FVector forwardVector = SharedData::objectsInfo.character->GetActorForwardVector();
+	SDK::ACharacter* character = Unreal::Character::Get();
+	if (character == nullptr)
+	{
+		GUI::PlayActionSound(false);
+		return;
+	}
 
+	SDK::FVector forwardVector = character->GetActorForwardVector();
+
+	/* Dash shouldn't involve any vertical movement. */
 	forwardVector.Z = 0.0;
 	forwardVector.Normalize();
 
-	PlayActionSound(Unreal::Character::Launch(0, forwardVector * Features::Dash::strength));
+	SDK::FVector launchVelocity = forwardVector * Features::CharacterMovement::dashStrength;
+	GUI::PlayActionSound(Unreal::Character::Launch(character, launchVelocity));
 }
 
 
@@ -2398,46 +2592,105 @@ void Features::DirectionalMovement::Worker()
 {
 	while (GetThread())
 	{
-		if (Features::DirectionalMovement::enabled)
+		/* See if we have a Player Controller alongside the Camera Manager. */
+		SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+		if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+			continue;
+
+		/* See if we have a Character under control and verify that Character is cheat flying. */
+		SDK::ACharacter* character = playerController->Character;
+		if (character == nullptr || character->CharacterMovement == nullptr || character->CharacterMovement->bCheatFlying != true)
+			continue;
+
+		/* Get Character velocity and see if we have any horizontal movement. */
+		SDK::FVector characterVelocity = character->CharacterMovement->Velocity;
+		if (characterVelocity.X == 0.0 && characterVelocity.Y == 0.0)
+			continue;
+
+		/* Normalize Character velocity (-1.0 to 1.0) and get Camera forward vector. */
+		SDK::FVector characterVelocityNormalized = Math::NormalizeVector(characterVelocity);
+		SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
+
+		/*
+			Compute the dot product of the normalized character velocity and the camera's forward vector.
+			Result interpretation:
+			  +1.0 -> character moves exactly forward,
+			  -1.0 -> character moves exactly backward,
+			   0.0 -> movement is perpendicular to the camera.
+		*/
+		double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
+		if (dotProduct > 0.5) // Character is mostly targeting forward direction.
 		{
-			/* See if we have a Character under control (character == nullptr), and verify that Character is cheat flying. */
-			SDK::ACharacter* character = Unreal::Character::Get();
-			if (character == nullptr || character->CharacterMovement == nullptr || character->CharacterMovement->bCheatFlying != true)
-				continue;
+			SDK::FVector currentLocation = character->K2_GetActorLocation();
+			SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * Features::DirectionalMovement::step);
 
-			/* Get Character velocity and see if we have any horizontal movement. */
-			SDK::FVector characterVelocity = character->CharacterMovement->Velocity;
-			if (characterVelocity.X == 0.0 && characterVelocity.Y == 0.0)
-				continue;
-
-			/* See if we have a Player Controller alongside the Camera Manager. */
-			SDK::APlayerController* playerController = Unreal::PlayerController::Get();
-			if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
-				continue;
-
-			/* Normalize Character velocity (-1.0 to 1.0) and get Camera forward vector. */
-			SDK::FVector characterVelocityNormalized = Math::NormalizeVector(characterVelocity);
-			SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
-
-			/* 
-				Compute the dot product of the normalized character velocity and the camera's forward vector.
-				Result interpretation:
-				  +1.0 -> character moves exactly forward,
-				  -1.0 -> character moves exactly backward,
-				   0.0 -> movement is perpendicular to the camera.
-			*/
-			double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
-			if (dotProduct > 0.5) // Character is mostly targeting forward direction.
-			{
-				SDK::FVector currentLocation = character->K2_GetActorLocation();
-				SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * Features::DirectionalMovement::step);
-
-				character->K2_TeleportTo(finalLocation, character->K2_GetActorRotation());
-			}
+			SDK::FHitResult hitResult;
+			character->K2_SetActorLocation(finalLocation, true, &hitResult, false);
 		}
 
 		Sleep(Math::Seconds_ToMilliseconds(Features::DirectionalMovement::delay));
 	}
+}
+
+
+
+
+void Features::Camera::StartFade()
+{
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+	{
+		GUI::PlayActionSound(false);
+		return;
+	}
+
+	SDK::FLinearColor fadeColor;
+	fadeColor.R = Features::Camera::fadeColor[0];
+	fadeColor.G = Features::Camera::fadeColor[1];
+	fadeColor.B = Features::Camera::fadeColor[2];
+	fadeColor.A = Features::Camera::fadeColor[3];
+
+	playerController->PlayerCameraManager->StartCameraFade(Features::Camera::fadeFromAlpha, Features::Camera::fadeToAlpha, Features::Camera::fadeDuration, fadeColor, Features::Camera::fadeAudio, Features::Camera::fadePersistent);
+	GUI::PlayActionSound(true);
+}
+
+void Features::Camera::StopFade()
+{
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+	{
+		GUI::PlayActionSound(false);
+		return;
+	}
+
+	playerController->PlayerCameraManager->StopCameraFade();
+	GUI::PlayActionSound(true);
+}
+
+
+
+
+bool Features::DirectionalMovement::StartThread()
+{
+	if (thread)
+		return false;
+
+	thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Features::DirectionalMovement::Worker, 0, 0, 0);
+	return thread;
+}
+
+bool Features::DirectionalMovement::InvalidateThread()
+{
+	if (thread == nullptr)
+		return false;
+
+	if (CloseHandle(thread))
+	{
+		thread = nullptr;
+		return true;
+	}
+	else
+		return false;
 }
 
 
@@ -2503,51 +2756,12 @@ bool Features::ActorTrace::Trace()
 
 void Keybindings::Process()
 {
-	if (ImGui::IsKeyBindingPressed(&Keybindings::menuOpenClose))
+	if (ImGui::IsKeyBindingPressed(&Keybindings::general_MenuOpenClose))
 		GUI::ToggleIsMenuActive();
 
 
 	if (GUI::GetIsMenuActive() == false)
 	{
-		if (ImGui::IsKeyBindingPressed(&Keybindings::ghost))
-		{
-			GUI::SharedFunctions::Ghost();
-		}
-
-		if (ImGui::IsKeyBindingPressed(&Keybindings::fly))
-		{
-			GUI::SharedFunctions::Fly();
-		}
-
-		if (ImGui::IsKeyBindingPressed(&Keybindings::walk))
-		{
-			GUI::SharedFunctions::Walk();
-		}
-
-
-
-
-		if (ImGui::IsKeyBindingPressed(&Keybindings::jump))
-		{
-			GUI::SharedFunctions::Jump();
-		}
-
-
-
-
-		if (ImGui::IsKeyBindingPressed(&Keybindings::launch))
-		{
-			GUI::SharedFunctions::Launch();
-		}
-
-		if (ImGui::IsKeyBindingPressed(&Keybindings::dash))
-		{
-			GUI::SharedFunctions::Dash();
-		}
-
-
-
-
 #ifdef ACTOR_TRACE
 		if (Features::ActorTrace::enabled)
 		{
@@ -2557,5 +2771,51 @@ void Keybindings::Process()
 			}
 		}
 #endif
+
+
+
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Ghost))
+		{
+			Features::CharacterMovement::Ghost();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Fly))
+		{
+			Features::CharacterMovement::Fly();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Walk))
+		{
+			Features::CharacterMovement::Walk();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Jump))
+		{
+			Features::CharacterMovement::Jump();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Launch))
+		{
+			Features::CharacterMovement::Launch();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Dash))
+		{
+			Features::CharacterMovement::Dash();
+		}
+
+
+
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterCamera_StartFade))
+		{
+			Features::Camera::StartFade();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterCamera_StopFade))
+		{
+			Features::Camera::StopFade();
+		}
 	}
 }

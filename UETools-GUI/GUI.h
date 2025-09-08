@@ -8,6 +8,7 @@
 
 #include <Windows.h>
 #include <algorithm>
+#include <thread>
 
 /*
 	#define UE5
@@ -70,44 +71,114 @@ namespace ImGui
 	void ReadOnlyInputText(const char* label, const char* text, const bool& showCopyButton);
 
 
+	/*
+	* @brief Using pre-determined table, converts an ImGui key to the corresponding WinAPI virtual-key code.
+	* @param key - ImGui key to be converted.
+	* @return The corresponding WinAPI virtual-key code, or 0 if unsupported.
+	*/
 	static int ImGuiKey_ToWinAPI(const ImGuiKey& key);
+	/*
+	* @brief Using pre-determined table, returns a human-readable name for a given ImGui key.
+	* @param key - ImGui key to get the name of.
+	* @return The key name as a string.
+	*/
+	static const char* ImGuiKey_GetName(const ImGuiKey& key);
+
+	/*
+	* @brief Renders a key binding input control in ImGui.
+	* 
+	* Displays a button with the current binding state and allows the user
+	* to assign or unbind a key interactively.
+	* 
+	* @param label - label text to display (may contain "##" to hide ID).
+	* @param binding - pointer to key binding structure.
+	* @return 'True' if the binding was changed; otherwise 'False'
+	*/
 	bool KeyBindingInput(const char* label, KeyBinding* binding);
 	bool IsKeyBindingPressed(KeyBinding* binding, const bool& waitForRelease = true);
 	bool IsKeyBindingDown(KeyBinding* binding);
 	bool IsKeyBindingReleased(KeyBinding* binding);
 
 
+	/*
+	* @brief Sets the font scale to the specified value.
+	* @param fontScale - scale factor.
+	*/
 	static void SetFontScale(const float& fontScale)
 	{
 		SetWindowFontScale(fontScale);
 	}
+	/*
+	* @brief Sets the font scale to 0.5x.
+	*/
 	static void SetFontTiny()
 	{
 		SetFontScale(0.5f);
 	}
+	/*
+	* @brief Sets the font scale to 0.75x.
+	*/
 	static void SetFontLittle()
 	{
 		SetFontScale(0.75f);
 	}
+	/*
+	* @brief Sets the font scale to 0.9x.
+	*/
 	static void SetFontSmall()
 	{
 		SetFontScale(0.9f);
 	}
+	/*
+	* @brief Sets the font scale to 1.0x.
+	*/
 	static void SetFontRegular()
 	{
 		SetFontScale(1.0f);
 	}
+	/*
+	* @brief Sets the font scale to 1.1x.
+	*/
 	static void SetFontBig()
 	{
 		SetFontScale(1.1f);
 	}
+	/*
+	* @brief Sets the font scale to 1.25x.
+	*/
 	static void SetFontLarge()
 	{
 		SetFontScale(1.25f);
 	}
+	/*
+	* @brief Sets the font scale to 1.5x.
+	*/
 	static void SetFontTitle()
 	{
 		SetFontScale(1.5f);
+	}
+
+
+
+
+	/*
+	* @brief New Line + Separator + New Line.
+	*/
+	static void CategorySeparator()
+	{
+		ImGui::NewLine();
+		ImGui::Separator();
+		ImGui::NewLine();
+	}
+
+
+	/*
+	* @brief Prints pre-determined number of spaces to expand menu horizontally.
+	*/
+	static void MenuSpacer()
+	{
+		static const char* menuSpacer = "                                                                                               ";
+		ImGui::TextUnformatted(menuSpacer, menuSpacer + 96);
 	}
 };
 
@@ -135,10 +206,30 @@ public:
 	}
 
 
+private:
+	static inline HANDLE directWindowThread = nullptr;
+public:
+	static HANDLE GetDirectWindowThread()
+	{
+		return directWindowThread;
+	}
+	static bool StartDirectWindowThread();
+
+
 
 
 public:
+	/*
+	* @brief Initializes the GUI system. Should be called to start ImGui and create the menu.
+	* @param applicationModule - Handle of the current (this) DLL module.
+	*/
 	static void Init(const HMODULE& applicationModule);
+	/*
+	* @brief Renders frame of GUI elements.
+	* 
+	* Called once per frame by DirectWindow class (on each ImGui::NewFrame())
+	* to draw application-specific ImGui controls and windows.
+	*/
 	static void Draw();
 
 
@@ -157,38 +248,6 @@ public:
 	{
 		PlaySound(wasSuccessfull ? E_Sound::ACTION_SUCCESS : E_Sound::ACTION_ERROR);
 	}
-
-
-	class SharedWorkers
-	{
-	private:
-		static inline HANDLE userInterfaceThread = nullptr;
-	public:
-		static HANDLE GetUserInterfaceThread()
-		{
-			return userInterfaceThread;
-		}
-		static void SetUserInterfaceThread(const HANDLE& newUserInterfaceThread)
-		{
-			userInterfaceThread = newUserInterfaceThread;
-		}
-	};
-
-
-
-
-
-	class SharedData
-	{
-	public:
-		struct S_ObjectsInformation
-		{
-			SDK::APlayerController* controller;
-			SDK::ACharacter* character;
-			SDK::UCharacterMovementComponent* movementComponent;
-		};
-		static inline S_ObjectsInformation objectsInfo = {};
-	};
 
 
 
@@ -283,6 +342,46 @@ namespace Features
 
 
 
+	class CharacterMovement
+	{
+	public:
+		static void Ghost();
+		static void Fly();
+		static void Walk();
+
+
+		static void Jump();
+
+
+		static inline float launchVelocity[3] = { 0.0f, 0.0f, 1325.0f };
+		static void Launch();
+
+
+		static inline double dashStrength = 3375.0;
+		static void Dash();
+	};
+
+
+
+
+	class Camera
+	{
+	public:
+		static inline float fadeFromAlpha = 0.0f;
+		static inline float fadeToAlpha = 1.0f;
+		static inline float fadeDuration = 2.5f;
+		static inline float fadeColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+		static inline bool fadeAudio = false;
+		static inline bool fadePersistent = true;
+
+
+		static void StartFade();
+		static void StopFade();
+	};
+
+
+
+
 	class DirectionalMovement
 	{
 	public:
@@ -300,32 +399,8 @@ namespace Features
 		{
 			return thread;
 		}
-		static bool StartThread()
-		{
-			if (thread)
-				return false;
-
-			thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Features::DirectionalMovement::Worker, 0, 0, 0);
-			return thread;
-		}
-	};
-
-
-
-
-	class Launch
-	{
-	public:
-		static inline float velocity[3] = { 0.0f, 0.0f, 1325.0f };
-	};
-
-
-
-
-	class Dash
-	{
-	public:
-		static inline double strength = 3375.0;
+		static bool StartThread();
+		static bool InvalidateThread();
 	};
 
 
@@ -362,18 +437,19 @@ namespace Features
 class Keybindings
 {
 public:
-	static inline ImGui::KeyBinding menuOpenClose = ImGui::KeyBinding(ImGuiKey_Insert);
+	static inline ImGui::KeyBinding general_MenuOpenClose = ImGui::KeyBinding(ImGuiKey_Insert);
 
-	static inline ImGui::KeyBinding ghost;
-	static inline ImGui::KeyBinding fly;
-	static inline ImGui::KeyBinding walk;
+	static inline ImGui::KeyBinding debug_ActorTrace = ImGui::KeyBinding(ImGuiKey_T);
 
-	static inline ImGui::KeyBinding jump;
+	static inline ImGui::KeyBinding characterMovement_Ghost;
+	static inline ImGui::KeyBinding characterMovement_Fly;
+	static inline ImGui::KeyBinding characterMovement_Walk;
+	static inline ImGui::KeyBinding characterMovement_Jump;
+	static inline ImGui::KeyBinding characterMovement_Launch;
+	static inline ImGui::KeyBinding characterMovement_Dash;
 
-	static inline ImGui::KeyBinding launch;
-	static inline ImGui::KeyBinding dash;
-
-	static inline ImGui::KeyBinding actorTrace = ImGui::KeyBinding(ImGuiKey_T);
+	static inline ImGui::KeyBinding characterCamera_StartFade;
+	static inline ImGui::KeyBinding characterCamera_StopFade;
 
 
 	static void Process();
