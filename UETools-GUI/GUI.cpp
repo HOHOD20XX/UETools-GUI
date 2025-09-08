@@ -1378,7 +1378,7 @@ void GUI::Draw()
 						ImGui::BeginDisabled(Features::ActorTrace::enabled == false);
 						if (ImGui::TreeNode("Settings##ActorTrace"))
 						{
-							ImGui::KeyBindingInput("Key Binding:", &Keybindings::actorTrace);
+							ImGui::KeyBindingInput("Key Binding:", &Keybindings::debug_ActorTrace);
 
 							ImGui::NewLine();
 
@@ -2765,7 +2765,7 @@ void Keybindings::Process()
 #ifdef ACTOR_TRACE
 		if (Features::ActorTrace::enabled)
 		{
-			if (ImGui::IsKeyBindingPressed(&Keybindings::actorTrace))
+			if (ImGui::IsKeyBindingPressed(&Keybindings::debug_ActorTrace))
 			{
 				GUI::PlayActionSound(Features::ActorTrace::Trace());
 			}

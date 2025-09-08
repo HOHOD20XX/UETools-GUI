@@ -441,9 +441,9 @@ public:
 
 	static inline ImGui::KeyBinding debug_ActorTrace = ImGui::KeyBinding(ImGuiKey_T);
 
-	static inline ImGui::KeyBinding characterMovement_Ghost;
-	static inline ImGui::KeyBinding characterMovement_Fly;
-	static inline ImGui::KeyBinding characterMovement_Walk;
+	static inline ImGui::KeyBinding characterMovement_Ghost = ImGui::KeyBinding(ImGuiKey_Keypad9);
+	static inline ImGui::KeyBinding characterMovement_Fly = ImGui::KeyBinding(ImGuiKey_Keypad8);
+	static inline ImGui::KeyBinding characterMovement_Walk = ImGui::KeyBinding(ImGuiKey_Keypad7);
 	static inline ImGui::KeyBinding characterMovement_Jump;
 	static inline ImGui::KeyBinding characterMovement_Launch;
 	static inline ImGui::KeyBinding characterMovement_Dash;
