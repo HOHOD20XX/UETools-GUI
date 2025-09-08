@@ -25,14 +25,14 @@ void ImGui::TextBool(const char* label, const bool& inBool, const char* text_tru
 	{
 		ImGui::PushStyleColor(ImGuiCol_Text, inBool ? color_true : color_false);
 		ImGui::TextUnformatted(inBool
-									? (text_true ? text_true : "BOOL_TRUE")
-									: (text_false ? text_false : "BOOL_FALSE"));
+									? (text_true ? text_true : "True")
+									: (text_false ? text_false : "False"));
 		ImGui::PopStyleColor();
 	}
 	else
 		ImGui::TextUnformatted(inBool
-									? (text_true ? text_true : "BOOL_TRUE")
-									: (text_false ? text_false : "BOOL_FALSE"));
+									? (text_true ? text_true : "True")
+									: (text_false ? text_false : "False"));
 	
 }
 
@@ -317,7 +317,7 @@ void ImGui::ReadOnlyInputText(const char* label, const char* text, const bool& s
 		ImGui::SameLine();
 	}
 
-	ImGui::PushID(label ? label : (text ? text : "##ReadOnlyInputText"));
+	ImGui::PushID(label ? label : (text ? text : "ReadOnlyInputText"));
 	const size_t length = text ? strlen(text) : 0;
 
 	static std::vector<char> buffer;
@@ -363,42 +363,26 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 		case ImGuiKey_Space: return VK_SPACE;
 		case ImGuiKey_Enter: return VK_RETURN;
 		case ImGuiKey_Escape: return VK_ESCAPE;
-		case ImGuiKey_A: return 'A';
-		case ImGuiKey_B: return 'B';
-		case ImGuiKey_C: return 'C';
-		case ImGuiKey_D: return 'D';
-		case ImGuiKey_E: return 'E';
-		case ImGuiKey_F: return 'F';
-		case ImGuiKey_G: return 'G';
-		case ImGuiKey_H: return 'H';
-		case ImGuiKey_I: return 'I';
-		case ImGuiKey_J: return 'J';
-		case ImGuiKey_K: return 'K';
-		case ImGuiKey_L: return 'L';
-		case ImGuiKey_M: return 'M';
-		case ImGuiKey_N: return 'N';
-		case ImGuiKey_O: return 'O';
-		case ImGuiKey_P: return 'P';
-		case ImGuiKey_Q: return 'Q';
-		case ImGuiKey_R: return 'R';
-		case ImGuiKey_S: return 'S';
-		case ImGuiKey_T: return 'T';
-		case ImGuiKey_U: return 'U';
-		case ImGuiKey_V: return 'V';
-		case ImGuiKey_W: return 'W';
-		case ImGuiKey_X: return 'X';
-		case ImGuiKey_Y: return 'Y';
-		case ImGuiKey_Z: return 'Z';
-		case ImGuiKey_0: return '0';
-		case ImGuiKey_1: return '1';
-		case ImGuiKey_2: return '2';
-		case ImGuiKey_3: return '3';
-		case ImGuiKey_4: return '4';
-		case ImGuiKey_5: return '5';
-		case ImGuiKey_6: return '6';
-		case ImGuiKey_7: return '7';
-		case ImGuiKey_8: return '8';
-		case ImGuiKey_9: return '9';
+
+		case ImGuiKey_A: return 'A'; case ImGuiKey_B: return 'B';
+		case ImGuiKey_C: return 'C'; case ImGuiKey_D: return 'D';
+		case ImGuiKey_E: return 'E'; case ImGuiKey_F: return 'F';
+		case ImGuiKey_G: return 'G'; case ImGuiKey_H: return 'H';
+		case ImGuiKey_I: return 'I'; case ImGuiKey_J: return 'J';
+		case ImGuiKey_K: return 'K'; case ImGuiKey_L: return 'L';
+		case ImGuiKey_M: return 'M'; case ImGuiKey_N: return 'N';
+		case ImGuiKey_O: return 'O'; case ImGuiKey_P: return 'P';
+		case ImGuiKey_Q: return 'Q'; case ImGuiKey_R: return 'R';
+		case ImGuiKey_S: return 'S'; case ImGuiKey_T: return 'T';
+		case ImGuiKey_U: return 'U'; case ImGuiKey_V: return 'V';
+		case ImGuiKey_W: return 'W'; case ImGuiKey_X: return 'X';
+		case ImGuiKey_Y: return 'Y'; case ImGuiKey_Z: return 'Z';
+
+		case ImGuiKey_0: return '0'; case ImGuiKey_1: return '1';
+		case ImGuiKey_2: return '2'; case ImGuiKey_3: return '3';
+		case ImGuiKey_4: return '4'; case ImGuiKey_5: return '5';
+		case ImGuiKey_6: return '6'; case ImGuiKey_7: return '7';
+		case ImGuiKey_8: return '8'; case ImGuiKey_9: return '9';
 
 		case ImGuiKey_Keypad0: return VK_NUMPAD0;
 		case ImGuiKey_Keypad1: return VK_NUMPAD1;
@@ -416,18 +400,12 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 		case ImGuiKey_KeypadDecimal: return VK_DECIMAL;
 		case ImGuiKey_KeypadDivide: return VK_DIVIDE;
 
-		case ImGuiKey_F1: return VK_F1;
-		case ImGuiKey_F2: return VK_F2;
-		case ImGuiKey_F3: return VK_F3;
-		case ImGuiKey_F4: return VK_F4;
-		case ImGuiKey_F5: return VK_F5;
-		case ImGuiKey_F6: return VK_F6;
-		case ImGuiKey_F7: return VK_F7;
-		case ImGuiKey_F8: return VK_F8;
-		case ImGuiKey_F9: return VK_F9;
-		case ImGuiKey_F10: return VK_F10;
-		case ImGuiKey_F11: return VK_F11;
-		case ImGuiKey_F12: return VK_F12;
+		case ImGuiKey_F1: return VK_F1; case ImGuiKey_F2: return VK_F2;
+		case ImGuiKey_F3: return VK_F3; case ImGuiKey_F4: return VK_F4;
+		case ImGuiKey_F5: return VK_F5; case ImGuiKey_F6: return VK_F6;
+		case ImGuiKey_F7: return VK_F7; case ImGuiKey_F8: return VK_F8;
+		case ImGuiKey_F9: return VK_F9; case ImGuiKey_F10: return VK_F10;
+		case ImGuiKey_F11: return VK_F11; case ImGuiKey_F12: return VK_F12;
 
 		case ImGuiKey_LeftCtrl: return VK_LCONTROL;
 		case ImGuiKey_RightCtrl: return VK_RCONTROL;
@@ -442,48 +420,164 @@ int ImGui::ImGuiKey_ToWinAPI(const ImGuiKey& key)
 	}
 }
 
-bool ImGui::KeyBindingInput(const char* label, S_KeyBinding* binding)
+const char* ImGui::ImGuiKey_GetName(const ImGuiKey& key)
+{
+	switch (key)
+	{
+		case ImGuiKey_Tab:            return "Tab";
+		case ImGuiKey_LeftArrow:      return "Left";
+		case ImGuiKey_RightArrow:     return "Right";
+		case ImGuiKey_UpArrow:        return "Up";
+		case ImGuiKey_DownArrow:      return "Down";
+		case ImGuiKey_PageUp:         return "PgUp";
+		case ImGuiKey_PageDown:       return "PgDn";
+		case ImGuiKey_Home:           return "Home";
+		case ImGuiKey_End:            return "End";
+		case ImGuiKey_Insert:         return "Ins";
+		case ImGuiKey_Delete:         return "Del";
+		case ImGuiKey_Backspace:      return "Bspace";
+		case ImGuiKey_Space:          return "Space";
+		case ImGuiKey_Enter:          return "Enter";
+		case ImGuiKey_Escape:         return "Esc";
+
+		case ImGuiKey_A: return "A";  case ImGuiKey_B: return "B";
+		case ImGuiKey_C: return "C";  case ImGuiKey_D: return "D";
+		case ImGuiKey_E: return "E";  case ImGuiKey_F: return "F";
+		case ImGuiKey_G: return "G";  case ImGuiKey_H: return "H";
+		case ImGuiKey_I: return "I";  case ImGuiKey_J: return "J";
+		case ImGuiKey_K: return "K";  case ImGuiKey_L: return "L";
+		case ImGuiKey_M: return "M";  case ImGuiKey_N: return "N";
+		case ImGuiKey_O: return "O";  case ImGuiKey_P: return "P";
+		case ImGuiKey_Q: return "Q";  case ImGuiKey_R: return "R";
+		case ImGuiKey_S: return "S";  case ImGuiKey_T: return "T";
+		case ImGuiKey_U: return "U";  case ImGuiKey_V: return "V";
+		case ImGuiKey_W: return "W";  case ImGuiKey_X: return "X";
+		case ImGuiKey_Y: return "Y";  case ImGuiKey_Z: return "Z";
+
+		case ImGuiKey_0: return "0";  case ImGuiKey_1: return "1";
+		case ImGuiKey_2: return "2";  case ImGuiKey_3: return "3";
+		case ImGuiKey_4: return "4";  case ImGuiKey_5: return "5";
+		case ImGuiKey_6: return "6";  case ImGuiKey_7: return "7";
+		case ImGuiKey_8: return "8";  case ImGuiKey_9: return "9";
+
+		case ImGuiKey_Keypad0:        return "Num0";
+		case ImGuiKey_Keypad1:        return "Num1";
+		case ImGuiKey_Keypad2:        return "Num2";
+		case ImGuiKey_Keypad3:        return "Num3";
+		case ImGuiKey_Keypad4:        return "Num4";
+		case ImGuiKey_Keypad5:        return "Num5";
+		case ImGuiKey_Keypad6:        return "Num6";
+		case ImGuiKey_Keypad7:        return "Num7";
+		case ImGuiKey_Keypad8:        return "Num8";
+		case ImGuiKey_Keypad9:        return "Num9";
+		case ImGuiKey_KeypadMultiply: return "Num*";
+		case ImGuiKey_KeypadAdd:      return "Num+";
+		case ImGuiKey_KeypadSubtract: return "Num-";
+		case ImGuiKey_KeypadDecimal:  return "Num.";
+		case ImGuiKey_KeypadDivide:   return "Num/";
+
+		case ImGuiKey_F1:  return "F1";   case ImGuiKey_F2:  return "F2";
+		case ImGuiKey_F3:  return "F3";   case ImGuiKey_F4:  return "F4";
+		case ImGuiKey_F5:  return "F5";   case ImGuiKey_F6:  return "F6";
+		case ImGuiKey_F7:  return "F7";   case ImGuiKey_F8:  return "F8";
+		case ImGuiKey_F9:  return "F9";   case ImGuiKey_F10: return "F10";
+		case ImGuiKey_F11: return "F11";  case ImGuiKey_F12: return "F12";
+
+		case ImGuiKey_LeftCtrl:   return "LCtrl";
+		case ImGuiKey_RightCtrl:  return "RCtrl";
+		case ImGuiKey_LeftShift:  return "LShift";
+		case ImGuiKey_RightShift: return "RShift";
+		case ImGuiKey_LeftAlt:    return "LAlt";
+		case ImGuiKey_RightAlt:   return "RAlt";
+		case ImGuiKey_LeftSuper:  return "LWin";
+		case ImGuiKey_RightSuper: return "RWin";
+
+		default: return "???";
+	}
+}
+
+
+
+
+bool ImGui::KeyBindingInput(const char* label, KeyBinding* binding)
 {
 	if (!binding)
 		return false;
 
-	bool hasChanged = false;
+	if (label)
+	{
+		const char* idPosition = std::strstr(label, "##");
+		if (idPosition)
+			ImGui::TextUnformatted(label, idPosition);
+		else
+			ImGui::TextUnformatted(label);
 
-	const char* elementId = strstr(label, "##");
-	if (elementId)
-		TextUnformatted(label, elementId);
-	else
-		TextUnformatted(label);
+		ImGui::SameLine();
+	}
+
+	ImGui::PushID(label ? label : "KeyBindingInput");
 
 	SameLine();
 
+	/* 0 corresponds for default vertical size. */
+	static const ImVec2 buttonSize = { 96.0f, 0.0f };
+
+	static const ImVec4 buttonColor = { 0.20f, 0.50f, 0.20f, 1.00f };
+	static const ImVec4 buttonColor_unbound = { 0.50f, 0.20f, 0.20f, 1.00f };
+	static const ImVec4 buttonColor_capturing = { 0.25f, 0.25f, 0.25f, 1.00f };
+
+	bool hasBindingChanged = false;
 	if (binding->isDetermined)
 	{
-		const char* inputName = binding->key == ImGuiKey_None ? "Unbound" : GetKeyName(binding->key);
-		std::string buttonName = std::string(inputName) + "##" + label;
+		const char* bindingName;
 
-		if (Button(buttonName.c_str()))
+		if (binding->key == ImGuiKey_None)
+		{
+			ImGui::PushStyleColor(ImGuiCol_Button, buttonColor_unbound);
+			bindingName = "?";
+		}
+		else
+		{
+			ImGui::PushStyleColor(ImGuiCol_Button, buttonColor);
+			bindingName = ImGuiKey_GetName(binding->key);
+		}
+
+		if (Button(bindingName, buttonSize))
 			binding->isDetermined = false;
 	}
 	else
 	{
-		Button("Press any key...");
+		ImGui::PushStyleColor(ImGuiCol_Button, buttonColor_capturing);
+
+		Button("...", buttonSize);
 		for (int keyCode = ImGuiKey_NamedKey_BEGIN; keyCode < ImGuiKey_NamedKey_END; keyCode++)
 		{
 			if (IsKeyPressed((ImGuiKey)keyCode))
 			{
-				binding->key = (ImGuiKey)keyCode;
+				/* Verify that keyCode is within pre-determined list of keys. */
+				if (ImGuiKey_ToWinAPI((ImGuiKey)keyCode) == 0)
+					continue;
+
+				/* When user tries to assign same key that is already set, consider that as will to unbind. */
+				if (keyCode == binding->key)
+					binding->key = ImGuiKey_None;
+				else
+					binding->key = (ImGuiKey)keyCode;
+
 				binding->isDetermined = true;
-				hasChanged = true;
+				hasBindingChanged = true;
 				break;
 			}
 		}
 	}
 
-	return hasChanged;
+	ImGui::PopStyleColor();
+	ImGui::PopID();
+
+	return hasBindingChanged;
 }
 
-bool ImGui::IsKeyBindingPressed(S_KeyBinding* binding, const bool& waitForRelease)
+bool ImGui::IsKeyBindingPressed(KeyBinding* binding, const bool& waitForRelease)
 {
 	if (!binding)
 		return false;
@@ -518,7 +612,7 @@ bool ImGui::IsKeyBindingPressed(S_KeyBinding* binding, const bool& waitForReleas
 	return false;
 }
 
-bool ImGui::IsKeyBindingDown(S_KeyBinding* binding)
+bool ImGui::IsKeyBindingDown(KeyBinding* binding)
 {
 	if (!binding)
 		return false;
@@ -539,7 +633,7 @@ bool ImGui::IsKeyBindingDown(S_KeyBinding* binding)
 	return false;
 }
 
-bool ImGui::IsKeyBindingReleased(S_KeyBinding* binding)
+bool ImGui::IsKeyBindingReleased(KeyBinding* binding)
 {
 	if (!binding)
 		return false;
@@ -565,12 +659,23 @@ bool ImGui::IsKeyBindingReleased(S_KeyBinding* binding)
 // ========================================================
 // |                #GUI #UI #USERINTERFACE               |
 // ========================================================
-void GUI::Create(const HMODULE& applicationModule)
+bool GUI::StartDirectWindowThread()
 {
-	DirectWindow::SetApplicationModule(applicationModule);
+	if (directWindowThread)
+		return false;
 
-	SharedWorkers::SetUserInterfaceThread(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)DirectWindow::Construct, 0, 0, 0));
-	SharedWorkers::SetFeaturesThread(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)SharedWorkers::FeaturesWorker, 0, 0, 0));
+	directWindowThread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)DirectWindow::Create, 0, 0, 0);
+	return directWindowThread;
+}
+
+
+
+
+void GUI::Init(const HMODULE& applicationModule)
+{
+	/* Before creating a DirectWindow, we need to make it aware of our DLL HMODULE. */
+	DirectWindow::SetApplicationModule(applicationModule);
+	StartDirectWindowThread();
 }
 
 
@@ -578,73 +683,55 @@ void GUI::Create(const HMODULE& applicationModule)
 
 void GUI::Draw()
 {
-	if (GetIsActive())
+	ImGuiViewport* iViewPort = ImGui::GetMainViewport();
+	ImVec2 iViewPortPosition = { iViewPort->Pos.x, iViewPort->Pos.y };
+	ImVec2 iViewPortSize = { iViewPort->Size.x, iViewPort->Size.y };
+
+	ImDrawList* iDrawList = ImGui::GetBackgroundDrawList();
+
+
+	if (GetIsMenuActive())
 	{
-		if (GetIsInWaitMode())
-		{
-			double waitModeTimeLeft = GetWaitModeEndTime() - ImGui::GetTime();
-			if (waitModeTimeLeft < 0.0)
-			{
-				if (SharedData::debugInfo.isActive)
-					SharedCalls::GatherDebugInformation();
-
-				SetIsInWaitMode(false);
-			}
-
-
-			ImGuiIO& io = ImGui::GetIO();
-			ImDrawList* drawList = ImGui::GetBackgroundDrawList();
-
-			ImVec2 screenSize = io.DisplaySize;
-
-			drawList->AddRectFilled(ImVec2(0, 0), screenSize, IM_COL32(0, 0, 0, 128));
-
-			std::string labelString = std::to_string(waitModeTimeLeft);
-			const char* labelText = labelString.c_str();
-
-			double labelFontSize = 48.0;
-			ImGui::PushFont(ImGui::GetFont());
-
-			ImVec2 labelSize = ImGui::CalcTextSize(labelText);
-			ImVec2 labelPosition = ImVec2((screenSize.x - labelSize.x) * 0.5, (screenSize.y - labelSize.y) * 0.5);
-
-			drawList->AddText(ImGui::GetFont(), labelFontSize, labelPosition, IM_COL32(255, 255, 255, 255), labelText);
-
-			ImGui::PopFont();
-			return;
-		}
-
-
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.7) | ");
+			ImGui::Text("UETools GUI (v0.8) | ");
 			if (ImGui::BeginMenu("Debug"))
 			{
-				if (SharedData::debugInfo.isActive)
+				if (Features::Debug::enabled == false)
+				{
+					if (ImGui::Button("Start"))
+					{
+						if (Features::Debug::autoUpdate == false)
+							Features::Debug::Update();
+
+						Features::Debug::enabled = true;
+						PlayActionSound(true);
+					}
+				}
+				else
 				{
 					ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0 / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-					static const char* menuSpacer = "                                                                                               ";
-					ImGui::TextUnformatted(menuSpacer, menuSpacer + 96);
+					ImGui::NewLine();
 
-					if (SharedData::debugInfo.autoUpdate)
+					if (Features::Debug::autoUpdate)
 					{
-						float updatesPerSecond = 1.0f / SharedData::debugInfo.autoUpdateDelay;
+						float updatesPerSecond = 1.0f / Features::Debug::autoUpdateDelay;
 						if (updatesPerSecond > 1.0f)
 							ImGui::Text("Updates %d times per second", (int32_t)(updatesPerSecond));
 						else
 						{
-							float updatesPerMinute = 60.0f / SharedData::debugInfo.autoUpdateDelay;
+							float updatesPerMinute = 60.0f / Features::Debug::autoUpdateDelay;
 							if (updatesPerMinute > 1.0f)
 								ImGui::Text("Updates %d times per minute", (int32_t)(updatesPerMinute));
 							else
 							{
-								float updatesPerHour = 3600.0f / SharedData::debugInfo.autoUpdateDelay;
+								float updatesPerHour = 3600.0f / Features::Debug::autoUpdateDelay;
 								if (updatesPerHour > 1.0f)
 									ImGui::Text("Updates %d times per hour", (int32_t)(updatesPerHour));
 								else
 								{
-									float updatesPerDay = 86400.0f / SharedData::debugInfo.autoUpdateDelay;
+									float updatesPerDay = 86400.0f / Features::Debug::autoUpdateDelay;
 									if (updatesPerDay > 1.0f)
 										ImGui::Text("Updates %d times per day", (int32_t)(updatesPerDay));
 									else
@@ -652,22 +739,22 @@ void GUI::Draw()
 								}
 							}
 						}
-						if (ImGui::InputFloat("Auto Update Delay", &SharedData::debugInfo.autoUpdateDelay, 0.01f, 0.1f))
+						if (ImGui::InputFloat("Auto Update Delay", &Features::Debug::autoUpdateDelay, 0.01f, 0.1f))
 						{
-							if (SharedData::debugInfo.autoUpdateDelay < 0.01f)
-								SharedData::debugInfo.autoUpdateDelay = 0.01f;
+							if (Features::Debug::autoUpdateDelay < 0.01f)
+								Features::Debug::autoUpdateDelay = 0.01f;
 						}
 
 						const double now = ImGui::GetTime();
-						const double elapsed = now - SharedData::debugInfo.lastUpdateTime;
+						const double elapsed = now - Features::Debug::lastUpdateTime;
 
-						if (elapsed >= SharedData::debugInfo.autoUpdateDelay)
-							SharedCalls::GatherDebugInformation();
+						if (elapsed >= Features::Debug::autoUpdateDelay)
+							Features::Debug::Update();
 					}
 					else
 					{
 						const double now = ImGui::GetTime();
-						const double elapsed = now - SharedData::debugInfo.lastUpdateTime;
+						const double elapsed = now - Features::Debug::lastUpdateTime;
 						if (elapsed < 60.0)
 						{
 							int seconds = (int)elapsed;
@@ -691,58 +778,56 @@ void GUI::Draw()
 					}
 					
 
-					ImGui::BeginDisabled(SharedData::debugInfo.autoUpdate);
+					ImGui::BeginDisabled(Features::Debug::autoUpdate);
 					if (ImGui::Button("Update##DebugInformation"))
 					{
-						SharedCalls::GatherDebugInformation();
+						Features::Debug::Update();
 						PlayActionSound(true);
 					}
 					ImGui::EndDisabled();
 					ImGui::SameLine();
-					ImGui::Checkbox("Auto", &SharedData::debugInfo.autoUpdate);
+					ImGui::Checkbox("Auto", &Features::Debug::autoUpdate);
 					if (ImGui::Button("Stop"))
 					{
-						SharedData::debugInfo.isActive = false;
+						Features::Debug::enabled = false;
 						PlayActionSound(true);
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
-					ImGui::TextBoolPresenceColored("Engine:", SharedData::debugInfo.engine.engineReference);
+					ImGui::TextBoolPresenceColored("Engine:", Features::Debug::engine.reference);
 					ImGui::SetFontRegular();
-					if (SharedData::debugInfo.engine.engineReference)
+					if (Features::Debug::engine.reference)
 					{
 						if (ImGui::CollapsingHeader("Details##Engine"))
 						{
-							ImGui::Text("Engine Class: %s", SharedData::debugInfo.engine.engineClass.c_str());
-							ImGui::Text("Engine Object: %s", SharedData::debugInfo.engine.engineObject.c_str());
+							ImGui::Text("Engine Class: %s", Features::Debug::engine.className.c_str());
+							ImGui::Text("Engine Object: %s", Features::Debug::engine.objectName.c_str());
 
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Viewport Client:", SharedData::debugInfo.engine.viewportClient.viewportClientReference);
+							ImGui::TextBoolPresenceColored("Game Viewport Client:", Features::Debug::engine.gameViewportClient.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.engine.viewportClient.viewportClientReference)
+							if (Features::Debug::engine.gameViewportClient.reference)
 							{
-								if (ImGui::TreeNode("Details##ViewportClient"))
+								if (ImGui::TreeNode("Details##GameViewportClient"))
 								{
-									ImGui::Text("Viewport Client Class: %s", SharedData::debugInfo.engine.viewportClient.viewportClientClass.c_str());
-									ImGui::Text("Viewport Client Object: %s", SharedData::debugInfo.engine.viewportClient.viewportClientObject.c_str());
+									ImGui::Text("Viewport Client Class: %s", Features::Debug::engine.gameViewportClient.className.c_str());
+									ImGui::Text("Viewport Client Object: %s", Features::Debug::engine.gameViewportClient.objectName.c_str());
 
 									ImGui::NewLine();
 
 									ImGui::SetFontTitle();
-									ImGui::TextBoolPresenceColored("Console:", SharedData::debugInfo.engine.viewportClient.console.consoleReference);
+									ImGui::TextBoolPresenceColored("Console:", Features::Debug::engine.gameViewportClient.console.reference);
 									ImGui::SetFontRegular();
-									if (SharedData::debugInfo.engine.viewportClient.console.consoleReference)
+									if (Features::Debug::engine.gameViewportClient.console.reference)
 									{
 										if (ImGui::TreeNode("Details##Console"))
 										{
-											ImGui::Text("Console Class: %s", SharedData::debugInfo.engine.viewportClient.console.consoleClass.c_str());
-											ImGui::Text("Console Object: %s", SharedData::debugInfo.engine.viewportClient.console.consoleObject.c_str());
+											ImGui::Text("Console Class: %s", Features::Debug::engine.gameViewportClient.console.className.c_str());
+											ImGui::Text("Console Object: %s", Features::Debug::engine.gameViewportClient.console.objectName.c_str());
 
 											ImGui::TreePop();
 										}
@@ -751,11 +836,11 @@ void GUI::Draw()
 									{
 										if (ImGui::Button("Construct Console"))
 										{
-											bool wasConsoleConstructed = Console::ConstructConsole() && Input::CreateConsoleBindings();
-											if (wasConsoleConstructed)
-												SharedCalls::GatherDebugInformation();
+											bool wasConstructed = Unreal::Console::Construct() && Unreal::InputSettings::AssignConsoleBindings();
+											if (wasConstructed) // Only gather debug information if we're aware of changes.
+												Features::Debug::Update();
 
-											PlayActionSound(wasConsoleConstructed);
+											PlayActionSound(wasConstructed);
 										}
 									}
 
@@ -765,110 +850,108 @@ void GUI::Draw()
 
 							ImGui::NewLine();
 
-							bool fixedFrameRateEnabled = SharedData::debugInfo.engine.fixedFrameRateEnabled;
+							bool fixedFrameRateEnabled = Features::Debug::engine.fixedFrameRateEnabled;
 							if (ImGui::Checkbox("Fixed FrameRate Enabled", &fixedFrameRateEnabled))
 							{
-								if (SharedData::debugInfo.engine.engineReference)
+								if (Features::Debug::engine.reference)
 								{
-									SharedData::debugInfo.engine.fixedFrameRateEnabled = fixedFrameRateEnabled;
-									SharedData::debugInfo.engine.engineReference->bUseFixedFrameRate = fixedFrameRateEnabled;
+									Features::Debug::engine.fixedFrameRateEnabled = fixedFrameRateEnabled;
+									Features::Debug::engine.reference->bUseFixedFrameRate = fixedFrameRateEnabled;
 								}
 							}
-							float fixedFrameRate = SharedData::debugInfo.engine.fixedFrameRate;
+							float fixedFrameRate = Features::Debug::engine.fixedFrameRate;
 							if (ImGui::InputFloat("Fixed FrameRate", &fixedFrameRate, 1.0f, 10.0f))
 							{
-								if (SharedData::debugInfo.engine.engineReference)
+								if (Features::Debug::engine.reference)
 								{
-									SharedData::debugInfo.engine.fixedFrameRate = fixedFrameRate;
-									SharedData::debugInfo.engine.engineReference->FixedFrameRate = fixedFrameRate;
+									Features::Debug::engine.fixedFrameRate = fixedFrameRate;
+									Features::Debug::engine.reference->FixedFrameRate = fixedFrameRate;
 								}
 							}
 
 							ImGui::NewLine();
 
-							bool smoothFrameRateEnabled = SharedData::debugInfo.engine.smoothFrameRateEnabled;
+							bool smoothFrameRateEnabled = Features::Debug::engine.smoothFrameRateEnabled;
 							if (ImGui::Checkbox("Smooth FrameRate Enabled", &smoothFrameRateEnabled))
 							{
-								if (SharedData::debugInfo.engine.engineReference)
+								if (Features::Debug::engine.reference)
 								{
-									SharedData::debugInfo.engine.smoothFrameRateEnabled = smoothFrameRateEnabled;
-									SharedData::debugInfo.engine.engineReference->bSmoothFrameRate = smoothFrameRateEnabled;
+									Features::Debug::engine.smoothFrameRateEnabled = smoothFrameRateEnabled;
+									Features::Debug::engine.reference->bSmoothFrameRate = smoothFrameRateEnabled;
 								}
 							}
-							float smoothFrameRateRange[2] = { SharedData::debugInfo.engine.smoothFrameRateRange.LowerBound.Value, SharedData::debugInfo.engine.smoothFrameRateRange.UpperBound.Value };
+							float smoothFrameRateRange[2] = { Features::Debug::engine.smoothFrameRateRange.LowerBound.Value, Features::Debug::engine.smoothFrameRateRange.UpperBound.Value };
 							if (ImGui::InputFloat2("Smooth FrameRate Range", smoothFrameRateRange))
 							{
-								if (SharedData::debugInfo.engine.engineReference)
+								if (Features::Debug::engine.reference)
 								{
-									SDK::FFloatRange floatRange = SharedData::debugInfo.engine.smoothFrameRateRange;
+									SDK::FFloatRange floatRange = Features::Debug::engine.smoothFrameRateRange;
 									floatRange.LowerBound.Value = smoothFrameRateRange[0];
 									floatRange.UpperBound.Value = smoothFrameRateRange[1];
 
-									SharedData::debugInfo.engine.smoothFrameRateRange = floatRange;
-									SharedData::debugInfo.engine.engineReference->SmoothedFrameRateRange = floatRange;
+									Features::Debug::engine.smoothFrameRateRange = floatRange;
+									Features::Debug::engine.reference->SmoothedFrameRateRange = floatRange;
 								}
 							}
 
 							ImGui::NewLine();
 
-							bool subtitlesEnabled = SharedData::debugInfo.engine.subtitlesEnabled;
+							bool subtitlesEnabled = Features::Debug::engine.subtitlesEnabled;
 							if (ImGui::Checkbox("Subtitles Enabled", &subtitlesEnabled))
 							{
-								if (SharedData::debugInfo.engine.engineReference)
+								if (Features::Debug::engine.reference)
 								{
-									SharedData::debugInfo.engine.subtitlesEnabled = subtitlesEnabled;
-									SharedData::debugInfo.engine.engineReference->bSubtitlesEnabled = subtitlesEnabled;
+									Features::Debug::engine.subtitlesEnabled = subtitlesEnabled;
+									Features::Debug::engine.reference->bSubtitlesEnabled = subtitlesEnabled;
 								}
 							}
-							bool subtitlesForcedOff = SharedData::debugInfo.engine.subtitlesForcedOff;
+							bool subtitlesForcedOff = Features::Debug::engine.subtitlesForcedOff;
 							if (ImGui::Checkbox("Subtitles Forced Off", &subtitlesForcedOff))
 							{
-								if (SharedData::debugInfo.engine.engineReference)
+								if (Features::Debug::engine.reference)
 								{
-									SharedData::debugInfo.engine.subtitlesForcedOff = subtitlesForcedOff;
-									SharedData::debugInfo.engine.engineReference->bSubtitlesForcedOff = subtitlesForcedOff;
+									Features::Debug::engine.subtitlesForcedOff = subtitlesForcedOff;
+									Features::Debug::engine.reference->bSubtitlesForcedOff = subtitlesForcedOff;
 								}
 							}
 
 							ImGui::NewLine();
 
-							bool pauseOnLossOfFocus = SharedData::debugInfo.engine.pauseOnLossOfFocus;
+							bool pauseOnLossOfFocus = Features::Debug::engine.pauseOnLossOfFocus;
 							if (ImGui::Checkbox("Pause On Loss Of Focus", &pauseOnLossOfFocus))
 							{
-								if (SharedData::debugInfo.engine.engineReference)
+								if (Features::Debug::engine.reference)
 								{
-									SharedData::debugInfo.engine.pauseOnLossOfFocus = pauseOnLossOfFocus;
-									SharedData::debugInfo.engine.engineReference->bPauseOnLossOfFocus = pauseOnLossOfFocus;
+									Features::Debug::engine.pauseOnLossOfFocus = pauseOnLossOfFocus;
+									Features::Debug::engine.reference->bPauseOnLossOfFocus = pauseOnLossOfFocus;
 								}
 							}
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
-					ImGui::TextBoolPresenceColored("Game Instance:", SharedData::debugInfo.gameInstance.gameInstanceReference);
+					ImGui::TextBoolPresenceColored("Game Instance:", Features::Debug::gameInstance.reference);
 					ImGui::SetFontRegular();
-					if (SharedData::debugInfo.gameInstance.gameInstanceReference)
+					if (Features::Debug::gameInstance.reference)
 					{
 						if (ImGui::CollapsingHeader("Details##GameInstance"))
 						{
-							ImGui::Text("Game Instance Class: %s", SharedData::debugInfo.gameInstance.gameInstanceClass.c_str());
-							ImGui::Text("Game Instance Object: %s", SharedData::debugInfo.gameInstance.gameInstanceObject.c_str());
+							ImGui::Text("Game Instance Class: %s", Features::Debug::gameInstance.className.c_str());
+							ImGui::Text("Game Instance Object: %s", Features::Debug::gameInstance.objectName.c_str());
 
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Online Session:", SharedData::debugInfo.gameInstance.onlineSession.onlineSessionReference);
+							ImGui::TextBoolPresenceColored("Online Session:", Features::Debug::gameInstance.onlineSession.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.gameInstance.onlineSession.onlineSessionReference)
+							if (Features::Debug::gameInstance.onlineSession.reference)
 							{
 								if (ImGui::TreeNode("Details##OnlineSession"))
 								{
-									ImGui::Text("Online Session Class: %s", SharedData::debugInfo.gameInstance.onlineSession.onlineSessionClass.c_str());
-									ImGui::Text("Online Session Object: %s", SharedData::debugInfo.gameInstance.onlineSession.onlineSessionObject.c_str());
+									ImGui::Text("Online Session Class: %s", Features::Debug::gameInstance.onlineSession.className.c_str());
+									ImGui::Text("Online Session Object: %s", Features::Debug::gameInstance.onlineSession.objectName.c_str());
 
 									ImGui::TreePop();
 								}
@@ -876,74 +959,72 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
-					ImGui::TextBoolPresenceColored("Game Mode:", SharedData::debugInfo.gameMode.gameModeReference);
+					ImGui::TextBoolPresenceColored("Game Mode:", Features::Debug::gameMode.reference);
 					ImGui::SetFontRegular();
-					if (SharedData::debugInfo.gameMode.gameModeReference)
+					if (Features::Debug::gameMode.reference)
 					{
 						if (ImGui::CollapsingHeader("Details##GameMode"))
 						{
-							ImGui::Text("Game Mode Class: %s", SharedData::debugInfo.gameMode.gameModeClass.c_str());
-							ImGui::Text("Game Mode Object: %s", SharedData::debugInfo.gameMode.gameModeObject.c_str());
+							ImGui::Text("Game Mode Class: %s", Features::Debug::gameMode.className.c_str());
+							ImGui::Text("Game Mode Object: %s", Features::Debug::gameMode.objectName.c_str());
 
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Game Session:", SharedData::debugInfo.gameMode.gameSession.gameSessionReference);
+							ImGui::TextBoolPresenceColored("Game Session:", Features::Debug::gameMode.gameSession.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+							if (Features::Debug::gameMode.gameSession.reference)
 							{
 								if (ImGui::TreeNode("Details##GameSession"))
 								{
-									ImGui::Text("Game Session Class: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionClass.c_str());
-									ImGui::Text("Game Session Object: %s", SharedData::debugInfo.gameMode.gameSession.gameSessionObject.c_str());
+									ImGui::Text("Game Session Class: %s", Features::Debug::gameMode.gameSession.className.c_str());
+									ImGui::Text("Game Session Object: %s", Features::Debug::gameMode.gameSession.objectName.c_str());
 
 									ImGui::NewLine();
 
-									int32_t maxPlayers = SharedData::debugInfo.gameMode.gameSession.maxPlayers;
+									int32_t maxPlayers = Features::Debug::gameMode.gameSession.maxPlayers;
 									if (ImGui::InputInt("Max Players", &maxPlayers, 1, 10))
 									{
-										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										if (Features::Debug::gameMode.gameSession.reference)
 										{
-											SharedData::debugInfo.gameMode.gameSession.maxPlayers = maxPlayers;
-											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxPlayers = maxPlayers;
+											Features::Debug::gameMode.gameSession.maxPlayers = maxPlayers;
+											Features::Debug::gameMode.gameSession.reference->MaxPlayers = maxPlayers;
 										}
 									}
-									int32_t maxSpectators = SharedData::debugInfo.gameMode.gameSession.maxSpectators;
+									int32_t maxSpectators = Features::Debug::gameMode.gameSession.maxSpectators;
 									if (ImGui::InputInt("Max Spectators", &maxSpectators, 1, 10))
 									{
-										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										if (Features::Debug::gameMode.gameSession.reference)
 										{
-											SharedData::debugInfo.gameMode.gameSession.maxSpectators = maxSpectators;
-											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxSpectators = maxSpectators;
+											Features::Debug::gameMode.gameSession.maxSpectators = maxSpectators;
+											Features::Debug::gameMode.gameSession.reference->MaxSpectators = maxSpectators;
 										}
 									}
-									int32_t maxPartySize = SharedData::debugInfo.gameMode.gameSession.maxPartySize;
+									int32_t maxPartySize = Features::Debug::gameMode.gameSession.maxPartySize;
 									if (ImGui::InputInt("Max Party Size", &maxPartySize, 1, 10))
 									{
-										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										if (Features::Debug::gameMode.gameSession.reference)
 										{
-											SharedData::debugInfo.gameMode.gameSession.maxPartySize = maxPartySize;
-											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxPartySize = maxPartySize;
+											Features::Debug::gameMode.gameSession.maxPartySize = maxPartySize;
+											Features::Debug::gameMode.gameSession.reference->MaxPartySize = maxPartySize;
 										}
 									}
-									int32_t maxSplitScreensPerConnection = SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection;
+									int32_t maxSplitScreensPerConnection = Features::Debug::gameMode.gameSession.maxSplitScreensPerConnection;
 									if (ImGui::InputInt("Max Split Screens Per Connection", &maxSplitScreensPerConnection, 1, 10))
 									{
-										if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference)
+										if (Features::Debug::gameMode.gameSession.reference)
 										{
-											SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection = maxSplitScreensPerConnection;
-											SharedData::debugInfo.gameMode.gameSession.gameSessionReference->MaxSplitscreensPerConnection = maxSplitScreensPerConnection;
+											Features::Debug::gameMode.gameSession.maxSplitScreensPerConnection = maxSplitScreensPerConnection;
+											Features::Debug::gameMode.gameSession.reference->MaxSplitscreensPerConnection = maxSplitScreensPerConnection;
 										}
 									}
 
 									ImGui::NewLine();
 
-									ImGui::ReadOnlyInputText("Session Name:", SharedData::debugInfo.gameMode.gameSession.sessionName.c_str(), true);
+									ImGui::ReadOnlyInputText("Session Name:", Features::Debug::gameMode.gameSession.sessionName.c_str(), true);
 
 									ImGui::TreePop();
 								}
@@ -951,77 +1032,75 @@ void GUI::Draw()
 
 							ImGui::NewLine();
 
-							ImGui::TextIntColored("Players Count:", SharedData::debugInfo.gameMode.playersCount);
-							ImGui::TextIntColored("Spectators Count:", SharedData::debugInfo.gameMode.spectatorsCount);
+							ImGui::TextIntColored("Players Count:", Features::Debug::gameMode.playersCount);
+							ImGui::TextIntColored("Spectators Count:", Features::Debug::gameMode.spectatorsCount);
 
 							ImGui::NewLine();
 
-							ImGui::TextBoolColored("Start Players As Spectator:", SharedData::debugInfo.gameMode.startPlayersAsSpectators);
-							ImGui::ReadOnlyInputText("Default Player Name:", SharedData::debugInfo.gameMode.defaultPlayerName.c_str(), true);
+							ImGui::TextBoolColored("Start Players As Spectator:", Features::Debug::gameMode.startPlayersAsSpectators);
+							ImGui::ReadOnlyInputText("Default Player Name:", Features::Debug::gameMode.defaultPlayerName.c_str(), true);
 
 							ImGui::NewLine();
 
-							bool useSeamlessTravel = SharedData::debugInfo.gameMode.useSeamlessTravel;
+							bool useSeamlessTravel = Features::Debug::gameMode.useSeamlessTravel;
 							if (ImGui::Checkbox("Use Seamless Travel", &useSeamlessTravel))
 							{
-								if (SharedData::debugInfo.gameMode.gameModeReference)
+								if (Features::Debug::gameMode.reference)
 								{
-									SharedData::debugInfo.gameMode.useSeamlessTravel = useSeamlessTravel;
-									SharedData::debugInfo.gameMode.gameModeReference->bUseSeamlessTravel = useSeamlessTravel;
+									Features::Debug::gameMode.useSeamlessTravel = useSeamlessTravel;
+									Features::Debug::gameMode.reference->bUseSeamlessTravel = useSeamlessTravel;
 								}
 							}
-							bool isPausable = SharedData::debugInfo.gameMode.isPausable;
+							bool isPausable = Features::Debug::gameMode.isPausable;
 							if (ImGui::Checkbox("Is Pausable", &isPausable))
 							{
-								if (SharedData::debugInfo.gameMode.gameModeReference)
+								if (Features::Debug::gameMode.reference)
 								{
-									SharedData::debugInfo.gameMode.isPausable = isPausable;
-									SharedData::debugInfo.gameMode.gameModeReference->bPauseable = isPausable;
+									Features::Debug::gameMode.isPausable = isPausable;
+									Features::Debug::gameMode.reference->bPauseable = isPausable;
 								}
 							}
 
 							ImGui::NewLine();
 
-							ImGui::ReadOnlyInputText("Options:", SharedData::debugInfo.gameMode.options.c_str(), true);
+							ImGui::ReadOnlyInputText("Options:", Features::Debug::gameMode.options.c_str(), true);
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 					
 					ImGui::SetFontTitle();
-					ImGui::TextBoolPresenceColored("Player Controller:", SharedData::debugInfo.playerController.playerControllerReference);
+					ImGui::TextBoolPresenceColored("Player Controller:", Features::Debug::playerController.reference);
 					ImGui::SetFontRegular();
-					if (SharedData::debugInfo.playerController.playerControllerReference)
+					if (Features::Debug::playerController.reference)
 					{
 						if (ImGui::CollapsingHeader("Details##PlayerController"))
 						{
-							ImGui::Text("Player Controller Class: %s", SharedData::debugInfo.playerController.playerControllerClass.c_str());
-							ImGui::Text("Player Controller Object: %s", SharedData::debugInfo.playerController.playerControllerObject.c_str());
+							ImGui::Text("Player Controller Class: %s", Features::Debug::playerController.className.c_str());
+							ImGui::Text("Player Controller Object: %s", Features::Debug::playerController.objectName.c_str());
 
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Pawn:", SharedData::debugInfo.playerController.pawn.pawnReference);
+							ImGui::TextBoolPresenceColored("Pawn:", Features::Debug::playerController.pawn.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.playerController.pawn.pawnReference)
+							if (Features::Debug::playerController.pawn.reference)
 							{
 								if (ImGui::TreeNode("Details##Pawn"))
 								{
-									ImGui::Text("Pawn Class: %s", SharedData::debugInfo.playerController.pawn.pawnClass.c_str());
-									ImGui::Text("Pawn Object: %s", SharedData::debugInfo.playerController.pawn.pawnObject.c_str());
-									ImGui::TextVectorColored("Location:", SharedData::debugInfo.playerController.pawn.location);
-									ImGui::TextRotatorColored("Rotation:", SharedData::debugInfo.playerController.pawn.rotation);
-									ImGui::TextVectorColored("Scale:", SharedData::debugInfo.playerController.pawn.scale);
+									ImGui::Text("Pawn Class: %s", Features::Debug::playerController.pawn.className.c_str());
+									ImGui::Text("Pawn Object: %s", Features::Debug::playerController.pawn.objectName.c_str());
+									ImGui::TextVectorColored("Location:", Features::Debug::playerController.pawn.location);
+									ImGui::TextRotatorColored("Rotation:", Features::Debug::playerController.pawn.rotation);
+									ImGui::TextVectorColored("Scale:", Features::Debug::playerController.pawn.scale);
 
 									ImGui::NewLine();
 
-									ImGui::TextBoolColored("Is Controlled:", SharedData::debugInfo.playerController.pawn.isControlled);
-									ImGui::TextBoolColored("Is Pawn Controlled:", SharedData::debugInfo.playerController.pawn.isPawnControlled);
-									ImGui::TextBoolColored("Is Player Controlled:", SharedData::debugInfo.playerController.pawn.isPlayerControlled);
-									ImGui::TextBoolColored("Is Locally Controlled:", SharedData::debugInfo.playerController.pawn.isLocallyControlled);
-									ImGui::TextBoolColored("Is Bot Controlled:", SharedData::debugInfo.playerController.pawn.isBotControlled);
+									ImGui::TextBoolColored("Is Controlled:", Features::Debug::playerController.pawn.isControlled);
+									ImGui::TextBoolColored("Is Pawn Controlled:", Features::Debug::playerController.pawn.isPawnControlled);
+									ImGui::TextBoolColored("Is Player Controlled:", Features::Debug::playerController.pawn.isPlayerControlled);
+									ImGui::TextBoolColored("Is Locally Controlled:", Features::Debug::playerController.pawn.isLocallyControlled);
+									ImGui::TextBoolColored("Is Bot Controlled:", Features::Debug::playerController.pawn.isBotControlled);
 
 									ImGui::TreePop();
 								}
@@ -1030,17 +1109,17 @@ void GUI::Draw()
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Camera Manager:", SharedData::debugInfo.playerController.cameraManager.cameraManagerReference);
+							ImGui::TextBoolPresenceColored("Camera Manager:", Features::Debug::playerController.cameraManager.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.playerController.cameraManager.cameraManagerReference)
+							if (Features::Debug::playerController.cameraManager.reference)
 							{
 								if (ImGui::TreeNode("Details##CameraManager"))
 								{
-									ImGui::Text("Camera Manager Class: %s", SharedData::debugInfo.playerController.cameraManager.cameraManagerClass.c_str());
-									ImGui::Text("Camera Manager Object: %s", SharedData::debugInfo.playerController.cameraManager.cameraManagerObject.c_str());
-									ImGui::TextVectorColored("Location:", SharedData::debugInfo.playerController.cameraManager.location);
-									ImGui::TextRotatorColored("Rotation:", SharedData::debugInfo.playerController.cameraManager.rotation);
-									ImGui::TextVectorColored("Scale:", SharedData::debugInfo.playerController.cameraManager.scale);
+									ImGui::Text("Camera Manager Class: %s", Features::Debug::playerController.cameraManager.className.c_str());
+									ImGui::Text("Camera Manager Object: %s", Features::Debug::playerController.cameraManager.objectName.c_str());
+									ImGui::TextVectorColored("Location:", Features::Debug::playerController.cameraManager.location);
+									ImGui::TextRotatorColored("Rotation:", Features::Debug::playerController.cameraManager.rotation);
+									ImGui::TextVectorColored("Scale:", Features::Debug::playerController.cameraManager.scale);
 
 									ImGui::TreePop();
 								}
@@ -1049,14 +1128,14 @@ void GUI::Draw()
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Cheat Manager:", SharedData::debugInfo.playerController.cheatManager.cheatManagerReference);
+							ImGui::TextBoolPresenceColored("Cheat Manager:", Features::Debug::playerController.cheatManager.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.playerController.cheatManager.cheatManagerReference)
+							if (Features::Debug::playerController.cheatManager.reference)
 							{
 								if (ImGui::TreeNode("Details##CheatManager"))
 								{
-									ImGui::Text("Cheat Manager Class: %s", SharedData::debugInfo.playerController.cheatManager.cheatManagerClass.c_str());
-									ImGui::Text("Cheat Manager Object: %s", SharedData::debugInfo.playerController.cheatManager.cheatManagerObject.c_str());
+									ImGui::Text("Cheat Manager Class: %s", Features::Debug::playerController.cheatManager.className.c_str());
+									ImGui::Text("Cheat Manager Object: %s", Features::Debug::playerController.cheatManager.objectName.c_str());
 
 									ImGui::TreePop();
 								}
@@ -1065,41 +1144,39 @@ void GUI::Draw()
 							{
 								if (ImGui::Button("Construct Cheat Manager"))
 								{
-									bool wasCheatManagerConstructed = CheatManager::ConstructCheatManager();
-									if (wasCheatManagerConstructed)
-										SharedCalls::GatherDebugInformation();
+									bool wasConstructed = Unreal::CheatManager::Construct();
+									if (wasConstructed) // Only gather debug information if we're aware of changes.
+										Features::Debug::Update();
 
-									PlayActionSound(wasCheatManagerConstructed);
+									PlayActionSound(wasConstructed);
 								}
 							}
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
-					ImGui::TextBoolPresenceColored("World:", SharedData::debugInfo.world.worldReference);
+					ImGui::TextBoolPresenceColored("World:", Features::Debug::world.reference);
 					ImGui::SetFontRegular();
-					if (SharedData::debugInfo.world.worldReference)
+					if (Features::Debug::world.reference)
 					{
 						if (ImGui::CollapsingHeader("Details##World"))
 						{
-							ImGui::Text("World Class: %s", SharedData::debugInfo.world.worldClass.c_str());
-							ImGui::Text("World Object: %s", SharedData::debugInfo.world.worldObject.c_str());
+							ImGui::Text("World Class: %s", Features::Debug::world.className.c_str());
+							ImGui::Text("World Object: %s", Features::Debug::world.objectName.c_str());
 
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Game State:", SharedData::debugInfo.world.gameState.gameStateReference);
+							ImGui::TextBoolPresenceColored("Game State:", Features::Debug::world.gameState.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.world.gameState.gameStateReference)
+							if (Features::Debug::world.gameState.reference)
 							{
 								if (ImGui::TreeNode("Details##GameState"))
 								{
-									ImGui::Text("Game State Class: %s", SharedData::debugInfo.world.gameState.gameStateClass.c_str());
-									ImGui::Text("Game State Object: %s", SharedData::debugInfo.world.gameState.gameStateObject.c_str());
+									ImGui::Text("Game State Class: %s", Features::Debug::world.gameState.className.c_str());
+									ImGui::Text("Game State Object: %s", Features::Debug::world.gameState.objectName.c_str());
 
 									ImGui::TreePop();
 								}
@@ -1108,14 +1185,14 @@ void GUI::Draw()
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Net Driver:", SharedData::debugInfo.world.netDriver.netDriverReference);
+							ImGui::TextBoolPresenceColored("Net Driver:", Features::Debug::world.netDriver.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.world.netDriver.netDriverReference)
+							if (Features::Debug::world.netDriver.reference)
 							{
 								if (ImGui::TreeNode("Details##NetDriver"))
 								{
-									ImGui::Text("Net Driver Class: %s", SharedData::debugInfo.world.netDriver.netDriverClass.c_str());
-									ImGui::Text("Net Driver Object: %s", SharedData::debugInfo.world.netDriver.netDriverObject.c_str());
+									ImGui::Text("Net Driver Class: %s", Features::Debug::world.netDriver.className.c_str());
+									ImGui::Text("Net Driver Object: %s", Features::Debug::world.netDriver.objectName.c_str());
 
 									ImGui::TreePop();
 								}
@@ -1124,14 +1201,14 @@ void GUI::Draw()
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Demo Net Driver:", SharedData::debugInfo.world.demoNetDriver.demoNetDriverReference);
+							ImGui::TextBoolPresenceColored("Demo Net Driver:", Features::Debug::world.demoNetDriver.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.world.demoNetDriver.demoNetDriverReference)
+							if (Features::Debug::world.demoNetDriver.reference)
 							{
 								if (ImGui::TreeNode("Details##DemoNetDriver"))
 								{
-									ImGui::Text("Demo Net Driver Class: %s", SharedData::debugInfo.world.demoNetDriver.demoNetDriverClass.c_str());
-									ImGui::Text("Demo Net Driver Object: %s", SharedData::debugInfo.world.demoNetDriver.demoNetDriverObject.c_str());
+									ImGui::Text("Demo Net Driver Class: %s", Features::Debug::world.demoNetDriver.className.c_str());
+									ImGui::Text("Demo Net Driver Object: %s", Features::Debug::world.demoNetDriver.objectName.c_str());
 
 									ImGui::TreePop();
 								}
@@ -1140,36 +1217,35 @@ void GUI::Draw()
 							ImGui::NewLine();
 
 							ImGui::SetFontTitle();
-							ImGui::TextBoolPresenceColored("Persistent Level:", SharedData::debugInfo.world.persistentLevel.levelReference);
+							ImGui::TextBoolPresenceColored("Persistent Level:", Features::Debug::world.persistentLevel.reference);
 							ImGui::SetFontRegular();
-							if (SharedData::debugInfo.world.persistentLevel.levelReference)
+							if (Features::Debug::world.persistentLevel.reference)
 							{
 								if (ImGui::TreeNode("Details##PersistentLevel"))
 								{
-									ImGui::Text("Persistent Level Class: %s", SharedData::debugInfo.world.persistentLevel.levelClass.c_str());
-									ImGui::Text("Persistent Level Object: %s", SharedData::debugInfo.world.persistentLevel.levelObject.c_str());
-									ImGui::Text("Persistent Level Name: %s", SharedData::debugInfo.world.persistentLevel.levelName.c_str());
-									ImGui::TextBoolColored("Is Visible:", SharedData::debugInfo.world.persistentLevel.isLevelVisible);
+									ImGui::Text("Persistent Level Class: %s", Features::Debug::world.persistentLevel.className.c_str());
+									ImGui::Text("Persistent Level Object: %s", Features::Debug::world.persistentLevel.objectName.c_str());
+									ImGui::TextBoolColored("Is Visible:", Features::Debug::world.persistentLevel.isVisible);
 
 									ImGui::NewLine();
 
-									bool worldSettingsPresent = SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsReference;
+									bool worldSettingsPresent = Features::Debug::world.persistentLevel.worldSettings.reference;
 									ImGui::TextBoolPresenceColored("World Settings:", worldSettingsPresent);
 									if (worldSettingsPresent)
 									{
 										if (ImGui::TreeNode("World Settings"))
 										{
-											ImGui::Text("World Settings Class: %s", SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsClass.c_str());
-											ImGui::Text("World Settings Object: %s", SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsObject.c_str());
+											ImGui::Text("World Settings Class: %s", Features::Debug::world.persistentLevel.worldSettings.className.c_str());
+											ImGui::Text("World Settings Object: %s", Features::Debug::world.persistentLevel.worldSettings.objectName.c_str());
 
 											ImGui::NewLine();
 
-											ImGui::TextBoolColored("High Priority Loading:", SharedData::debugInfo.world.persistentLevel.worldSettings.worldHighPriorityLoading);
-											ImGui::TextBoolColored("Local High Priority Loading:", SharedData::debugInfo.world.persistentLevel.worldSettings.worldLocalHighPriorityLoading);
+											ImGui::TextBoolColored("High Priority Loading:", Features::Debug::world.persistentLevel.worldSettings.highPriorityLoading);
+											ImGui::TextBoolColored("Local High Priority Loading:", Features::Debug::world.persistentLevel.worldSettings.localHighPriorityLoading);
 
 											ImGui::NewLine();
 
-											ImGui::TextFloat("Unreal Units = 1m:", SharedData::debugInfo.world.persistentLevel.worldSettings.worldToMeters);
+											ImGui::TextFloat("Unreal Units = 1m:", Features::Debug::world.persistentLevel.worldSettings.unitsToMeters);
 
 											ImGui::TreePop();
 										}
@@ -1177,29 +1253,29 @@ void GUI::Draw()
 
 									ImGui::NewLine();
 
-									bool areStreamingLevelsPresent = SharedData::debugInfo.world.streamingLevels.size() > 0;
+									bool areStreamingLevelsPresent = Features::Debug::world.streamingLevels.size() > 0;
 									ImGui::TextBoolMultiplePresenceColored("Streaming Levels:", areStreamingLevelsPresent);
 									if (areStreamingLevelsPresent)
 									{
 										if (ImGui::TreeNode("Streaming Levels"))
 										{
-											for (SharedData::S_StreamingLevel streamingLevel : SharedData::debugInfo.world.streamingLevels)
+											for (Unreal::LevelStreaming::DataStructure streamingLevel : Features::Debug::world.streamingLevels)
 											{
 												ImVec4 levelColor
 												{
-													streamingLevel.streamingLevelColor.R,
-													streamingLevel.streamingLevelColor.G,
-													streamingLevel.streamingLevelColor.B,
-													streamingLevel.streamingLevelColor.A
+													streamingLevel.levelColor.R,
+													streamingLevel.levelColor.G,
+													streamingLevel.levelColor.B,
+													streamingLevel.levelColor.A
 												};
 
 												ImGui::PushStyleColor(ImGuiCol_Text, levelColor);
-												bool isTreeNodeOpen = ImGui::TreeNode(streamingLevel.streamingLevelPath.c_str());
+												bool isTreeNodeOpen = ImGui::TreeNode(streamingLevel.levelPath.c_str());
 												ImGui::PopStyleColor();
 
 												if (isTreeNodeOpen)
 												{
-													bool isLevelLoaded = streamingLevel.level.levelReference;
+													bool isLevelLoaded = streamingLevel.level.reference;
 
 													ImGui::TextBoolColored("Is Loaded:", isLevelLoaded);
 													ImGui::SameLine();
@@ -1207,33 +1283,25 @@ void GUI::Draw()
 													ImGui::SameLine();
 													if (ImGui::Button(isLevelLoaded ? "Unload" : "Load"))
 													{
-														if (streamingLevel.streamingLevelReference != nullptr)
+														if (streamingLevel.reference != nullptr)
 														{
-															streamingLevel.streamingLevelReference->SetShouldBeLoaded(!isLevelLoaded);
-
-															if (SharedData::SharedData::debugInfo.autoUpdate == false)
-																StartWaitMode(3.25);
-
+															streamingLevel.reference->SetShouldBeLoaded(!isLevelLoaded);
 															PlayActionSound(true);
 														}
 														else
 															PlayActionSound(false);
 													}
 
-													ImGui::TextBoolColored("Is Visible:", streamingLevel.level.isLevelVisible);
+													ImGui::TextBoolColored("Is Visible:", streamingLevel.level.isVisible);
 													ImGui::SameLine();
 													ImGui::Spacing();
 													ImGui::SameLine();
 													ImGui::BeginDisabled(isLevelLoaded == false);
-													if (ImGui::Button(streamingLevel.level.isLevelVisible ? "Hide" : "Show"))
+													if (ImGui::Button(streamingLevel.level.isVisible ? "Hide" : "Show"))
 													{
-														if (isLevelLoaded && streamingLevel.streamingLevelReference != nullptr)
+														if (isLevelLoaded && streamingLevel.reference != nullptr)
 														{
-															streamingLevel.streamingLevelReference->SetShouldBeVisible(!streamingLevel.level.isLevelVisible);
-
-															if (SharedData::SharedData::debugInfo.autoUpdate == false)
-																StartWaitMode(3.25);
-
+															streamingLevel.reference->SetShouldBeVisible(!streamingLevel.level.isVisible);
 															PlayActionSound(true);
 														}
 														else
@@ -1243,23 +1311,23 @@ void GUI::Draw()
 
 													ImGui::NewLine();
 
-													bool worldSettingsPresent = streamingLevel.level.worldSettings.worldSettingsReference;
+													bool worldSettingsPresent = streamingLevel.level.worldSettings.reference;
 													ImGui::TextBoolPresence("World Settings:", worldSettingsPresent);
 													if (worldSettingsPresent)
 													{
 														if (ImGui::TreeNode("World Settings"))
 														{
-															ImGui::Text("World Settings Class: %s", streamingLevel.level.worldSettings.worldSettingsClass.c_str());
-															ImGui::Text("World Settings Object: %s", streamingLevel.level.worldSettings.worldSettingsObject.c_str());
+															ImGui::Text("World Settings Class: %s", streamingLevel.level.worldSettings.className.c_str());
+															ImGui::Text("World Settings Object: %s", streamingLevel.level.worldSettings.objectName.c_str());
 
 															ImGui::NewLine();
 
-															ImGui::TextBoolColored("High Priority Loading:", streamingLevel.level.worldSettings.worldHighPriorityLoading);
-															ImGui::TextBoolColored("Local High Priority Loading:", streamingLevel.level.worldSettings.worldLocalHighPriorityLoading);
+															ImGui::TextBoolColored("High Priority Loading:", streamingLevel.level.worldSettings.highPriorityLoading);
+															ImGui::TextBoolColored("Local High Priority Loading:", streamingLevel.level.worldSettings.localHighPriorityLoading);
 
 															ImGui::NewLine();
 
-															ImGui::TextFloat("Unreal Units = 1m:", streamingLevel.level.worldSettings.worldToMeters);
+															ImGui::TextFloat("Unreal Units = 1m:", streamingLevel.level.worldSettings.unitsToMeters);
 
 															ImGui::TreePop();
 														}
@@ -1275,14 +1343,14 @@ void GUI::Draw()
 
 									ImGui::NewLine();
 
-									ImGui::TextFloatColored("Game Time (In Seconds):", SharedData::debugInfo.world.gameTimeInSeconds);
+									ImGui::TextFloatColored("Game Time (In Seconds):", Features::Debug::world.gameTimeInSeconds);
 
 									ImGui::NewLine();
 
-									ImGui::TextBoolColored("Is Server:", SharedData::debugInfo.world.isServer);
-									ImGui::TextBoolColored("Is Dedicated Server:", SharedData::debugInfo.world.isDedicatedServer);
-									ImGui::TextBoolColored("Is Split Screen:", SharedData::debugInfo.world.isSplitScreen);
-									ImGui::TextBoolColored("Is Standalone:", SharedData::debugInfo.world.isStandalone);
+									ImGui::TextBoolColored("Is Server:", Features::Debug::world.isServer);
+									ImGui::TextBoolColored("Is Dedicated Server:", Features::Debug::world.isDedicatedServer);
+									ImGui::TextBoolColored("Is Split Screen:", Features::Debug::world.isSplitScreen);
+									ImGui::TextBoolColored("Is Standalone:", Features::Debug::world.isStandalone);
 
 									ImGui::TreePop();
 								}
@@ -1290,44 +1358,75 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
 					ImGui::SetFontTitle();
 					ImGui::Text("Actors");
 					ImGui::SetFontRegular();
 					if (ImGui::CollapsingHeader("Details##Actors"))
 					{
+#ifdef ACTOR_TRACE
+						ImGui::SetFontTitle();
+						ImGui::Text("Actor Trace");
+						ImGui::SetFontSmall();
+						ImGui::Text("Performs a trace starting at the camera's position and outputs the name of the Actor hit by the trace.");
+						ImGui::Text("X - Location at where trace has hit an Actor.");
+						ImGui::Text("@ - Location at where trace has ended without a hit.");
+						ImGui::Text("O - Location at where trace has started.");
+						ImGui::SetFontRegular();
+						ImGui::Checkbox("Enabled##ActorTrace", &Features::ActorTrace::enabled);
+						ImGui::BeginDisabled(Features::ActorTrace::enabled == false);
+						if (ImGui::TreeNode("Settings##ActorTrace"))
+						{
+							ImGui::KeyBindingInput("Key Binding:", &Keybindings::actorTrace);
+
+							ImGui::NewLine();
+
+							ImGui::Checkbox("Show On Screen##ActorTrace", &Features::ActorTrace::showOnScreen);
+							ImGui::Checkbox("Show Line Trace##ActorTrace", &Features::ActorTrace::showLineTrace);
+
+							ImGui::NewLine();
+
+							ImGui::ColorPicker4("Trace Color", Features::ActorTrace::traceColor);
+							ImGui::InputFloat("Trace Thickness", &Features::ActorTrace::traceThickness, 0.1f, 1.0f);
+							ImGui::InputFloat("Trace Length", &Features::ActorTrace::traceLength, 1.0f, 10.0f);
+
+							ImGui::TreePop();
+						}
+						ImGui::EndDisabled();
+
+						ImGui::NewLine();
+#endif
+
 						if (ImGui::Button("Update##Actors"))
 						{
-							SharedCalls::GatherActors();
+							Features::ActorsList::Update();
 							PlayActionSound(true);
 						}
 						ImGui::SameLine();
 						ImGui::Spacing();
 						ImGui::SameLine();
-						ImGui::InputText("Search Filter", SharedData::debugInfo.gatherActorsFeature.filterBuffer, SharedData::debugInfo.gatherActorsFeature.filterBufferSize);
-						size_t filterLength = strlen(SharedData::debugInfo.gatherActorsFeature.filterBuffer);
+						ImGui::InputText("Search Filter", Features::ActorsList::filterBuffer, Features::ActorsList::filterBufferSize);
+						size_t filterLength = strlen(Features::ActorsList::filterBuffer);
 						ImGui::SameLine();
 						ImGui::Spacing();
 						ImGui::SameLine();
-						ImGui::Checkbox("Case Sensitive", &SharedData::debugInfo.gatherActorsFeature.filterCaseSensitive);
+						ImGui::Checkbox("Case Sensitive", &Features::ActorsList::filterCaseSensitive);
 
 						ImGui::NewLine();
 
-						for (SharedData::S_Actor& actor : SharedData::debugInfo.gatherActorsFeature.actors) // <-- Reference!
+						for (Unreal::Actor::DataStructure& actor : Features::ActorsList::actors) // <-- Reference!
 						{
 							bool outputToUserInterface = filterLength == 0;
 
 							if (outputToUserInterface == false)
 							{
-								if (SharedData::debugInfo.gatherActorsFeature.filterCaseSensitive)
-									outputToUserInterface = actor.actorObject.find(SharedData::debugInfo.gatherActorsFeature.filterBuffer) != std::string::npos;
+								if (Features::ActorsList::filterCaseSensitive)
+									outputToUserInterface = actor.objectName.find(Features::ActorsList::filterBuffer) != std::string::npos;
 								else
 								{
-									std::string actorObjectLower = actor.actorObject;
-									std::string filterLower = SharedData::debugInfo.gatherActorsFeature.filterBuffer;
+									std::string actorObjectLower = actor.objectName;
+									std::string filterLower = Features::ActorsList::filterBuffer;
 
 									std::transform(actorObjectLower.begin(), actorObjectLower.end(), actorObjectLower.begin(),
 										[](unsigned char c) { return std::tolower(c); });
@@ -1340,12 +1439,12 @@ void GUI::Draw()
 
 							if (outputToUserInterface)
 							{
-								if (ImGui::TreeNode(actor.actorObject.c_str()))
+								if (ImGui::TreeNode(actor.objectName.c_str()))
 								{
-									ImGui::PushID(actor.actorObject.c_str());
+									ImGui::PushID(actor.objectName.c_str());
 
-									ImGui::Text("Actor Class: %s", actor.actorClass.c_str());
-									ImGui::Text("Actor Object: %s", actor.actorObject.c_str());
+									ImGui::Text("Actor Class: %s", actor.className.c_str());
+									ImGui::Text("Actor Object: %s", actor.objectName.c_str());
 
 									float actorLocation[3] = { actor.location.X, actor.location.Y, actor.location.Z };
 									ImGui::Text("Location:");
@@ -1355,9 +1454,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Set##Location"))
 									{
-										if (actor.actorReference)
+										if (actor.reference)
 										{
-											actor.actorReference->K2_TeleportTo(actor.location, actor.actorReference->K2_GetActorRotation());
+											actor.reference->K2_TeleportTo(actor.location, actor.reference->K2_GetActorRotation());
 											PlayActionSound(true);
 										}
 										else
@@ -1372,9 +1471,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Set##Rotation"))
 									{
-										if (actor.actorReference)
+										if (actor.reference)
 										{
-											actor.actorReference->K2_TeleportTo(actor.actorReference->K2_GetActorLocation(), actor.rotation);
+											actor.reference->K2_TeleportTo(actor.reference->K2_GetActorLocation(), actor.rotation);
 											PlayActionSound(true);
 										}
 										else
@@ -1389,9 +1488,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Set##Scale"))
 									{
-										if (actor.actorReference)
+										if (actor.reference)
 										{
-											actor.actorReference->SetActorScale3D(actor.scale);
+											actor.reference->SetActorScale3D(actor.scale);
 											PlayActionSound(true);
 										}
 										else
@@ -1402,9 +1501,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Static"))
 									{
-										if (actor.actorReference && actor.actorReference->RootComponent)
+										if (actor.reference && actor.reference->RootComponent)
 										{
-											actor.actorReference->RootComponent->Mobility = SDK::EComponentMobility::Static;
+											actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Static;
 											PlayActionSound(true);
 										}
 										else
@@ -1413,9 +1512,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Stationary"))
 									{
-										if (actor.actorReference && actor.actorReference->RootComponent)
+										if (actor.reference && actor.reference->RootComponent)
 										{
-											actor.actorReference->RootComponent->Mobility = SDK::EComponentMobility::Stationary;
+											actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Stationary;
 											PlayActionSound(true);
 										}
 										else
@@ -1424,9 +1523,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Movable"))
 									{
-										if (actor.actorReference && actor.actorReference->RootComponent)
+										if (actor.reference && actor.reference->RootComponent)
 										{
-											actor.actorReference->RootComponent->Mobility = SDK::EComponentMobility::Movable;
+											actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Movable;
 											PlayActionSound(true);
 										}
 										else
@@ -1437,9 +1536,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Set Visible"))
 									{
-										if (actor.actorReference)
+										if (actor.reference)
 										{
-											actor.actorReference->SetActorHiddenInGame(false);
+											actor.reference->SetActorHiddenInGame(false);
 											PlayActionSound(true);
 										}
 										else
@@ -1448,9 +1547,9 @@ void GUI::Draw()
 									ImGui::SameLine();
 									if (ImGui::Button("Set Hidden"))
 									{
-										if (actor.actorReference)
+										if (actor.reference)
 										{
-											actor.actorReference->SetActorHiddenInGame(true);
+											actor.reference->SetActorHiddenInGame(true);
 											PlayActionSound(true);
 										}
 										else
@@ -1465,27 +1564,27 @@ void GUI::Draw()
 									if (ImGui::TreeNode("Details##Components"))
 									{
 										
-										ImGui::InputText("Search Filter", SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer, SharedData::debugInfo.gatherActorsFeature.componentsFilterBufferSize);
-										size_t componentsFilterLength = strlen(SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer);
+										ImGui::InputText("Search Filter", Features::ActorsList::componentsFilterBuffer, Features::ActorsList::componentsFilterBufferSize);
+										size_t componentsFilterLength = strlen(Features::ActorsList::componentsFilterBuffer);
 										ImGui::SameLine();
 										ImGui::Spacing();
 										ImGui::SameLine();
-										ImGui::Checkbox("Case Sensitive", &SharedData::debugInfo.gatherActorsFeature.componentsFilterCaseSensitive);
+										ImGui::Checkbox("Case Sensitive", &Features::ActorsList::componentsFilterCaseSensitive);
 
 										ImGui::NewLine();
 
-										for (SharedData::S_ActorComponent& component : actor.components) // <-- Reference!
+										for (Unreal::ActorComponent::DataStructure& component : actor.components) // <-- Reference!
 										{
 											bool componentOutputToUserInterface = componentsFilterLength == 0;
 
 											if (componentOutputToUserInterface == false)
 											{
-												if (SharedData::debugInfo.gatherActorsFeature.componentsFilterCaseSensitive)
-													componentOutputToUserInterface = component.actorComponentObject.find(SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer) != std::string::npos;
+												if (Features::ActorsList::componentsFilterCaseSensitive)
+													componentOutputToUserInterface = component.objectName.find(Features::ActorsList::componentsFilterBuffer) != std::string::npos;
 												else
 												{
-													std::string componentObjectLower = component.actorComponentObject;
-													std::string componentFilterLower = SharedData::debugInfo.gatherActorsFeature.componentsFilterBuffer;
+													std::string componentObjectLower = component.objectName;
+													std::string componentFilterLower = Features::ActorsList::componentsFilterBuffer;
 
 													std::transform(componentObjectLower.begin(), componentObjectLower.end(), componentObjectLower.begin(),
 														[](unsigned char c) { return std::tolower(c); });
@@ -1498,10 +1597,10 @@ void GUI::Draw()
 
 											if (componentOutputToUserInterface)
 											{
-												if (ImGui::TreeNode(component.actorComponentObject.c_str()))
+												if (ImGui::TreeNode(component.objectName.c_str()))
 												{
-													ImGui::Text("Component Class: %s", component.actorComponentClass.c_str());
-													ImGui::Text("Component Object: %s", component.actorComponentObject.c_str());
+													ImGui::Text("Component Class: %s", component.className.c_str());
+													ImGui::Text("Component Object: %s", component.objectName.c_str());
 
 													ImGui::NewLine();
 
@@ -1510,9 +1609,9 @@ void GUI::Draw()
 													ImGui::TextBoolColored("Editor Only:", component.editorOnly);
 													if (ImGui::Button("Activate"))
 													{
-														if (component.actorComponentReference)
+														if (component.reference)
 														{
-															component.actorComponentReference->Activate(false);
+															component.reference->Activate(false);
 															component.isActive = true;
 															PlayActionSound(true);
 														}
@@ -1522,9 +1621,9 @@ void GUI::Draw()
 													ImGui::SameLine();
 													if (ImGui::Button("Reset"))
 													{
-														if (component.actorComponentReference)
+														if (component.reference)
 														{
-															component.actorComponentReference->Activate(true);
+															component.reference->Activate(true);
 															component.isActive = true;
 															PlayActionSound(true);
 														}
@@ -1534,9 +1633,9 @@ void GUI::Draw()
 													ImGui::SameLine();
 													if (ImGui::Button("Deactivate"))
 													{
-														if (component.actorComponentReference)
+														if (component.reference)
 														{
-															component.actorComponentReference->Deactivate();
+															component.reference->Deactivate();
 															component.isActive = false;
 															PlayActionSound(true);
 														}
@@ -1568,34 +1667,23 @@ void GUI::Draw()
 						}
 					}
 
-					ImGui::NewLine();
-					ImGui::Separator();
-					ImGui::NewLine();
+					ImGui::CategorySeparator();
 
-					if (SharedData::debugInfo.wasProjectNameObtained)
-						ImGui::Text("Project Name: %s", SharedData::debugInfo.projectName.c_str());
+					if (Features::Debug::wasProjectNameObtained)
+						ImGui::Text("Project Name: %s", Features::Debug::projectName.c_str());
 
-					if (SharedData::debugInfo.wasProjectPlatformObtained)
-						ImGui::Text("Project Platform: %s", SharedData::debugInfo.projectPlatform.c_str());
+					if (Features::Debug::wasProjectPlatformObtained)
+						ImGui::Text("Project Platform: %s", Features::Debug::projectPlatform.c_str());
 
-					if (SharedData::debugInfo.wasUsernameObtained)
-						ImGui::Text("Username: %s", SharedData::debugInfo.username.c_str());
+					if (Features::Debug::wasUsernameObtained)
+						ImGui::Text("Username: %s", Features::Debug::username.c_str());
 
-					if (SharedData::debugInfo.wasCommandLineObtained)
+					if (Features::Debug::wasCommandLineObtained)
 					{
-						ImGui::ReadOnlyInputText("Command Line:", SharedData::debugInfo.commandLine.c_str(), true);
+						ImGui::ReadOnlyInputText("Command Line:", Features::Debug::commandLine.c_str(), true);
 					}
-				}
-				else
-				{
-					if (ImGui::Button("Start"))
-					{
-						if (SharedData::debugInfo.autoUpdate == false)
-							SharedCalls::GatherDebugInformation();
 
-						SharedData::debugInfo.isActive = true;
-						PlayActionSound(true);
-					}
+					ImGui::MenuSpacer();
 				}
 				
 				ImGui::EndMenu();
@@ -1630,9 +1718,7 @@ void GUI::Draw()
 							ImGui::InputFloat("World Gravity", &worldSettings->WorldGravityZ, 0.1, 1.0);
 							ImGui::EndDisabled();
 
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
+							ImGui::CategorySeparator();
 
 							ImGui::InputFloat("Minimum Time Dilation", &worldSettings->MinGlobalTimeDilation, 0.1, 1.0);
 							ImGui::InputFloat("Maximum Time Dilation", &worldSettings->MaxGlobalTimeDilation, 0.1, 1.0);
@@ -1644,9 +1730,7 @@ void GUI::Draw()
 
 							ImGui::InputFloat("Demo Time Dilation", &worldSettings->DemoPlayTimeDilation, 0.1, 1.0);
 
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
+							ImGui::CategorySeparator();
 
 							bool enableAISystem = worldSettings->bEnableAISystem == 1;
 							ImGui::Checkbox("Enable AI System", &enableAISystem);
@@ -1656,11 +1740,11 @@ void GUI::Draw()
 							ImGui::Checkbox("Enable Navigation System", &enableNavigationSystem);
 							worldSettings->bEnableNavigationSystem = enableNavigationSystem ? 1 : 0;
 
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
+							ImGui::CategorySeparator();
 
 							ImGui::InputFloat("KillZ", &worldSettings->KillZ, 0.1, 1.0);
+
+							ImGui::MenuSpacer();
 						}
 						else
 							ImGui::Text("World Settings Doesn't Exist!");
@@ -1678,144 +1762,246 @@ void GUI::Draw()
 
 
 
-			SDK::APlayerController* controller = PlayerController::GetPlayerController();
-			SDK::ACharacter* character = controller ? controller->Character : nullptr;
+			SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+			SDK::ACharacter* character = playerController ? playerController->Character : nullptr;
 			SDK::UCharacterMovementComponent* movementComponent = (character && character->CharacterMovement) ? character->CharacterMovement : nullptr;
-			ImGui::BeginDisabled(controller == nullptr || character == nullptr || movementComponent == nullptr);
+
+			bool characterObtained = playerController && character && movementComponent;
+			ImGui::BeginDisabled(characterObtained == false);
 			if (ImGui::BeginMenu("Character"))
 			{
-				if (controller)
+				if (characterObtained)
 				{
-					SharedData::objectsInfo.controller = controller;
-					if (character)
+					ImGui::Text("Character: %s", character->GetFullName().c_str());
+					SDK::FVector characterLocation = character->K2_GetActorLocation();
+					ImGui::TextVectorColored("Location:", characterLocation);
+					SDK::FRotator characterRotation = character->K2_GetActorRotation();
+					ImGui::TextRotatorColored("Rotation:", characterRotation);
+
+					ImGui::NewLine();
+
+					ImGui::SetFontTitle();
+					ImGui::Text("Movement");
+					ImGui::SetFontRegular();
+					if (ImGui::TreeNode("Details##CharacterMovement"))
 					{
-						SharedData::objectsInfo.character = character;
-						if (movementComponent)
+						if (movementComponent->bCheatFlying)
+							ImGui::Text("Character Is In %s Mode", character->bActorEnableCollision ? "Fly" : "Ghost");
+						else
 						{
-							SharedData::objectsInfo.movementComponent = movementComponent;
-
-							bool hasCollision = character->bActorEnableCollision;
-							if (movementComponent->bCheatFlying)
-								ImGui::Text("Character Is In %s Mode", hasCollision ? "Fly" : "Ghost");
-							else
+							SDK::EMovementMode movementMode = movementComponent->MovementMode;
+							switch (movementMode)
 							{
-								SDK::EMovementMode movementMode = movementComponent->MovementMode;
-								switch (movementMode)
-								{
-									case SDK::EMovementMode::MOVE_Walking:
-										ImGui::Text("Character Is Walking");
-										break;
+							case SDK::EMovementMode::MOVE_Walking:
+								ImGui::Text("Character Is Walking");
+								break;
 
-									case SDK::EMovementMode::MOVE_NavWalking:
-										ImGui::Text("Character Is Nav Walking");
-										break;
+							case SDK::EMovementMode::MOVE_NavWalking:
+								ImGui::Text("Character Is Nav Walking");
+								break;
 
-									case SDK::EMovementMode::MOVE_Falling:
-										ImGui::Text("Character Is Falling");
-										break;
+							case SDK::EMovementMode::MOVE_Falling:
+								ImGui::Text("Character Is Falling");
+								break;
 
-									case SDK::EMovementMode::MOVE_Swimming:
-										ImGui::Text("Character Is Swimming");
-										break;
+							case SDK::EMovementMode::MOVE_Swimming:
+								ImGui::Text("Character Is Swimming");
+								break;
 
-									case SDK::EMovementMode::MOVE_Flying:
-										ImGui::Text("Character Is Flying");
-										break;
+							case SDK::EMovementMode::MOVE_Flying:
+								ImGui::Text("Character Is Flying");
+								break;
 
-									default:
-										ImGui::Text("Character Is In %d Mode", movementMode);
-										break;
-								}
+							default:
+								ImGui::Text("Character Is In %d Mode", movementMode);
+								break;
 							}
-							ImGui::Text("Custom Movement Mode: %d", movementComponent->CustomMovementMode);
+						}
+						ImGui::Text("Custom Movement Mode: %d", movementComponent->CustomMovementMode);
+						
+						ImGui::NewLine();
 
-							if (ImGui::Button("Ghost"))
+						/* 0 corresponds for default vertical size. */
+						static const ImVec2 buttonSize = { 128.0f, 0.0f };
+
+						if (ImGui::Button("Ghost", buttonSize))
+						{
+							Features::CharacterMovement::Ghost();
+						}
+						ImGui::SameLine();
+						if (ImGui::Button("Fly", buttonSize))
+						{
+							Features::CharacterMovement::Fly();
+						}
+						ImGui::SameLine();
+						if (ImGui::Button("Walk", buttonSize))
+						{
+							Features::CharacterMovement::Walk();
+						}
+
+						ImGui::NewLine();
+
+						ImGui::KeyBindingInput("Ghost Key Binding:##Ghost", &Keybindings::characterMovement_Ghost);
+						ImGui::KeyBindingInput("Fly Key Binding:  ##Fly", &Keybindings::characterMovement_Fly);
+						ImGui::KeyBindingInput("Walk Key Binding: ##Walk", &Keybindings::characterMovement_Walk);
+
+						ImGui::NewLine();
+
+						ImGui::SetFontTitle();
+						ImGui::Text("Directional Movement");
+						ImGui::SetFontSmall();
+						ImGui::Text("When the character is Flying or in Ghost mode, moving forward teleports them in the direction the camera is facing,");
+						ImGui::Text("allowing for quick and easy navigation through the world.");
+						ImGui::SetFontRegular();
+						ImGui::BeginDisabled(movementComponent->bCheatFlying == false);
+						if (ImGui::TreeNode("Settings##DirectionalMovement"))
+						{
+							if (ImGui::Checkbox("Enabled##DirectionalMovement", &Features::DirectionalMovement::enabled))
 							{
-								SharedFunctions::Ghost();
+								if (Features::DirectionalMovement::enabled)
+									Features::DirectionalMovement::StartThread();
+								else
+									Features::DirectionalMovement::InvalidateThread();
 							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Ghost", &SharedData::keybindingsInfo.ghost);
-
-							if (ImGui::Button("Fly"))
+							ImGui::InputDouble("Movement Step##DirectionalMovement", &Features::DirectionalMovement::step, 0.1, 1.0);
+							if (ImGui::InputDouble("Movement Delay##DirectionalMovement", &Features::DirectionalMovement::delay, 0.01, 0.1))
 							{
-								SharedFunctions::Fly();
+								if (Features::DirectionalMovement::delay < 0.001)
+									Features::DirectionalMovement::delay = 0.001;
 							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Fly", &SharedData::keybindingsInfo.fly);
 
-							if (ImGui::Button("Walk"))
-							{
-								SharedFunctions::Walk();
-							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Walk", &SharedData::keybindingsInfo.walk);
+							ImGui::TreePop();
+						}
+						ImGui::EndDisabled();
 
-							ImGui::BeginDisabled(movementComponent->bCheatFlying == false);
-							ImGui::Checkbox("Directional Movement", &SharedData::featuresInfo.directionalMovement.enabled);
-							ImGui::InputDouble("Directional Movement Step", &SharedData::featuresInfo.directionalMovement.movementStep, 0.1, 1.0);
-							if (ImGui::InputDouble("Directional Movement Delay", &SharedData::featuresInfo.directionalMovement.movementDelay, 0.01, 0.1))
+						ImGui::CategorySeparator();
+
+						ImGui::InputFloat("Gravity Scale:", &movementComponent->GravityScale, 0.1f, 1.0f);
+
+						ImGui::NewLine();
+
+						ImGui::InputFloat("Max Acceleration", &movementComponent->MaxAcceleration, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Step Height", &movementComponent->MaxStepHeight, 1.0f, 10.0f);
+						ImGui::InputFloat("Weight", &movementComponent->Mass, 1.0f, 10.0f);
+
+						ImGui::NewLine();
+
+						ImGui::InputFloat("Max Walk Speed", &movementComponent->MaxWalkSpeed, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Crouch Speed", &movementComponent->MaxWalkSpeedCrouched, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Swim Speed", &movementComponent->MaxSwimSpeed, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Fly Speed", &movementComponent->MaxFlySpeed, 1.0f, 10.0f);
+						ImGui::InputFloat("Max Custom Movement Speed", &movementComponent->MaxCustomMovementSpeed, 1.0f, 10.0f);
+
+						ImGui::NewLine();
+
+						ImGui::TextFloatColored("Walkable Floor Z:", movementComponent->WalkableFloorZ);
+
+						ImGui::CategorySeparator();
+
+						if (ImGui::Button("Jump"))
+						{
+							Features::CharacterMovement::Jump();
+						}
+						ImGui::InputInt("Jump Limit", &character->JumpMaxCount, 1, 1);
+						ImGui::InputFloat("Jump Height", &movementComponent->JumpZVelocity, 0.1, 1.0);
+						ImGui::KeyBindingInput("Jump Key Binding:##Jump", &Keybindings::characterMovement_Jump);
+
+						ImGui::NewLine();
+
+						if (ImGui::Button("Launch"))
+						{
+							Features::CharacterMovement::Launch();
+						}
+						ImGui::InputFloat3("Launch Velocity", Features::CharacterMovement::launchVelocity);
+						ImGui::KeyBindingInput("Launch Key Binding:##Launch", &Keybindings::characterMovement_Launch);
+
+						ImGui::NewLine();
+
+						if (ImGui::Button("Dash"))
+						{
+							Features::CharacterMovement::Dash();
+						}
+						ImGui::InputDouble("Dash Strength", &Features::CharacterMovement::dashStrength, 0.1, 1.0);
+						ImGui::KeyBindingInput("Dash Key Binding:##Dash", &Keybindings::characterMovement_Dash);
+
+						ImGui::TreePop();
+					}
+
+					ImGui::CategorySeparator();
+
+					SDK::APlayerCameraManager* cameraManager = playerController->PlayerCameraManager;
+					ImGui::SetFontTitle();
+					ImGui::Text("Camera");
+					ImGui::SetFontRegular();
+					ImGui::BeginDisabled(cameraManager == nullptr);
+					if (ImGui::TreeNode("Details##Camera"))
+					{
+						if (cameraManager)
+						{
+							/* 0 corresponds for default vertical size. */
+							static const ImVec2 buttonSize = { 204.0f, 0.0f };
+
+							if (ImGui::Button("Start Fade", buttonSize))
 							{
-								if (SharedData::featuresInfo.directionalMovement.movementDelay < 0.001)
-									SharedData::featuresInfo.directionalMovement.movementDelay = 0.001;
+								Features::Camera::StartFade();
 							}
-							ImGui::EndDisabled();
+							ImGui::SameLine();
+							if (ImGui::Button("Stop Fade", buttonSize))
+							{
+								Features::Camera::StopFade();
+							}
+
+							if (ImGui::InputFloat("Fade From Alpha", &Features::Camera::fadeFromAlpha, 0.01f, 0.1f))
+							{
+								if (Features::Camera::fadeFromAlpha < 0.0f)
+									Features::Camera::fadeFromAlpha = 0.0f;
+
+								if (Features::Camera::fadeFromAlpha > 1.0f)
+									Features::Camera::fadeFromAlpha = 1.0f;
+							}
+
+							if (ImGui::InputFloat("Fade To Alpha", &Features::Camera::fadeToAlpha, 0.01f, 0.1f))
+							{
+								if (Features::Camera::fadeToAlpha < 0.0f)
+									Features::Camera::fadeToAlpha = 0.0f;
+
+								if (Features::Camera::fadeToAlpha > 1.0f)
+									Features::Camera::fadeToAlpha = 1.0f;
+							}
+
+							ImGui::InputFloat("Fade Duration", &Features::Camera::fadeDuration, 0.1f, 1.0f);
+							ImGui::ColorPicker4("Fade Color", Features::Camera::fadeColor);
 
 							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
 
-							if (ImGui::Button("Jump"))
-							{
-								SharedFunctions::Jump();
-							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Jump", &SharedData::keybindingsInfo.jump);
-							ImGui::InputInt("Jump Limit", &character->JumpMaxCount, 1, 1);
-							ImGui::InputFloat("Jump Height", &movementComponent->JumpZVelocity, 0.1, 1.0);
-
-							ImGui::NewLine();
-							ImGui::Separator();
-							ImGui::NewLine();
-
-							if (ImGui::Button("Launch"))
-							{
-								SharedFunctions::Launch();
-							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Launch", &SharedData::keybindingsInfo.launch);
-							ImGui::InputFloat3("Launch Velocity", SharedData::featuresInfo.launchVelocity);
+							ImGui::Checkbox("Fade Audio", &Features::Camera::fadeAudio);
+							ImGui::Checkbox("Fade Persistent", &Features::Camera::fadePersistent);
 
 							ImGui::NewLine();
 
-							if (ImGui::Button("Dash"))
-							{
-								SharedFunctions::Dash();
-							}
-							ImGui::SameLine();
-							ImGui::Spacing();
-							ImGui::SameLine();
-							ImGui::KeyBindingInput("Key:##Dash", &SharedData::keybindingsInfo.dash);
-							ImGui::InputDouble("Dash Strength", &SharedData::featuresInfo.dashStrength, 0.1, 1.0);
+							ImGui::KeyBindingInput("Start Fade Key Binding:", &Keybindings::characterCamera_StartFade);
+							ImGui::KeyBindingInput("Stop Fade Key Binding:", &Keybindings::characterCamera_StopFade);
 						}
 						else
-							ImGui::Text("Movement Component Doesn't Exist!");
+							ImGui::Text("Camera Manager Doesn't Exist!");
+
+						ImGui::TreePop();
 					}
-					else
-						ImGui::Text("Character Doesn't Exist!");
+					ImGui::EndDisabled();
+
+					ImGui::MenuSpacer();
 				}
 				else
-					ImGui::Text("Controller Doesn't Exist!");
-
+				{
+					if (playerController == nullptr)
+						ImGui::Text("Player Controller Doesn't Exist!");
+					else if (character == nullptr)
+						ImGui::Text("Character Doesn't Exist!");
+					else if (movementComponent == nullptr)
+						ImGui::Text("Movement Component Doesn't Exist!");
+					else
+						ImGui::Text("Something Went Wrong.");
+				}
 
 				ImGui::EndMenu();
 			}
@@ -1827,6 +2013,103 @@ void GUI::Draw()
 			ImGui::EndMainMenuBar();
 		}
 	}
+
+
+#ifdef ACTOR_TRACE
+	if (Features::ActorTrace::enabled)
+	{
+		if (Features::ActorTrace::showOnScreen)
+		{
+			const char* labelText = Features::ActorTrace::traceHit ? Features::ActorTrace::actor.objectName.c_str() : "No Actor Traced";
+			ImVec2 labelSize = ImGui::CalcTextSize(labelText);
+
+			ImVec2 labelPosition = ImVec2
+			(
+				/*
+					Horizontal: ImGui Viewport center;
+					Vertical: ImGui Viewport bottom - 12 pixels.
+
+					Flooring the values allows to avoid potential subpixel conflicts.
+				*/
+				floorf(iViewPortPosition.x + (iViewPortSize.x - labelSize.x) * 0.5f),
+				floorf(iViewPortSize.y - labelSize.y - 12.0f)
+			);
+
+			iDrawList->AddText(labelPosition, ImGui::GetColorU32(ImGuiCol_Text), labelText);
+		}
+		
+		if (Features::ActorTrace::showLineTrace)
+		{
+			SDK::FVector2D screenStartPosition;
+			SDK::FVector2D screenEndPosition;
+
+			/* UGameplayStatics::ProjectWorldToScreen() verify Player Controller reference within its code. */
+			SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+			bool startPositionProjected = SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceStartLocation, &screenStartPosition, false);
+			bool endPositionProjected = SDK::UGameplayStatics::ProjectWorldToScreen(playerController, Features::ActorTrace::traceEndLocation, &screenEndPosition, false);
+
+			/* Inverse Normalize RGBA values set by color picker. */
+			ImU32 color = ImGui::ColorConvertFloat4ToU32(ImVec4(Features::ActorTrace::traceColor[0], Features::ActorTrace::traceColor[1], Features::ActorTrace::traceColor[2], Features::ActorTrace::traceColor[3]));
+
+			static float traceStartCircleRadius;
+			if (startPositionProjected)
+				traceStartCircleRadius = Features::ActorTrace::traceThickness * 1.5f;
+
+			static float traceEndCircleRadius;
+			static float traceCrossSize;
+			if (endPositionProjected)
+			{
+				traceEndCircleRadius = Features::ActorTrace::traceThickness * 1.75f;
+				traceCrossSize = 8.0f + (Features::ActorTrace::traceThickness * 0.5f);
+			}
+
+			/* Both start and end position are within player view. */
+			if (startPositionProjected && endPositionProjected)
+			{
+				ImVec2 startPosition = { screenStartPosition.X, screenStartPosition.Y };
+				ImVec2 endPosition = { screenEndPosition.X, screenEndPosition.Y };
+
+				/* Draw the trace. */
+				iDrawList->AddLine(startPosition, endPosition, color, Features::ActorTrace::traceThickness);
+
+				/* Draw a hollow circle to mark position where trace was sent from. */
+				iDrawList->AddCircle(startPosition, traceStartCircleRadius, color);
+
+				/*
+					If trace has hit something, draw a cross to mark position where the trace hit;
+					Otherwise draw a filled circle to mark position where the trace ends.
+				*/
+				if (Features::ActorTrace::traceHit)
+				{
+					iDrawList->AddLine({ endPosition.x - traceCrossSize, endPosition.y - traceCrossSize }, { endPosition.x + traceCrossSize, endPosition.y + traceCrossSize }, color, Features::ActorTrace::traceThickness);
+					iDrawList->AddLine({ endPosition.x - traceCrossSize, endPosition.y + traceCrossSize }, { endPosition.x + traceCrossSize, endPosition.y - traceCrossSize }, color, Features::ActorTrace::traceThickness);
+				}
+				else
+					iDrawList->AddCircleFilled(endPosition, traceEndCircleRadius, color);
+			}
+			/* Only start position is within player view. */
+			else if (startPositionProjected)
+			{
+				ImVec2 position = { screenStartPosition.X, screenStartPosition.Y };
+
+				iDrawList->AddCircle(position, traceStartCircleRadius, color);
+			}
+			/* Only end position is within player view. */
+			else if (endPositionProjected)
+			{
+				ImVec2 position = { screenEndPosition.X, screenEndPosition.Y };
+
+				if (Features::ActorTrace::traceHit)
+				{
+					iDrawList->AddLine({ position.x - traceCrossSize, position.y - traceCrossSize }, { position.x + traceCrossSize, position.y + traceCrossSize }, color, Features::ActorTrace::traceThickness);
+					iDrawList->AddLine({ position.x - traceCrossSize, position.y + traceCrossSize }, { position.x + traceCrossSize, position.y - traceCrossSize }, color, Features::ActorTrace::traceThickness);
+				}
+				else
+					iDrawList->AddCircleFilled(position, traceEndCircleRadius, color);
+			}
+		}
+	}
+#endif
 }
 
 
@@ -1865,50 +2148,14 @@ void GUI::PlaySound(const E_Sound& soundToPlay)
 			break;
 	}
 
-	Beep(soundFrequency, soundDuration);
-}
-
-
-
-
-
-
-// ========================================================
-// |          #GUI #SHARED #WORKERS #SHAREDWORKERS        |
-// ========================================================
-void GUI::SharedWorkers::FeaturesWorker()
-{
-	while (GetFeaturesThread())
+	/* 
+		Dedicate sound playback in to separate thread.
+		This prevents the main thread from blocking while Beep() is playing the sound.
+	*/
+	std::thread([=]() 
 	{
-		if (SharedData::featuresInfo.directionalMovement.enabled)
-		{
-			if (SharedData::objectsInfo.controller && SharedData::objectsInfo.character && SharedData::objectsInfo.movementComponent
-				&& SharedData::objectsInfo.movementComponent->bCheatFlying)
-			{
-				SDK::FVector characterVelocity = SharedData::objectsInfo.movementComponent->Velocity;
-				if (characterVelocity.X != 0.0 || characterVelocity.Y != 0.0)
-				{
-					SDK::APlayerCameraManager* cameraManager = SharedData::objectsInfo.controller->PlayerCameraManager;
-					if (cameraManager)
-					{
-						SDK::FVector characterVelocityNormalized = Math::NormalizeVector(characterVelocity);
-						SDK::FVector cameraForwardVector = cameraManager->GetActorForwardVector();
-						double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
-
-						if (dotProduct > 0.5)
-						{
-							SDK::FVector currentLocation = SharedData::objectsInfo.character->K2_GetActorLocation();
-							SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * SharedData::featuresInfo.directionalMovement.movementStep);
-
-							SharedData::objectsInfo.character->K2_TeleportTo(finalLocation, SharedData::objectsInfo.character->K2_GetActorRotation());
-						}
-					}
-				}
-			}
-		}
-
-		Sleep(Math::Seconds_ToMilliseconds(SharedData::featuresInfo.directionalMovement.movementDelay));
-	}
+		Beep(soundFrequency, soundDuration);
+	}).detach();
 }
 
 
@@ -1919,202 +2166,201 @@ void GUI::SharedWorkers::FeaturesWorker()
 // ========================================================
 // |            #GUI #SHARED #CALLS #SHAREDCALLS          |
 // ========================================================
-void GUI::SharedCalls::GatherDebugInformation()
+void Features::Debug::Update()
 {
-	SDK::UEngine* engine = Engine::GetEngine();
-	if (SharedData::debugInfo.engine.engineReference = engine)
+	SDK::UEngine* engine = Unreal::Engine::Get();
+	if (Features::Debug::engine.reference = engine)
 	{
-		SharedData::debugInfo.engine.engineClass = engine->Class->GetFullName();
-		SharedData::debugInfo.engine.engineObject = engine->GetFullName();
+		Features::Debug::engine.className = engine->Class->GetFullName();
+		Features::Debug::engine.objectName = engine->GetFullName();
 
-		SharedData::debugInfo.engine.fixedFrameRateEnabled = engine->bUseFixedFrameRate;
-		SharedData::debugInfo.engine.fixedFrameRate = engine->FixedFrameRate;
+		Features::Debug::engine.fixedFrameRateEnabled = engine->bUseFixedFrameRate;
+		Features::Debug::engine.fixedFrameRate = engine->FixedFrameRate;
 
-		SharedData::debugInfo.engine.smoothFrameRateEnabled = engine->bSmoothFrameRate;
-		SharedData::debugInfo.engine.smoothFrameRateRange = engine->SmoothedFrameRateRange;
+		Features::Debug::engine.smoothFrameRateEnabled = engine->bSmoothFrameRate;
+		Features::Debug::engine.smoothFrameRateRange = engine->SmoothedFrameRateRange;
 
-		SharedData::debugInfo.engine.subtitlesEnabled = engine->bSubtitlesEnabled;
-		SharedData::debugInfo.engine.subtitlesForcedOff = engine->bSubtitlesForcedOff;
+		Features::Debug::engine.subtitlesEnabled = engine->bSubtitlesEnabled;
+		Features::Debug::engine.subtitlesForcedOff = engine->bSubtitlesForcedOff;
 
-		SharedData::debugInfo.engine.pauseOnLossOfFocus = engine->bPauseOnLossOfFocus;
+		Features::Debug::engine.pauseOnLossOfFocus = engine->bPauseOnLossOfFocus;
 
 		SDK::UGameViewportClient* viewportClient = engine->GameViewport;
-		if (SharedData::debugInfo.engine.viewportClient.viewportClientReference = viewportClient)
+		if (Features::Debug::engine.gameViewportClient.reference = viewportClient)
 		{
-			SharedData::debugInfo.engine.viewportClient.viewportClientClass = viewportClient->Class->GetFullName();
-			SharedData::debugInfo.engine.viewportClient.viewportClientObject = viewportClient->GetFullName();
+			Features::Debug::engine.gameViewportClient.className = viewportClient->Class->GetFullName();
+			Features::Debug::engine.gameViewportClient.objectName = viewportClient->GetFullName();
 
 			SDK::UConsole* console = viewportClient->ViewportConsole;
-			if (SharedData::debugInfo.engine.viewportClient.console.consoleReference = console)
+			if (Features::Debug::engine.gameViewportClient.console.reference = console)
 			{
-				SharedData::debugInfo.engine.viewportClient.console.consoleClass = console->Class->GetFullName();
-				SharedData::debugInfo.engine.viewportClient.console.consoleObject = console->GetFullName();
+				Features::Debug::engine.gameViewportClient.console.className = console->Class->GetFullName();
+				Features::Debug::engine.gameViewportClient.console.objectName = console->GetFullName();
 			}
 		}
 	}
 
 
-	SDK::UGameInstance* gameInstance = GameInstance::GetGameInstance();
-	if (SharedData::debugInfo.gameInstance.gameInstanceReference = gameInstance)
+	SDK::UGameInstance* gameInstance = Unreal::GameInstance::Get();
+	if (Features::Debug::gameInstance.reference = gameInstance)
 	{
-		SharedData::debugInfo.gameInstance.gameInstanceClass = gameInstance->Class->GetFullName();
-		SharedData::debugInfo.gameInstance.gameInstanceObject = gameInstance->GetFullName();
+		Features::Debug::gameInstance.className = gameInstance->Class->GetFullName();
+		Features::Debug::gameInstance.objectName = gameInstance->GetFullName();
 
 		SDK::UOnlineSession* onlineSession = gameInstance->OnlineSession;
-		if (SharedData::debugInfo.gameInstance.onlineSession.onlineSessionReference = onlineSession)
+		if (Features::Debug::gameInstance.onlineSession.reference = onlineSession)
 		{
-			SharedData::debugInfo.gameInstance.onlineSession.onlineSessionClass = gameInstance->Class->GetFullName();
-			SharedData::debugInfo.gameInstance.onlineSession.onlineSessionObject = gameInstance->GetFullName();
+			Features::Debug::gameInstance.onlineSession.className = gameInstance->Class->GetFullName();
+			Features::Debug::gameInstance.onlineSession.objectName = gameInstance->GetFullName();
 		}
 	}
 
 
-	SDK::AGameModeBase* gameMode = GameMode::GetGameMode();
-	if (SharedData::debugInfo.gameMode.gameModeReference = gameMode)
+	SDK::AGameModeBase* gameMode = Unreal::GameMode::Get();
+	if (Features::Debug::gameMode.reference = gameMode)
 	{
-		SharedData::debugInfo.gameMode.gameModeClass = gameMode->Class->GetFullName();
-		SharedData::debugInfo.gameMode.gameModeObject = gameMode->GetFullName();
+		Features::Debug::gameMode.className = gameMode->Class->GetFullName();
+		Features::Debug::gameMode.objectName = gameMode->GetFullName();
 
 		SDK::AGameSession* gameSession = gameMode->GameSession;
-		if (SharedData::debugInfo.gameMode.gameSession.gameSessionReference = gameSession)
+		if (Features::Debug::gameMode.gameSession.reference = gameSession)
 		{
-			SharedData::debugInfo.gameMode.gameSession.gameSessionClass = gameSession->Class->GetFullName();
-			SharedData::debugInfo.gameMode.gameSession.gameSessionObject = gameSession->GetFullName();
+			Features::Debug::gameMode.gameSession.className = gameSession->Class->GetFullName();
+			Features::Debug::gameMode.gameSession.objectName = gameSession->GetFullName();
 
-			SharedData::debugInfo.gameMode.gameSession.maxPlayers = gameSession->MaxPlayers;
-			SharedData::debugInfo.gameMode.gameSession.maxSpectators = gameSession->MaxSpectators;
-			SharedData::debugInfo.gameMode.gameSession.maxPartySize = gameSession->MaxPartySize;
-			SharedData::debugInfo.gameMode.gameSession.maxSplitScreensPerConnection = gameSession->MaxSplitscreensPerConnection;
+			Features::Debug::gameMode.gameSession.maxPlayers = gameSession->MaxPlayers;
+			Features::Debug::gameMode.gameSession.maxSpectators = gameSession->MaxSpectators;
+			Features::Debug::gameMode.gameSession.maxPartySize = gameSession->MaxPartySize;
+			Features::Debug::gameMode.gameSession.maxSplitScreensPerConnection = gameSession->MaxSplitscreensPerConnection;
 
-			SharedData::debugInfo.gameMode.gameSession.sessionName = gameSession->SessionName.ToString();
+			Features::Debug::gameMode.gameSession.sessionName = gameSession->SessionName.ToString();
 		}
 
-		SharedData::debugInfo.gameMode.playersCount = gameMode->GetNumPlayers();
-		SharedData::debugInfo.gameMode.spectatorsCount = gameMode->GetNumSpectators();
+		Features::Debug::gameMode.playersCount = gameMode->GetNumPlayers();
+		Features::Debug::gameMode.spectatorsCount = gameMode->GetNumSpectators();
 
-		SharedData::debugInfo.gameMode.startPlayersAsSpectators = gameMode->bStartPlayersAsSpectators;
-		SharedData::debugInfo.gameMode.defaultPlayerName = gameMode->DefaultPlayerName.ToString();
+		Features::Debug::gameMode.startPlayersAsSpectators = gameMode->bStartPlayersAsSpectators;
+		Features::Debug::gameMode.defaultPlayerName = gameMode->DefaultPlayerName.ToString();
 
-		SharedData::debugInfo.gameMode.useSeamlessTravel = gameMode->bUseSeamlessTravel;
-		SharedData::debugInfo.gameMode.options = gameMode->OptionsString.ToString();
+		Features::Debug::gameMode.useSeamlessTravel = gameMode->bUseSeamlessTravel;
+		Features::Debug::gameMode.options = gameMode->OptionsString.ToString();
 		
-		SharedData::debugInfo.gameMode.isPausable = gameMode->bPauseable;
+		Features::Debug::gameMode.isPausable = gameMode->bPauseable;
 	}
 
 
-	SDK::APlayerController* playerController = PlayerController::GetPlayerController();
-	if (SharedData::debugInfo.playerController.playerControllerReference = playerController)
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (Features::Debug::playerController.reference = playerController)
 	{
-		SharedData::debugInfo.playerController.playerControllerClass = playerController->Class->GetFullName();
-		SharedData::debugInfo.playerController.playerControllerObject = playerController->GetFullName();
+		Features::Debug::playerController.className = playerController->Class->GetFullName();
+		Features::Debug::playerController.objectName = playerController->GetFullName();
 
 
 		SDK::UPlayer* player = playerController->Player;
-		if (SharedData::debugInfo.playerController.player.playerReference = player)
+		if (Features::Debug::playerController.player.reference = player)
 		{
-			SharedData::debugInfo.playerController.player.playerClass = player->Class->GetFullName();
-			SharedData::debugInfo.playerController.player.playerObject = player->GetFullName();
+			Features::Debug::playerController.player.className = player->Class->GetFullName();
+			Features::Debug::playerController.player.objectName = player->GetFullName();
 		}
 
 
 		SDK::APawn* pawn = playerController->AcknowledgedPawn;
-		if (SharedData::debugInfo.playerController.pawn.pawnReference = pawn)
+		if (Features::Debug::playerController.pawn.reference = pawn)
 		{
-			SharedData::debugInfo.playerController.pawn.pawnClass = pawn->Class->GetFullName();
-			SharedData::debugInfo.playerController.pawn.pawnObject = pawn->GetFullName();
+			Features::Debug::playerController.pawn.className = pawn->Class->GetFullName();
+			Features::Debug::playerController.pawn.objectName = pawn->GetFullName();
 
 			SDK::FTransform pawnTransform = pawn->GetTransform();
-			SharedData::debugInfo.playerController.pawn.location = pawnTransform.Translation;
-			SharedData::debugInfo.playerController.pawn.rotation = SDK::FRotator(Math::InverseNormalizeAngle(pawnTransform.Rotation.X), Math::InverseNormalizeAngle(pawnTransform.Rotation.Y), Math::InverseNormalizeAngle(pawnTransform.Rotation.Z));
-			SharedData::debugInfo.playerController.pawn.scale = pawnTransform.Scale3D;
+			Features::Debug::playerController.pawn.location = pawnTransform.Translation;
+			Features::Debug::playerController.pawn.rotation = SDK::FRotator(Math::InverseNormalizeAngle(pawnTransform.Rotation.X), Math::InverseNormalizeAngle(pawnTransform.Rotation.Y), Math::InverseNormalizeAngle(pawnTransform.Rotation.Z));
+			Features::Debug::playerController.pawn.scale = pawnTransform.Scale3D;
 
-			SharedData::debugInfo.playerController.pawn.isControlled = pawn->IsControlled();
-			SharedData::debugInfo.playerController.pawn.isPawnControlled = pawn->IsPawnControlled();
-			SharedData::debugInfo.playerController.pawn.isPlayerControlled = pawn->IsPlayerControlled();
-			SharedData::debugInfo.playerController.pawn.isLocallyControlled = pawn->IsLocallyControlled();
-			SharedData::debugInfo.playerController.pawn.isBotControlled = pawn->IsBotControlled();
+			Features::Debug::playerController.pawn.isControlled = pawn->IsControlled();
+			Features::Debug::playerController.pawn.isPawnControlled = pawn->IsPawnControlled();
+			Features::Debug::playerController.pawn.isPlayerControlled = pawn->IsPlayerControlled();
+			Features::Debug::playerController.pawn.isLocallyControlled = pawn->IsLocallyControlled();
+			Features::Debug::playerController.pawn.isBotControlled = pawn->IsBotControlled();
 		}
 
 
 		SDK::APlayerCameraManager* cameraManager = playerController->PlayerCameraManager;
-		if (SharedData::debugInfo.playerController.cameraManager.cameraManagerReference = cameraManager)
+		if (Features::Debug::playerController.cameraManager.reference = cameraManager)
 		{
-			SharedData::debugInfo.playerController.cameraManager.cameraManagerClass = cameraManager->Class->GetFullName();
-			SharedData::debugInfo.playerController.cameraManager.cameraManagerObject = cameraManager->GetFullName();
+			Features::Debug::playerController.cameraManager.className = cameraManager->Class->GetFullName();
+			Features::Debug::playerController.cameraManager.objectName = cameraManager->GetFullName();
 
 			SDK::FTransform cameraManagerTransform = cameraManager->GetTransform();
-			SharedData::debugInfo.playerController.cameraManager.location = cameraManagerTransform.Translation;
-			SharedData::debugInfo.playerController.cameraManager.rotation = SDK::FRotator(Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.X), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Y), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Z));
-			SharedData::debugInfo.playerController.cameraManager.scale = cameraManagerTransform.Scale3D;
+			Features::Debug::playerController.cameraManager.location = cameraManagerTransform.Translation;
+			Features::Debug::playerController.cameraManager.rotation = SDK::FRotator(Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.X), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Y), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Z));
+			Features::Debug::playerController.cameraManager.scale = cameraManagerTransform.Scale3D;
 		}
 
 
 		SDK::UCheatManager* cheatManager = playerController->CheatManager;
-		if (SharedData::debugInfo.playerController.cheatManager.cheatManagerReference = cheatManager)
+		if (Features::Debug::playerController.cheatManager.reference = cheatManager)
 		{
-			SharedData::debugInfo.playerController.cheatManager.cheatManagerClass = cheatManager->Class->GetFullName();
-			SharedData::debugInfo.playerController.cheatManager.cheatManagerObject = cheatManager->GetFullName();
+			Features::Debug::playerController.cheatManager.className = cheatManager->Class->GetFullName();
+			Features::Debug::playerController.cheatManager.objectName = cheatManager->GetFullName();
 		}
 	}
 
 
 	SDK::UWorld* world = SDK::UWorld::GetWorld();
-	if (SharedData::debugInfo.world.worldReference = world)
+	if (Features::Debug::world.reference = world)
 	{
-		SharedData::debugInfo.world.worldClass = world->Class->GetFullName();
-		SharedData::debugInfo.world.worldObject = world->GetFullName();
+		Features::Debug::world.className = world->Class->GetFullName();
+		Features::Debug::world.objectName = world->GetFullName();
 
 		if (SDK::AGameStateBase* gameState = world->GameState)
 		{
-			SharedData::debugInfo.world.gameState.gameStateReference = gameState;
+			Features::Debug::world.gameState.reference = gameState;
 
-			SharedData::debugInfo.world.gameState.gameStateClass = gameState->Class->GetFullName();
-			SharedData::debugInfo.world.gameState.gameStateObject = gameState->GetFullName();
+			Features::Debug::world.gameState.className = gameState->Class->GetFullName();
+			Features::Debug::world.gameState.objectName = gameState->GetFullName();
 		}
 
 		if (SDK::UNetDriver* netDriver = world->NetDriver)
 		{
-			SharedData::debugInfo.world.netDriver.netDriverReference = netDriver;
+			Features::Debug::world.netDriver.reference = netDriver;
 
-			SharedData::debugInfo.world.netDriver.netDriverClass = netDriver->Class->GetFullName();
-			SharedData::debugInfo.world.netDriver.netDriverObject = netDriver->GetFullName();
+			Features::Debug::world.netDriver.className = netDriver->Class->GetFullName();
+			Features::Debug::world.netDriver.objectName = netDriver->GetFullName();
 		}
 
 		if (SDK::UNetDriver* demoNetDriver = world->NetDriver)
 		{
-			SharedData::debugInfo.world.demoNetDriver.demoNetDriverReference = demoNetDriver;
+			Features::Debug::world.demoNetDriver.reference = demoNetDriver;
 
-			SharedData::debugInfo.world.demoNetDriver.demoNetDriverClass = demoNetDriver->Class->GetFullName();
-			SharedData::debugInfo.world.demoNetDriver.demoNetDriverObject = demoNetDriver->GetFullName();
+			Features::Debug::world.demoNetDriver.className = demoNetDriver->Class->GetFullName();
+			Features::Debug::world.demoNetDriver.objectName = demoNetDriver->GetFullName();
 		}
 
 		if (SDK::ULevel* persistentLevel = world->PersistentLevel)
 		{
-			SharedData::debugInfo.world.persistentLevel.levelReference = persistentLevel;
+			Features::Debug::world.persistentLevel.reference = persistentLevel;
 
-			SharedData::debugInfo.world.persistentLevel.levelClass = persistentLevel->Class->GetFullName();
-			SharedData::debugInfo.world.persistentLevel.levelObject = persistentLevel->GetFullName();
-			SharedData::debugInfo.world.persistentLevel.levelName = SDK::UGameplayStatics::GetCurrentLevelName(world, false).ToString();
+			Features::Debug::world.persistentLevel.className = persistentLevel->Class->GetFullName();
+			Features::Debug::world.persistentLevel.objectName = persistentLevel->GetFullName();
 
-			SharedData::debugInfo.world.persistentLevel.isLevelVisible = persistentLevel->bIsVisible;
+			Features::Debug::world.persistentLevel.isVisible = persistentLevel->bIsVisible;
 
 			if (SDK::AWorldSettings* worldSettings = persistentLevel->WorldSettings)
 			{
-				SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsReference = worldSettings;
-				SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsClass = worldSettings->Class->GetFullName();
-				SharedData::debugInfo.world.persistentLevel.worldSettings.worldSettingsObject = worldSettings->GetFullName();
+				Features::Debug::world.persistentLevel.worldSettings.reference = worldSettings;
+				Features::Debug::world.persistentLevel.worldSettings.className = worldSettings->Class->GetFullName();
+				Features::Debug::world.persistentLevel.worldSettings.objectName = worldSettings->GetFullName();
 
-				SharedData::debugInfo.world.persistentLevel.worldSettings.worldHighPriorityLoading = worldSettings->bHighPriorityLoading;
-				SharedData::debugInfo.world.persistentLevel.worldSettings.worldLocalHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
+				Features::Debug::world.persistentLevel.worldSettings.highPriorityLoading = worldSettings->bHighPriorityLoading;
+				Features::Debug::world.persistentLevel.worldSettings.localHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
 
-				SharedData::debugInfo.world.persistentLevel.worldSettings.worldToMeters = worldSettings->WorldToMeters;
+				Features::Debug::world.persistentLevel.worldSettings.unitsToMeters = worldSettings->WorldToMeters;
 			}
 		}
 
 		SDK::TArray<SDK::ULevelStreaming*> streamingLevels = world->StreamingLevels;
 		if (streamingLevels.Num() > 0)
 		{
-			SharedData::debugInfo.world.streamingLevels.clear();
+			Features::Debug::world.streamingLevels.clear();
 
 			for (SDK::ULevelStreaming* streamingLevel : streamingLevels)
 			{
@@ -2129,110 +2375,109 @@ void GUI::SharedCalls::GatherDebugInformation()
 				if (streamingLevelPath.empty())
 					continue;
 
-				SharedData::S_StreamingLevel streamingLevelData = {};
-				streamingLevelData.streamingLevelReference = streamingLevel;
-				streamingLevelData.streamingLevelPath = streamingLevelPath;
-				streamingLevelData.streamingLevelColor = streamingLevel->LevelColor;
+				Unreal::LevelStreaming::DataStructure levelStreamingData = {};
+				levelStreamingData.reference = streamingLevel;
+				levelStreamingData.levelPath = streamingLevelPath;
+				levelStreamingData.levelColor = streamingLevel->LevelColor;
 
 				SDK::ULevel* loadedLevel = streamingLevel->LoadedLevel;
-				if (streamingLevelData.level.levelReference = loadedLevel)
+				if (levelStreamingData.level.reference = loadedLevel)
 				{
-					streamingLevelData.level.levelClass = streamingLevel->Class->GetFullName();
-					streamingLevelData.level.levelObject = streamingLevel->GetFullName();
-					streamingLevelData.level.levelName = SDK::UGameplayStatics::GetCurrentLevelName(world, false).ToString();
+					levelStreamingData.level.className = loadedLevel->Class->GetFullName();
+					levelStreamingData.level.objectName = loadedLevel->GetFullName();
 
-					streamingLevelData.level.isLevelVisible = loadedLevel->bIsVisible;
+					levelStreamingData.level.isVisible = loadedLevel->bIsVisible;
 					
 					SDK::AWorldSettings* worldSettings = loadedLevel->WorldSettings;
-					if (streamingLevelData.level.worldSettings.worldSettingsReference = worldSettings)
+					if (levelStreamingData.level.worldSettings.reference = worldSettings)
 					{
-						streamingLevelData.level.worldSettings.worldSettingsClass = worldSettings->Class->GetFullName();
-						streamingLevelData.level.worldSettings.worldSettingsObject = worldSettings->GetFullName();
+						levelStreamingData.level.worldSettings.className = worldSettings->Class->GetFullName();
+						levelStreamingData.level.worldSettings.objectName = worldSettings->GetFullName();
 
-						streamingLevelData.level.worldSettings.worldHighPriorityLoading = worldSettings->bHighPriorityLoading;
-						streamingLevelData.level.worldSettings.worldLocalHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
+						levelStreamingData.level.worldSettings.highPriorityLoading = worldSettings->bHighPriorityLoading;
+						levelStreamingData.level.worldSettings.localHighPriorityLoading = worldSettings->bHighPriorityLoadingLocal;
 
-						streamingLevelData.level.worldSettings.worldToMeters = worldSettings->WorldToMeters;
+						levelStreamingData.level.worldSettings.unitsToMeters = worldSettings->WorldToMeters;
 					}
 				}
 
-				SharedData::debugInfo.world.streamingLevels.push_back(streamingLevelData);
+				Features::Debug::world.streamingLevels.push_back(levelStreamingData);
 			}
 		}
 
-		SharedData::debugInfo.world.gameTimeInSeconds = SDK::UKismetSystemLibrary::GetGameTimeInSeconds(world);
+		Features::Debug::world.gameTimeInSeconds = SDK::UKismetSystemLibrary::GetGameTimeInSeconds(world);
 
-		SharedData::debugInfo.world.isServer = SDK::UKismetSystemLibrary::IsServer(world);
-		SharedData::debugInfo.world.isDedicatedServer = SDK::UKismetSystemLibrary::IsDedicatedServer(world);
-		SharedData::debugInfo.world.isSplitScreen = SDK::UKismetSystemLibrary::IsSplitScreen(world);
-		SharedData::debugInfo.world.isStandalone = SDK::UKismetSystemLibrary::IsStandalone(world);
+		Features::Debug::world.isServer = SDK::UKismetSystemLibrary::IsServer(world);
+		Features::Debug::world.isDedicatedServer = SDK::UKismetSystemLibrary::IsDedicatedServer(world);
+		Features::Debug::world.isSplitScreen = SDK::UKismetSystemLibrary::IsSplitScreen(world);
+		Features::Debug::world.isStandalone = SDK::UKismetSystemLibrary::IsStandalone(world);
 	}
 
 
-	if (SharedData::debugInfo.wasProjectNameObtained == false)
+	if (Features::Debug::wasProjectNameObtained == false)
 	{
 		std::string projectName = SDK::UKismetSystemLibrary::GetGameName().ToString();
 		if (projectName.empty() == false)
 		{
-			SharedData::debugInfo.projectName = projectName;
-			SharedData::debugInfo.wasProjectNameObtained = true;
+			Features::Debug::projectName = projectName;
+			Features::Debug::wasProjectNameObtained = true;
 		}
 	}
 
 
-	if (SharedData::debugInfo.wasProjectPlatformObtained == false)
+	if (Features::Debug::wasProjectPlatformObtained == false)
 	{
 		std::string projectPlatform = SDK::UGameplayStatics::GetPlatformName().ToString();
 		if (projectPlatform.empty() == false)
 		{
-			SharedData::debugInfo.projectPlatform = projectPlatform;
-			SharedData::debugInfo.wasProjectPlatformObtained = true;
+			Features::Debug::projectPlatform = projectPlatform;
+			Features::Debug::wasProjectPlatformObtained = true;
 		}
 	}
 
 
-	if (SharedData::debugInfo.wasProjectEngineVersionObtained == false)
+	if (Features::Debug::wasProjectEngineVersionObtained == false)
 	{
 		std::string engineVersion = SDK::UKismetSystemLibrary::GetEngineVersion().ToString();
 		if (engineVersion.empty() == false)
 		{
-			SharedData::debugInfo.projectEngineVersion = engineVersion;
-			SharedData::debugInfo.wasProjectEngineVersionObtained = true;
+			Features::Debug::projectEngineVersion = engineVersion;
+			Features::Debug::wasProjectEngineVersionObtained = true;
 		}
 	}
 
 
-	if (SharedData::debugInfo.wasUsernameObtained == false)
+	if (Features::Debug::wasUsernameObtained == false)
 	{
 		std::string username = SDK::UKismetSystemLibrary::GetPlatformUserName().ToString();
 		if (username.empty() == false)
 		{
-			SharedData::debugInfo.username = username;
-			SharedData::debugInfo.wasUsernameObtained = true;
+			Features::Debug::username = username;
+			Features::Debug::wasUsernameObtained = true;
 		}
 	}
 
 
-	if (SharedData::debugInfo.wasCommandLineObtained == false)
+	if (Features::Debug::wasCommandLineObtained == false)
 	{
 		LPWSTR lCommandLine = GetCommandLineW();
 		std::wstring wCommandLine = std::wstring(lCommandLine);
 		std::string commandLine = std::string(wCommandLine.begin(), wCommandLine.end());
 
-		SharedData::debugInfo.commandLine = commandLine;
-		SharedData::debugInfo.wasCommandLineObtained = true;
+		Features::Debug::commandLine = commandLine;
+		Features::Debug::wasCommandLineObtained = true;
 	}
 
 
-	SharedData::debugInfo.lastUpdateTime = ImGui::GetTime();
+	Features::Debug::lastUpdateTime = ImGui::GetTime();
 }
 
 
 
 
-void GUI::SharedCalls::GatherActors()
+void Features::ActorsList::Update()
 {
-	SharedData::debugInfo.gatherActorsFeature.actors.clear();
+	Features::ActorsList::actors.clear();
 
 	int32_t objectsNum = SDK::UObject::GObjects->Num();
 	for (int i = 0; i < objectsNum; i++)
@@ -2244,12 +2489,12 @@ void GUI::SharedCalls::GatherActors()
 
 		if (objectReference->IsA(SDK::AActor::StaticClass()))
 		{
-			SharedData::S_Actor actorData = {};
+			Unreal::Actor::DataStructure actorData = {};
 
 			SDK::AActor* actor = static_cast<SDK::AActor*>(objectReference);
-			actorData.actorReference = actor;
-			actorData.actorClass = actor->Class->GetFullName();
-			actorData.actorObject = actor->GetFullName();
+			actorData.reference = actor;
+			actorData.className = actor->Class->GetFullName();
+			actorData.objectName = actor->GetFullName();
 
 			SDK::FTransform actorTransform = actor->GetTransform();
 			actorData.location = actorTransform.Translation;
@@ -2259,11 +2504,11 @@ void GUI::SharedCalls::GatherActors()
 			SDK::TArray<SDK::UActorComponent*> actorComponents = actor->K2_GetComponentsByClass(SDK::UActorComponent::StaticClass());
 			for (SDK::UActorComponent* component : actorComponents)
 			{
-				SharedData::S_ActorComponent componentData = {};
+				Unreal::ActorComponent::DataStructure componentData = {};
 
-				componentData.actorComponentReference = component;
-				componentData.actorComponentClass = component->Class->GetFullName();
-				componentData.actorComponentObject = component->GetFullName();
+				componentData.reference = component;
+				componentData.className = component->Class->GetFullName();
+				componentData.objectName = component->GetFullName();
 
 				componentData.isActive = component->bIsActive;
 				componentData.autoActivate = component->bAutoActivate;
@@ -2277,57 +2522,7 @@ void GUI::SharedCalls::GatherActors()
 				actorData.components.push_back(componentData);
 			}
 
-			SharedData::debugInfo.gatherActorsFeature.actors.push_back(actorData);
-		}
-	}
-}
-
-
-
-
-void GUI::SharedCalls::ProcessKeybindings()
-{
-	if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.menuOpenClose))
-	{
-		ToggleIsActive();
-	}
-
-	if (GetIsActive() == false)
-	{
-		if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.ghost))
-		{
-			SharedFunctions::Ghost();
-		}
-
-		if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.fly))
-		{
-			SharedFunctions::Fly();
-		}
-
-		if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.walk))
-		{
-			SharedFunctions::Walk();
-		}
-
-
-
-
-		if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.jump))
-		{
-			SharedFunctions::Jump();
-		}
-
-
-
-
-		if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.launch))
-		{
-			SharedFunctions::Launch();
-		}
-
-		if (ImGui::IsKeyBindingPressed(&SharedData::keybindingsInfo.dash))
-		{
-			SharedFunctions::Dash();
+			Features::ActorsList::actors.push_back(actorData);
 		}
 	}
 }
@@ -2340,43 +2535,287 @@ void GUI::SharedCalls::ProcessKeybindings()
 // ========================================================
 // |       #GUI #SHARED #FUNCTIONS #SHAREDFUNCTIONS       |
 // ========================================================
-void GUI::SharedFunctions::Ghost()
+void Features::CharacterMovement::Ghost()
 {
-	GUI::PlayActionSound(Character::Ghost());
+	GUI::PlayActionSound(Unreal::Character::Ghost(0));
 }
 
-void GUI::SharedFunctions::Fly()
+void Features::CharacterMovement::Fly()
 {
-	GUI::PlayActionSound(Character::Fly());
+	GUI::PlayActionSound(Unreal::Character::Fly(0));
 }
 
-void GUI::SharedFunctions::Walk()
+void Features::CharacterMovement::Walk()
 {
-	GUI::PlayActionSound(Character::Walk());
-}
-
-
-
-
-void GUI::SharedFunctions::Jump()
-{
-	GUI::PlayActionSound(Character::Jump());
+	GUI::PlayActionSound(Unreal::Character::Walk(0));
 }
 
 
 
 
-void GUI::SharedFunctions::Launch()
+void Features::CharacterMovement::Jump()
 {
-	GUI::PlayActionSound(Character::Launch({ SharedData::featuresInfo.launchVelocity[0], SharedData::featuresInfo.launchVelocity[1], SharedData::featuresInfo.launchVelocity[2] }));
+	GUI::PlayActionSound(Unreal::Character::Jump(0));
 }
 
-void GUI::SharedFunctions::Dash()
-{
-	SDK::FVector forwardVector = SharedData::objectsInfo.character->GetActorForwardVector();
 
+
+
+void Features::CharacterMovement::Launch()
+{
+	GUI::PlayActionSound(Unreal::Character::Launch(0, { Features::CharacterMovement::launchVelocity[0], Features::CharacterMovement::launchVelocity[1], Features::CharacterMovement::launchVelocity[2] }));
+}
+
+void Features::CharacterMovement::Dash()
+{
+	SDK::ACharacter* character = Unreal::Character::Get();
+	if (character == nullptr)
+	{
+		GUI::PlayActionSound(false);
+		return;
+	}
+
+	SDK::FVector forwardVector = character->GetActorForwardVector();
+
+	/* Dash shouldn't involve any vertical movement. */
 	forwardVector.Z = 0.0;
 	forwardVector.Normalize();
 
-	PlayActionSound(Character::Launch(forwardVector * SharedData::featuresInfo.dashStrength));
+	SDK::FVector launchVelocity = forwardVector * Features::CharacterMovement::dashStrength;
+	GUI::PlayActionSound(Unreal::Character::Launch(character, launchVelocity));
+}
+
+
+
+
+void Features::DirectionalMovement::Worker()
+{
+	while (GetThread())
+	{
+		/* See if we have a Player Controller alongside the Camera Manager. */
+		SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+		if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+			continue;
+
+		/* See if we have a Character under control and verify that Character is cheat flying. */
+		SDK::ACharacter* character = playerController->Character;
+		if (character == nullptr || character->CharacterMovement == nullptr || character->CharacterMovement->bCheatFlying != true)
+			continue;
+
+		/* Get Character velocity and see if we have any horizontal movement. */
+		SDK::FVector characterVelocity = character->CharacterMovement->Velocity;
+		if (characterVelocity.X == 0.0 && characterVelocity.Y == 0.0)
+			continue;
+
+		/* Normalize Character velocity (-1.0 to 1.0) and get Camera forward vector. */
+		SDK::FVector characterVelocityNormalized = Math::NormalizeVector(characterVelocity);
+		SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
+
+		/*
+			Compute the dot product of the normalized character velocity and the camera's forward vector.
+			Result interpretation:
+			  +1.0 -> character moves exactly forward,
+			  -1.0 -> character moves exactly backward,
+			   0.0 -> movement is perpendicular to the camera.
+		*/
+		double dotProduct = SDK::UKismetMathLibrary::Dot_VectorVector(characterVelocityNormalized, cameraForwardVector);
+		if (dotProduct > 0.5) // Character is mostly targeting forward direction.
+		{
+			SDK::FVector currentLocation = character->K2_GetActorLocation();
+			SDK::FVector finalLocation = SDK::UKismetMathLibrary::Add_VectorVector(currentLocation, cameraForwardVector * Features::DirectionalMovement::step);
+
+			SDK::FHitResult hitResult;
+			character->K2_SetActorLocation(finalLocation, true, &hitResult, false);
+		}
+
+		Sleep(Math::Seconds_ToMilliseconds(Features::DirectionalMovement::delay));
+	}
+}
+
+
+
+
+void Features::Camera::StartFade()
+{
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+	{
+		GUI::PlayActionSound(false);
+		return;
+	}
+
+	SDK::FLinearColor fadeColor;
+	fadeColor.R = Features::Camera::fadeColor[0];
+	fadeColor.G = Features::Camera::fadeColor[1];
+	fadeColor.B = Features::Camera::fadeColor[2];
+	fadeColor.A = Features::Camera::fadeColor[3];
+
+	playerController->PlayerCameraManager->StartCameraFade(Features::Camera::fadeFromAlpha, Features::Camera::fadeToAlpha, Features::Camera::fadeDuration, fadeColor, Features::Camera::fadeAudio, Features::Camera::fadePersistent);
+	GUI::PlayActionSound(true);
+}
+
+void Features::Camera::StopFade()
+{
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+	{
+		GUI::PlayActionSound(false);
+		return;
+	}
+
+	playerController->PlayerCameraManager->StopCameraFade();
+	GUI::PlayActionSound(true);
+}
+
+
+
+
+bool Features::DirectionalMovement::StartThread()
+{
+	if (thread)
+		return false;
+
+	thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Features::DirectionalMovement::Worker, 0, 0, 0);
+	return thread;
+}
+
+bool Features::DirectionalMovement::InvalidateThread()
+{
+	if (thread == nullptr)
+		return false;
+
+	if (CloseHandle(thread))
+	{
+		thread = nullptr;
+		return true;
+	}
+	else
+		return false;
+}
+
+
+
+
+#ifdef ACTOR_TRACE
+bool Features::ActorTrace::Trace()
+{
+	SDK::UWorld* world = Unreal::World::Get();
+	if (world == nullptr)
+		return false;
+
+	SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+	if (playerController == nullptr || playerController->PlayerCameraManager == nullptr)
+		return false;
+
+	SDK::FVector cameraLocation = playerController->PlayerCameraManager->K2_GetActorLocation();
+	SDK::FVector cameraForwardVector = playerController->PlayerCameraManager->GetActorForwardVector();
+	SDK::FVector traceEndLocation = cameraLocation + (cameraForwardVector * Features::ActorTrace::traceLength);
+
+	SDK::TArray<SDK::AActor*> actorsToIgnore;
+	if (SDK::ACharacter* character = Unreal::Character::Get())
+		actorsToIgnore.Add(character);
+
+	SDK::FHitResult hitResult;
+	if (SDK::UKismetSystemLibrary::LineTraceSingle(world, cameraLocation, traceEndLocation, SDK::ETraceTypeQuery::TraceTypeQuery1, false, actorsToIgnore, SDK::EDrawDebugTrace::ForDuration, &hitResult, true, SDK::FLinearColor(), SDK::FLinearColor(), 5.0f))
+	{
+		SDK::AActor* hitActor = hitResult.Actor.Get();
+		if (hitActor == nullptr)
+			return false;
+
+		Features::ActorTrace::traceHit = true;
+
+		Features::ActorTrace::traceStartLocation = cameraLocation;
+		Features::ActorTrace::traceEndLocation = hitResult.Location;
+
+		Features::ActorTrace::actor.reference = hitActor;
+		Features::ActorTrace::actor.className = hitActor->Class->GetFullName();
+		Features::ActorTrace::actor.objectName = hitActor->GetFullName();
+
+		Unreal::Console::Print("[Actor Trace] " + Features::ActorTrace::actor.objectName);
+	}
+	else
+	{
+		Features::ActorTrace::traceHit = false;
+
+		Features::ActorTrace::traceStartLocation = cameraLocation;
+		Features::ActorTrace::traceEndLocation = traceEndLocation;
+
+		Features::ActorTrace::actor.reference = nullptr;
+
+		Unreal::Console::Print("[Actor Trace] Didn't hit any actor.");
+	}
+
+	return true;
+}
+#endif
+
+
+
+
+
+
+void Keybindings::Process()
+{
+	if (ImGui::IsKeyBindingPressed(&Keybindings::general_MenuOpenClose))
+		GUI::ToggleIsMenuActive();
+
+
+	if (GUI::GetIsMenuActive() == false)
+	{
+#ifdef ACTOR_TRACE
+		if (Features::ActorTrace::enabled)
+		{
+			if (ImGui::IsKeyBindingPressed(&Keybindings::actorTrace))
+			{
+				GUI::PlayActionSound(Features::ActorTrace::Trace());
+			}
+		}
+#endif
+
+
+
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Ghost))
+		{
+			Features::CharacterMovement::Ghost();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Fly))
+		{
+			Features::CharacterMovement::Fly();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Walk))
+		{
+			Features::CharacterMovement::Walk();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Jump))
+		{
+			Features::CharacterMovement::Jump();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Launch))
+		{
+			Features::CharacterMovement::Launch();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterMovement_Dash))
+		{
+			Features::CharacterMovement::Dash();
+		}
+
+
+
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterCamera_StartFade))
+		{
+			Features::Camera::StartFade();
+		}
+
+		if (ImGui::IsKeyBindingPressed(&Keybindings::characterCamera_StopFade))
+		{
+			Features::Camera::StopFade();
+		}
+	}
 }

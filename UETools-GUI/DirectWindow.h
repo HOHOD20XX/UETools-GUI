@@ -21,6 +21,15 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 class DirectWindow
 {
 private:
+	/* @brief
+	* Win32 window procedure for the overlay window. Forwards messages to ImGui's Win32 handler, 
+	* handles resize/system/quit, and defers all other messages to DefWindowProc.
+	* @param hWnd   Overlay window handle.
+	* @param msg    Message identifier.
+	* @param wParam Message-specific WPARAM.
+	* @param lParam Message-specific LPARAM.
+	* @output LRESULT: Non-zero if handled; otherwise the result of DefWindowProc. 
+	*/
 	static LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 
@@ -195,6 +204,6 @@ public:
 	/**
 	* @brief : Function that create the overlay window and more.
 	*/
-	static void Construct();
+	static void Create();
 };
 

@@ -2,21 +2,27 @@
 #include "DirectWindow.h"
 #include "imgui.h"
 
+#include "Unreal.h"
 #include "Clipboard.h"
 #include "Math.h"
 
-#include "Input.h"
-#include "Console.h"
-#include "CheatManager.h"
-#include "GameInstance.h"
-#include "GameMode.h"
-#include "GameState.h"
-#include "Character.h"
-
 #include <Windows.h>
 #include <algorithm>
+#include <thread>
 
-// #define UE5
+/*
+	#define UE5
+
+	When targeting Unreal Engine 5 based titles, it's recommended to uncomment that define;
+	In many cases that action alone would be enough to adapt entirity of solution for newer engine.
+*/
+
+/* 
+	#define ACTOR_TRACE 
+
+	The way Line Tracing work often differ from Engine to Engine (e.g. 4.25 -> 4.27),
+	it's disabled by default in order to avoid a potential set of compilation errors. 
+*/
 
 
 
@@ -25,7 +31,7 @@
 
 namespace ImGui
 {
-	struct S_KeyBinding
+	struct KeyBinding
 	{
 		ImGuiKey key = ImGuiKey_None;
 		bool isDetermined = true;
@@ -65,38 +71,116 @@ namespace ImGui
 	void ReadOnlyInputText(const char* label, const char* text, const bool& showCopyButton);
 
 
+	/*
+	* @brief Using pre-determined table, converts an ImGui key to the corresponding WinAPI virtual-key code.
+	* @param key - ImGui key to be converted.
+	* @return The corresponding WinAPI virtual-key code, or 0 if unsupported.
+	*/
 	static int ImGuiKey_ToWinAPI(const ImGuiKey& key);
-	bool KeyBindingInput(const char* label, S_KeyBinding* binding);
-	bool IsKeyBindingPressed(S_KeyBinding* binding, const bool& waitForRelease = true);
-	bool IsKeyBindingDown(S_KeyBinding* binding);
-	bool IsKeyBindingReleased(S_KeyBinding* binding);
+	/*
+	* @brief Using pre-determined table, returns a human-readable name for a given ImGui key.
+	* @param key - ImGui key to get the name of.
+	* @return The key name as a string.
+	*/
+	static const char* ImGuiKey_GetName(const ImGuiKey& key);
+
+	/*
+	* @brief Renders a key binding input control in ImGui.
+	* 
+	* Displays a button with the current binding state and allows the user
+	* to assign or unbind a key interactively.
+	* 
+	* @param label - label text to display (may contain "##" to hide ID).
+	* @param binding - pointer to key binding structure.
+	* @return 'True' if the binding was changed; otherwise 'False'
+	*/
+	bool KeyBindingInput(const char* label, KeyBinding* binding);
+	bool IsKeyBindingPressed(KeyBinding* binding, const bool& waitForRelease = true);
+	bool IsKeyBindingDown(KeyBinding* binding);
+	bool IsKeyBindingReleased(KeyBinding* binding);
 
 
+	/*
+	* @brief Sets the font scale to the specified value.
+	* @param fontScale - scale factor.
+	*/
 	static void SetFontScale(const float& fontScale)
 	{
 		SetWindowFontScale(fontScale);
 	}
-	static void SetFontSmall()
+	/*
+	* @brief Sets the font scale to 0.5x.
+	*/
+	static void SetFontTiny()
 	{
 		SetFontScale(0.5f);
 	}
+	/*
+	* @brief Sets the font scale to 0.75x.
+	*/
+	static void SetFontLittle()
+	{
+		SetFontScale(0.75f);
+	}
+	/*
+	* @brief Sets the font scale to 0.9x.
+	*/
+	static void SetFontSmall()
+	{
+		SetFontScale(0.9f);
+	}
+	/*
+	* @brief Sets the font scale to 1.0x.
+	*/
 	static void SetFontRegular()
 	{
 		SetFontScale(1.0f);
 	}
+	/*
+	* @brief Sets the font scale to 1.1x.
+	*/
 	static void SetFontBig()
 	{
 		SetFontScale(1.1f);
 	}
+	/*
+	* @brief Sets the font scale to 1.25x.
+	*/
 	static void SetFontLarge()
 	{
 		SetFontScale(1.25f);
 	}
+	/*
+	* @brief Sets the font scale to 1.5x.
+	*/
 	static void SetFontTitle()
 	{
 		SetFontScale(1.5f);
 	}
-}
+
+
+
+
+	/*
+	* @brief New Line + Separator + New Line.
+	*/
+	static void CategorySeparator()
+	{
+		ImGui::NewLine();
+		ImGui::Separator();
+		ImGui::NewLine();
+	}
+
+
+	/*
+	* @brief Prints pre-determined number of spaces to expand menu horizontally.
+	*/
+	static void MenuSpacer()
+	{
+		static const char* menuSpacer = "                                                                                               ";
+		ImGui::TextUnformatted(menuSpacer, menuSpacer + 96);
+	}
+};
 
 
 
@@ -106,72 +190,46 @@ namespace ImGui
 class GUI
 {
 private:
-	static inline bool isActive = true;
+	static inline bool isMenuActive = false;
 public:
-	static bool GetIsActive()
+	static bool GetIsMenuActive()
 	{
-		return isActive;
+		return isMenuActive;
 	}
-	static void SetIsActive(const bool& newIsActive)
+	static void SetIsMenuActive(const bool& isActive)
 	{
-		isActive = newIsActive;
+		isMenuActive = isActive;
 	}
-	static void ToggleIsActive()
+	static void ToggleIsMenuActive()
 	{
-		isActive = !isActive;
+		isMenuActive = !isMenuActive;
 	}
-
-
 
 
 private:
-	static inline bool isInWaitMode = false;
-	static inline double waitModeEndTime = 0.0;
+	static inline HANDLE directWindowThread = nullptr;
 public:
-	static bool GetIsInWaitMode()
+	static HANDLE GetDirectWindowThread()
 	{
-		return isInWaitMode;
+		return directWindowThread;
 	}
-	static void SetIsInWaitMode(const bool& newIsInWaitMode)
-	{
-		isInWaitMode = newIsInWaitMode;
-	}
-
-	static double GetWaitModeEndTime()
-	{
-		return waitModeEndTime;
-	}
-	static void SetWaitModeEndTime(const double& newWaitModeEndTime)
-	{
-		waitModeEndTime = newWaitModeEndTime;
-	}
-
-	static void StartWaitMode(const double& duration)
-	{
-		waitModeEndTime = ImGui::GetTime() + duration;
-		isInWaitMode = true;
-	}
-
-
-
-
-private:
-	static inline bool isForeground = true;
-public:
-	static bool GetIsForeground()
-	{
-		return isForeground;
-	}
-	static void SetIsForeground(const bool& newIsForeground)
-	{
-		isForeground = newIsForeground;
-	}
+	static bool StartDirectWindowThread();
 
 
 
 
 public:
-	static void Create(const HMODULE& applicationModule);
+	/*
+	* @brief Initializes the GUI system. Should be called to start ImGui and create the menu.
+	* @param applicationModule - Handle of the current (this) DLL module.
+	*/
+	static void Init(const HMODULE& applicationModule);
+	/*
+	* @brief Renders frame of GUI elements.
+	* 
+	* Called once per frame by DirectWindow class (on each ImGui::NewFrame())
+	* to draw application-specific ImGui controls and windows.
+	*/
 	static void Draw();
 
 
@@ -196,440 +254,6 @@ public:
 
 
 
-	class SharedWorkers
-	{
-	private:
-		static inline HANDLE userInterfaceThread = nullptr;
-	public:
-		static HANDLE GetUserInterfaceThread()
-		{
-			return userInterfaceThread;
-		}
-		static void SetUserInterfaceThread(const HANDLE& newUserInterfaceThread)
-		{
-			userInterfaceThread = newUserInterfaceThread;
-		}
-
-
-	private:
-		static inline HANDLE featuresThread = nullptr;
-	public:
-		static HANDLE GetFeaturesThread()
-		{
-			return featuresThread;
-		}
-		static void SetFeaturesThread(const HANDLE& newFeaturesThread)
-		{
-			featuresThread = newFeaturesThread;
-		}
-		static void FeaturesWorker();
-	};
-
-
-
-
-
-
-	class SharedCalls
-	{
-	public:
-		static void GatherDebugInformation();
-
-
-	public:
-		static void GatherActors();
-
-
-	public:
-		static void ProcessKeybindings();
-	};
-
-
-
-
-
-
-	class SharedData
-	{
-	public:
-		struct S_Console
-		{
-			SDK::UConsole* consoleReference;
-			std::string consoleClass;
-			std::string consoleObject;
-		};
-
-		struct S_ViewportClient
-		{
-			SDK::UGameViewportClient* viewportClientReference;
-			std::string viewportClientClass;
-			std::string viewportClientObject;
-
-			S_Console console;
-		};
-
-		struct S_Engine
-		{
-			SDK::UEngine* engineReference;
-			std::string engineClass;
-			std::string engineObject;
-
-			S_ViewportClient viewportClient;
-
-			bool fixedFrameRateEnabled;
-			double fixedFrameRate;
-
-			bool smoothFrameRateEnabled;
-			SDK::FFloatRange smoothFrameRateRange;
-
-			bool subtitlesEnabled;
-			bool subtitlesForcedOff;
-
-			bool pauseOnLossOfFocus;
-		};
-
-		struct S_OnlineSession
-		{
-			SDK::UOnlineSession* onlineSessionReference;
-			std::string onlineSessionClass;
-			std::string onlineSessionObject;
-		};
-
-		struct S_GameInstance
-		{
-			SDK::UGameInstance* gameInstanceReference;
-			std::string gameInstanceClass;
-			std::string gameInstanceObject;
-
-			S_OnlineSession onlineSession;
-		};
-
-		struct S_GameSession
-		{
-			SDK::AGameSession* gameSessionReference;
-			std::string gameSessionClass;
-			std::string gameSessionObject;
-
-			int32_t maxPlayers;
-			int32_t maxSpectators;
-			int32_t maxPartySize;
-			int8_t maxSplitScreensPerConnection;
-
-			std::string sessionName;
-		};
-
-		struct S_GameMode
-		{
-			SDK::AGameModeBase* gameModeReference;
-			std::string gameModeClass;
-			std::string gameModeObject;
-
-			S_GameSession gameSession;
-
-			int32_t playersCount;
-			int32_t spectatorsCount;
-
-			bool startPlayersAsSpectators;
-			std::string defaultPlayerName;
-
-			bool useSeamlessTravel;
-
-			std::string options;
-			bool isPausable;
-		};
-
-		struct S_WorldSettings
-		{
-			SDK::AWorldSettings* worldSettingsReference;
-
-			std::string worldSettingsClass;
-			std::string worldSettingsObject;
-
-			bool worldHighPriorityLoading;
-			bool worldLocalHighPriorityLoading;
-
-			double worldToMeters;
-		};
-
-		struct S_Level
-		{
-			SDK::ULevel* levelReference;
-
-			std::string levelClass;
-			std::string levelObject;
-			std::string levelName;
-
-			bool isLevelVisible;
-
-			S_WorldSettings worldSettings;
-		};
-
-		struct S_StreamingLevel
-		{
-			SDK::ULevelStreaming* streamingLevelReference;
-			std::string streamingLevelPath;
-			SDK::FLinearColor streamingLevelColor;
-
-			S_Level level;
-		};
-
-		struct S_GameState
-		{
-			SDK::AGameStateBase* gameStateReference;
-			std::string gameStateClass;
-			std::string gameStateObject;
-		};
-
-		struct S_NetDriver
-		{
-			SDK::UNetDriver* netDriverReference;
-			std::string netDriverClass;
-			std::string netDriverObject;
-		};
-
-		struct S_DemoNetDriver
-		{
-			SDK::UNetDriver* demoNetDriverReference;
-			std::string demoNetDriverClass;
-			std::string demoNetDriverObject;
-		};
-
-		struct S_World
-		{
-			SDK::UWorld* worldReference;
-			std::string worldClass;
-			std::string worldObject;
-
-			S_GameState gameState;
-
-			S_NetDriver netDriver;
-			S_DemoNetDriver demoNetDriver;
-
-			S_Level persistentLevel;
-
-			std::vector<S_StreamingLevel> streamingLevels;
-
-			double gameTimeInSeconds;
-
-			bool isServer;
-			bool isDedicatedServer;
-			bool isSplitScreen;
-			bool isStandalone;
-		};
-
-		struct S_Player
-		{
-			SDK::UPlayer* playerReference;
-			std::string playerClass;
-			std::string playerObject;
-		};
-
-		struct S_Pawn
-		{
-			SDK::APawn* pawnReference;
-			std::string pawnClass;
-			std::string pawnObject;
-
-			SDK::FVector location;
-			SDK::FRotator rotation;
-			SDK::FVector scale;
-
-			bool isControlled;
-			bool isPawnControlled;
-			bool isPlayerControlled;
-			bool isLocallyControlled;
-			bool isBotControlled;
-		};
-
-		struct S_CameraManager
-		{
-			SDK::APlayerCameraManager* cameraManagerReference;
-			std::string cameraManagerClass;
-			std::string cameraManagerObject;
-
-			SDK::FVector location;
-			SDK::FRotator rotation;
-			SDK::FVector scale;
-		};
-
-		struct S_CheatManager
-		{
-			SDK::UCheatManager* cheatManagerReference;
-			std::string cheatManagerClass;
-			std::string cheatManagerObject;
-		};
-
-		struct S_PlayerController
-		{
-			SDK::APlayerController* playerControllerReference;
-			std::string playerControllerClass;
-			std::string playerControllerObject;
-
-			S_Player player;
-
-			S_Pawn pawn;
-
-			S_CameraManager cameraManager;
-
-			S_CheatManager cheatManager;
-		};
-
-		struct S_ActorComponent
-		{
-			SDK::UActorComponent* actorComponentReference;
-			std::string actorComponentClass;
-			std::string actorComponentObject;
-
-			bool isActive;
-			bool autoActivate;
-			bool editorOnly;
-
-			bool netAddressible;
-			bool replicates;
-
-			SDK::EComponentCreationMethod creationMethod;
-		};
-
-		struct S_Actor
-		{
-			SDK::AActor* actorReference;
-			std::string actorClass;
-			std::string actorObject;
-
-			SDK::FVector location;
-			SDK::FRotator rotation;
-			SDK::FVector scale;
-
-			std::vector<S_ActorComponent> components;
-		};
-
-
-
-
-	public:
-		struct S_GatherActorsFeature
-		{
-			bool enabled;
-
-			char filterBuffer[255];
-			size_t filterBufferSize = 255;
-			bool filterCaseSensitive = true;
-
-			char componentsFilterBuffer[255];
-			size_t componentsFilterBufferSize = 255;
-			bool componentsFilterCaseSensitive = true;
-
-			std::vector<S_Actor> actors;
-		};
-
-
-
-
-	public:
-		struct S_DebugInformation
-		{
-			bool isActive;
-
-			double lastUpdateTime;
-
-			bool autoUpdate;
-			float autoUpdateDelay = 0.01f;
-
-			S_Engine engine;
-
-			S_GameInstance gameInstance;
-
-			S_GameMode gameMode;
-
-			S_PlayerController playerController;
-
-			S_World world;
-
-			S_GatherActorsFeature gatherActorsFeature;
-
-			bool wasProjectNameObtained;
-			std::string projectName;
-
-			bool wasProjectPlatformObtained;
-			std::string projectPlatform;
-
-			bool wasProjectEngineVersionObtained;
-			std::string projectEngineVersion;
-
-			bool wasUsernameObtained;
-			std::string username;
-
-			bool wasCommandLineObtained;
-			std::string commandLine;
-		};
-		static inline S_DebugInformation debugInfo = {};
-
-
-
-
-	public:
-		struct S_ObjectsInformation
-		{
-			SDK::APlayerController* controller;
-			SDK::ACharacter* character;
-			SDK::UCharacterMovementComponent* movementComponent;
-		};
-		static inline S_ObjectsInformation objectsInfo = {};
-
-
-
-
-	public:
-		struct S_DirectionalMovement
-		{
-			bool enabled;
-			double movementStep = 45.0;
-			double movementDelay = 0.05;
-		};
-
-		struct S_FeaturesInformation
-		{
-			S_DirectionalMovement directionalMovement;
-
-			float launchVelocity[3] = { 0.0f, 0.0f, 1325.0f };
-
-			double dashStrength = 3375.0;
-		};
-		static inline S_FeaturesInformation featuresInfo = {};
-
-
-
-
-	public:
-		struct S_KeybindingsInformation
-		{
-			ImGui::S_KeyBinding menuOpenClose;
-
-			ImGui::S_KeyBinding ghost;
-			ImGui::S_KeyBinding fly;
-			ImGui::S_KeyBinding walk;
-
-			ImGui::S_KeyBinding jump;
-
-			ImGui::S_KeyBinding launch;
-			ImGui::S_KeyBinding dash;
-
-			S_KeybindingsInformation()
-				: menuOpenClose { ImGuiKey_Insert },
-				  ghost{ ImGuiKey_Keypad7 },
-				  fly{ ImGuiKey_Keypad8 },
-				  walk{ ImGuiKey_Keypad9 }
-			{
-			}
-		};
-		static inline S_KeybindingsInformation keybindingsInfo = {};
-	};
-
-
-
-
-
-
 	class SharedFunctions
 	{
 	public:
@@ -646,4 +270,187 @@ public:
 		static void Launch();
 		static void Dash();
 	};
+};
+
+
+
+
+
+
+namespace Features
+{
+	class Debug
+	{
+	public:
+		static inline bool enabled;
+
+		static inline double lastUpdateTime;
+
+		static inline bool autoUpdate;
+		static inline float autoUpdateDelay = 0.01f;
+
+		static inline Unreal::Engine::DataStructure engine;
+
+		static inline Unreal::GameInstance::DataStructure gameInstance;
+
+		static inline Unreal::GameMode::DataStructure gameMode;
+
+		static inline Unreal::PlayerController::DataStructure playerController;
+
+		static inline Unreal::World::DataStructure world;
+
+		static inline bool wasProjectNameObtained;
+		static inline std::string projectName;
+
+		static inline bool wasProjectPlatformObtained;
+		static inline std::string projectPlatform;
+
+		static inline bool wasProjectEngineVersionObtained;
+		static inline std::string projectEngineVersion;
+
+		static inline bool wasUsernameObtained;
+		static inline std::string username;
+
+		static inline bool wasCommandLineObtained;
+		static inline std::string commandLine;
+
+
+		static void Update();
+	};
+
+
+
+	class ActorsList
+	{
+	public:
+		static inline bool enabled;
+
+		static inline char filterBuffer[255];
+		static inline size_t filterBufferSize = 255;
+		static inline bool filterCaseSensitive = true;
+
+		static inline char componentsFilterBuffer[255];
+		static inline size_t componentsFilterBufferSize = 255;
+		static inline bool componentsFilterCaseSensitive = true;
+
+		static inline std::vector<Unreal::Actor::DataStructure> actors;
+
+
+		static void Update();
+	};
+
+
+
+
+	class CharacterMovement
+	{
+	public:
+		static void Ghost();
+		static void Fly();
+		static void Walk();
+
+
+		static void Jump();
+
+
+		static inline float launchVelocity[3] = { 0.0f, 0.0f, 1325.0f };
+		static void Launch();
+
+
+		static inline double dashStrength = 3375.0;
+		static void Dash();
+	};
+
+
+
+
+	class Camera
+	{
+	public:
+		static inline float fadeFromAlpha = 0.0f;
+		static inline float fadeToAlpha = 1.0f;
+		static inline float fadeDuration = 2.5f;
+		static inline float fadeColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+		static inline bool fadeAudio = false;
+		static inline bool fadePersistent = true;
+
+
+		static void StartFade();
+		static void StopFade();
+	};
+
+
+
+
+	class DirectionalMovement
+	{
+	public:
+		static inline bool enabled;
+
+		static inline double step = 45.0;
+		static inline double delay = 0.05;
+
+
+	private:
+		static inline HANDLE thread = nullptr;
+		static void Worker();
+	public:
+		static HANDLE GetThread()
+		{
+			return thread;
+		}
+		static bool StartThread();
+		static bool InvalidateThread();
+	};
+
+
+
+
+#ifdef ACTOR_TRACE
+	class ActorTrace
+	{
+	public:
+		static inline bool enabled = false;
+		static inline bool showOnScreen = false;
+		static inline bool showLineTrace = true;
+
+		static inline SDK::FVector traceStartLocation;
+		static inline SDK::FVector traceEndLocation;
+		static inline float traceColor[4] = { 0.118f, 1.0f, 0.0f, 0.5f };
+		static inline float traceThickness = 3.5f;
+		static inline float traceLength = 2048.0f;
+
+		static inline bool traceHit;
+		static inline Unreal::Actor::DataStructure actor;
+
+
+		static bool Trace();
+	};
+#endif
+};
+
+
+
+
+
+
+class Keybindings
+{
+public:
+	static inline ImGui::KeyBinding general_MenuOpenClose = ImGui::KeyBinding(ImGuiKey_Insert);
+
+	static inline ImGui::KeyBinding debug_ActorTrace = ImGui::KeyBinding(ImGuiKey_T);
+
+	static inline ImGui::KeyBinding characterMovement_Ghost;
+	static inline ImGui::KeyBinding characterMovement_Fly;
+	static inline ImGui::KeyBinding characterMovement_Walk;
+	static inline ImGui::KeyBinding characterMovement_Jump;
+	static inline ImGui::KeyBinding characterMovement_Launch;
+	static inline ImGui::KeyBinding characterMovement_Dash;
+
+	static inline ImGui::KeyBinding characterCamera_StartFade;
+	static inline ImGui::KeyBinding characterCamera_StopFade;
+
+
+	static void Process();
 };
