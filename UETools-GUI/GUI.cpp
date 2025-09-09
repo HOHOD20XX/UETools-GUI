@@ -1279,6 +1279,8 @@ void GUI::Draw()
 										{
 											for (Unreal::LevelStreaming::DataStructure streamingLevel : Features::Debug::world.streamingLevels)
 											{
+												ImGui::PushID(streamingLevel.objectName.c_str());
+
 												ImVec4 levelColor
 												{
 													streamingLevel.levelColor.R,
@@ -1362,6 +1364,8 @@ void GUI::Draw()
 
 													ImGui::TreePop();
 												}
+
+												ImGui::PopID();
 											}
 
 											ImGui::TreePop();
@@ -1775,9 +1779,16 @@ void GUI::Draw()
 
 								for (SDK::FString levelPath : levelPathCollection)
 								{
+#ifdef UE5
+									bool outSuccess;
+									static const SDK::FString optionalLevelNameOverride;
+									static SDK::TSubclassOf<SDK::ULevelStreamingDynamic> optionalLevelStreamingClass;
+									SDK::ULevelStreamingDynamic::LoadLevelInstance(world, levelPath, locationOffset, rotationOffset, &outSuccess, optionalLevelNameOverride, optionalLevelStreamingClass, false);
+#else
 									bool outSuccess;
 									static const SDK::FString optionalLevelNameOverride;
 									SDK::ULevelStreamingDynamic::LoadLevelInstance(world, levelPath, locationOffset, rotationOffset, &outSuccess, optionalLevelNameOverride);
+#endif
 
 									if (outSuccess)
 										anyLevelLoaded = true;
@@ -2534,7 +2545,11 @@ void Features::Debug::Update()
 					continue;
 
 				Unreal::LevelStreaming::DataStructure levelStreamingData = {};
+
 				levelStreamingData.reference = streamingLevel;
+				levelStreamingData.className = streamingLevel->Class->GetFullName();
+				levelStreamingData.objectName = streamingLevel->GetFullName();
+
 				levelStreamingData.levelPath = streamingLevelPath;
 				levelStreamingData.levelColor = streamingLevel->LevelColor;
 
