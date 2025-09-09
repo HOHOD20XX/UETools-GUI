@@ -546,3 +546,49 @@ std::vector<SDK::UObject*> Unreal::Object::GetAllOfClass(const SDK::TSubclassOf<
 
 	return outCollection;
 }
+
+
+
+
+
+
+std::vector<SDK::FString> Unreal::String::Split(const std::wstring& wideString, const wchar_t& separator, const bool& removeSeparatorSpaces)
+{
+	std::vector<SDK::FString> outCollection;
+
+	if (wideString.empty())
+		return outCollection;
+
+	size_t position = 0;
+	while (true)
+	{
+		const size_t separatorPosition = wideString.find(separator, position);
+
+		std::wstring token = (separatorPosition == std::wstring::npos)
+							 ? wideString.substr(position)
+							 : wideString.substr(position, separatorPosition - position);
+
+		if (removeSeparatorSpaces)
+		{
+			size_t first = 0;
+			while (first < token.size() && std::iswspace(token[first]))
+				++first;
+
+			size_t last = token.size();
+			while (last > first && std::iswspace(token[last - 1]))
+				--last;
+
+			token = token.substr(first, last - first);
+		}
+
+		if (token.empty() == false)
+			outCollection.push_back(SDK::FString(token.c_str()));
+
+		if (separatorPosition == std::wstring::npos)
+			break;
+
+		position = separatorPosition + 1;
+	}
+
+	return outCollection;
+}

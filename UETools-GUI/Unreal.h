@@ -1,6 +1,8 @@
 #pragma once
 #include "SDK\Engine_classes.hpp"
 
+#include <cwctype>
+
 
 
 
@@ -629,6 +631,53 @@ namespace Unreal
 		*		  otherwise returns an empty vector if no Objects are found.
 		*/
 		static std::vector<SDK::UObject*> GetAllOfClass(const SDK::TSubclassOf<SDK::UObject>& objectClass);
+	};
+
+
+
+
+
+
+	class String
+	{
+	public:
+		static SDK::FString WString_ToFString(const std::wstring& wideString)
+		{
+			return SDK::FString(wideString.c_str());
+		}
+		static SDK::FString String_ToFString(const std::string& string)
+		{
+			return WString_ToFString(std::wstring(string.begin(), string.end()));
+		}
+		static SDK::FString CString_ToFString(const char* charString)
+		{
+			return String_ToFString(std::string(charString));
+		}
+
+
+		static std::vector<SDK::FString> Split(const std::wstring& wideString, const wchar_t& separator, const bool& removeSeparatorSpaces = true);
+		static std::vector<SDK::FString> Split(const std::wstring& wideString, const char& separator, const bool& removeSeparatorSpaces = true)
+		{
+			return Split(wideString, (wchar_t)separator, removeSeparatorSpaces);
+		}
+
+		static std::vector<SDK::FString> Split(const std::string& string, const wchar_t& separator, const bool& removeSeparatorSpaces = true)
+		{
+			return Split(std::wstring(string.begin(), string.end()), separator, removeSeparatorSpaces);
+		}
+		static std::vector<SDK::FString> Split(const std::string& string, const char& separator, const bool& removeSeparatorSpaces = true)
+		{
+			return Split(std::wstring(string.begin(), string.end()), separator, removeSeparatorSpaces);
+		}
+
+		static std::vector<SDK::FString> Split(const char* charString, const wchar_t& separator, const bool& removeSeparatorSpaces = true)
+		{
+			return Split(std::string(charString), separator, removeSeparatorSpaces);
+		}
+		static std::vector<SDK::FString> Split(const char* charString, const char& separator, const bool& removeSeparatorSpaces = true)
+		{
+			return Split(std::string(charString), separator, removeSeparatorSpaces);
+		}
 	};
 };
 

@@ -336,17 +336,31 @@ namespace Features
 		static inline bool enabled;
 
 		static inline char filterBuffer[255];
-		static inline size_t filterBufferSize = 255;
+		static inline const size_t filterBufferSize = 255;
 		static inline bool filterCaseSensitive = true;
 
 		static inline char componentsFilterBuffer[255];
-		static inline size_t componentsFilterBufferSize = 255;
+		static inline const size_t componentsFilterBufferSize = 255;
 		static inline bool componentsFilterCaseSensitive = true;
 
 		static inline std::vector<Unreal::Actor::DataStructure> actors;
 
 
 		static void Update();
+	};
+
+
+
+
+	class LoadLevelInstance
+	{
+	public:
+		/* Allocate large buffer to account for combined paths (e.g: "/Game/OpenWorld/Tile_X2Y8 | /Game/OpenWorld/Tile_X4Y6") */
+		static inline char levelPathBuffer[2048];
+		static inline const size_t levelPathBufferSize = 2048;
+
+		static inline float locationOffset[3];
+		static inline float rotationOffset[3];
 	};
 
 
@@ -443,6 +457,17 @@ namespace Features
 		static bool Trace();
 	};
 #endif
+
+
+
+
+	class Console
+	{
+	public:
+		/* Allocate large buffer to account for combined console commands (e.g: "stat fps | stat unit") */
+		static inline char consoleBuffer[2048];
+		static inline const size_t consoleBufferSize = 2048;
+	};
 };
 
 

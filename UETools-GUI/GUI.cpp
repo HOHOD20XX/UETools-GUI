@@ -694,7 +694,7 @@ void GUI::Draw()
 	{
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v0.9)");
+			ImGui::Text("UETools GUI (v1.0)");
 			if (ImGui::IsItemHovered())
 			{
 				ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
@@ -1293,6 +1293,15 @@ void GUI::Draw()
 
 												if (isTreeNodeOpen)
 												{
+													if (Features::Debug::autoUpdate == false)
+													{
+														ImGui::Text("Debug section isn't set to auto-update!");
+														ImGui::SetFontSmall();
+														ImGui::Text("In order to see level related changes in UI, use \"Update\" button.");
+														ImGui::SetFontRegular();
+														ImGui::NewLine();
+													}
+
 													bool isLevelLoaded = streamingLevel.level.reference;
 
 													ImGui::TextBoolColored("Is Loaded:", isLevelLoaded);
@@ -1574,6 +1583,20 @@ void GUI::Draw()
 											PlayActionSound(false);
 									}
 
+									ImGui::Text("         ");
+									ImGui::SameLine();
+									if (ImGui::Button("Teleport To Actor"))
+									{
+										SDK::ACharacter* character = Unreal::Character::Get();
+										if (character)
+										{
+											SDK::FHitResult hitResult;
+											PlayActionSound(character->K2_SetActorLocation(actor.location, false, &hitResult, true));
+										}
+										else
+											PlayActionSound(false);
+									}
+
 									ImGui::NewLine();
 
 									ImGui::SetFontTitle();
@@ -1720,6 +1743,57 @@ void GUI::Draw()
 			{
 				if (worldObtained)
 				{
+					ImGui::SetFontTitle();
+					ImGui::Text("Level Instance");
+					ImGui::SetFontSmall();
+					ImGui::Text("Dynamic level loading by Level path, for example \"/Game/OpenWorld/Tile_X2Y8\".");
+					ImGui::Text("Feature supports combined input using the '|' separator between paths.");
+					ImGui::SetFontRegular();
+					
+					if (ImGui::TreeNode("Details##LoadLevelInstance"))
+					{
+						ImGui::Text("Level Path:    ");
+						ImGui::SameLine();
+						ImGui::InputText("##LoadLevelInstance", Features::LoadLevelInstance::levelPathBuffer, Features::LoadLevelInstance::levelPathBufferSize);
+
+						ImGui::Text("Level Location:");
+						ImGui::SameLine();
+						ImGui::InputFloat3("##LevelLocationOffset", Features::LoadLevelInstance::locationOffset);
+
+						ImGui::Text("Level Rotation:");
+						ImGui::SameLine();
+						ImGui::InputFloat3("##LevelRotationOffset", Features::LoadLevelInstance::rotationOffset);
+
+						if (ImGui::Button("Load Level##LoadLevelInstance"))
+						{
+							std::vector<SDK::FString> levelPathCollection = Unreal::String::Split(Features::LoadLevelInstance::levelPathBuffer, '|');
+							if (levelPathCollection.size() > 0)
+							{
+								bool anyLevelLoaded = false;
+								SDK::FVector locationOffset = SDK::FVector(Features::LoadLevelInstance::locationOffset[0], Features::LoadLevelInstance::locationOffset[1], Features::LoadLevelInstance::locationOffset[2]);
+								SDK::FRotator rotationOffset = SDK::FRotator(Features::LoadLevelInstance::rotationOffset[0], Features::LoadLevelInstance::rotationOffset[1], Features::LoadLevelInstance::rotationOffset[2]);
+
+								for (SDK::FString levelPath : levelPathCollection)
+								{
+									bool outSuccess;
+									static const SDK::FString optionalLevelNameOverride;
+									SDK::ULevelStreamingDynamic::LoadLevelInstance(world, levelPath, locationOffset, rotationOffset, &outSuccess, optionalLevelNameOverride);
+
+									if (outSuccess)
+										anyLevelLoaded = true;
+								}
+
+								PlayActionSound(anyLevelLoaded);
+							}
+							else
+								PlayActionSound(false);
+						}
+
+						ImGui::TreePop();
+					}
+
+					ImGui::CategorySeparator();
+
 					ImGui::SetFontTitle();
 					ImGui::Text("Gravity");
 					ImGui::SetFontRegular();
@@ -2066,21 +2140,16 @@ void GUI::Draw()
 			ImGui::Text("Console:");
 			ImGui::SameLine();
 			ImGui::PushItemWidth(320);
-			/* Allocate large buffer to account for combined console commands (e.g: "stat fps | stat unit") */
-			static char consoleBuffer[2048];
-			ImGui::InputText("##Console", consoleBuffer, 2048);
+			ImGui::InputText("##Console", Features::Console::consoleBuffer, Features::Console::consoleBufferSize);
 			ImGui::SameLine();
 			if (ImGui::Button("Execute"))
 			{
 				if (world)
 				{
-					std::string consoleCommand = std::string(consoleBuffer);
-					if (consoleCommand.empty() == false)
+					SDK::FString consoleCommand = Unreal::String::CString_ToFString(Features::Console::consoleBuffer);
+					if (consoleCommand.Num() > 0)
 					{
-						std::wstring wConsoleCommand = std::wstring(consoleCommand.begin(), consoleCommand.end());
-						SDK::FString fConsoleCommand = SDK::FString(wConsoleCommand.c_str());
-
-						SDK::UKismetSystemLibrary::ExecuteConsoleCommand(world ? world : nullptr, fConsoleCommand, nullptr);
+						SDK::UKismetSystemLibrary::ExecuteConsoleCommand(world ? world : nullptr, consoleCommand, nullptr);
 						GUI::PlayActionSound(true);
 					}
 					else
