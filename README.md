@@ -30,17 +30,14 @@ Build Configuration: Release
 3. Replace the contents of `..\SDKs\Dumper7` with the contents of newly generated, title-specific "CppSDK".
 4. Build `UETools-GUI.dll` and load it into the target title process using an appropriate instrumentation method that complies with the game’s EULA and applicable laws. For the purpose, [Cheat Engine](https://www.cheatengine.org/) and [System Informer](https://systeminformer.sourceforge.io/downloads) can be found applicable tools.
 
+While in the title, press Insert (INS) to toggle the menu.
+
 # Great First Experience Games
 ## [Lies of P (Unreal Engine 4.27.2)](https://store.steampowered.com/app/1627720)
 <img width="460" height="215" alt="FirstEXP_LiesOfP" src="https://github.com/user-attachments/assets/7d21d212-92db-49ac-91eb-977991939129" />
 
 ## [Project Borealis Prologue (Unreal Engine 5.4.4)](https://store.steampowered.com/app/2215490)
 <img width="460" height="215" alt="FirstEXP_ProjectBorealis" src="https://github.com/user-attachments/assets/d7527f5b-706c-4f05-b8b9-ea0ed6369a4e" />
-
-# Shortcut
-While in the title, press Insert (INS) to toggle the menu.
-
-<img width="1130" height="466" alt="SHIFT + INS" src="https://github.com/user-attachments/assets/bec818c7-a5e4-4d7a-9377-1de69ff494df" />
 
 # Showcase
 https://github.com/user-attachments/assets/3bff3c81-3b28-40f1-ba3d-39d9f9793769
