@@ -1496,33 +1496,40 @@ void GUI::Draw()
 	
 										for (SDK::FString actorPath : actorPathCollection)
 										{
-											Unreal::LevelStreaming::LoadLevelInstance(actorPath);
-
 											SDK::FSoftClassPath softClassPath = SDK::UKismetSystemLibrary::MakeSoftClassPath(actorPath);
 											SDK::TSoftClassPtr<SDK::UClass> softClassPtr = SDK::UKismetSystemLibrary::Conv_SoftClassPathToSoftClassRef(softClassPath);
 											SDK::UClass* actorClass = SDK::UKismetSystemLibrary::Conv_SoftClassReferenceToClass(softClassPtr);
 
-											/* 
-												LoadLevelInstance() take some time to load asset in to a memory;
-												Since we can't know when asset will be loaded, we use hardcoded Sleep() assuming it will be enough.
-											*/
-											if (actorClass == nullptr)
-											{
-												Sleep(100);
-												actorClass = SDK::UKismetSystemLibrary::Conv_SoftClassReferenceToClass(softClassPtr);
-											}
-
 											if (actorClass)
 											{
-												SDK::AActor* actorReference = Unreal::Actor::Summon(actorClass, spawnTransform);
-												if (actorReference)
-												{
+												if (SDK::AActor* actorReference = Unreal::Actor::Summon(actorClass, spawnTransform))
 													anyActorSpawned = true;
+											}
+											else
+											{
+												int32_t initialStreamingLevelsNum = world->StreamingLevels.Num();
+												Unreal::LevelStreaming::LoadLevelInstance(actorPath);
 
-													/* Remove remnants of our dirty trick from streaming levels array. */
-													int32_t streamingLevelsNum = world->StreamingLevels.Num();
-													world->StreamingLevels.Remove(streamingLevelsNum - 1);
+												/*
+													LoadLevelInstance() take some time to load asset in to a memory;
+													Since we can't know when asset will be loaded, we use hardcoded Sleep() assuming it will be enough.
+												*/
+												int8_t maximumIntervals = 10; // Sleep(10) * 10 = 100ms.
+												for (int8_t waitInterval = 0; (actorClass == nullptr && waitInterval < maximumIntervals); ++waitInterval)
+												{
+													Sleep(10);
+													actorClass = SDK::UKismetSystemLibrary::Conv_SoftClassReferenceToClass(softClassPtr);
 												}
+
+												if (actorClass)
+												{
+													if (SDK::AActor* actorReference = Unreal::Actor::Summon(actorClass, spawnTransform))
+														anyActorSpawned = true;
+												}
+
+												int32_t streamingLevelsNum = world->StreamingLevels.Num();
+												if (streamingLevelsNum > initialStreamingLevelsNum)
+													world->StreamingLevels.Remove(streamingLevelsNum - 1); // Remove remnants of our dirty trick from streaming levels array.
 											}
 										}
 
