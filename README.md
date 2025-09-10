@@ -8,7 +8,7 @@ Dumper-7 (SDK) based solution for rapid debugging of Unreal Engine powered title
 > Solution is targeting Unreal Engine 4.27.2 as the base. That allows it to be upgraded or downgraded with relative ease; however, certain code segments may require adjustment to accommodate engine-specific differences (e.g., deprecated or not-yet-implemented variables and functions).
 
 > [!TIP]
-> When targeting Unreal Engine 5 based titles, it's recommended to uncomment `#define UE5` in `GUI.h`. In many cases that action alone would be enough to adapt entirity of solution for newer engine.
+> When targeting Unreal Engine 5 based titles, it's recommended to uncomment `#define UE5` in `definitions.h`. In many cases that action alone would be enough to adapt entirity of solution for newer engine.
 
 > [!CAUTION]
 > **Disclaimer:** Solution was developed for general use in Unreal Engine powered titles. The author does not condone cheating, modding, or the manipulation of [online competitive games](https://en.wikipedia.org/wiki/List_of_esports_games). The author bears no responsibility for the specific games or contexts in which the solution is used.
@@ -29,6 +29,12 @@ Build Configuration: Release
 2. Generate a Dumper-7 SDK for the target title.
 3. Replace the contents of `..\SDKs\Dumper7` with the contents of newly generated, title-specific "CppSDK".
 4. Build `UETools-GUI.dll` and load it into the target title process using an appropriate instrumentation method that complies with the game’s EULA and applicable laws. For the purpose, [Cheat Engine](https://www.cheatengine.org/) and [System Informer](https://systeminformer.sourceforge.io/downloads) can be found applicable tools.
+
+# First Experience Games
+## [Lies of P](https://store.steampowered.com/app/1627720)
+<img width="460" height="215" alt="FirstEXP_LiesOfP" src="https://github.com/user-attachments/assets/7d21d212-92db-49ac-91eb-977991939129" />
+## [Project Borealis: Prologue](https://store.steampowered.com/app/2215490)
+<img width="460" height="215" alt="FirstEXP_ProjectBorealis" src="https://github.com/user-attachments/assets/d7527f5b-706c-4f05-b8b9-ea0ed6369a4e" />
 
 # Shortcut
 While in the title, press Insert (INS) to toggle the menu.
