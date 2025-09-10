@@ -537,11 +537,19 @@ SDK::AActor* Unreal::Actor::Summon(const SDK::TSubclassOf<SDK::AActor>& actorCla
 		return nullptr;
 
 	static const SDK::FTransform dummyTransform = SDK::FTransform();
+#ifdef UE5
+	SDK::AActor* actorReference = SDK::UGameplayStatics::BeginDeferredActorSpawnFromClass(world, actorClass, dummyTransform, SDK::ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr, SDK::ESpawnActorScaleMethod::SelectDefaultAtRuntime);
+#else
 	SDK::AActor* actorReference = SDK::UGameplayStatics::BeginDeferredActorSpawnFromClass(world, actorClass, dummyTransform, SDK::ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr);
+#endif
 	if (actorReference == nullptr)
 		return nullptr;
 
+#ifdef UE5
+	SDK::UGameplayStatics::FinishSpawningActor(actorReference, dummyTransform, SDK::ESpawnActorScaleMethod::SelectDefaultAtRuntime);
+#else
 	SDK::UGameplayStatics::FinishSpawningActor(actorReference, dummyTransform);
+#endif
 	actorReference->K2_TeleportTo(transform.location, transform.rotation);
 	actorReference->SetActorScale3D(transform.scale);
 
