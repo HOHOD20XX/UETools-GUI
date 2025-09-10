@@ -33,7 +33,8 @@ Build Configuration: Release
 # First Experience Games
 ## [Lies of P](https://store.steampowered.com/app/1627720)
 <img width="460" height="215" alt="FirstEXP_LiesOfP" src="https://github.com/user-attachments/assets/7d21d212-92db-49ac-91eb-977991939129" />
-## [Project Borealis: Prologue](https://store.steampowered.com/app/2215490)
+
+## [Project Borealis Prologue](https://store.steampowered.com/app/2215490)
 <img width="460" height="215" alt="FirstEXP_ProjectBorealis" src="https://github.com/user-attachments/assets/d7527f5b-706c-4f05-b8b9-ea0ed6369a4e" />
 
 # Shortcut
