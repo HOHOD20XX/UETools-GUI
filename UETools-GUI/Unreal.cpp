@@ -207,6 +207,30 @@ SDK::AGameStateBase* Unreal::GameState::Get()
 
 
 
+bool Unreal::LevelStreaming::LoadLevelInstance(const SDK::FString& levelPath, const SDK::FVector& locationOffset, const SDK::FRotator& rotationOffset)
+{
+	SDK::UWorld* world = Unreal::World::Get();
+	if (world == nullptr)
+		return false;
+
+	bool outSuccess;
+#ifdef UE5
+	static const SDK::FString optionalLevelNameOverride;
+	static SDK::TSubclassOf<SDK::ULevelStreamingDynamic> optionalLevelStreamingClass;
+	SDK::ULevelStreamingDynamic::LoadLevelInstance(world, levelPath, locationOffset, rotationOffset, &outSuccess, optionalLevelNameOverride, optionalLevelStreamingClass, false);
+#else
+	static const SDK::FString optionalLevelNameOverride;
+	SDK::ULevelStreamingDynamic::LoadLevelInstance(world, levelPath, locationOffset, rotationOffset, &outSuccess, optionalLevelNameOverride);
+#endif
+
+	return outSuccess;
+}
+
+
+
+
+
+
 SDK::UWorld* Unreal::World::Get()
 {
 	SDK::UWorld* World = SDK::UWorld::GetWorld();
@@ -503,6 +527,39 @@ std::vector<SDK::AActor*> Unreal::Actor::GetAllOfClass(const SDK::TSubclassOf<SD
 	}
 
 	return outCollection;
+}
+
+
+SDK::AActor* Unreal::Actor::Summon(const SDK::TSubclassOf<SDK::AActor>& actorClass, const Unreal::Transform& transform)
+{
+	SDK::UWorld* world = Unreal::World::Get();
+	if (world == nullptr)
+		return nullptr;
+
+	static const SDK::FTransform dummyTransform = SDK::FTransform();
+	SDK::AActor* actorReference = SDK::UGameplayStatics::BeginDeferredActorSpawnFromClass(world, actorClass, dummyTransform, SDK::ESpawnActorCollisionHandlingMethod::AlwaysSpawn, nullptr);
+	if (actorReference == nullptr)
+		return nullptr;
+
+	SDK::UGameplayStatics::FinishSpawningActor(actorReference, dummyTransform);
+	actorReference->K2_TeleportTo(transform.location, transform.rotation);
+	actorReference->SetActorScale3D(transform.scale);
+
+	return actorReference;
+}
+
+
+Unreal::Transform Unreal::Actor::GetTransform(SDK::AActor* actorReference)
+{
+	if (actorReference == nullptr)
+		return Transform();
+
+	Unreal::Transform outTransform;
+	outTransform.location = actorReference->K2_GetActorLocation();
+	outTransform.rotation = actorReference->K2_GetActorRotation();
+	outTransform.scale = actorReference->GetActorScale3D();
+
+	return outTransform;
 }
 
 

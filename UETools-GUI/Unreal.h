@@ -10,6 +10,18 @@
 
 namespace Unreal
 {
+	struct Transform
+	{
+		SDK::FVector location;
+		SDK::FRotator rotation;
+		SDK::FVector scale;
+	};
+
+
+
+
+
+
 	class Console
 	{
 	public:
@@ -345,6 +357,9 @@ namespace Unreal
 
 			Level::DataStructure level;
 		};
+
+
+		static bool LoadLevelInstance(const SDK::FString& levelPath, const SDK::FVector& locationOffset = { 0.0f, 0.0f, 0.0f }, const SDK::FRotator& rotationOffset = { 0.0f, 0.0f, 0.0f });
 	};
 
 
@@ -599,6 +614,12 @@ namespace Unreal
 		*		  otherwise returns an empty vector if no Actors are found.
 		*/
 		static std::vector<SDK::AActor*> GetAllOfClass(const SDK::TSubclassOf<SDK::AActor>& actorClass);
+
+
+		static SDK::AActor* Summon(const SDK::TSubclassOf<SDK::AActor>& actorClass, const Unreal::Transform& transform);
+
+
+		static Unreal::Transform GetTransform(SDK::AActor* actorReference);
 	};
 	
 

@@ -694,7 +694,7 @@ void GUI::Draw()
 	{
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v1.0)");
+			ImGui::Text("UETools GUI (v1.1)");
 			if (ImGui::IsItemHovered())
 			{
 				ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
@@ -1428,6 +1428,117 @@ void GUI::Draw()
 
 						ImGui::NewLine();
 #endif
+						ImGui::SetFontTitle();
+						ImGui::Text("Actor Spawn");
+						ImGui::SetFontSmall();
+						ImGui::Text("Dynamic Actor spawning by soft path, for example \"/Game/Blueprints/Watermelon.Watermelon_C\".");
+						ImGui::Text("Feature supports combined input using the '|' separator between paths.");
+						ImGui::SetFontRegular();
+
+						if (ImGui::TreeNode("Details##ActorSpawn"))
+						{
+							ImGui::Text("Actor Path:    ");
+							ImGui::SameLine();
+							ImGui::InputText("##ActorSpawn", Features::ActorSpawn::actorPathBuffer, Features::ActorSpawn::actorPathBufferSize);
+
+							ImGui::Checkbox("Use Character Location##ActorSpawn", &Features::ActorSpawn::useCharacterLocation);
+							ImGui::BeginDisabled(Features::ActorSpawn::useCharacterLocation);
+							ImGui::Text("Actor Location:");
+							ImGui::SameLine();
+							ImGui::InputFloat3("##ActorSpawnLocation", Features::ActorSpawn::location);
+							ImGui::EndDisabled();
+
+							ImGui::Checkbox("Use Character Rotation##ActorSpawn", &Features::ActorSpawn::useCharacterRotation);
+							ImGui::BeginDisabled(Features::ActorSpawn::useCharacterRotation);
+							ImGui::Text("Actor Rotation:");
+							ImGui::SameLine();
+							ImGui::InputFloat3("##ActorSpawnRotation", Features::ActorSpawn::rotation);
+							ImGui::EndDisabled();
+
+							ImGui::Text("Actor Scale:   ");
+							ImGui::SameLine();
+							ImGui::InputFloat3("##ActorSpawnScale", Features::ActorSpawn::scale);
+
+							if (ImGui::Button("Spawn Actor##ActorSpawn"))
+							{
+								SDK::UWorld* world = Unreal::World::Get();
+								if (world)
+								{
+									Unreal::Transform spawnTransform;
+									spawnTransform.location = spawnTransform.location = { Features::ActorSpawn::location[0], Features::ActorSpawn::location[1], Features::ActorSpawn::location[2] };
+									spawnTransform.rotation = { Features::ActorSpawn::rotation[0], Features::ActorSpawn::rotation[1], Features::ActorSpawn::rotation[2] };
+									spawnTransform.scale = { Features::ActorSpawn::scale[0], Features::ActorSpawn::scale[1], Features::ActorSpawn::scale[2] };
+
+									if (Features::ActorSpawn::useCharacterLocation || Features::ActorSpawn::useCharacterRotation)
+									{
+										SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+										if (playerController)
+										{
+											Unreal::Transform playerTransform;
+
+											if (playerController->Pawn)
+												playerTransform = Unreal::Actor::GetTransform(playerController->Pawn);
+											else if (playerController->PlayerCameraManager)
+												playerTransform = Unreal::Actor::GetTransform(playerController->PlayerCameraManager);
+
+											if (Features::ActorSpawn::useCharacterLocation)
+												spawnTransform.location = playerTransform.location;
+
+											if (Features::ActorSpawn::useCharacterRotation)
+												spawnTransform.rotation = playerTransform.rotation;
+										}
+									}
+									
+									std::vector<SDK::FString> actorPathCollection = Unreal::String::Split(Features::ActorSpawn::actorPathBuffer, '|');
+									if (actorPathCollection.size() > 0)
+									{
+										bool anyActorSpawned = false;
+	
+										for (SDK::FString actorPath : actorPathCollection)
+										{
+											Unreal::LevelStreaming::LoadLevelInstance(actorPath);
+
+											SDK::FSoftClassPath softClassPath = SDK::UKismetSystemLibrary::MakeSoftClassPath(actorPath);
+											SDK::TSoftClassPtr<SDK::UClass> softClassPtr = SDK::UKismetSystemLibrary::Conv_SoftClassPathToSoftClassRef(softClassPath);
+											SDK::UClass* actorClass = SDK::UKismetSystemLibrary::Conv_SoftClassReferenceToClass(softClassPtr);
+
+											/* 
+												LoadLevelInstance() take some time to load asset in to a memory;
+												Since we can't know when asset will be loaded, we use hardcoded Sleep() assuming it will be enough.
+											*/
+											if (actorClass == nullptr)
+											{
+												Sleep(100);
+												actorClass = SDK::UKismetSystemLibrary::Conv_SoftClassReferenceToClass(softClassPtr);
+											}
+
+											if (actorClass)
+											{
+												SDK::AActor* actorReference = Unreal::Actor::Summon(actorClass, spawnTransform);
+												if (actorReference)
+												{
+													anyActorSpawned = true;
+
+													/* Remove remnants of our dirty trick from streaming levels array. */
+													int32_t streamingLevelsNum = world->StreamingLevels.Num();
+													world->StreamingLevels.Remove(streamingLevelsNum - 1);
+												}
+											}
+										}
+
+										PlayActionSound(anyActorSpawned);
+									}
+									else
+										PlayActionSound(false);
+								}
+								else
+									PlayActionSound(false);
+							}
+
+							ImGui::TreePop();
+						}
+
+						ImGui::NewLine();
 
 						if (ImGui::Button("Update##Actors"))
 						{
@@ -1600,6 +1711,17 @@ void GUI::Draw()
 										else
 											PlayActionSound(false);
 									}
+									ImGui::SameLine();
+									if (ImGui::Button("Destroy Actor"))
+									{
+										if (actor.reference)
+										{
+											actor.reference->K2_DestroyActor();
+											PlayActionSound(true);
+										}
+										else
+											PlayActionSound(false);
+									}
 
 									ImGui::NewLine();
 
@@ -1750,7 +1872,7 @@ void GUI::Draw()
 					ImGui::SetFontTitle();
 					ImGui::Text("Level Instance");
 					ImGui::SetFontSmall();
-					ImGui::Text("Dynamic level loading by Level path, for example \"/Game/OpenWorld/Tile_X2Y8\".");
+					ImGui::Text("Dynamic level loading by Level path, for example \"/Game/OpenWorld/Tile_X2Y8.Tile_X2Y8\".");
 					ImGui::Text("Feature supports combined input using the '|' separator between paths.");
 					ImGui::SetFontRegular();
 					
@@ -1779,18 +1901,7 @@ void GUI::Draw()
 
 								for (SDK::FString levelPath : levelPathCollection)
 								{
-#ifdef UE5
-									bool outSuccess;
-									static const SDK::FString optionalLevelNameOverride;
-									static SDK::TSubclassOf<SDK::ULevelStreamingDynamic> optionalLevelStreamingClass;
-									SDK::ULevelStreamingDynamic::LoadLevelInstance(world, levelPath, locationOffset, rotationOffset, &outSuccess, optionalLevelNameOverride, optionalLevelStreamingClass, false);
-#else
-									bool outSuccess;
-									static const SDK::FString optionalLevelNameOverride;
-									SDK::ULevelStreamingDynamic::LoadLevelInstance(world, levelPath, locationOffset, rotationOffset, &outSuccess, optionalLevelNameOverride);
-#endif
-
-									if (outSuccess)
+									if (Unreal::LevelStreaming::LoadLevelInstance(levelPath, locationOffset, rotationOffset))
 										anyLevelLoaded = true;
 								}
 
@@ -2160,7 +2271,7 @@ void GUI::Draw()
 					SDK::FString consoleCommand = Unreal::String::CString_ToFString(Features::Console::consoleBuffer);
 					if (consoleCommand.Num() > 0)
 					{
-						SDK::UKismetSystemLibrary::ExecuteConsoleCommand(world ? world : nullptr, consoleCommand, nullptr);
+						SDK::UKismetSystemLibrary::ExecuteConsoleCommand(world, consoleCommand, nullptr);
 						GUI::PlayActionSound(true);
 					}
 					else
@@ -2439,10 +2550,10 @@ void Features::Debug::Update()
 			Features::Debug::playerController.pawn.className = pawn->Class->GetFullName();
 			Features::Debug::playerController.pawn.objectName = pawn->GetFullName();
 
-			SDK::FTransform pawnTransform = pawn->GetTransform();
-			Features::Debug::playerController.pawn.location = pawnTransform.Translation;
-			Features::Debug::playerController.pawn.rotation = SDK::FRotator(Math::InverseNormalizeAngle(pawnTransform.Rotation.X), Math::InverseNormalizeAngle(pawnTransform.Rotation.Y), Math::InverseNormalizeAngle(pawnTransform.Rotation.Z));
-			Features::Debug::playerController.pawn.scale = pawnTransform.Scale3D;
+			Unreal::Transform pawnTransform = Unreal::Actor::GetTransform(pawn);
+			Features::Debug::playerController.pawn.location = pawnTransform.location;
+			Features::Debug::playerController.pawn.rotation = pawnTransform.rotation;
+			Features::Debug::playerController.pawn.scale = pawnTransform.scale;
 
 			Features::Debug::playerController.pawn.isControlled = pawn->IsControlled();
 			Features::Debug::playerController.pawn.isPawnControlled = pawn->IsPawnControlled();
@@ -2458,10 +2569,10 @@ void Features::Debug::Update()
 			Features::Debug::playerController.cameraManager.className = cameraManager->Class->GetFullName();
 			Features::Debug::playerController.cameraManager.objectName = cameraManager->GetFullName();
 
-			SDK::FTransform cameraManagerTransform = cameraManager->GetTransform();
-			Features::Debug::playerController.cameraManager.location = cameraManagerTransform.Translation;
-			Features::Debug::playerController.cameraManager.rotation = SDK::FRotator(Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.X), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Y), Math::InverseNormalizeAngle(cameraManagerTransform.Rotation.Z));
-			Features::Debug::playerController.cameraManager.scale = cameraManagerTransform.Scale3D;
+			Unreal::Transform cameraManagerTransform = Unreal::Actor::GetTransform(cameraManager);
+			Features::Debug::playerController.cameraManager.location = cameraManagerTransform.location;
+			Features::Debug::playerController.cameraManager.rotation = cameraManagerTransform.rotation;
+			Features::Debug::playerController.cameraManager.scale = cameraManagerTransform.scale;
 		}
 
 
@@ -2669,10 +2780,10 @@ void Features::ActorsList::Update()
 			actorData.className = actor->Class->GetFullName();
 			actorData.objectName = actor->GetFullName();
 
-			SDK::FTransform actorTransform = actor->GetTransform();
-			actorData.location = actorTransform.Translation;
-			actorData.rotation = SDK::FRotator(Math::InverseNormalizeAngle(actorTransform.Rotation.X), Math::InverseNormalizeAngle(actorTransform.Rotation.Y), Math::InverseNormalizeAngle(actorTransform.Rotation.Z));
-			actorData.scale = actorTransform.Scale3D;
+			Unreal::Transform actorTransform = Unreal::Actor::GetTransform(actor);
+			actorData.location = actorTransform.location;
+			actorData.rotation = actorTransform.rotation;
+			actorData.scale = actorTransform.scale;
 
 			SDK::TArray<SDK::UActorComponent*> actorComponents = actor->K2_GetComponentsByClass(SDK::UActorComponent::StaticClass());
 			for (SDK::UActorComponent* component : actorComponents)

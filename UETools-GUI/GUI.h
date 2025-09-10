@@ -330,17 +330,37 @@ namespace Features
 
 
 
+
+	class ActorSpawn
+	{
+	public:
+		/* Allocate large buffer to account for combined paths (e.g: "/Game/Blueprints/Watermelon.Watermelon_C | /Game/Blueprints/Cookie.Cookie_C") */
+		static inline const size_t actorPathBufferSize = 2048;
+		static inline char actorPathBuffer[actorPathBufferSize] = {};
+
+		static inline float location[3];
+		static inline bool useCharacterLocation = true;
+		static inline float rotation[3];
+		static inline bool useCharacterRotation = true;
+		static inline float scale[3] = { 1.0f, 1.0f, 1.0f };
+
+		static inline std::vector<SDK::FString> loadedClasses;
+	};
+
+
+
+
 	class ActorsList
 	{
 	public:
 		static inline bool enabled;
 
-		static inline char filterBuffer[255];
 		static inline const size_t filterBufferSize = 255;
+		static inline char filterBuffer[filterBufferSize] = {};
 		static inline bool filterCaseSensitive = true;
 
-		static inline char componentsFilterBuffer[255];
 		static inline const size_t componentsFilterBufferSize = 255;
+		static inline char componentsFilterBuffer[componentsFilterBufferSize] = {};
 		static inline bool componentsFilterCaseSensitive = true;
 
 		static inline std::vector<Unreal::Actor::DataStructure> actors;
@@ -355,9 +375,9 @@ namespace Features
 	class LoadLevelInstance
 	{
 	public:
-		/* Allocate large buffer to account for combined paths (e.g: "/Game/OpenWorld/Tile_X2Y8 | /Game/OpenWorld/Tile_X4Y6") */
-		static inline char levelPathBuffer[2048];
+		/* Allocate large buffer to account for combined paths (e.g: "/Game/OpenWorld/Tile_X2Y8.Tile_X2Y8 | /Game/OpenWorld/Tile_X4Y6.Tile_X4Y6") */
 		static inline const size_t levelPathBufferSize = 2048;
+		static inline char levelPathBuffer[levelPathBufferSize] = {};
 
 		static inline float locationOffset[3];
 		static inline float rotationOffset[3];
@@ -465,8 +485,8 @@ namespace Features
 	{
 	public:
 		/* Allocate large buffer to account for combined console commands (e.g: "stat fps | stat unit") */
-		static inline char consoleBuffer[2048];
 		static inline const size_t consoleBufferSize = 2048;
+		static inline char consoleBuffer[consoleBufferSize] = {};
 	};
 };
 
