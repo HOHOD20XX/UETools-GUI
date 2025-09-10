@@ -1,6 +1,8 @@
 #pragma once
 #include "SDK\Engine_classes.hpp"
 
+#include "definitions.h"
+
 #include <cwctype>
 
 
