@@ -352,9 +352,19 @@ namespace Features
 		static inline bool componentsFilterCaseSensitive = true;
 
 		static inline std::vector<Unreal::Actor::DataStructure> actors;
+		static inline std::vector<Unreal::Actor::DataStructure> filteredActors;
 
 
 		static void Update();
+	};
+
+
+
+
+	class ActorsTracker
+	{
+	public:
+		static inline bool enabled;
 	};
 
 

@@ -694,7 +694,7 @@ void GUI::Draw()
 	{
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v1.1)");
+			ImGui::Text("UETools GUI (v1.2)");
 			if (ImGui::IsItemHovered())
 			{
 				ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
@@ -1277,7 +1277,7 @@ void GUI::Draw()
 									{
 										if (ImGui::TreeNode("Streaming Levels"))
 										{
-											for (Unreal::LevelStreaming::DataStructure streamingLevel : Features::Debug::world.streamingLevels)
+											for (Unreal::LevelStreaming::DataStructure& streamingLevel : Features::Debug::world.streamingLevels) // <-- Reference!
 											{
 												ImGui::PushID(streamingLevel.objectName.c_str());
 
@@ -1494,7 +1494,7 @@ void GUI::Draw()
 									{
 										bool anyActorSpawned = false;
 	
-										for (SDK::FString actorPath : actorPathCollection)
+										for (SDK::FString& actorPath : actorPathCollection) // <-- Reference!
 										{
 											SDK::FSoftClassPath softClassPath = SDK::UKismetSystemLibrary::MakeSoftClassPath(actorPath);
 											SDK::TSoftClassPtr<SDK::UClass> softClassPtr = SDK::UKismetSystemLibrary::Conv_SoftClassPathToSoftClassRef(softClassPath);
@@ -1561,17 +1561,24 @@ void GUI::Draw()
 						ImGui::Spacing();
 						ImGui::SameLine();
 						ImGui::Checkbox("Case Sensitive", &Features::ActorsList::filterCaseSensitive);
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						ImGui::Checkbox("Enable Tracking", &Features::ActorsTracker::enabled);
 
 						ImGui::NewLine();
 
+						/* Filter Actors by "Search Filter" */
+						Features::ActorsList::filteredActors.clear(); // Make sure filtered Actors array is empty.
 						for (Unreal::Actor::DataStructure& actor : Features::ActorsList::actors) // <-- Reference!
 						{
-							bool outputToUserInterface = filterLength == 0;
+							/* "Search Filter" is empty - Actor considered a match automatically. */
+							bool matchFilters = filterLength == 0;
 
-							if (outputToUserInterface == false)
+							if (matchFilters == false)
 							{
 								if (Features::ActorsList::filterCaseSensitive)
-									outputToUserInterface = actor.objectName.find(Features::ActorsList::filterBuffer) != std::string::npos;
+									matchFilters = actor.objectName.find(Features::ActorsList::filterBuffer) != std::string::npos;
 								else
 								{
 									std::string actorObjectLower = actor.objectName;
@@ -1582,261 +1589,265 @@ void GUI::Draw()
 									std::transform(filterLower.begin(), filterLower.end(), filterLower.begin(),
 										[](unsigned char c) { return std::tolower(c); });
 
-									outputToUserInterface = actorObjectLower.find(filterLower) != std::string::npos;
+									matchFilters = actorObjectLower.find(filterLower) != std::string::npos;
 								}
 							}
 
-							if (outputToUserInterface)
+							if (matchFilters)
+								Features::ActorsList::filteredActors.push_back(actor); // Actor is good to go, can be considered "filtered".
+						}
+
+						/* Output to user interface Actors that are matching "Search Filter" */
+						for (Unreal::Actor::DataStructure& actor : Features::ActorsList::filteredActors) // <-- Reference!
+						{
+							if (ImGui::TreeNode(actor.objectName.c_str()))
 							{
-								if (ImGui::TreeNode(actor.objectName.c_str()))
+								ImGui::PushID(actor.objectName.c_str());
+
+								ImGui::Text("Actor Class: %s", actor.className.c_str());
+								ImGui::Text("Actor Object: %s", actor.objectName.c_str());
+
+								float actorLocation[3] = { actor.location.X, actor.location.Y, actor.location.Z };
+								ImGui::Text("Location:");
+								ImGui::SameLine();
+								if (ImGui::InputFloat3("##Location", actorLocation))
+									actor.location = SDK::FVector(actorLocation[0], actorLocation[1], actorLocation[2]);
+								ImGui::SameLine();
+								if (ImGui::Button("Set##Location"))
 								{
-									ImGui::PushID(actor.objectName.c_str());
+									if (actor.reference)
+									{
+										actor.reference->K2_TeleportTo(actor.location, actor.reference->K2_GetActorRotation());
+										PlayActionSound(true);
+									}
+									else
+										PlayActionSound(false);
+								}
 
-									ImGui::Text("Actor Class: %s", actor.className.c_str());
-									ImGui::Text("Actor Object: %s", actor.objectName.c_str());
+								float actorRotation[3] = { actor.rotation.Pitch, actor.rotation.Yaw, actor.rotation.Roll };
+								ImGui::Text("Rotation:");
+								ImGui::SameLine();
+								if (ImGui::InputFloat3("##Rotation", actorRotation))
+									actor.rotation = SDK::FRotator(actorRotation[0], actorRotation[1], actorRotation[2]);
+								ImGui::SameLine();
+								if (ImGui::Button("Set##Rotation"))
+								{
+									if (actor.reference)
+									{
+										actor.reference->K2_TeleportTo(actor.reference->K2_GetActorLocation(), actor.rotation);
+										PlayActionSound(true);
+									}
+									else
+										PlayActionSound(false);
+								}
 
-									float actorLocation[3] = { actor.location.X, actor.location.Y, actor.location.Z };
-									ImGui::Text("Location:");
-									ImGui::SameLine();
-									if (ImGui::InputFloat3("##Location", actorLocation))
-										actor.location = SDK::FVector(actorLocation[0], actorLocation[1], actorLocation[2]);
-									ImGui::SameLine();
-									if (ImGui::Button("Set##Location"))
+								float actorScale[3] = { actor.scale.X, actor.scale.Y, actor.scale.Z };
+								ImGui::Text("Scale:   ");
+								ImGui::SameLine();
+								if (ImGui::InputFloat3("##Scale", actorScale))
+									actor.scale = SDK::FVector(actorScale[0], actorScale[1], actorScale[2]);
+								ImGui::SameLine();
+								if (ImGui::Button("Set##Scale"))
+								{
+									if (actor.reference)
 									{
-										if (actor.reference)
-										{
-											actor.reference->K2_TeleportTo(actor.location, actor.reference->K2_GetActorRotation());
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
+										actor.reference->SetActorScale3D(actor.scale);
+										PlayActionSound(true);
 									}
+									else
+										PlayActionSound(false);
+								}
 
-									float actorRotation[3] = { actor.rotation.Pitch, actor.rotation.Yaw, actor.rotation.Roll };
-									ImGui::Text("Rotation:");
-									ImGui::SameLine();
-									if (ImGui::InputFloat3("##Rotation", actorRotation))
-										actor.rotation = SDK::FRotator(actorRotation[0], actorRotation[1], actorRotation[2]);
-									ImGui::SameLine();
-									if (ImGui::Button("Set##Rotation"))
+								ImGui::Text("         ");
+								ImGui::SameLine();
+								if (ImGui::Button("Static"))
+								{
+									if (actor.reference && actor.reference->RootComponent)
 									{
-										if (actor.reference)
-										{
-											actor.reference->K2_TeleportTo(actor.reference->K2_GetActorLocation(), actor.rotation);
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
+										actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Static;
+										PlayActionSound(true);
 									}
+									else
+										PlayActionSound(false);
+								}
+								ImGui::SameLine();
+								if (ImGui::Button("Stationary"))
+								{
+									if (actor.reference && actor.reference->RootComponent)
+									{
+										actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Stationary;
+										PlayActionSound(true);
+									}
+									else
+										PlayActionSound(false);
+								}
+								ImGui::SameLine();
+								if (ImGui::Button("Movable"))
+								{
+									if (actor.reference && actor.reference->RootComponent)
+									{
+										actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Movable;
+										PlayActionSound(true);
+									}
+									else
+										PlayActionSound(false);
+								}
 
-									float actorScale[3] = { actor.scale.X, actor.scale.Y, actor.scale.Z };
-									ImGui::Text("Scale:   ");
-									ImGui::SameLine();
-									if (ImGui::InputFloat3("##Scale", actorScale))
-										actor.scale = SDK::FVector(actorScale[0], actorScale[1], actorScale[2]);
-									ImGui::SameLine();
-									if (ImGui::Button("Set##Scale"))
+								ImGui::Text("         ");
+								ImGui::SameLine();
+								if (ImGui::Button("Set Visible"))
+								{
+									if (actor.reference)
 									{
-										if (actor.reference)
-										{
-											actor.reference->SetActorScale3D(actor.scale);
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
+										actor.reference->SetActorHiddenInGame(false);
+										PlayActionSound(true);
 									}
+									else
+										PlayActionSound(false);
+								}
+								ImGui::SameLine();
+								if (ImGui::Button("Set Hidden"))
+								{
+									if (actor.reference)
+									{
+										actor.reference->SetActorHiddenInGame(true);
+										PlayActionSound(true);
+									}
+									else
+										PlayActionSound(false);
+								}
 
-									ImGui::Text("         ");
-									ImGui::SameLine();
-									if (ImGui::Button("Static"))
+								ImGui::Text("         ");
+								ImGui::SameLine();
+								if (ImGui::Button("Teleport To Actor"))
+								{
+									SDK::ACharacter* character = Unreal::Character::Get();
+									if (character)
 									{
-										if (actor.reference && actor.reference->RootComponent)
-										{
-											actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Static;
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
+										SDK::FHitResult hitResult;
+										PlayActionSound(character->K2_SetActorLocation(actor.location, false, &hitResult, true));
 									}
-									ImGui::SameLine();
-									if (ImGui::Button("Stationary"))
+									else
+										PlayActionSound(false);
+								}
+								ImGui::SameLine();
+								if (ImGui::Button("Destroy Actor"))
+								{
+									if (actor.reference)
 									{
-										if (actor.reference && actor.reference->RootComponent)
-										{
-											actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Stationary;
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
+										actor.reference->K2_DestroyActor();
+										PlayActionSound(true);
 									}
-									ImGui::SameLine();
-									if (ImGui::Button("Movable"))
-									{
-										if (actor.reference && actor.reference->RootComponent)
-										{
-											actor.reference->RootComponent->Mobility = SDK::EComponentMobility::Movable;
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
-									}
+									else
+										PlayActionSound(false);
+								}
 
-									ImGui::Text("         ");
-									ImGui::SameLine();
-									if (ImGui::Button("Set Visible"))
-									{
-										if (actor.reference)
-										{
-											actor.reference->SetActorHiddenInGame(false);
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
-									}
-									ImGui::SameLine();
-									if (ImGui::Button("Set Hidden"))
-									{
-										if (actor.reference)
-										{
-											actor.reference->SetActorHiddenInGame(true);
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
-									}
+								ImGui::NewLine();
 
-									ImGui::Text("         ");
+								ImGui::SetFontTitle();
+								ImGui::Text("Components");
+								ImGui::SetFontRegular();
+								if (ImGui::TreeNode("Details##Components"))
+								{
+
+									ImGui::InputText("Search Filter", Features::ActorsList::componentsFilterBuffer, Features::ActorsList::componentsFilterBufferSize);
+									size_t componentsFilterLength = strlen(Features::ActorsList::componentsFilterBuffer);
 									ImGui::SameLine();
-									if (ImGui::Button("Teleport To Actor"))
-									{
-										SDK::ACharacter* character = Unreal::Character::Get();
-										if (character)
-										{
-											SDK::FHitResult hitResult;
-											PlayActionSound(character->K2_SetActorLocation(actor.location, false, &hitResult, true));
-										}
-										else
-											PlayActionSound(false);
-									}
+									ImGui::Spacing();
 									ImGui::SameLine();
-									if (ImGui::Button("Destroy Actor"))
-									{
-										if (actor.reference)
-										{
-											actor.reference->K2_DestroyActor();
-											PlayActionSound(true);
-										}
-										else
-											PlayActionSound(false);
-									}
+									ImGui::Checkbox("Case Sensitive", &Features::ActorsList::componentsFilterCaseSensitive);
 
 									ImGui::NewLine();
 
-									ImGui::SetFontTitle();
-									ImGui::Text("Components");
-									ImGui::SetFontRegular();
-									if (ImGui::TreeNode("Details##Components"))
+									for (Unreal::ActorComponent::DataStructure& component : actor.components) // <-- Reference!
 									{
+										bool componentOutputToUserInterface = componentsFilterLength == 0;
 
-										ImGui::InputText("Search Filter", Features::ActorsList::componentsFilterBuffer, Features::ActorsList::componentsFilterBufferSize);
-										size_t componentsFilterLength = strlen(Features::ActorsList::componentsFilterBuffer);
-										ImGui::SameLine();
-										ImGui::Spacing();
-										ImGui::SameLine();
-										ImGui::Checkbox("Case Sensitive", &Features::ActorsList::componentsFilterCaseSensitive);
-
-										ImGui::NewLine();
-
-										for (Unreal::ActorComponent::DataStructure& component : actor.components) // <-- Reference!
+										if (componentOutputToUserInterface == false)
 										{
-											bool componentOutputToUserInterface = componentsFilterLength == 0;
-
-											if (componentOutputToUserInterface == false)
+											if (Features::ActorsList::componentsFilterCaseSensitive)
+												componentOutputToUserInterface = component.objectName.find(Features::ActorsList::componentsFilterBuffer) != std::string::npos;
+											else
 											{
-												if (Features::ActorsList::componentsFilterCaseSensitive)
-													componentOutputToUserInterface = component.objectName.find(Features::ActorsList::componentsFilterBuffer) != std::string::npos;
-												else
-												{
-													std::string componentObjectLower = component.objectName;
-													std::string componentFilterLower = Features::ActorsList::componentsFilterBuffer;
+												std::string componentObjectLower = component.objectName;
+												std::string componentFilterLower = Features::ActorsList::componentsFilterBuffer;
 
-													std::transform(componentObjectLower.begin(), componentObjectLower.end(), componentObjectLower.begin(),
-														[](unsigned char c) { return std::tolower(c); });
-													std::transform(componentFilterLower.begin(), componentFilterLower.end(), componentFilterLower.begin(),
-														[](unsigned char c) { return std::tolower(c); });
+												std::transform(componentObjectLower.begin(), componentObjectLower.end(), componentObjectLower.begin(),
+													[](unsigned char c) { return std::tolower(c); });
+												std::transform(componentFilterLower.begin(), componentFilterLower.end(), componentFilterLower.begin(),
+													[](unsigned char c) { return std::tolower(c); });
 
-													componentOutputToUserInterface = componentObjectLower.find(componentFilterLower) != std::string::npos;
-												}
-											}
-
-											if (componentOutputToUserInterface)
-											{
-												if (ImGui::TreeNode(component.objectName.c_str()))
-												{
-													ImGui::Text("Component Class: %s", component.className.c_str());
-													ImGui::Text("Component Object: %s", component.objectName.c_str());
-
-													ImGui::NewLine();
-
-													ImGui::TextBoolColored("Is Active:", component.isActive);
-													ImGui::TextBoolColored("Auto Activate:", component.autoActivate);
-													ImGui::TextBoolColored("Editor Only:", component.editorOnly);
-													if (ImGui::Button("Activate"))
-													{
-														if (component.reference)
-														{
-															component.reference->Activate(false);
-															component.isActive = true;
-															PlayActionSound(true);
-														}
-														else
-															PlayActionSound(false);
-													}
-													ImGui::SameLine();
-													if (ImGui::Button("Reset"))
-													{
-														if (component.reference)
-														{
-															component.reference->Activate(true);
-															component.isActive = true;
-															PlayActionSound(true);
-														}
-														else
-															PlayActionSound(false);
-													}
-													ImGui::SameLine();
-													if (ImGui::Button("Deactivate"))
-													{
-														if (component.reference)
-														{
-															component.reference->Deactivate();
-															component.isActive = false;
-															PlayActionSound(true);
-														}
-														else
-															PlayActionSound(false);
-													}
-
-													ImGui::NewLine();
-
-													ImGui::TextBoolColored("Net Addressible:", component.netAddressible);
-													ImGui::TextBoolColored("Replicates:", component.replicates);
-
-													ImGui::NewLine();
-
-													ImGui::Text("Creation Method: %d", component.creationMethod);
-
-													ImGui::TreePop();
-												}
+												componentOutputToUserInterface = componentObjectLower.find(componentFilterLower) != std::string::npos;
 											}
 										}
 
-										ImGui::TreePop();
+										if (componentOutputToUserInterface)
+										{
+											if (ImGui::TreeNode(component.objectName.c_str()))
+											{
+												ImGui::Text("Component Class: %s", component.className.c_str());
+												ImGui::Text("Component Object: %s", component.objectName.c_str());
+
+												ImGui::NewLine();
+
+												ImGui::TextBoolColored("Is Active:", component.isActive);
+												ImGui::TextBoolColored("Auto Activate:", component.autoActivate);
+												ImGui::TextBoolColored("Editor Only:", component.editorOnly);
+												if (ImGui::Button("Activate"))
+												{
+													if (component.reference)
+													{
+														component.reference->Activate(false);
+														component.isActive = true;
+														PlayActionSound(true);
+													}
+													else
+														PlayActionSound(false);
+												}
+												ImGui::SameLine();
+												if (ImGui::Button("Reset"))
+												{
+													if (component.reference)
+													{
+														component.reference->Activate(true);
+														component.isActive = true;
+														PlayActionSound(true);
+													}
+													else
+														PlayActionSound(false);
+												}
+												ImGui::SameLine();
+												if (ImGui::Button("Deactivate"))
+												{
+													if (component.reference)
+													{
+														component.reference->Deactivate();
+														component.isActive = false;
+														PlayActionSound(true);
+													}
+													else
+														PlayActionSound(false);
+												}
+
+												ImGui::NewLine();
+
+												ImGui::TextBoolColored("Net Addressible:", component.netAddressible);
+												ImGui::TextBoolColored("Replicates:", component.replicates);
+
+												ImGui::NewLine();
+
+												ImGui::Text("Creation Method: %d", component.creationMethod);
+
+												ImGui::TreePop();
+											}
+										}
 									}
 
-									ImGui::PopID();
 									ImGui::TreePop();
 								}
+
+								ImGui::PopID();
+								ImGui::TreePop();
 							}
 						}
 					}
@@ -2394,6 +2405,40 @@ void GUI::Draw()
 		}
 	}
 #endif
+
+
+
+
+	if (Features::ActorsTracker::enabled)
+	{
+		SDK::APlayerController* playerController = Unreal::PlayerController::Get();
+		if (playerController)
+		{
+			for (Unreal::Actor::DataStructure& actor : Features::ActorsList::filteredActors) // <-- Reference!
+			{
+				SDK::FVector2D screenPosition;
+				if (SDK::UGameplayStatics::ProjectWorldToScreen(playerController, actor.location, &screenPosition, false))
+				{
+					static const ImU32 color_valid = IM_COL32(51, 204, 77, 255);
+					static const ImU32 color_invalid = IM_COL32(204, 77, 51, 255);
+					ImU32 color = actor.reference ? color_valid : color_invalid; // P.S: Need to figure out a way to safely tell if Actor is still valid (present in game world) and not just sitting somewhere in game memory.
+
+					iDrawList->AddCircleFilled({ screenPosition.X, screenPosition.Y }, 8.0f, color);
+
+					const char* labelText = actor.objectName.c_str();
+					ImVec2 labelSize = ImGui::CalcTextSize(labelText);
+					ImVec2 labelPosition = ImVec2
+					(
+						/* Flooring the values allows to avoid potential subpixel conflicts. */
+						floorf(screenPosition.X - (labelSize.x * 0.5)),
+						floorf(screenPosition.Y - 32.0f)
+					);
+
+					iDrawList->AddText(labelPosition, color, labelText);
+				}
+			}
+		}
+	}
 }
 
 
