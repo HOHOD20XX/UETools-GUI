@@ -2447,7 +2447,7 @@ void GUI::Draw()
 					else
 						color = IM_COL32(255, 255, 255, 255);
 					
-					iDrawList->AddCircleFilled({ screenPosition.X, screenPosition.Y }, 8.0f, color);
+					iDrawList->AddCircleFilled({ (float)screenPosition.X, (float)screenPosition.Y }, 8.0f, color);
 
 					const char* labelText = actor.objectName.c_str();
 					ImVec2 labelSize = ImGui::CalcTextSize(labelText);
