@@ -694,7 +694,7 @@ void GUI::Draw()
 	{
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v1.3)");
+			ImGui::Text("UETools GUI (v1.3b)");
 			if (ImGui::IsItemHovered())
 			{
 				ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
@@ -1569,6 +1569,23 @@ void GUI::Draw()
 						ImGui::Spacing();
 						ImGui::SameLine();
 						ImGui::Checkbox("Enable Tracking", &Features::ActorsTracker::enabled);
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
+						if (ImGui::Button("Destroy All"))
+						{
+							bool anyActorDestroyed = false;
+							for (Unreal::Actor::DataStructure& actor : Features::ActorsList::filteredActors) // <-- Reference!
+							{
+								if (actor.reference)
+								{
+									actor.reference->K2_DestroyActor();
+									anyActorDestroyed = true;
+								}
+							}
+
+							PlayActionSound(anyActorDestroyed);
+						}
 
 						ImGui::NewLine();
 
