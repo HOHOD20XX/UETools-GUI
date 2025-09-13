@@ -694,7 +694,7 @@ void GUI::Draw()
 	{
 		if (ImGui::BeginMainMenuBar())
 		{
-			ImGui::Text("UETools GUI (v1.2)");
+			ImGui::Text("UETools GUI (v1.3)");
 			if (ImGui::IsItemHovered())
 			{
 				ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
@@ -1564,6 +1564,10 @@ void GUI::Draw()
 						ImGui::SameLine();
 						ImGui::Spacing();
 						ImGui::SameLine();
+						ImGui::Checkbox("Check Validness", &Features::ActorsList::filterCheckValidness);
+						ImGui::SameLine();
+						ImGui::Spacing();
+						ImGui::SameLine();
 						ImGui::Checkbox("Enable Tracking", &Features::ActorsTracker::enabled);
 
 						ImGui::NewLine();
@@ -1600,7 +1604,21 @@ void GUI::Draw()
 						/* Output to user interface Actors that are matching "Search Filter" */
 						for (Unreal::Actor::DataStructure& actor : Features::ActorsList::filteredActors) // <-- Reference!
 						{
-							if (ImGui::TreeNode(actor.objectName.c_str()))
+							bool isTreeNodeOpen;
+							if (Features::ActorsList::filterCheckValidness)
+							{
+								static const ImU32 color_valid = IM_COL32(51, 204, 77, 255);
+								static const ImU32 color_invalid = IM_COL32(204, 77, 51, 255);
+								ImU32 color = Unreal::Actor::IsValid(actor.reference) ? color_valid : color_invalid;
+
+								ImGui::PushStyleColor(ImGuiCol_Text, color);
+								isTreeNodeOpen = ImGui::TreeNode(actor.objectName.c_str());
+								ImGui::PopStyleColor();
+							}
+							else
+								isTreeNodeOpen = ImGui::TreeNode(actor.objectName.c_str());
+								
+							if (isTreeNodeOpen)
 							{
 								ImGui::PushID(actor.objectName.c_str());
 
@@ -2419,10 +2437,16 @@ void GUI::Draw()
 				SDK::FVector2D screenPosition;
 				if (SDK::UGameplayStatics::ProjectWorldToScreen(playerController, actor.location, &screenPosition, false))
 				{
-					static const ImU32 color_valid = IM_COL32(51, 204, 77, 255);
-					static const ImU32 color_invalid = IM_COL32(204, 77, 51, 255);
-					ImU32 color = actor.reference ? color_valid : color_invalid; // P.S: Need to figure out a way to safely tell if Actor is still valid (present in game world) and not just sitting somewhere in game memory.
-
+					ImU32 color;
+					if (Features::ActorsList::filterCheckValidness)
+					{
+						static const ImU32 color_valid = IM_COL32(51, 204, 77, 255);
+						static const ImU32 color_invalid = IM_COL32(204, 77, 51, 255);
+						color = Unreal::Actor::IsValid(actor.reference) ? color_valid : color_invalid;
+					}
+					else
+						color = IM_COL32(255, 255, 255, 255);
+					
 					iDrawList->AddCircleFilled({ screenPosition.X, screenPosition.Y }, 8.0f, color);
 
 					const char* labelText = actor.objectName.c_str();

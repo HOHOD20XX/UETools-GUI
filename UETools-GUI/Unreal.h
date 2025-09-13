@@ -622,6 +622,9 @@ namespace Unreal
 
 
 		static Unreal::Transform GetTransform(SDK::AActor* actorReference);
+
+
+		static bool IsValid(SDK::AActor* actorReference);
 	};
 	
 

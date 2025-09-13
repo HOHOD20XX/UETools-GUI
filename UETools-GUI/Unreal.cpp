@@ -571,6 +571,34 @@ Unreal::Transform Unreal::Actor::GetTransform(SDK::AActor* actorReference)
 }
 
 
+bool Unreal::Actor::IsValid(SDK::AActor* actorReference)
+{
+	try
+	{
+		/* 
+			Need to figure out less demanding method!
+
+			So far that's the only approach found capable of functioning on Garbage Collection,
+			allowing to call it while moving between levels w/o high risk of getting game crash.
+		*/
+		if (actorReference)
+		{
+			int32_t objectsNum = SDK::UObject::GObjects->Num();
+			for (int i = 0; i < objectsNum; i++)
+			{
+				SDK::UObject* objectReference = SDK::UObject::GObjects->GetByIndex(i);
+
+				if (objectReference == actorReference)
+					return SDK::UKismetSystemLibrary::IsValid(objectReference);
+			}
+		}
+	}
+	catch (...) { }
+
+	return false;
+}
+
+
 
 
 

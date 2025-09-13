@@ -346,6 +346,7 @@ namespace Features
 		static inline const size_t filterBufferSize = 255;
 		static inline char filterBuffer[filterBufferSize] = {};
 		static inline bool filterCaseSensitive = true;
+		static inline bool filterCheckValidness = false;
 
 		static inline const size_t componentsFilterBufferSize = 255;
 		static inline char componentsFilterBuffer[componentsFilterBufferSize] = {};
@@ -364,7 +365,7 @@ namespace Features
 	class ActorsTracker
 	{
 	public:
-		static inline bool enabled;
+		static inline bool enabled = false;
 	};
 
 
