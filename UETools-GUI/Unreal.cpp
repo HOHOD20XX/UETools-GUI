@@ -573,27 +573,57 @@ Unreal::Transform Unreal::Actor::GetTransform(SDK::AActor* actorReference)
 
 bool Unreal::Actor::IsValid(SDK::AActor* actorReference)
 {
-	try
+	if (actorReference)
 	{
-		/* 
-			Need to figure out less demanding method!
+		/*
+			Most of the Actors can be found within arrays of currently loaded game levels.
 
-			So far that's the only approach found capable of functioning on Garbage Collection,
-			allowing to call it while moving between levels w/o high risk of getting game crash.
+			Walking through these small arrays, we can save up on performance and only
+			use full scan as our last resort - if neither of methods have found the Actor.
+			
 		*/
-		if (actorReference)
+		SDK::UWorld* world = Unreal::World::Get();
+		if (world)
 		{
-			int32_t objectsNum = SDK::UObject::GObjects->Num();
-			for (int i = 0; i < objectsNum; i++)
+			/* Check is Actor is present within current Persistent Level. */
+			if (world->PersistentLevel)
 			{
-				SDK::UObject* objectReference = SDK::UObject::GObjects->GetByIndex(i);
-
-				if (objectReference == actorReference)
-					return SDK::UKismetSystemLibrary::IsValid(objectReference);
+				SDK::TArray<SDK::AActor*>& persistentLevelActors = world->PersistentLevel->Actors;
+				for (SDK::AActor* actor : persistentLevelActors)
+				{
+					if (actor == actorReference)
+						return SDK::UKismetSystemLibrary::IsValid(actor);
+				}
+			}
+			
+			/* Walk through all of the streaming levels. */
+			if (world->StreamingLevels.Num() > 0)
+			{
+				for (SDK::ULevelStreaming* streamingLevel : world->StreamingLevels)
+				{
+					if (streamingLevel->LoadedLevel)
+					{
+						SDK::TArray<SDK::AActor*>& streamingLevelActors = streamingLevel->LoadedLevel->Actors;
+						for (SDK::AActor* actor : streamingLevelActors)
+						{
+							if (actor == actorReference)
+								return SDK::UKismetSystemLibrary::IsValid(actor);
+						}
+					}
+				}
 			}
 		}
+
+		/* Full scan. Extremely expensive to perform. */
+		int32_t objectsNum = SDK::UObject::GObjects->Num();
+		for (int i = 0; i < objectsNum; i++)
+		{
+			SDK::UObject* objectReference = SDK::UObject::GObjects->GetByIndex(i);
+
+			if (objectReference == actorReference)
+				return SDK::UKismetSystemLibrary::IsValid(objectReference);
+		}
 	}
-	catch (...) { }
 
 	return false;
 }
